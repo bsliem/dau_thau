@@ -1,0 +1,3 @@
+@All Em chào các anh chị. Em Nguyễn Nhung - BTC lớp sẽ hỗ trợ hướng dẫn các anh chị đăng ký tài khoản hệ thống và đăng ký thi. 
+Vậy em xin phép các anh chị để cho nhóm đủ em sẽ hướng dẫn các anh chị nhé ạ. Theo như kế hoạch @Võ Nhung gửi vào ngày 9/9 em sẽ hướng dẫn các anh chị chi tiết cách đăng ký tài khoản. Lịch học và các thông tin khác BTC lớp sẽ cập nhật trên nhóm này. Vậy kính mong anh chị chúng ta tham gia nhóm đầy đủ và cập nhật thông tin trên nhóm giúp em ạ. 
+Em cảm ơn anh chị.  
