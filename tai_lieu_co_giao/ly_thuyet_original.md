@@ -22,19 +22,6 @@
 
 ### 1. Học Luật Đấu thầu từ câu hỏi đầu tiên: khi nào bắt buộc áp dụng?
 
-<!-- BV304_EXAMPLE_START:P1_1 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — phạm vi áp dụng**
->
-> Bệnh viện 30-4 cần mua **thuốc điều trị nội trú** bằng nguồn kinh phí thuộc phạm vi phải áp dụng Luật Đấu thầu.
-> Khi làm câu hỏi, hãy bóc tách theo 3 ý:
->
-> - **Ai mua?** Bệnh viện công.
-> - **Mua gì?** Thuốc.
-> - **Nguồn tiền nào?** Nguồn kinh phí thuộc phạm vi điều chỉnh.
->
-> → Đây là tình huống phải kiểm tra và thực hiện theo quy định đấu thầu.
-<!-- BV304_EXAMPLE_END:P1_1 -->
-
 Muốn biết một việc mua sắm có phải theo Luật Đấu thầu hay không, trước hết hỏi 3 câu: ai mua, dùng tiền gì, mua để làm gì. Nếu là cơ quan nhà nước, đơn vị sự nghiệp công lập, chủ đầu tư dự án sử dụng vốn nhà nước/ngân sách/đầu tư công thì thường rơi vào phạm vi bắt buộc.
 Ví dụ dễ nhớ: Sở Y tế dùng ngân sách mua thuốc cho bệnh viện công là hoạt động lựa chọn nhà thầu thuộc Luật Đấu thầu. Nhưng hộ kinh doanh cá thể tự mua phần mềm kế toán bằng tiền riêng thì không phải đối tượng áp dụng.
 Một số đơn vị được tự quyết khi không sử dụng nguồn vốn thuộc phạm vi bắt buộc, nhưng vẫn phải bảo đảm công khai, minh bạch, hiệu quả và trách nhiệm giải trình. “Tự quyết” không có nghĩa là muốn chọn ai cũng được.
@@ -48,20 +35,6 @@ Khi câu hỏi hỏi phạm vi điều chỉnh, đáp án đúng thường là p
 Cần phân biệt: quản lý nhà nước là ban hành, kiểm tra, thanh tra, xử lý vi phạm, quản lý Hệ thống mạng đấu thầu quốc gia; còn lập HSMT, đánh giá HSDT là nghiệp vụ của một cuộc thầu cụ thể.
 
 ### 3. Phân loại gói thầu để không nhầm đáp án
-
-<!-- BV304_EXAMPLE_START:P1_3 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — phân loại gói thầu**
->
-> Có thể hình dung các nhu cầu của bệnh viện như sau:
->
-> - Mua **thuốc, kim tiêm, dây truyền, găng tay, vật tư tiêu hao** → gói **hàng hóa**.
-> - Mua **máy siêu âm, máy X-quang, monitor, máy xét nghiệm** → gói **hàng hóa / trang thiết bị y tế**.
-> - Thuê **vệ sinh bệnh viện, bảo vệ, vận chuyển chất thải** → **dịch vụ phi tư vấn**.
-> - Thuê **tư vấn thiết kế cải tạo khoa khám bệnh** → **dịch vụ tư vấn**.
-> - Thi công **cải tạo phòng bệnh, nhà thuốc, hệ thống điện nước** → **xây lắp**.
->
-> → Trước khi nghĩ đến hạn mức hay hình thức lựa chọn, phải xác định đúng **loại gói thầu**.
-<!-- BV304_EXAMPLE_END:P1_3 -->
 
 Gói tư vấn là nhóm dùng nhiều chất xám chuyên môn: lập quy hoạch, khảo sát, thiết kế, giám sát, thẩm định, tư vấn quản lý dự án. Ví dụ “lập nhiệm vụ quy hoạch vùng” là tư vấn.
 Gói phi tư vấn là dịch vụ không phải tư vấn chuyên môn như vệ sinh, bảo vệ, in ấn, vận chuyển, bảo trì, tổ chức sự kiện theo yêu cầu có sẵn. Ví dụ “in sổ công tác” thường được xếp là phi tư vấn.
@@ -82,19 +55,6 @@ Hệ thống mạng đấu thầu quốc gia là nơi đăng tải kế hoạch,
 ## PHẦN 2. CHỦ THỂ, TRÁCH NHIỆM, QUẢN LÝ NHÀ NƯỚC
 
 ### 1. Bản đồ vai trò: ai chịu trách nhiệm việc gì?
-
-<!-- BV304_EXAMPLE_START:P2_1 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — ai làm việc gì?**
->
-> Giả sử bệnh viện tổ chức gói mua **vật tư tiêu hao ngoại khoa**:
->
-> - **Chủ đầu tư:** chịu trách nhiệm chung về gói thầu.
-> - **Bên mời thầu:** thực hiện các thủ tục tổ chức lựa chọn theo phân công.
-> - **Tổ chuyên gia:** đánh giá E-HSDT của các nhà thầu.
-> - **Tổ thẩm định:** kiểm tra lại nội dung cần thẩm định trước khi phê duyệt.
->
-> → Mẹo: người **đánh giá hồ sơ** không phải là người tự động có quyền **phê duyệt kết quả**.
-<!-- BV304_EXAMPLE_END:P2_1 -->
 
 Người có thẩm quyền quyết định các vấn đề lớn theo phân cấp: phê duyệt chủ trương/dự án hoặc nội dung thuộc thẩm quyền, xử lý tình huống phức tạp, xem xét cấm tham gia đấu thầu trong phạm vi quản lý.
 Chủ đầu tư là “nhạc trưởng” của gói thầu: lập/phê duyệt hoặc trình kế hoạch, phê duyệt HSMT/E-HSMT, tổ chức lựa chọn nhà thầu, phê duyệt kết quả, ký và quản lý hợp đồng, đăng tải thông tin theo trách nhiệm.
@@ -128,21 +88,6 @@ Khi câu hỏi hỏi “nội dung nào không thuộc quản lý nhà nước�
 
 ### 1. Quy trình lựa chọn nhà thầu: học theo dòng chảy 6 bước
 
-<!-- BV304_EXAMPLE_START:P3_1 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — dòng chảy 6 bước**
->
-> Ví dụ bệnh viện cần mua **500 bộ dây truyền dịch và vật tư tiêu hao**:
->
-> 1. Xác định nhu cầu, giá gói thầu, nguồn vốn và lập kế hoạch.
-> 2. Lập E-HSMT với yêu cầu kỹ thuật.
-> 3. Đăng tải và phát hành hồ sơ trên Hệ thống.
-> 4. Mở thầu, đánh giá tư cách, năng lực, kỹ thuật và giá.
-> 5. Phê duyệt kết quả lựa chọn nhà thầu.
-> 6. Ký hợp đồng, giao hàng, nghiệm thu và thanh toán.
->
-> → Gặp câu tình huống dài, hãy xác định câu hỏi đang nói tới **bước số mấy**.
-<!-- BV304_EXAMPLE_END:P3_1 -->
-
 - **Bước 1:** Lập và phê duyệt kế hoạch lựa chọn nhà thầu: xác định tên gói, giá gói thầu, nguồn vốn, hình thức, phương thức, loại hợp đồng, thời gian tổ chức và thời gian thực hiện.
 - **Bước 2:** Chuẩn bị hồ sơ: lập HSMT/HSYC/E-HSMT, tiêu chuẩn đánh giá, yêu cầu kỹ thuật, điều kiện hợp đồng, biểu mẫu dự thầu.
 - **Bước 3:** Tổ chức lựa chọn: đăng tải thông báo, phát hành hồ sơ, làm rõ/sửa đổi hồ sơ nếu cần, tiếp nhận HSDT/E-HSDT.
@@ -171,22 +116,6 @@ Mua sắm trực tiếp chỉ áp dụng với gói thầu hàng hóa tương t�
 
 ### 4. HSMT/E-HSMT: tiêu chí phải đủ rõ, không làm hạn chế cạnh tranh
 
-<!-- BV304_EXAMPLE_START:P3_4 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — tránh hạn chế cạnh tranh**
->
-> Bệnh viện cần mua **máy theo dõi bệnh nhân**.
->
-> Không nên xây dựng yêu cầu theo kiểu chỉ đích danh một model hoặc một hãng nếu pháp luật không cho phép, ví dụ:
->
-> `Phải là máy XYZ-123 của hãng ABC`
->
-> nếu yêu cầu đó làm các sản phẩm tương đương khác không thể tham dự.
->
-> Nên mô tả bằng các **thông số kỹ thuật, tính năng, tiêu chuẩn và yêu cầu sử dụng thực tế** phù hợp.
->
-> → HSMT phải phục vụ nhu cầu chuyên môn nhưng không được tạo lợi thế không hợp lý cho một nhà cung cấp.
-<!-- BV304_EXAMPLE_END:P3_4 -->
-
 HSMT phải nêu rõ yêu cầu kỹ thuật, tiêu chuẩn đánh giá, điều kiện hợp đồng, biểu mẫu, bảo đảm dự thầu, cách làm rõ, cách đánh giá. Nhà thầu chỉ có thể chuẩn bị hồ sơ tốt nếu HSMT đủ thông tin.
 Không được đưa tiêu chí làm hạn chế cạnh tranh như yêu cầu nhãn hiệu cụ thể không có “hoặc tương đương”, yêu cầu giấy phép bán hàng khi không cần thiết, yêu cầu hợp đồng tương tự quá hẹp so với bản chất gói thầu.
 Giấy phép bán hàng/ủy quyền chỉ nên yêu cầu khi hàng hóa đặc thù cần bảo đảm nguồn gốc, bảo hành, bảo trì, dịch vụ sau bán hàng. Với hàng thông dụng, yêu cầu này có thể bị coi là gây hạn chế cạnh tranh.
@@ -209,26 +138,6 @@ Trong đấu thầu qua mạng, thông tin đăng ký trên Hệ thống, tình 
 Nếu nhà thầu hoặc nhân sự thuộc trường hợp bị tòa án kết án/cấm liên quan đến hành vi đấu thầu theo quy định, Hệ thống hoặc bên mời thầu có thể đánh giá không đáp ứng tư cách hợp lệ.
 
 ### 2. Năng lực, kinh nghiệm: không chỉ là “đã từng làm”
-
-<!-- BV304_EXAMPLE_START:P4_2 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — hợp đồng tương tự**
->
-> Bệnh viện mời thầu gói cung cấp **vật tư tiêu hao phẫu thuật**.
->
-> Nhà thầu đưa ra một hợp đồng trước đây có giá trị rất lớn nhưng chỉ cung cấp **bàn ghế văn phòng**.
->
-> → Giá trị lớn **không đủ** để coi là hợp đồng tương tự.
->
-> Cần xem tiếp:
->
-> - tính chất hàng hóa;
-> - nhóm hàng;
-> - quy mô;
-> - phần việc thực hiện;
-> - thời điểm hoàn thành.
->
-> **Nhớ:** hợp đồng tương tự = **giống về bản chất**, không phải chỉ giống về số tiền.
-<!-- BV304_EXAMPLE_END:P4_2 -->
 
 Năng lực tài chính chứng minh nhà thầu có đủ dòng tiền để thực hiện gói thầu: doanh thu, báo cáo tài chính, nguồn lực tài chính, số dư, hạn mức tín dụng hoặc cam kết tín dụng hợp lệ.
 Hợp đồng tương tự phải tương tự về bản chất công việc, quy mô, cấp công trình/nhóm hàng, giá trị, thời điểm hoàn thành và vai trò của nhà thầu. Không phải cứ có hợp đồng giá trị lớn là tương tự.
@@ -280,17 +189,6 @@ RCEP thường xuất hiện như phương án gây nhiễu trong nhóm câu h�
 
 ### 1. Bảo đảm dự thầu và bảo đảm thực hiện hợp đồng: hai thời điểm khác nhau
 
-<!-- BV304_EXAMPLE_START:P6_1 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — hai loại bảo đảm**
->
-> Gói mua **máy siêu âm**:
->
-> - Khi nhà cung cấp **đang dự thầu** → quan tâm **bảo đảm dự thầu**.
-> - Sau khi nhà cung cấp **được lựa chọn và chuẩn bị ký hợp đồng** → quan tâm **bảo đảm thực hiện hợp đồng**.
->
-> → Hai loại bảo đảm nằm ở **hai thời điểm khác nhau**.
-<!-- BV304_EXAMPLE_END:P6_1 -->
-
 Bảo đảm dự thầu ràng buộc nhà thầu trong giai đoạn tham dự: không rút hồ sơ trái quy định, không từ chối thương thảo/ký hợp đồng, không vi phạm nghĩa vụ sau khi được lựa chọn.
 Bảo đảm thực hiện hợp đồng phát sinh ở giai đoạn sau khi có kết quả lựa chọn nhà thầu và trước hoặc khi ký hợp đồng, nhằm buộc nhà thầu thực hiện đúng hợp đồng.
 Trong chào giá trực tuyến rút gọn, ngân hàng câu hỏi ghi nhớ là không yêu cầu bảo đảm dự thầu; đây là điểm khác với nhiều quy trình lựa chọn thông thường.
@@ -334,25 +232,6 @@ Khi đơn vị có nhu cầu gửi yêu cầu đặt hàng trong mua sắm trự
 
 ### 3. Quy định về mua thuốc, hóa chất, vật tư xét nghiệm, thiết bị y tế của bệnh viện
 
-<!-- BV304_EXAMPLE_START:P7_3 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — hóa chất xét nghiệm và máy xét nghiệm**
->
-> Khoa xét nghiệm cần thực hiện một loại xét nghiệm trong thời gian dài.
-> Nhu cầu thực tế có thể không chỉ là mua một chai hóa chất mà còn liên quan đến:
->
-> - hóa chất chính;
-> - chất chuẩn và chất kiểm soát;
-> - vật tư tiêu hao;
-> - máy xét nghiệm;
-> - phần mềm;
-> - hiệu chuẩn;
-> - bảo trì, bảo dưỡng;
-> - đào tạo nhân viên;
-> - khả năng cung ứng liên tục.
->
-> → Khi đọc câu hỏi về **máy đặt, máy mượn, hóa chất - vật tư xét nghiệm**, phải nhìn cả **hệ sinh thái dịch vụ**, không chỉ một mặt hàng.
-<!-- BV304_EXAMPLE_END:P7_3 -->
-
 Nhóm y tế được quy định riêng vì liên quan trực tiếp đến tính liên tục khám chữa bệnh, chất lượng chuyên môn, an toàn người bệnh, đăng ký lưu hành, hạn dùng, bảo quản, tương thích thiết bị và thanh toán bảo hiểm y tế.
 Bệnh viện/cơ sở khám chữa bệnh công lập khi mua thuốc, hóa chất, vật tư xét nghiệm, thiết bị y tế thường phải lập nhu cầu, kế hoạch lựa chọn nhà thầu, tiêu chuẩn kỹ thuật và tổ chức lựa chọn theo Luật Đấu thầu, Nghị định hướng dẫn và quy định chuyên ngành y tế.
 Với hóa chất, vật tư xét nghiệm gắn với máy xét nghiệm, hồ sơ mời thầu có thể yêu cầu nhà thầu cung cấp trọn gói thiết bị, hóa chất, vật tư xét nghiệm và dịch vụ đi kèm. Khi đó đơn giá có thể tính theo từng dịch vụ kỹ thuật, bao gồm cả thiết bị, hóa chất, vật tư, bảo hành, bảo dưỡng, lắp đặt, đào tạo và chi phí liên quan.
@@ -362,27 +241,6 @@ Chủ đầu tư phải yêu cầu nhà thầu liệt kê đầy đủ hóa ch�
 > bệnh viện mua hóa chất xét nghiệm dùng cho máy xét nghiệm không chỉ mua “lọ hóa chất”, mà còn phải tính thiết bị, phần mềm, hiệu chuẩn, vật tư đi kèm, bảo hành/bảo dưỡng và khả năng cung ứng liên tục.
 
 ### 4. Mua sắm trực tiếp: chỉ dành cho hàng hóa tương tự
-
-<!-- BV304_EXAMPLE_START:P7_4 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — mua sắm trực tiếp**
->
-> Giả sử năm trước bệnh viện đã đấu thầu rộng rãi một loại **vật tư y tế** và ký hợp đồng.
-> Năm nay phát sinh nhu cầu mua thêm hàng hóa tương tự.
->
-> Không được suy luận:
->
-> `Cần thêm → mua sắm trực tiếp ngay.`
->
-> Phải kiểm tra đầy đủ các điều kiện pháp luật về:
->
-> - hợp đồng trước;
-> - tính tương tự của hàng hóa;
-> - thời gian;
-> - đơn giá;
-> - điều kiện áp dụng mua sắm trực tiếp.
->
-> → **Mua sắm trực tiếp là một hình thức có điều kiện, không phải mua thẳng vì đang thiếu hàng.**
-<!-- BV304_EXAMPLE_END:P7_4 -->
 
 Mua sắm trực tiếp chỉ áp dụng với gói thầu hàng hóa. Điều kiện cốt lõi là trước đó đã có hợp đồng cung cấp hàng hóa tương tự thông qua đấu thầu rộng rãi/hạn chế và hợp đồng đó còn đáp ứng điều kiện về thời gian, đơn giá, chất lượng.
 Không được hiểu mua sắm trực tiếp là cứ cần gấp thì mua thẳng. Nếu không có hợp đồng trước làm căn cứ hoặc hàng hóa không tương tự thì phải chọn hình thức khác.
@@ -405,23 +263,6 @@ Thời điểm gửi/nhận được xác định theo thời gian ghi nhận tr
 Văn bản điện tử là căn cứ để đánh giá, thẩm định, kiểm tra, thanh tra, kiểm toán, giải ngân và thanh quyết toán.
 
 ### 2. File/tệp tin: lỗi kỹ thuật có thể làm mất quyền được đánh giá
-
-<!-- BV304_EXAMPLE_START:P8_2 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — lỗi file E-HSDT**
->
-> Nhà thầu tham dự gói cung cấp **máy điện tim** và đính kèm catalog kỹ thuật.
->
-> Nếu file catalog:
->
-> - bị đặt mật khẩu;
-> - không mở được;
-> - bị lỗi;
-> - không thể đọc bằng phần mềm thông dụng;
->
-> thì tổ chuyên gia có thể không có cơ sở sử dụng tài liệu đó để đánh giá.
->
-> → Trong đấu thầu qua mạng, **nộp đúng file cũng là một phần của hồ sơ hợp lệ và có thể đánh giá được**.
-<!-- BV304_EXAMPLE_END:P8_2 -->
 
 File nộp trên Hệ thống phải mở được, đọc được bằng phần mềm thông dụng, dùng phông Unicode, file nén phải giải nén được.
 File không được nhiễm virus, không lỗi/hỏng và không đặt mật khẩu. Nếu nhà thầu nộp file khóa mật khẩu khiến bên mời thầu không đọc được, file đó không có cơ sở để xem xét, đánh giá.
@@ -454,19 +295,6 @@ Nhà thầu được yêu cầu trao hợp đồng phải xác nhận trên Hệ
 
 ### 1. Nhóm hành vi bị cấm: học bằng mức độ nguy hiểm
 
-<!-- BV304_EXAMPLE_START:P9_1 -->
-> 🏥 **Ví dụ Bệnh viện 30-4 — gian lận trong hồ sơ**
->
-> Nhà thầu tham dự gói **trang thiết bị y tế** nhưng cố ý sửa tài liệu để làm cho một hợp đồng chưa hoàn thành thành hợp đồng đã nghiệm thu.
->
-> Đây không còn là một lỗi trình bày thông thường mà phải xem xét theo nhóm hành vi **gian lận**.
->
-> → Khi làm bài, phân biệt:
->
-> - thiếu tài liệu có thể làm rõ trong trường hợp pháp luật cho phép;
-> - cố ý làm giả/làm sai lệch thông tin là vấn đề nghiêm trọng hơn nhiều.
-<!-- BV304_EXAMPLE_END:P9_1 -->
-
 Gian lận là cố ý làm sai lệch thông tin, hồ sơ, tài liệu hoặc kết quả; đây là hành vi rất nặng vì phá vỡ tính trung thực của cuộc thầu. Ngân hàng câu hỏi gắn mốc cấm tham gia đấu thầu từ 03 đến 05 năm.
 Cản trở là gây khó khăn, can thiệp trái phép, ngăn nhà thầu/chủ thể khác thực hiện quyền và nghĩa vụ trong đấu thầu. Nhóm này thường gắn mốc cấm từ 01 đến 03 năm.
 Một lỗi vai trò hay hỏi: tham gia lập đồng thời tham gia thẩm định HSMT của cùng gói thầu. Ngân hàng câu hỏi gắn mốc 06 tháng đến 01 năm.
@@ -498,25 +326,6 @@ Khi câu hỏi hỏi “hình thức kiểm tra”, đáp án đúng thường l
 ## PHẦN 10. TỔNG HỢP TÌNH HUỐNG LỰA CHỌN NHÀ THẦU
 
 ### 1. Công thức bóc tách tình huống dài
-
-<!-- BV304_EXAMPLE_START:P10_1 -->
-> 🏥 **Ví dụ tổng hợp Bệnh viện 30-4**
->
-> Đề thi cho tình huống:
->
-> `Bệnh viện cần mua 10 máy monitor theo dõi bệnh nhân, sử dụng nguồn kinh phí thuộc phạm vi Luật Đấu thầu; E-HSMT yêu cầu một nhãn hiệu duy nhất và nhà thầu A có giá thấp nhất.`
->
-> Đừng vội chọn nhà thầu A. Hãy bóc tách:
->
-> 1. **Chủ thể:** bệnh viện.
-> 2. **Nguồn vốn:** có thuộc phạm vi Luật Đấu thầu không?
-> 3. **Loại gói:** hàng hóa / thiết bị y tế.
-> 4. **Giai đoạn:** đang xem xét E-HSMT hay đang đánh giá E-HSDT?
-> 5. **Vấn đề pháp lý:** yêu cầu một nhãn hiệu duy nhất có làm hạn chế cạnh tranh không?
-> 6. Sau đó mới xét đến **giá và xếp hạng**.
->
-> → **Giá thấp nhất không cứu được một quy trình hoặc hồ sơ có vấn đề ở bước trước.**
-<!-- BV304_EXAMPLE_END:P10_1 -->
 
 Bước 1: xác định nguồn vốn và chủ thể. Nếu dùng ngân sách/vốn nhà nước hoặc chủ thể công thì kiểm tra phạm vi Luật Đấu thầu.
 Bước 2: xác định loại gói thầu: tư vấn, phi tư vấn, hàng hóa, xây lắp, hỗn hợp, y tế, mua sắm tập trung hay trực tuyến.
