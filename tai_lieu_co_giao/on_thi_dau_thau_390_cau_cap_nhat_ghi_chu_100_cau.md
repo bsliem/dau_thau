@@ -110,7 +110,7 @@
 - **C.** Là giá dự thầu của nhà thầu chưa tính sửa lỗi, hiệu chỉnh sai lệch và giá trị giảm giá (nếu có)
 - **D.** Là giá trị ghi trong hợp đồng giữa chủ đầu tư và nhà thầu
 
-> ✅ **Đáp án: B**
+> ✅ **Đáp án: B**  từ khoá đề nghị trúng thầu
 
 ---
 
