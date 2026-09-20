@@ -2115,7 +2115,7 @@
 - **C.** Bằng tổng thời gian cấm của các hành vi vi phạm nhưng tối đa không quá 05 năm
 - **D.** Bằng thời gian cấm của hành vi vi phạm có thời gian bị cấm cao nhất
 
-> ✅ **Đáp án: C**
+> ✅ **Đáp án: C**  tối đa 5 năm
 
 ---
 ### Câu 161
@@ -2127,7 +2127,7 @@
 - **C.** Từ 01 năm đến 02 năm
 - **D.** Từ 03 năm đến 05 năm
 
-> ✅ **Đáp án: D**
+> ✅ **Đáp án: D**  gian lận 5 năm
 
 ---
 ### Câu 162
@@ -2139,7 +2139,7 @@
 - **C.** Từ 01 năm đến 03 năm
 - **D.** 05 năm
 
-> ✅ **Đáp án: C**
+> ✅ **Đáp án: C** cản trở 3 năm
 
 ---
 ### Câu 163
@@ -2151,7 +2151,7 @@
 - **C.** Cấm tham gia hoạt động đấu thầu từ 03 năm đến 05 năm đối với tất cả thành viên trong nhà thầu liên danh A-B
 - **D.** Cấm tham gia hoạt động đấu thầu từ 01 năm đến 03 năm đối với tất cả thành viên trong nhà thầu liên danh A-B
 
-> ✅ **Đáp án: A**
+> ✅ **Đáp án: A**  A làm giả  cấm 3-5 năm
 
 ---
 ### Câu 164
@@ -2163,7 +2163,7 @@
 - **C.** Sau khi phê duyệt kết quả lựa chọn nhà thầu đến khi ký kết hợp đồng, thỏa thuận khung đối với mua sắm tập trung
 - **D.** Trong quá trình thực hiện hợp đồng
 
-> ✅ **Đáp án: B**
+> ✅ **Đáp án: B** cuộc thầu --> trước khi phê duyệt 
 
 ---
 ### Câu 165
@@ -2175,7 +2175,7 @@
 - **C.** Không công nhận kết quả lựa chọn nhà thầu
 - **D.** Phương án A và B đều đúng
 
-> ✅ **Đáp án: C**
+> ✅ **Đáp án: C** mẹo: Không công nhận
 
 ---
 ### Câu 166
@@ -2187,7 +2187,7 @@
 - **C.** Bị cấm tham gia hoạt động đấu thầu từ 01 năm đến 03 năm
 - **D.** Không bị xử lý vi phạm
 
-> ✅ **Đáp án: C**
+> ✅ **Đáp án: C** chỉ cấm đơn thuần 1- 3 năm
 
 ---
 ### Câu 167
@@ -2199,7 +2199,7 @@
 - **C.** Từ trên 01 năm đến 02 năm
 - **D.** Từ 06 tháng đến 01 năm
 
-> ✅ **Đáp án: D**
+> ✅ **Đáp án: D** lập cấm 6th -1 năm
 
 ---
 ### Câu 168
