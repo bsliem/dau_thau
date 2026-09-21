@@ -3913,7 +3913,7 @@
 - **C.** Trường hợp có sự sai khác giữa bản gốc và bản chụp nhưng không làm thay đổi thứ tự xếp hạng nhà thầu thì căn cứ vào bản gốc để đánh giá
 - **D.** Các phương án trên đều sai
 
-> ✅ **Đáp án: D**
+> ✅ **Đáp án: D** 
 
 ---
 ### Câu 302
@@ -4068,8 +4068,9 @@
 - **B.** Không được dùng giấy chứng nhận bảo hiểm bảo lãnh do chính mình phát hành nếu giá trị bảo lãnh từ 50 triệu đồng trở lên, được dùng nếu giá trị bảo lãnh nhỏ hơn 50 triệu đồng
 - **C.** Chỉ được dùng giấy chứng nhận bảo hiểm bảo lãnh do chính mình phát hành nếu giá trị bảo lãnh nhỏ hơn 50 triệu đồng
 - **D.** Tất cả phương án đều sai
+- (vì bản chất bảo đảm cần bên thứ 3 do vậy không được trong mọi trường hợp)
 
-> ✅ **Đáp án: D**
+> ✅ **Đáp án: D** 
 
 ---
 ### Câu 315
@@ -4080,6 +4081,7 @@
 - **B.** 03 ngày làm việc kể từ ngày được yêu cầu
 - **C.** 05 ngày làm việc kể từ ngày được yêu cầu
 - **D.** 07 ngày làm việc kể từ ngày được yêu cầu
+(không trúng 2 từ 2 ngày)
 
 > ✅ **Đáp án: A**
 
@@ -4104,7 +4106,7 @@
 - **B.** Quyết định cho các nhà thầu không kê khai được làm rõ để có cơ sở đánh giá ưu đãi
 - **C.** Chỉ xét ưu đãi cho các nhà thầu đã kê khai
 - **D.** Tính ưu đãi cho tất cả nhà nhà thầu tham dự mà không cần làm rõ với nhà thầu không kê khai
-
+(cho họ cơ hội)
 > ✅ **Đáp án: B**
 
 ---
@@ -4116,7 +4118,7 @@
 - **B.** Báo cáo đánh giá E-HSDT chỉ cần có chữ ký của tổ trưởng tổ chuyên gia
 - **C.** Báo cáo đánh giá E-HSDT (đăng tải báo cáo đánh giá tổng hợp, không cần kèm theo các phiếu chấm của thành viên trong tổ chuyên gia)
 - **D.** Phương án B và C đều đúng
-
+(phải có tất cả chữ ký)
 > ✅ **Đáp án: A**
 
 ---
@@ -4128,8 +4130,9 @@
 - **B.** Hiệp định CPTPP và Hiệp định thương mại tự do giữa Cộng hòa xã hội chủ nghĩa Việt Nam và Liên minh Châu Âu (EVFTA)
 - **C.** Hiệp định CPTPP, Hiệp định EVFTA và Hiệp định Thương mại Tự do giữa Việt Nam và Liên hiệp Vương quốc Anh và Bắc Ailen (UKVFTA)
 - **D.** Tất cả các hiệp định mà Việt Nam là thành viên
-
+(chọn có nhiều tên hiệp định nhất)
 > ✅ **Đáp án: C**
+
 
 ---
 ### Câu 320
@@ -4176,7 +4179,7 @@
 - **B.** Chỉ gói thầu ODA
 - **C.** Gói thầu thuộc phạm vi điều chỉnh của hiệp định
 - **D.** Gói thầu có giá trị lớn, phức tạp
-
+(chọn chữ có hiệp định)
 > ✅ **Đáp án: C**
 
 ---
@@ -4188,7 +4191,7 @@
 - **B.** Đấu thầu cho các dự án trong khối CPTPP
 - **C.** Đấu thầu giữa các nước thành viên EVFTA, UKVFTA
 - **D.** Đấu thầu trong nước
-
+(chọn chữ có nội khối)
 > ✅ **Đáp án: A**
 
 ---
@@ -4200,6 +4203,7 @@
 - **B.** Giá gói thầu quá lớn
 - **C.** Người có thẩm quyền xét thấy cần tổ chức đấu thầu quốc tế để mang lại hiệu quả cao hơn cho dự án, gói thầu
 - **D.** Hàng hóa thuộc gói thầu quá phức tạp mà nhà thầu trong nước không đáp ứng được
+( chọn chữ thẩm quyền)
 
 > ✅ **Đáp án: C**
 
@@ -4214,7 +4218,7 @@
 - **B.** Khi giá gói thầu lớn
 - **C.** Chỉ khi dịch vụ có yếu tố đặc thù, phức tạp cần thiết phải có nhân sự có hiểu biết, nhiều kinh nghiệm đảm nhận
 - **D.** Khi có yêu cầu của nhà thầu
-
+(chủ chốt chốt nhiều chữ)
 > ✅ **Đáp án: C**
 
 ---
@@ -4226,6 +4230,7 @@
 - **B.** 01/8/2020
 - **C.** 01/9/2020
 - **D.** 01/10/2020
+(nhớ Cách Mạng Tháng 8)
 
 > ✅ **Đáp án: B**
 
@@ -4370,13 +4375,14 @@
 - **B.** Từ ngày 04 tháng 8 năm 2025
 - **C.** Từ ngày 08 tháng 8 năm 2025
 - **D.** Tất cả các đáp án trên đều sai
-
+(90-20 =70)
 > ✅ **Đáp án: A**
 
 ---
 ### Câu 340
 
 **Thông tư số 80/2025/TT-BTC quy định chi tiết mẫu hồ sơ yêu cầu, báo cáo đánh giá, báo cáo thẩm định, kiểm tra, báo cáo tình hình thực hiện hoạt động đấu thầu có hiệu lực từ thời điểm nào?**
+(số 80 chọn 2 số 8)
 
 - **A.** Ngày 08/8/2025
 - **B.** Ngày 04/8/2025
@@ -4386,6 +4392,7 @@
 > ✅ **Đáp án: A**
 
 ---
+(xem xét lại)
 # PHẦN II — BỔ SUNG 50 CÂU
 
 ```text
