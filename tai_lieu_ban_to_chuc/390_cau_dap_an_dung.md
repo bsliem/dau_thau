@@ -102,6 +102,7 @@
 - **B.** Là giá dự thầu của nhà thầu được đề nghị trúng thầu sau khi đã được sửa lỗi, hiệu chỉnh sai lệch theo yêu cầu của hồ sơ mời thầu, hồ sơ yêu cầu, trừ đi giá trị giảm giá (nếu có)
 - **C.** Là giá dự thầu của nhà thầu chưa tính sửa lỗi, hiệu chỉnh sai lệch và giá trị giảm giá (nếu có)
 - **D.** Là giá trị ghi trong hợp đồng giữa chủ đầu tư và nhà thầu
+(tìm chữ đề nghị)
 
 > ✅ **Đáp án: B**
 
