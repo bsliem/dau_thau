@@ -1247,6 +1247,342 @@ ot <- function(x) {
 
 # ==== END GIT RECENT + TYPORA ====
 
+
+# ==== GIT CHANGE VIEWER ====
+
+.git_changes <- function(commit = 'HEAD') {
+
+  root <- proj_root()
+  old <- getwd()
+  on.exit(setwd(old), add = TRUE)
+  setwd(root)
+
+  z <- tryCatch(
+    system2(
+      'git',
+      c(
+        'show',
+        '--format=',
+        '--unified=0',
+        '--no-ext-diff',
+        commit
+      ),
+      stdout = TRUE,
+      stderr = FALSE
+    ),
+    error = function(e) character(0)
+  )
+
+  if (!length(z)) {
+    return(data.frame())
+  }
+
+  out_type <- character(0)
+  out_file <- character(0)
+  out_line <- integer(0)
+  out_text <- character(0)
+
+  current_old_file <- ''
+  current_new_file <- ''
+  old_line <- NA_integer_
+  new_line <- NA_integer_
+
+  for (s in z) {
+
+    if (startsWith(s, '--- ')) {
+      current_old_file <- sub('^--- a/', '', s)
+      next
+    }
+
+    if (startsWith(s, '+++ ')) {
+      current_new_file <- sub('^\\+\\+\\+ b/', '', s)
+      next
+    }
+
+    if (startsWith(s, '@@')) {
+
+      m <- regexec(
+        '@@ -([0-9]+)(?:,[0-9]+)? \\+([0-9]+)(?:,[0-9]+)? @@',
+        s
+      )
+
+      r <- regmatches(s, m)[[1]]
+
+      if (length(r) >= 3) {
+        old_line <- as.integer(r[2])
+        new_line <- as.integer(r[3])
+      }
+
+      next
+    }
+
+    if (startsWith(s, '+') && !startsWith(s, '+++')) {
+
+      out_type <- c(out_type, 'INSERT')
+      out_file <- c(out_file, current_new_file)
+      out_line <- c(out_line, new_line)
+      out_text <- c(out_text, substring(s, 2))
+
+      new_line <- new_line + 1L
+      next
+    }
+
+    if (startsWith(s, '-') && !startsWith(s, '---')) {
+
+      out_type <- c(out_type, 'DELETE')
+      out_file <- c(out_file, current_old_file)
+      out_line <- c(out_line, old_line)
+      out_text <- c(out_text, substring(s, 2))
+
+      old_line <- old_line + 1L
+      next
+    }
+
+    if (startsWith(s, ' ')) {
+      old_line <- old_line + 1L
+      new_line <- new_line + 1L
+    }
+  }
+
+  data.frame(
+    type = out_type,
+    file = out_file,
+    line = out_line,
+    text = out_text,
+    stringsAsFactors = FALSE
+  )
+}
+
+
+.print_git_changes <- function(d, title) {
+
+  if (!nrow(d)) {
+    cat('📭 Không có thay đổi\n')
+    return(invisible(d))
+  }
+
+  cat('\n', title, '\n', sep = '')
+
+  for (i in seq_len(nrow(d))) {
+
+    txt <- d$text[i]
+
+    if (nchar(txt) > 100) {
+      txt <- paste0(substr(txt, 1, 97), '...')
+    }
+
+    cat(sprintf(
+      '%3d. %-5s L%-5s %s\n',
+      i,
+      basename(d$file[i]),
+      d$line[i],
+      txt
+    ))
+  }
+
+  invisible(d)
+}
+
+
+# Xem toàn bộ INSERT / DELETE của commit
+gchg <- function(commit = 'HEAD') {
+
+  d <- .git_changes(commit)
+
+  if (!nrow(d)) {
+    cat('📭 Commit không có thay đổi text\n')
+    return(invisible(d))
+  }
+
+  ins <- d[d$type == 'INSERT', , drop = FALSE]
+  del <- d[d$type == 'DELETE', , drop = FALSE]
+
+  cat('🔎 Git change:', commit, '\n')
+  cat(sprintf(
+    '➕ %d insertions | ➖ %d deletions\n',
+    nrow(ins),
+    nrow(del)
+  ))
+
+  .print_git_changes(ins, '➕ INSERT')
+  .print_git_changes(del, '➖ DELETE')
+
+  invisible(d)
+}
+
+
+# INSERT
+# gi()                -> 10 insert cuối
+# gi(5)               -> 5 insert cuối
+# gi(c(1,2,3,5))      -> đúng các số 1,2,3,5
+gi <- function(x = 10, commit = 'HEAD') {
+
+  d <- .git_changes(commit)
+  d <- d[d$type == 'INSERT', , drop = FALSE]
+
+  if (!nrow(d)) {
+    cat('📭 Không có INSERT\n')
+    return(invisible(d))
+  }
+
+  # 1 số -> lấy n dòng CUỐI
+  if (length(x) == 1) {
+
+    n <- suppressWarnings(as.integer(x))
+
+    if (is.na(n) || n < 1) n <- 10L
+
+    idx <- tail(seq_len(nrow(d)), n)
+    z <- d[idx, , drop = FALSE]
+
+    # đánh số theo vị trí thật trong toàn bộ INSERT
+    rownames(z) <- idx
+
+    cat(sprintf(
+      '➕ %d INSERT cuối / tổng %d:\n',
+      nrow(z),
+      nrow(d)
+    ))
+
+    for (j in seq_len(nrow(z))) {
+
+      real_i <- idx[j]
+      txt <- z$text[j]
+
+      if (nchar(txt) > 100) {
+        txt <- paste0(substr(txt, 1, 97), '...')
+      }
+
+      cat(sprintf(
+        '%3d. %-5s L%-5s %s\n',
+        real_i,
+        basename(z$file[j]),
+        z$line[j],
+        txt
+      ))
+    }
+
+    return(invisible(z))
+  }
+
+  # vector -> lấy đúng các số
+  idx <- suppressWarnings(as.integer(x))
+  idx <- idx[!is.na(idx) & idx >= 1 & idx <= nrow(d)]
+
+  if (!length(idx)) {
+    cat('❌ Số INSERT không hợp lệ\n')
+    return(invisible(NULL))
+  }
+
+  z <- d[idx, , drop = FALSE]
+
+  cat('➕ INSERT được chọn:\n')
+
+  for (j in seq_along(idx)) {
+
+    txt <- z$text[j]
+
+    if (nchar(txt) > 100) {
+      txt <- paste0(substr(txt, 1, 97), '...')
+    }
+
+    cat(sprintf(
+      '%3d. %-5s L%-5s %s\n',
+      idx[j],
+      basename(z$file[j]),
+      z$line[j],
+      txt
+    ))
+  }
+
+  invisible(z)
+}
+
+
+# DELETE
+# gd()           -> 10 delete cuối
+# gd(5)          -> 5 delete cuối
+# gd(c(1,2,5))   -> đúng delete số 1,2,5
+gd <- function(x = 10, commit = 'HEAD') {
+
+  d <- .git_changes(commit)
+  d <- d[d$type == 'DELETE', , drop = FALSE]
+
+  if (!nrow(d)) {
+    cat('📭 Không có DELETE\n')
+    return(invisible(d))
+  }
+
+  if (length(x) == 1) {
+
+    n <- suppressWarnings(as.integer(x))
+
+    if (is.na(n) || n < 1) n <- 10L
+
+    idx <- tail(seq_len(nrow(d)), n)
+    z <- d[idx, , drop = FALSE]
+
+    cat(sprintf(
+      '➖ %d DELETE cuối / tổng %d:\n',
+      nrow(z),
+      nrow(d)
+    ))
+
+    for (j in seq_len(nrow(z))) {
+
+      real_i <- idx[j]
+      txt <- z$text[j]
+
+      if (nchar(txt) > 100) {
+        txt <- paste0(substr(txt, 1, 97), '...')
+      }
+
+      cat(sprintf(
+        '%3d. %-5s L%-5s %s\n',
+        real_i,
+        basename(z$file[j]),
+        z$line[j],
+        txt
+      ))
+    }
+
+    return(invisible(z))
+  }
+
+  idx <- suppressWarnings(as.integer(x))
+  idx <- idx[!is.na(idx) & idx >= 1 & idx <= nrow(d)]
+
+  if (!length(idx)) {
+    cat('❌ Số DELETE không hợp lệ\n')
+    return(invisible(NULL))
+  }
+
+  z <- d[idx, , drop = FALSE]
+
+  cat('➖ DELETE được chọn:\n')
+
+  for (j in seq_along(idx)) {
+
+    txt <- z$text[j]
+
+    if (nchar(txt) > 100) {
+      txt <- paste0(substr(txt, 1, 97), '...')
+    }
+
+    cat(sprintf(
+      '%3d. %-5s L%-5s %s\n',
+      idx[j],
+      basename(z$file[j]),
+      z$line[j],
+      txt
+    ))
+  }
+
+  invisible(z)
+}
+
+# ==== END GIT CHANGE VIEWER ====
+
 # ==== HELP ====
 
 hhelp <- function() {
@@ -1256,7 +1592,7 @@ FIND    f('cụm từ')          tìm trong DOCX/PPTX/PDF/XLSX/MD/R/QMD...
 OPEN    o(1)  ot(1)  vf(1)  vc(1)  v(1)
 READ    readf('x.md')  headf('x.R')  tailf('x.R')
 DIR     wd()  pj()  cd('folder')  up()
-GIT     gs()  gf()  gf(10)  gl()  gpull()  gp('nội dung')
+GIT     gs()  gf()  gl()  gpull()  gp('msg')  gchg()  gi(5)  gd(5)
 TIME    n()  dl('750819')  g()
 TÂM     hh()  np()
 QMD     rn()  ro()
