@@ -60,9 +60,9 @@
 ---
 ### Câu 005
 
-**Theo quy định pháp luật về đấu thầu, gói thầu nào là gói thầu cung cấp dịch vụ phi tư vấn?**
+**Theo quy định pháp luật về đấu thầu, gói thầu nào là gói thầu cung cấp dịch vụ <u>phi tư vấn</u>?**
 
-- **A.** Gói thầu in sổ công tác của tỉnh A (thao tác tay chân nhiều hơn chất xám)
+- **A.** Gói thầu in <u>sổ công tác của tỉnh A</u> (thao tác tay chân nhiều hơn chất xám)
 - **B.** Gói thầu thuê kiểm toán dự án (tư vấn – chất xám)
 - **C.** Gói thầu mua phần mềm kế toán hỗ trợ doanh nghiệp khởi nghiệp sáng tạo, doanh nghiệp nhỏ do phụ nữ làm chủ
 - **D.** Gói thầu xây dựng trụ sở làm việc của tỉnh A.
@@ -72,21 +72,26 @@
 ---
 ### Câu 006
 
-**Theo quy định pháp luật về đấu thầu, đấu thầu là gì?**
+**Theo quy định pháp luật về đấu thầu, <u>đấu thầu là gì</u>?**
 
-- **A.** Là quá trình lựa chọn nhà thầu để ký kết, thực hiện hợp đồng cung cấp dịch vụ tư vấn, dịch vụ phi tư vấn, mua sắm hàng hóa, xây lắp trên cơ sở bảo đảm cạnh tranh, công bằng, minh bạch, hiệu quả kinh tế và trách nhiệm giải trình
-- **B.** Là quá trình lựa chọn nhà đầu tư để ký kết, thực hiện hợp đồng dự án đầu tư kinh doanh trên cơ sở bảo đảm cạnh tranh, công bằng, minh bạch, hiệu quả kinh tế và trách nhiệm giải trình
+- **A.** Là quá trình lựa chọn nhà thầu để ký kết, thực hiện hợp đồng cung cấp dịch vụ tư vấn, dịch vụ phi tư vấn, mua sắm hàng hóa, xây lắp trên cơ sở bảo đảm cạnh tranh, công bằng, minh bạch, hiệu quả kinh tế và trách nhiệm <u>giải trình</u>
+
+- **B.** Là quá trình lựa chọn nhà đầu tư để ký kết, thực hiện hợp đồng dự án đầu tư kinh doanh trên cơ sở bảo đảm cạnh tranh, công bằng, minh bạch, hiệu quả kinh tế và trách nhiệm <u>giải trình</u>
+
 - **C.** Là quá trình lựa chọn đơn vị để thực hiện hợp đồng thông qua các quy trình, thủ tục do pháp luật đấu thầu quy định.
+
 - **D.** Phương án A và B đều đúng
+
+  (mẹo: đấu thầu chọn 2 chữ có chữ <u>giải trình</u>)
 
 > ✅ **Đáp án: D**
 
 ---
 ### Câu 007
 
-**Đấu thầu quốc tế là gì?**
+**Đấu thầu <u>quốc tế</u> là gì?**
 
-- **A.** Là hoạt động đấu thầu mà nhà thầu trong nước, nhà thầu nước ngoài được tham dự thầu
+- **A.** Là hoạt động đấu thầu mà nhà thầu t<u>rong nước, nhà thầu nước ngoài được tham dự thầu</u>
 - **B.** Là hoạt động đấu thầu mà nhà thầu trong nước, nhà thầu nước ngoài được tham dự thầu, trong đó nhà thầu trong nước bắt buộc phải liên danh với nhà thầu nước ngoài
 - **C.** Là hoạt động đấu thầu chỉ nhà thầu quốc tế được phép tham dự thầu
 - **D.** Là hoạt động đấu thầu chỉ nhà thầu trong nước được phép tham dự thầu
