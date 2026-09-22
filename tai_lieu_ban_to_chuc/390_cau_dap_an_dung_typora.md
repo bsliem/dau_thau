@@ -885,12 +885,12 @@
 ---
 ### Câu 061
 
-**Nội dung nào sau đây không thuộc hồ sơ mời thầu?**
+**Nội dung nào sau đây <u>không thuộc hồ sơ mời thầu?</u>**
 
 - **A.** Chỉ dẫn nhà thầu, tùy chọn mua thêm
 - **B.** Bảng dữ liệu đấu thầu
 - **C.** Phạm vi cung cấp, yêu cầu về kỹ thuật
-- **D.** Biên bản hoàn thiện hợp đồng
+- **D.<u>** Biên bản hoàn thiện hợp đồng</u>
 
 > ✅ **Đáp án: D**
 
@@ -899,11 +899,11 @@
 ---
 ### Câu 062
 
-**Trường hợp nào hồ sơ mời thầu được đưa ra yêu cầu về giấy phép bán hàng?**
+**Trường hợp nào <u>hồ sơ mời thầu</u> được <u>đưa ra yêu cầu về giấy phép bán hàng</u>?**
 
 - **A.** Hàng hóa thông thường, có sẵn trên thị trường
 - **B.** Hàng hóa nhập khẩu
-- **C.** Hàng hóa đặc thù, phức tạp cần gắn với trách nhiệm của nhà sản xuất
+- **C.** <u>Hàng hóa đặc thù, phức tạp cần gắn với trách nhiệm</u> của nhà sản xuất
 - **D.** Hàng hóa có giá trị lớn
 
 > ✅ **Đáp án: C**
@@ -911,14 +911,16 @@
 ---
 ### Câu 063
 
-**Nội dung nào sau đây nếu đưa vào E-HSMT của gói thầu mua sắm hàng hóa áp dụng hình thức đấu thầu rộng rãi qua mạng có thể bị đánh giá là hạn chế cạnh tranh?**
+**Nội dung nào sau đây nếu đưa vào E-HSMT của gói thầu mua sắm hàng hóa áp dụng hình thức đấu thầu rộng rãi qua mạng có thể bị đánh giá là <u>hạn chế cạnh tranh</u>?**
 
 - **A.** Yêu cầu nhà thầu cung cấp tài liệu chứng minh hợp đồng tương tự
-- **B.** Yêu cầu nhà thầu phải là chủ sở hữu thiết bị chào thầu
+- **B.** Y<u>êu cầu nhà thầu phải là chủ sở hữu thiết bị chào thầu</u>
 - **C.** Yêu cầu nhà thầu có năng lực tài chính lành mạnh
 - **D.** Yêu cầu nhà thầu phải hoàn thành nghĩa vụ thuế
 
 > ✅ **Đáp án: B**
+>
+> (Mẹo, nhà thầu chỉ là người mua thiết bị đơn vị khác, do vậy không phải là chủ sở hữu)
 
 ---
 ### Câu 064
@@ -926,7 +928,7 @@
 **Gói thầu mua sắm máy điều hòa không khí của Sở Tài chính tỉnh X được tổ chức đấu thầu tập trung theo hình thức đấu thầu rộng rãi qua mạng thì E-HSMT có được nêu xuất xứ hàng hóa không?**
 
 - **A.** Được nêu xuất xứ cụ thể của một nước bất kỳ
-- **B.** Được nêu xuất xứ theo nhóm nước, vùng lãnh thổ
+- **B.** <u>Được nêu xuất xứ theo nhóm nước, vùng lãnh thổ</u>
 - **C.** Được nêu xuất xứ cụ thể của một nước bất kỳ nhưng phải kèm theo cụm từ "hoặc tương đương"
 - **D.** Không được nêu xuất xứ theo nhóm nước, vùng lãnh thổ
 
@@ -937,10 +939,10 @@
 ---
 ### Câu 065
 
-**Khi tham dự thầu đấu thầu qua mạng, đại diện hợp pháp của nhà thầu có được ủy quyền cho Giám đốc chi nhánh để ký đơn dự thầu hay không?**
+**Khi t<u>ham dự thầu đấu thầu qua mạng</u>, <u>đại diện hợp pháp của nhà thầu</u> có được ủy quyền cho Giám đốc chi nhánh để ký đơn dự thầu hay không?**
 
 - **A.** Được ủy quyền nhưng phải bằng văn bản
-- **B.** Không được ủy quyền
+- **B.** <u>Không được ủy quyền</u>
 - **C.** Được ủy quyền nhưng phải tạo tài khoản nghiệp vụ cho Giám đốc chi nhánh khi tham dự thầu trên Hệ thống mạng đấu thầu quốc gia
 - **D.** Các phương án trên đều sai
 
@@ -951,59 +953,77 @@
 ---
 ### Câu 066
 
-**Đối với đấu thầu rộng rãi qua mạng, trường hợp gói thầu có giá trị bảo đảm dự thầu nhỏ hơn 50 triệu đồng, thời gian có hiệu lực của thư bảo lãnh dự thầu hoặc giấy chứng nhận bảo hiểm bảo lãnh được quy định tại đâu?**
+**Đối với <u>đấu thầu rộng rãi qua mạng,</u> trường hợp g<u>ói thầu có giá trị bảo đảm dự thầu nhỏ hơn 50 triệu đồng</u>, <u>thời gian có hiệu lực của thư bảo lãnh dự thầu hoặc giấy chứng nhận bảo hiểm bảo lãnh được quy định tại đâu</u>?**
 
 - **A.** Trong E-HSMT
-- **B.** Trong thông báo mời đối chiếu tài liệu
+- **B.** Trong <u>thông báo mời đối chiếu tài liệu</u>
 - **C.** Trong thông báo mời thương thảo hợp đồng
 - **D.** Các phương án trên đều sai
 
-> ✅ **Đáp án: B**
+> ✅ **Đáp án: B*
+>
+> Ví dụ tại **BV 30-4**: một công ty dự thầu gói mua **hóa chất xét nghiệm**, giá trị bảo đảm dự thầu là **40 triệu đồng**. Công ty xin ngân hàng phát hành **thư bảo lãnh dự thầu 40 triệu đồng** cho BV 30-4. Nếu nhà thầu thuộc trường hợp bị xử lý bảo đảm dự thầu, bệnh viện có thể yêu cầu ngân hàng thực hiện nghĩa vụ theo thư bảo lãnh.
+>
+> Nói ngắn gọn: **nhà thầu không nhất thiết nộp 40 triệu tiền mặt; ngân hàng đứng ra “bảo chứng” 40 triệu cho nhà thầu.**
+>
+> 👉 Mẹo nhớ: **Thư bảo lãnh = Ngân hàng cam kết trả thay nếu nhà thầu vi phạm cam kết dự thầu.**
+>
+> 
 
 ---
 ### Câu 067
 
-**Đối với đấu thầu rộng rãi qua mạng, trường hợp gói thầu có giá trị bảo đảm dự thầu nhỏ hơn 50 triệu đồng, nhà thầu thực hiện nộp thư bảo lãnh dự thầu hoặc giấy chứng nhận bảo hiểm bảo lãnh thì thời gian có hiệu lực của thư bảo lãnh dự thầu hoặc giấy chứng nhận bảo hiểm bảo lãnh được tính từ ngày nào?**
+**Đối với <u>đấu thầu rộng rãi qua mạng</u>, trường hợp gói thầu có giá trị bảo đảm dự thầu <u>nhỏ hơn 50 triệu đồng</u>, nhà thầu thực hiện nộp thư bảo lãnh dự thầu hoặc giấy chứng nhận bảo hiểm bảo lãnh thì thời gian có hiệu lực của thư bảo lãnh dự thầu hoặc giấy chứng nhận bảo hiểm bảo lãnh được tính từ ngày nào?**
 
 - **A.** Ngày có thời điểm đóng thầu
 - **B.** Ngày phê duyệt kết quả lựa chọn nhà thầu
-- **C.** Ngày thực hiện đối chiếu tài liệu
+- **C.<u>** Ngày thực hiện đối chiếu tài liệu</u>
 - **D.** Các phương án trên đều sai
 
 > ✅ **Đáp án: C**
 
-> 💡 **Ghi nhớ:** chọn từ đối chiếu tài liệu < 50 tr
+> Ví dụ **BV 30-4**: gói thầu mua **hóa chất xét nghiệm** có bảo đảm dự thầu **40 triệu đồng** (< 50 triệu). Nhà thầu A được mời **đối chiếu tài liệu** vào ngày 10/10. Khi đó, thư bảo lãnh dự thầu mà nhà thầu nộp phải có hiệu lực **tính từ ngày 10/10 – ngày thực hiện đối chiếu tài liệu**, không tính từ ngày đóng thầu.
+>
+> 👉 **Mẹo nhớ:** **< 50 triệu → “đối chiếu” là mốc bắt đầu hiệu lực → chọn C.**
 
 ---
 ### Câu 068
 
-**Đối với đấu thầu qua mạng, trường hợp E-HSMT có yêu cầu cung cấp hàng mẫu, nhà thầu có thể nộp bổ sung hàng mẫu theo phương án nào sau đây?**
+**Đối với <u>đấu thầu qua mạng</u>, trường hợp E-HSMT có yêu cầu <u>cung cấp hàng mẫu,</u> nhà thầu có thể nộp bổ sung hàng mẫu theo phương án nào sau đây?**
 
 - **A.** Trong thời hạn 07 ngày làm việc sau thời điểm đóng thầu
 - **B.** Trong thời hạn 07 ngày làm việc sau thời điểm mở thầu
-- **C.** Trong thời hạn 05 ngày làm việc sau thời điểm đóng thầu
+- <u>**C.** Trong thời hạn 05 ngày làm việc sau thời điểm đóng thầu</u>
 - **D.** Không được nộp bổ sung hàng mẫu sau thời điểm đóng thầu
 
 > ✅ **Đáp án: C**
 
-> 💡 **Ghi nhớ:** Thuộc lòng tất cả sau số 7 đều có chữ làm việc
+> Ví dụ **BV 30-4**: gói thầu mua **vật tư y tế** qua mạng, E-HSMT yêu cầu nhà thầu cung cấp **hàng mẫu**. Nếu lúc đóng thầu nhà thầu chưa nộp kịp mẫu, nhà thầu vẫn có thể **nộp bổ sung trong vòng 05 ngày làm việc sau thời điểm đóng thầu**.
+>
+> 👉 **Mẹo nhớ:** **Hàng mẫu → 5 ngày làm việc sau đóng thầu → chọn C.**
+>
+> Còn mẹo của bạn có thể ghi ngắn: **“Sau số 7 thường nhớ kèm chữ \*làm việc\*; riêng hàng mẫu là 5 ngày làm việc.”**
 
 ---
 ### Câu 069
 
-**Đối với gói thầu tư vấn tổ chức đấu thầu rộng rãi qua mạng, sử dụng thang điểm 1.000 để xây dựng tiêu chuẩn đánh giá về kỹ thuật, E-HSMT quy định số điểm đối với tiêu chí đánh giá về uy tín của nhà thầu thông qua việc tham dự thầu, kết quả thực hiện hợp đồng của nhà thầu là bao nhiêu?**
+**Đối với gói thầu <u>tư vấn tổ chức đấu thầu rộng rãi qua mạng,</u> sử <u>dụng thang điểm 1.000</u> để xây dựng tiêu chuẩn đánh giá về kỹ thuật, E-HSMT q<u>uy định số điểm đối với tiêu chí đánh giá về uy tín</u> của nhà thầu thông qua việc tham dự thầu, kết quả thực hiện hợp đồng của nhà thầu là bao nhiêu?**
 
 - **A.** 150 điểm
 - **B.** 100 điểm
-- **C.** 50 điểm
+- <u>**C.** 50 điểm</u>
 - **D.** Từ 0 đến 49 điểm
 
 > ✅ **Đáp án: C**
+>
+> Ví dụ **BV 30-4** thuê **đơn vị tư vấn lập hồ sơ mời thầu** qua đấu thầu rộng rãi trên mạng. Tổng điểm kỹ thuật là **1.000 điểm**, trong đó tiêu chí **uy tín của nhà thầu** qua lịch sử tham dự thầu và thực hiện hợp đồng được quy định **50 điểm**.
+>
+> 👉 **Mẹo nhớ:** **Tư vấn – 1.000 điểm → uy tín = 50 điểm → chọn C.**
 
 ---
 ### Câu 070
 
-**Đối với gói thầu thuê hệ thống máy chủ áp dụng đấu thầu rộng rãi qua mạng, thời gian thực hiện gói thầu là 5 năm (có tính chất công việc lặp lại theo chu kỳ qua các năm), giá gói thầu là 5 tỷ đồng, quy mô hợp đồng tương tự tối thiểu được quy định trong E- HSMT là bao nhiêu thì phù hợp quy định?**
+**Đối với gói thầu <u>thuê hệ thống máy chủ áp dụng đấu thầu rộng rãi qua mạng</u>, <u>thời gian thực hiện gói thầu là 5 năm</u> (có tính chất công việc lặp lại theo chu kỳ qua các năm), giá gói thầu là 5 tỷ đồng, quy mô hợp đồng tương tự tối thiểu được quy định trong E- HSMT là bao nhiêu thì phù hợp quy định?**
 
 - **A.** 2,5 tỷ đồng
 - **B.** 2 tỷ đồng
@@ -1012,27 +1032,33 @@
 
 > ✅ **Đáp án: D**
 
-> 💡 **Ghi nhớ:** (dịch vụ phi tư vấn = 30% tính theo chu kỳ 1 măm) 30% 1tỷ = 300 tr
+> Ví dụ **BV 30-4** thuê **hệ thống máy chủ** trong **5 năm**, tổng giá gói thầu **5 tỷ đồng**. Vì đây là **dịch vụ phi tư vấn có tính chất lặp lại theo chu kỳ hằng năm**, trước hết tính giá trị cho **1 năm**: 5 tỷ ÷ 5 = **1 tỷ đồng/năm**. Quy mô hợp đồng tương tự tối thiểu = **30% × 1 tỷ = 300 triệu đồng**.
+>
+> 👉 **Mẹo nhớ:** **Phi tư vấn lặp lại nhiều năm → chia về 1 chu kỳ năm → lấy 30% → 300 triệu → chọn D.**
 
 ---
 ### Câu 071
 
-**Đối với đấu thầu quốc tế, hồ sơ mời thầu phải quy định sử dụng lao động trong nước trong trường hợp nào?**
+**Đối với <u>đấu thầu quốc tế,</u> hồ sơ mời thầu phải quy định <u>sử dụng lao động trong nước</u> trong trường hợp nào?**
 
-- **A.** Những vị trí công việc mà lao động trong nước đáp ứng được và có khả năng cung cấp
+- **A.** Những vị trí công việc mà <u>lao động trong nước đáp ứng được và có khả năng cung cấp</u>
 - **B.** Những vị trí công việc mà lao động trong nước không đáp ứng được nhưng cần tạo điều kiện để tiếp nhận công nghệ từ nước ngoài được chuyển giao
-- **C.** Lao động phổ thông
+- **C.** <u>Lao động phổ thông</u>
 - **D.** Phương án A và C đều đúng
 
 > ✅ **Đáp án: D**
+>
+> Ví dụ **BV 30-4** thuê nhà thầu nước ngoài triển khai hệ thống thiết bị y tế. Các công việc như **vận chuyển, lắp đặt phụ trợ, vệ sinh, lao động phổ thông** và những vị trí kỹ thuật mà nhân sự Việt Nam làm được thì E-HSMT phải yêu cầu sử dụng lao động trong nước. Chuyên gia nước ngoài chỉ dùng cho phần việc mà lao động trong nước chưa đáp ứng được.
+>
+> 👉 **Mẹo nhớ:** **“Làm được thì dùng người Việt — đặc biệt lao động phổ thông” → A + C = D.**
 
 ---
 ### Câu 072
 
-**Trường hợp hồ sơ mời thầu có quy định về xuất xứ theo nhóm nước, vùng lãnh thổ mà không bao gồm xuất xứ Việt Nam, nhà thầu chào hàng hóa có xuất xứ Việt Nam sẽ bị đánh giá như thế nào?**
+**Trường hợp <u>hồ sơ mời thầu</u> có quy định về <u>xuất xứ theo nhóm nước, vùng lãnh thổ</u> mà không bao gồm xuất xứ Việt Nam, nhà thầu chào hàng hóa có xuất xứ Việt Nam sẽ bị đánh giá như thế nào?**
 
 - **A.** Hàng hóa của nhà thầu không được xem xét, đánh giá
-- **B.** Hàng hóa của nhà thầu vẫn được xem xét, đánh giá
+- <u>**B.** Hàng hóa của nhà thầu vẫn được xem xét, đánh giá</u>
 - **C.** Yêu cầu nhà thầu bổ sung hàng hóa theo đúng xuất xứ thuộc nhóm nước, vùng lãnh thổ theo yêu cầu hồ sơ mời thầu nhưng phải cùng ký mã hiệu, nhãn hiệu với hàng hóa nhà thầu đã đề xuất trong hồ sơ dự thầu
 - **D.** Yêu cầu nhà thầu bổ sung hàng hóa theo đúng xuất xứ thuộc nhóm nước, vùng lãnh thổ theo yêu cầu hồ sơ mời thầu, không phải đáp ứng cùng ký mã hiệu, nhãn hiệu với hàng hóa nhà thầu đã đề xuất trong hồ sơ dự thầu
 
@@ -1043,7 +1069,7 @@
 ---
 ### Câu 073
 
-**Gói thầu mua sắm 20 máy điều hòa, tổ chức đấu thầu rộng rãi qua mạng, một giai đoạn một túi hồ sơ, trường hợp E-HSMT có quy định về kinh nghiệm thực hiện hợp đồng tương tự thì tính chất tương tự được quy định như thế nào?**
+**Gói thầu mua sắm <u>20 máy điều hòa, tổ chức đấu thầu rộng rãi qua mạng,</u> một giai đoạn một túi hồ sơ, trường hợp E-HSMT có <u>quy định về kinh nghiệm thực hiện hợp đồng tương tự</u> thì tính chất tương tự được quy định như thế nào?**
 
 - **A.** Quy định hàng hóa thuộc cùng lĩnh vực tổng quát với máy điều hòa (thiết bị điện...)
 - **B.** Chỉ quy định hàng hóa có cùng mã Chương, mã Nhóm (tương ứng với 4 số đầu tiên của bộ mã) trong Hệ thống mã HS với mã HS của máy điều hòa
@@ -1052,21 +1078,28 @@
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** (1 hàng hóa có cùng tính chất tổng quát, cách 2 cả tổnng quát và mã HS Đáp án A
+> **BV 30-4** đang đấu thầu mua **20 máy điều hòa**.
+>
+> Nhà thầu A trước đây chưa bán máy điều hòa, nhưng đã từng thực hiện hợp đồng cung cấp **tủ lạnh, máy làm mát, quạt công nghiệp và các thiết bị điện** cho một bệnh viện khác.
+>
+> Nếu E-HSMT quy định kinh nghiệm hợp đồng tương tự theo **lĩnh vực tổng quát**, thì hợp đồng trước của nhà thầu A vẫn có thể được xem xét là tương tự vì đều thuộc nhóm **thiết bị điện**.
+>
+> Ngược lại, nếu bắt buộc nhà thầu phải từng bán đúng **máy điều hòa** hoặc đúng mã HS quá chi tiết thì sẽ làm hẹp phạm vi cạnh tranh.
+>
+> 👉 **Mẹo nhớ:**
+>  **Mua máy điều hòa → không nhất thiết phải từng bán máy điều hòa → từng cung cấp thiết bị điện cùng lĩnh vực tổng quát cũng có thể đạt → chọn A.**
 
 ---
-### Câu 074
-
-**Tiêu chuẩn đánh giá về kỹ thuật gói thầu dịch vụ phi tư vấn không bao gồm nội dung nào sau đây?**
-
-- **A.** Nhà thầu bị đánh giá về uy tín trong việc tham dự thầu
-- **B.** Bảo đảm điều kiện vệ sinh môi trường và các điều kiện khác như phòng cháy, chữa cháy, an toàn lao động.
-- **C.** Mức độ đáp ứng các yêu cầu về bảo hành, bảo trì (nếu có);
-- **D.** Tất cả đáp án trên đều sai
-
-> ✅ **Đáp án: A**
-
-> 💡 **Ghi nhớ:** Uy tín chỉ nằm gói tư vấn
+> **BV 30-4** đang đấu thầu mua **20 máy điều hòa**.
+>
+> Nhà thầu A trước đây chưa bán máy điều hòa, nhưng đã từng thực hiện hợp đồng cung cấp **tủ lạnh, máy làm mát, quạt công nghiệp và các thiết bị điện** cho một bệnh viện khác.
+>
+> Nếu E-HSMT quy định kinh nghiệm hợp đồng tương tự theo **lĩnh vực tổng quát**, thì hợp đồng trước của nhà thầu A vẫn có thể được xem xét là tương tự vì đều thuộc nhóm **thiết bị điện**.
+>
+> Ngược lại, nếu bắt buộc nhà thầu phải từng bán đúng **máy điều hòa** hoặc đúng mã HS quá chi tiết thì sẽ làm hẹp phạm vi cạnh tranh.
+>
+> 👉 **Mẹo nhớ:**
+>  **Mua máy điều hòa → không nhất thiết phải từng bán máy điều hòa → từng cung cấp thiết bị điện cùng lĩnh vực tổng quát cũng có thể đạt → chọn A.**
 
 ---
 ### Câu 075
@@ -1080,14 +1113,22 @@
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** Tư vấn cho phép bỏ qua năng lực kinh nghiệm nhà thầu)
+> Ví dụ **BV 30-4** thuê đơn vị tư vấn lập hồ sơ mời thầu. Khi xây dựng tiêu chuẩn đánh giá kỹ thuật, E-HSMT **có thể không tách riêng tiêu chuẩn về kinh nghiệm và năng lực của nhà thầu** nếu hồ sơ mời thầu được xây dựng theo cách đánh giá phù hợp với gói tư vấn.
+>
+> Điểm cần nhớ là câu hỏi hỏi **“nhận định nào đúng”**. Phương án A dùng từ **“có thể không quy định”** nên đúng; các phương án B, C nói **“không được”** quá tuyệt đối, còn D yêu cầu hợp đồng tương tự phải giống cả tính chất lẫn quy mô nên không phải cách hiểu đúng cho trường hợp này.
+>
+> 👉 Mẹo nhớ: **Tư vấn → kinh nghiệm, năng lực của nhà thầu có thể không phải tiêu chí bắt buộc riêng → chọn A.**
+>
+> Câu ngắn để chép vào file:
+>
+> > 💡 **Ghi nhớ:** **Gói tư vấn: có thể bỏ tiêu chí riêng về năng lực + kinh nghiệm của nhà thầu → A.**
 
 ---
 ## Câu 076–100
 
 ### Câu 076
 
-**Đối với gói thầu xây dựng “Trường trung học phổ thông A”, bao gồm tổ hợp các công trình: + Nhà A1 (Nhà học): Cao 10 tầng, tổng diện tích sàn 8.000 m2, có giá trị theo dự toán được duyệt là (2X) VND. Nhà A1 là công trình kết cấu dạng nhà cấp II theo quy định của Thông tư số 06/2021/TT- BXD. + Nhà A2 (Nhà học): Cao 6 tầng, tổng diện tích sàn 1.000 m2, có giá trị theo dự toán được duyệt là (Y) VND. Nhà A2 là công trình kết cấu dạng nhà cấp III theo quy định của Thông tư số 6/2021/TT-BXD. + Hàng rào bảo vệ: Cao 3m + Nhà bảo vệ: Cao 1 tầng, diện tích sàn 12 m2. Kinh nghiệm thi công công trình tương tự được quy định trong hồ sơ mời thầu như thế nào là phù hợp?**
+**Đối với gói thầu xây dựng “Trường trung học phổ thông A”, bao gồm tổ hợp các công trình: + Nhà A1 (Nhà học): Cao 10 tầng, tổng diện tích sàn 8.000 m2, có giá trị theo dự toán được duyệt là (2X) VND. Nhà A1 là công trình kết cấu dạng nhà cấp II theo quy định của Thông tư số 06/2021/TT- BXD. + Nhà A2 (Nhà học): Cao 6 tầng, tổng diện tích sàn 1.000 m2, có giá trị theo dự toán được duyệt là (Y) VND. Nhà A2 là công trình kết cấu dạng nhà cấp III theo quy định của Thông tư số 6/2021/TT-BXD. + Hàng rào bảo vệ: Cao 3m + Nhà bảo vệ: Cao 1 tầng, diện tích sàn 12 m2. <u>Kinh nghiệm thi công công trình tương tự</u> được quy định trong hồ sơ mời thầu như thế nào là phù hợp?**
 
 - **A.** Nhà thầu đã hoàn thành công trình xây dựng nhà, kết cấu dạng nhà cấp II, có giá trị tối thiểu là 50% x (2X) VND
 - **B.** Nhà thầu đã hoàn thành công trình xây dựng nhà, kết cấu dạng nhà cấp II, có giá trị tối thiểu là 50% x (2X) VND, trong đó phải bao gồm hạng mục hàng rào bảo vệ, nhà bảo vệ
@@ -1097,6 +1138,27 @@
 > ✅ **Đáp án: A**
 
 > 💡 **Ghi nhớ:** nhà thầu đáp ứng hạng mục to hơn và cao hơn là ok, A1 là to hơn, A2 cấp 3
+>
+> Hãy coi gói thầu xây trường này có **một phần khó nhất, lớn nhất** là **nhà A1**:
+>
+> - **A1:** 10 tầng, 8.000 m², **cấp II** → phần lớn và yêu cầu kỹ thuật cao hơn.
+> - **A2:** 6 tầng, 1.000 m², **cấp III** → nhỏ hơn, cấp thấp hơn.
+> - Hàng rào + nhà bảo vệ → chỉ là các hạng mục phụ, đơn giản hơn.
+>
+> Khi kiểm tra xem nhà thầu **“đã từng làm công trình tương tự chưa”**, ta chủ yếu nhìn vào **phần chính, khó nhất của gói thầu**, tức **A1**.
+>
+> Ví dụ rất đời thường: BV 30-4 muốn xây một tòa nhà điều trị **10 tầng cấp II**, kèm theo một nhà phụ nhỏ và hàng rào. Một nhà thầu đã từng xây thành công **một tòa nhà 10 tầng cấp II đủ giá trị yêu cầu** thì đã chứng minh họ có khả năng làm phần khó nhất. Không cần bắt họ phải chứng minh công trình cũ cũng có đúng **hàng rào và nhà bảo vệ**.
+>
+> Vì vậy yêu cầu phù hợp là:
+>
+> > Nhà thầu từng hoàn thành **công trình xây dựng nhà cấp II**, giá trị tối thiểu **50% × giá trị A1 (2X)**.
+>
+> → **Đáp án A.**
+>
+> 💡 **Mẹo nhớ:**
+>  **“Nhìn thằng to và khó nhất.”**
+>  A1 **to nhất + cấp II cao hơn cấp III** → lấy **A1 làm chuẩn**.
+>  Đã làm được **A1** thì không cần bắt hợp đồng cũ phải có thêm **hàng rào, nhà bảo vệ**.
 
 ---
 ### Câu 077
