@@ -1,0 +1,1005 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width,
+                 initial-scale=1.0,
+                 maximum-scale=1.0,
+                 user-scalable=no,
+                 viewport-fit=cover"
+    >
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#f4efe5">
+
+    <title>Niệm Phật</title>
+
+    <style>
+        :root {
+            --primary: #a56a24;
+            --primary-light: #c98a3a;
+            --background: #f4efe5;
+            --card: #fffdf8;
+            --text: #32291f;
+            --secondary: #8a7967;
+            --border: #e9dfd0;
+            --danger: #c94a42;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html,
+        body {
+            margin: 0;
+            min-height: 100%;
+            background: var(--background);
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            min-height: 100dvh;
+
+            padding:
+                max(20px, env(safe-area-inset-top))
+                18px
+                max(20px, env(safe-area-inset-bottom));
+
+            color: var(--text);
+
+            -webkit-user-select: none;
+            user-select: none;
+
+            touch-action: manipulation;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 390px;
+
+            background: var(--card);
+
+            border-radius: 28px;
+
+            padding: 28px 22px;
+
+            box-shadow:
+                0 10px 35px rgba(80, 55, 30, 0.08);
+
+            text-align: center;
+        }
+
+        .lotus {
+            font-size: 2.2rem;
+            margin-bottom: 6px;
+        }
+
+        h1 {
+            margin: 0;
+
+            font-size: 1.65rem;
+            font-weight: 700;
+        }
+
+        .subtitle {
+            margin-top: 6px;
+
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .chant {
+            margin: 24px 0 8px;
+
+            font-size: 1.55rem;
+            font-weight: 700;
+
+            color: var(--primary);
+        }
+
+        .counter {
+            font-size: 4.6rem;
+            line-height: 1;
+
+            font-weight: 750;
+
+            color: var(--primary);
+
+            margin: 18px 0 10px;
+
+            font-variant-numeric: tabular-nums;
+
+            transition: transform 0.12s ease;
+        }
+
+        .counter.pop {
+            transform: scale(1.08);
+        }
+
+        .progress-text {
+            color: var(--secondary);
+            font-size: 0.85rem;
+
+            margin-bottom: 8px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 7px;
+
+            background: #eee5d9;
+
+            border-radius: 999px;
+
+            overflow: hidden;
+
+            margin-bottom: 25px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+
+            background: var(--primary-light);
+
+            border-radius: 999px;
+
+            transition: width 0.2s ease;
+        }
+
+        .main-button {
+            width: 150px;
+            height: 150px;
+
+            border: none;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #d99a4a,
+                    var(--primary)
+                );
+
+            color: white;
+
+            font-size: 1.25rem;
+            font-weight: 700;
+
+            box-shadow:
+                0 10px 26px rgba(165, 106, 36, 0.30);
+
+            cursor: pointer;
+
+            margin-bottom: 25px;
+
+            touch-action: manipulation;
+        }
+
+        .main-button:active {
+            transform: scale(0.95);
+        }
+
+        .stats {
+            display: grid;
+
+            grid-template-columns:
+                repeat(3, 1fr);
+
+            gap: 8px;
+
+            padding-top: 20px;
+
+            border-top:
+                1px solid var(--border);
+        }
+
+        .stat {
+            padding: 8px 3px;
+        }
+
+        .stat-value {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: var(--secondary);
+
+            font-size: 0.72rem;
+
+            margin-top: 4px;
+        }
+
+        .controls {
+            display: grid;
+
+            grid-template-columns:
+                1fr 1fr 1fr;
+
+            gap: 8px;
+
+            margin-top: 18px;
+        }
+
+        .small-button {
+            border: none;
+
+            background: #f1e9dd;
+
+            color: var(--text);
+
+            padding: 12px 5px;
+
+            border-radius: 13px;
+
+            font-size: 0.85rem;
+
+            cursor: pointer;
+        }
+
+        .small-button:active {
+            transform: scale(0.96);
+        }
+
+        .export-button {
+            width: 100%;
+            margin-top: 12px;
+
+            border: none;
+
+            background: var(--primary);
+
+            color: white;
+
+            padding: 13px;
+
+            border-radius: 13px;
+
+            font-size: 0.9rem;
+            font-weight: 600;
+
+            cursor: pointer;
+        }
+
+        .reset {
+            margin-top: 15px;
+
+            border: none;
+
+            background: none;
+
+            color: var(--danger);
+
+            font-size: 0.8rem;
+
+            cursor: pointer;
+        }
+
+        .footer {
+            margin-top: 20px;
+
+            font-size: 0.75rem;
+
+            color: #a19689;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <div class="lotus">
+        🪷
+    </div>
+
+    <h1>
+        Niệm Phật
+    </h1>
+
+    <div class="subtitle">
+        Nhất tâm xưng niệm
+    </div>
+
+    <div class="chant">
+        Nam Mô A Di Đà Phật
+    </div>
+
+    <div
+        class="counter"
+        id="counter"
+    >
+        0
+    </div>
+
+    <div
+        class="progress-text"
+        id="progressText"
+    >
+        0 / 21
+    </div>
+
+    <div class="progress">
+
+        <div
+            class="progress-bar"
+            id="progressBar"
+        ></div>
+
+    </div>
+
+    <button
+        class="main-button"
+        id="mainButton"
+    >
+        NIỆM
+    </button>
+
+    <div class="stats">
+
+        <div class="stat">
+
+            <div
+                class="stat-value"
+                id="todayCount"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Hôm nay
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div
+                class="stat-value"
+                id="roundCount"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Vòng 21
+            </div>
+
+        </div>
+
+        <div class="stat">
+
+            <div
+                class="stat-value"
+                id="totalCount"
+            >
+                0
+            </div>
+
+            <div class="stat-label">
+                Tổng cộng
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="controls">
+
+        <button
+            class="small-button"
+            onclick="undo()"
+        >
+            ↶ -1
+        </button>
+
+        <button
+            class="small-button"
+            onclick="addCount(7)"
+        >
+            +7
+        </button>
+
+        <button
+            class="small-button"
+            onclick="addCount(21)"
+        >
+            +21
+        </button>
+
+    </div>
+
+    <button
+        class="export-button"
+        onclick="exportCSV()"
+    >
+        📄 Xuất dữ liệu CSV
+    </button>
+
+    <button
+        class="reset"
+        onclick="resetToday()"
+    >
+        Đặt lại số hôm nay
+    </button>
+
+    <div class="footer">
+        Một câu Phật hiệu • Một niệm tỉnh thức
+    </div>
+
+</div>
+
+
+<script>
+
+    // =========================================================
+    // CẤU HÌNH
+    // =========================================================
+
+    const ROUND_TARGET = 21;
+
+    const STORAGE_KEY =
+        "niem_phat_data_v2";
+
+
+    // =========================================================
+    // DỮ LIỆU
+    // =========================================================
+
+    let data = {
+
+        date:
+            getToday(),
+
+        today:
+            0,
+
+        total:
+            0,
+
+        history:
+            {}
+
+    };
+
+
+    // =========================================================
+    // ELEMENTS
+    // =========================================================
+
+    const counterEl =
+        document.getElementById(
+            "counter"
+        );
+
+    const todayCountEl =
+        document.getElementById(
+            "todayCount"
+        );
+
+    const totalCountEl =
+        document.getElementById(
+            "totalCount"
+        );
+
+    const roundCountEl =
+        document.getElementById(
+            "roundCount"
+        );
+
+    const progressTextEl =
+        document.getElementById(
+            "progressText"
+        );
+
+    const progressBarEl =
+        document.getElementById(
+            "progressBar"
+        );
+
+    const mainButton =
+        document.getElementById(
+            "mainButton"
+        );
+
+
+    // =========================================================
+    // NGÀY HIỆN TẠI
+    // =========================================================
+
+    function getToday() {
+
+        const now =
+            new Date();
+
+        return [
+
+            now.getFullYear(),
+
+            String(
+                now.getMonth() + 1
+            ).padStart(
+                2,
+                "0"
+            ),
+
+            String(
+                now.getDate()
+            ).padStart(
+                2,
+                "0"
+            )
+
+        ].join("-");
+
+    }
+
+
+    // =========================================================
+    // LOAD DATA
+    // =========================================================
+
+    function loadData() {
+
+        const saved =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+        if (saved) {
+
+            try {
+
+                const oldData =
+                    JSON.parse(
+                        saved
+                    );
+
+                data = {
+
+                    date:
+                        oldData.date ||
+                        getToday(),
+
+                    today:
+                        Number(
+                            oldData.today
+                        ) || 0,
+
+                    total:
+                        Number(
+                            oldData.total
+                        ) || 0,
+
+                    history:
+                        oldData.history ||
+                        {}
+
+                };
+
+            } catch (e) {
+
+                console.log(
+                    "Không đọc được dữ liệu."
+                );
+
+            }
+
+        }
+
+
+        // Nếu sang ngày mới
+        if (
+            data.date !==
+            getToday()
+        ) {
+
+            if (
+                data.date
+            ) {
+
+                data.history[
+                    data.date
+                ] =
+                    data.today;
+
+            }
+
+            data.date =
+                getToday();
+
+            data.today =
+                0;
+
+            saveData();
+
+        }
+
+    }
+
+
+    // =========================================================
+    // SAVE DATA
+    // =========================================================
+
+    function saveData() {
+
+        data.history[
+            getToday()
+        ] =
+            data.today;
+
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(
+                data
+            )
+        );
+
+    }
+
+
+    // =========================================================
+    // THÊM SỐ NIỆM
+    // =========================================================
+
+    function addCount(
+        amount = 1
+    ) {
+
+        data.today +=
+            amount;
+
+        data.total +=
+            amount;
+
+        saveData();
+
+        updateDisplay();
+
+        animateCounter();
+
+        vibrate();
+
+    }
+
+
+    // =========================================================
+    // LÙI 1
+    // =========================================================
+
+    function undo() {
+
+        if (
+            data.today <= 0
+        ) {
+
+            return;
+
+        }
+
+        data.today--;
+
+        if (
+            data.total > 0
+        ) {
+
+            data.total--;
+
+        }
+
+        saveData();
+
+        updateDisplay();
+
+    }
+
+
+    // =========================================================
+    // RESET HÔM NAY
+    // =========================================================
+
+    function resetToday() {
+
+        const ok =
+            confirm(
+                "Đặt số niệm hôm nay về 0?\n\nTổng số tích lũy vẫn được giữ."
+            );
+
+        if (
+            !ok
+        ) {
+
+            return;
+
+        }
+
+        data.today =
+            0;
+
+        saveData();
+
+        updateDisplay();
+
+    }
+
+
+    // =========================================================
+    // HIỆU ỨNG
+    // =========================================================
+
+    function animateCounter() {
+
+        counterEl
+            .classList
+            .add(
+                "pop"
+            );
+
+        setTimeout(
+            () => {
+
+                counterEl
+                    .classList
+                    .remove(
+                        "pop"
+                    );
+
+            },
+            120
+        );
+
+    }
+
+
+    // =========================================================
+    // RUNG NHẸ
+    // =========================================================
+
+    function vibrate() {
+
+        if (
+            navigator.vibrate
+        ) {
+
+            navigator.vibrate(
+                20
+            );
+
+        }
+
+    }
+
+
+    // =========================================================
+    // UPDATE DISPLAY
+    // =========================================================
+
+    function updateDisplay() {
+
+        counterEl.innerText =
+            data.today
+                .toLocaleString(
+                    "vi-VN"
+                );
+
+
+        todayCountEl.innerText =
+            data.today
+                .toLocaleString(
+                    "vi-VN"
+                );
+
+
+        totalCountEl.innerText =
+            data.total
+                .toLocaleString(
+                    "vi-VN"
+                );
+
+
+        // Số vòng 21 hoàn thành
+        const completedRounds =
+            Math.floor(
+                data.today /
+                ROUND_TARGET
+            );
+
+
+        roundCountEl.innerText =
+            completedRounds
+                .toLocaleString(
+                    "vi-VN"
+                );
+
+
+        // Vị trí trong vòng hiện tại
+        const position =
+            data.today %
+            ROUND_TARGET;
+
+
+        progressTextEl.innerText =
+            position +
+            " / " +
+            ROUND_TARGET;
+
+
+        const percent =
+            (
+                position /
+                ROUND_TARGET
+            ) * 100;
+
+
+        progressBarEl.style.width =
+            percent +
+            "%";
+
+    }
+
+
+    // =========================================================
+    // XUẤT CSV
+    // =========================================================
+
+    function exportCSV() {
+
+        saveData();
+
+
+        let csv =
+            "\uFEFFNgày,Số niệm,Số vòng 21\n";
+
+
+        const dates =
+            Object.keys(
+                data.history
+            ).sort();
+
+
+        dates.forEach(
+            date => {
+
+                const count =
+                    Number(
+                        data.history[
+                            date
+                        ]
+                    ) || 0;
+
+
+                const rounds =
+                    Math.floor(
+                        count /
+                        ROUND_TARGET
+                    );
+
+
+                csv +=
+
+                    date +
+                    "," +
+
+                    count +
+                    "," +
+
+                    rounds +
+                    "\n";
+
+            }
+        );
+
+
+        csv +=
+            "\nTổng cộng," +
+            data.total +
+            "," +
+            Math.floor(
+                data.total /
+                ROUND_TARGET
+            ) +
+            "\n";
+
+
+        const blob =
+            new Blob(
+                [csv],
+                {
+                    type:
+                        "text/csv;charset=utf-8;"
+                }
+            );
+
+
+        const url =
+            URL.createObjectURL(
+                blob
+            );
+
+
+        const link =
+            document.createElement(
+                "a"
+            );
+
+
+        link.href =
+            url;
+
+
+        link.download =
+            "niem_phat_" +
+            getToday() +
+            ".csv";
+
+
+        document.body
+            .appendChild(
+                link
+            );
+
+
+        link.click();
+
+
+        document.body
+            .removeChild(
+                link
+            );
+
+
+        URL.revokeObjectURL(
+            url
+        );
+
+    }
+
+
+    // =========================================================
+    // NÚT NIỆM
+    // =========================================================
+
+    mainButton.addEventListener(
+        "click",
+        () => {
+
+            addCount(
+                1
+            );
+
+        }
+    );
+
+
+    // =========================================================
+    // KHỞI ĐỘNG
+    // =========================================================
+
+    loadData();
+
+    updateDisplay();
+
+</script>
+
+</body>
+</html>
