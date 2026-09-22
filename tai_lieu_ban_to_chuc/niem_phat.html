@@ -5,11 +5,7 @@
 
     <meta
         name="viewport"
-        content="width=device-width,
-                 initial-scale=1.0,
-                 maximum-scale=1.0,
-                 user-scalable=no,
-                 viewport-fit=cover"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
     >
 
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,8 +16,8 @@
 
     <style>
         :root {
-            --primary: #a56a24;
-            --primary-light: #c98a3a;
+            --primary: #b96d08;
+            --primary-light: #e79a21;
             --background: #f4efe5;
             --card: #fffdf8;
             --text: #32291f;
@@ -35,8 +31,7 @@
             -webkit-tap-highlight-color: transparent;
         }
 
-        html,
-        body {
+        html, body {
             margin: 0;
             min-height: 100%;
             background: var(--background);
@@ -54,79 +49,62 @@
 
             display: flex;
             justify-content: center;
-            align-items: center;
+            align-items: flex-start;
 
             min-height: 100dvh;
 
             padding:
-                max(20px, env(safe-area-inset-top))
+                max(25px, env(safe-area-inset-top))
                 18px
-                max(20px, env(safe-area-inset-bottom));
+                max(120px, calc(env(safe-area-inset-bottom) + 100px));
 
             color: var(--text);
-
-            -webkit-user-select: none;
             user-select: none;
-
+            -webkit-user-select: none;
             touch-action: manipulation;
         }
 
         .container {
             width: 100%;
             max-width: 390px;
-
             background: var(--card);
-
             border-radius: 28px;
-
-            padding: 28px 22px;
-
-            box-shadow:
-                0 10px 35px rgba(80, 55, 30, 0.08);
-
+            padding: 28px 22px 40px;
+            box-shadow: 0 10px 35px rgba(80,55,30,0.08);
             text-align: center;
         }
 
         .lotus {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             margin-bottom: 6px;
         }
 
         h1 {
             margin: 0;
-
-            font-size: 1.65rem;
-            font-weight: 700;
+            font-size: 1.7rem;
         }
 
         .subtitle {
             margin-top: 6px;
-
             color: var(--secondary);
-            font-size: 0.9rem;
+            font-size: 0.92rem;
         }
 
         .chant {
             margin: 24px 0 8px;
-
             font-size: 1.55rem;
+            line-height: 1.35;
             font-weight: 700;
-
             color: var(--primary);
         }
 
         .counter {
-            font-size: 4.6rem;
+            font-size: 4.8rem;
             line-height: 1;
-
             font-weight: 750;
-
             color: var(--primary);
-
-            margin: 18px 0 10px;
-
+            margin: 22px 0 14px;
             font-variant-numeric: tabular-nums;
-
             transition: transform 0.12s ease;
         }
 
@@ -136,61 +114,46 @@
 
         .progress-text {
             color: var(--secondary);
-            font-size: 0.85rem;
-
-            margin-bottom: 8px;
+            font-size: 0.9rem;
+            margin-bottom: 9px;
         }
 
         .progress {
             width: 100%;
-            height: 7px;
-
+            height: 8px;
             background: #eee5d9;
-
             border-radius: 999px;
-
             overflow: hidden;
-
-            margin-bottom: 25px;
+            margin-bottom: 28px;
         }
 
         .progress-bar {
             height: 100%;
             width: 0%;
-
             background: var(--primary-light);
-
             border-radius: 999px;
-
             transition: width 0.2s ease;
         }
 
         .main-button {
-            width: 150px;
-            height: 150px;
-
+            width: 155px;
+            height: 155px;
             border: none;
             border-radius: 50%;
 
             background:
                 radial-gradient(
                     circle at 35% 30%,
-                    #d99a4a,
+                    #efa72e,
                     var(--primary)
                 );
 
             color: white;
-
-            font-size: 1.25rem;
-            font-weight: 700;
-
-            box-shadow:
-                0 10px 26px rgba(165, 106, 36, 0.30);
-
+            font-size: 1.3rem;
+            font-weight: 750;
+            box-shadow: 0 10px 28px rgba(185,109,8,0.30);
             cursor: pointer;
-
-            margin-bottom: 25px;
-
+            margin-bottom: 28px;
             touch-action: manipulation;
         }
 
@@ -200,20 +163,14 @@
 
         .stats {
             display: grid;
-
-            grid-template-columns:
-                repeat(3, 1fr);
-
+            grid-template-columns: repeat(3, 1fr);
             gap: 8px;
-
             padding-top: 20px;
-
-            border-top:
-                1px solid var(--border);
+            border-top: 1px solid var(--border);
         }
 
         .stat {
-            padding: 8px 3px;
+            padding: 7px 2px;
         }
 
         .stat-value {
@@ -223,36 +180,29 @@
 
         .stat-label {
             color: var(--secondary);
-
             font-size: 0.72rem;
-
             margin-top: 4px;
         }
 
         .controls {
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr 1fr;
-
+            grid-template-columns: repeat(3,1fr);
             gap: 8px;
-
             margin-top: 18px;
+        }
+
+        button {
+            font-family: inherit;
         }
 
         .small-button {
             border: none;
-
             background: #f1e9dd;
-
             color: var(--text);
-
             padding: 12px 5px;
-
             border-radius: 13px;
-
             font-size: 0.85rem;
-
+            font-weight: 600;
             cursor: pointer;
         }
 
@@ -263,61 +213,40 @@
         .export-button {
             width: 100%;
             margin-top: 12px;
-
             border: none;
-
             background: var(--primary);
-
             color: white;
-
             padding: 13px;
-
             border-radius: 13px;
-
             font-size: 0.9rem;
-            font-weight: 600;
-
+            font-weight: 650;
             cursor: pointer;
         }
 
-
-        .exit-button {
-            margin-top: 8px;
-
-            border: none;
-
-            background: none;
-
-            color: #666;
-
-            font-size: 0.8rem;
-
-            cursor: pointer;
-        }
-
-        .exit-button:active {
-            transform: scale(0.96);
+        .export-button:active {
+            transform: scale(0.98);
         }
 
         .reset {
-            margin-top: 15px;
-
+            width: 100%;
+            margin-top: 10px;
             border: none;
-
-            background: none;
-
+            background: #f6e6e3;
             color: var(--danger);
-
-            font-size: 0.8rem;
-
+            padding: 12px;
+            border-radius: 13px;
+            font-size: 0.85rem;
+            font-weight: 600;
             cursor: pointer;
+        }
+
+        .reset:active {
+            transform: scale(0.98);
         }
 
         .footer {
             margin-top: 20px;
-
             font-size: 0.75rem;
-
             color: #a19689;
         }
     </style>
@@ -325,15 +254,11 @@
 
 <body>
 
-<div class="container">
+<main class="container">
 
-    <div class="lotus">
-        🪷
-    </div>
+    <div class="lotus">🪷</div>
 
-    <h1>
-        Niệm Phật
-    </h1>
+    <h1>Niệm Phật</h1>
 
     <div class="subtitle">
         Nhất tâm xưng niệm
@@ -343,30 +268,20 @@
         Nam Mô A Di Đà Phật
     </div>
 
-    <div
-        class="counter"
-        id="counter"
-    >
+    <div class="counter" id="counter">
         0
     </div>
 
-    <div
-        class="progress-text"
-        id="progressText"
-    >
+    <div class="progress-text" id="progressText">
         0 / 21
     </div>
 
     <div class="progress">
-
-        <div
-            class="progress-bar"
-            id="progressBar"
-        ></div>
-
+        <div class="progress-bar" id="progressBar"></div>
     </div>
 
     <button
+        type="button"
         class="main-button"
         id="mainButton"
     >
@@ -376,48 +291,18 @@
     <div class="stats">
 
         <div class="stat">
-
-            <div
-                class="stat-value"
-                id="todayCount"
-            >
-                0
-            </div>
-
-            <div class="stat-label">
-                Hôm nay
-            </div>
-
+            <div class="stat-value" id="todayCount">0</div>
+            <div class="stat-label">Hôm nay</div>
         </div>
 
         <div class="stat">
-
-            <div
-                class="stat-value"
-                id="roundCount"
-            >
-                0
-            </div>
-
-            <div class="stat-label">
-                Vòng 21
-            </div>
-
+            <div class="stat-value" id="roundCount">0</div>
+            <div class="stat-label">Vòng 21</div>
         </div>
 
         <div class="stat">
-
-            <div
-                class="stat-value"
-                id="totalCount"
-            >
-                0
-            </div>
-
-            <div class="stat-label">
-                Tổng cộng
-            </div>
-
+            <div class="stat-value" id="totalCount">0</div>
+            <div class="stat-label">Tổng cộng</div>
         </div>
 
     </div>
@@ -425,22 +310,25 @@
     <div class="controls">
 
         <button
+            type="button"
             class="small-button"
-            onclick="undo()"
+            id="undoButton"
         >
             ↶ -1
         </button>
 
         <button
+            type="button"
             class="small-button"
-            onclick="addCount(7)"
+            id="plus7Button"
         >
             +7
         </button>
 
         <button
+            type="button"
             class="small-button"
-            onclick="addCount(21)"
+            id="plus21Button"
         >
             +21
         </button>
@@ -448,445 +336,219 @@
     </div>
 
     <button
+        type="button"
         class="export-button"
-        onclick="exportCSV()"
+        id="exportButton"
     >
         📄 Xuất dữ liệu CSV
     </button>
 
     <button
+        type="button"
         class="reset"
-        onclick="resetToday()"
+        id="resetButton"
     >
-        Đặt lại số hôm nay
-    </button>
-
-    <button
-        class="exit-button"
-        onclick="exitApp()"
-    >
-        ✕ Exit / Close
+        🔄 Reset hôm nay
     </button>
 
     <div class="footer">
         Một câu Phật hiệu • Một niệm tỉnh thức
     </div>
 
-</div>
-
+</main>
 
 <script>
 
-    // =========================================================
-    // CẤU HÌNH
-    // =========================================================
+    "use strict";
 
     const ROUND_TARGET = 21;
-
-    const STORAGE_KEY =
-        "niem_phat_data_v2";
-
-
-    // =========================================================
-    // DỮ LIỆU
-    // =========================================================
+    const STORAGE_KEY = "niem_phat_data_v3";
 
     let data = {
-
-        date:
-            getToday(),
-
-        today:
-            0,
-
-        total:
-            0,
-
-        history:
-            {}
-
+        date: "",
+        today: 0,
+        total: 0,
+        history: {}
     };
 
+    const counterEl = document.getElementById("counter");
+    const todayCountEl = document.getElementById("todayCount");
+    const totalCountEl = document.getElementById("totalCount");
+    const roundCountEl = document.getElementById("roundCount");
+    const progressTextEl = document.getElementById("progressText");
+    const progressBarEl = document.getElementById("progressBar");
 
-    // =========================================================
-    // ELEMENTS
-    // =========================================================
+    const mainButton = document.getElementById("mainButton");
+    const undoButton = document.getElementById("undoButton");
+    const plus7Button = document.getElementById("plus7Button");
+    const plus21Button = document.getElementById("plus21Button");
+    const exportButton = document.getElementById("exportButton");
+    const resetButton = document.getElementById("resetButton");
 
-    const counterEl =
-        document.getElementById(
-            "counter"
-        );
-
-    const todayCountEl =
-        document.getElementById(
-            "todayCount"
-        );
-
-    const totalCountEl =
-        document.getElementById(
-            "totalCount"
-        );
-
-    const roundCountEl =
-        document.getElementById(
-            "roundCount"
-        );
-
-    const progressTextEl =
-        document.getElementById(
-            "progressText"
-        );
-
-    const progressBarEl =
-        document.getElementById(
-            "progressBar"
-        );
-
-    const mainButton =
-        document.getElementById(
-            "mainButton"
-        );
-
-
-    // =========================================================
-    // NGÀY HIỆN TẠI
-    // =========================================================
 
     function getToday() {
 
-        const now =
-            new Date();
+        const now = new Date();
 
-        return [
+        const year = now.getFullYear();
 
-            now.getFullYear(),
+        const month = String(
+            now.getMonth() + 1
+        ).padStart(2, "0");
 
-            String(
-                now.getMonth() + 1
-            ).padStart(
-                2,
-                "0"
-            ),
+        const day = String(
+            now.getDate()
+        ).padStart(2, "0");
 
-            String(
-                now.getDate()
-            ).padStart(
-                2,
-                "0"
-            )
-
-        ].join("-");
-
+        return `${year}-${month}-${day}`;
     }
 
-
-    // =========================================================
-    // LOAD DATA
-    // =========================================================
 
     function loadData() {
 
-        const saved =
-            localStorage.getItem(
-                STORAGE_KEY
-            );
+        const today = getToday();
 
-        if (saved) {
+        data = {
+            date: today,
+            today: 0,
+            total: 0,
+            history: {}
+        };
 
-            try {
+        try {
 
-                const oldData =
-                    JSON.parse(
-                        saved
-                    );
+            const saved = localStorage.getItem(STORAGE_KEY);
 
-                data = {
+            if (saved) {
 
-                    date:
-                        oldData.date ||
-                        getToday(),
+                const oldData = JSON.parse(saved);
 
-                    today:
-                        Number(
-                            oldData.today
-                        ) || 0,
-
-                    total:
-                        Number(
-                            oldData.total
-                        ) || 0,
-
-                    history:
-                        oldData.history ||
-                        {}
-
-                };
-
-            } catch (e) {
-
-                console.log(
-                    "Không đọc được dữ liệu."
-                );
-
+                data.date = oldData.date || today;
+                data.today = Number(oldData.today) || 0;
+                data.total = Number(oldData.total) || 0;
+                data.history = oldData.history || {};
             }
 
+        } catch (error) {
+
+            console.error("Không đọc được dữ liệu:", error);
         }
 
 
-        // Nếu sang ngày mới
-        if (
-            data.date !==
-            getToday()
-        ) {
+        if (data.date !== today) {
 
-            if (
-                data.date
-            ) {
-
-                data.history[
-                    data.date
-                ] =
-                    data.today;
-
+            if (data.date) {
+                data.history[data.date] = data.today;
             }
 
-            data.date =
-                getToday();
-
-            data.today =
-                0;
-
+            data.date = today;
+            data.today = 0;
             saveData();
-
         }
-
     }
 
-
-    // =========================================================
-    // SAVE DATA
-    // =========================================================
 
     function saveData() {
 
-        data.history[
-            getToday()
-        ] =
-            data.today;
+        data.date = getToday();
+        data.history[data.date] = data.today;
 
-        localStorage.setItem(
-            STORAGE_KEY,
-            JSON.stringify(
-                data
-            )
-        );
+        try {
 
-    }
-
-
-    // =========================================================
-    // THÊM SỐ NIỆM
-    // =========================================================
-
-    function addCount(
-        amount = 1
-    ) {
-
-        data.today +=
-            amount;
-
-        data.total +=
-            amount;
-
-        saveData();
-
-        updateDisplay();
-
-        animateCounter();
-
-        vibrate();
-
-    }
-
-
-    // =========================================================
-    // LÙI 1
-    // =========================================================
-
-    function undo() {
-
-        if (
-            data.today <= 0
-        ) {
-
-            return;
-
-        }
-
-        data.today--;
-
-        if (
-            data.total > 0
-        ) {
-
-            data.total--;
-
-        }
-
-        saveData();
-
-        updateDisplay();
-
-    }
-
-
-    // =========================================================
-    // RESET HÔM NAY
-    // =========================================================
-
-    function resetToday() {
-
-        const ok =
-            confirm(
-                "Đặt số niệm hôm nay về 0?\n\nTổng số tích lũy vẫn được giữ."
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(data)
             );
 
-        if (
-            !ok
-        ) {
+        } catch (error) {
 
-            return;
-
+            console.error("Không lưu được dữ liệu:", error);
         }
-
-        data.today =
-            0;
-
-        saveData();
-
-        updateDisplay();
-
     }
 
-
-    // =========================================================
-    // HIỆU ỨNG
-    // =========================================================
-
-    function animateCounter() {
-
-        counterEl
-            .classList
-            .add(
-                "pop"
-            );
-
-        setTimeout(
-            () => {
-
-                counterEl
-                    .classList
-                    .remove(
-                        "pop"
-                    );
-
-            },
-            120
-        );
-
-    }
-
-
-    // =========================================================
-    // RUNG NHẸ
-    // =========================================================
-
-    function vibrate() {
-
-        if (
-            navigator.vibrate
-        ) {
-
-            navigator.vibrate(
-                20
-            );
-
-        }
-
-    }
-
-
-    // =========================================================
-    // UPDATE DISPLAY
-    // =========================================================
 
     function updateDisplay() {
 
-        counterEl.innerText =
-            data.today
-                .toLocaleString(
-                    "vi-VN"
-                );
+        counterEl.textContent =
+            data.today.toLocaleString("vi-VN");
 
+        todayCountEl.textContent =
+            data.today.toLocaleString("vi-VN");
 
-        todayCountEl.innerText =
-            data.today
-                .toLocaleString(
-                    "vi-VN"
-                );
+        totalCountEl.textContent =
+            data.total.toLocaleString("vi-VN");
 
-
-        totalCountEl.innerText =
-            data.total
-                .toLocaleString(
-                    "vi-VN"
-                );
-
-
-        // Số vòng 21 hoàn thành
         const completedRounds =
-            Math.floor(
-                data.today /
-                ROUND_TARGET
-            );
+            Math.floor(data.today / ROUND_TARGET);
 
+        roundCountEl.textContent =
+            completedRounds.toLocaleString("vi-VN");
 
-        roundCountEl.innerText =
-            completedRounds
-                .toLocaleString(
-                    "vi-VN"
-                );
-
-
-        // Vị trí trong vòng hiện tại
         const position =
-            data.today %
-            ROUND_TARGET;
+            data.today % ROUND_TARGET;
 
-
-        progressTextEl.innerText =
-            position +
-            " / " +
-            ROUND_TARGET;
-
-
-        const percent =
-            (
-                position /
-                ROUND_TARGET
-            ) * 100;
-
+        progressTextEl.textContent =
+            `${position} / ${ROUND_TARGET}`;
 
         progressBarEl.style.width =
-            percent +
-            "%";
-
+            `${(position / ROUND_TARGET) * 100}%`;
     }
 
 
-    // =========================================================
-    // XUẤT CSV
-    // =========================================================
+    function animateCounter() {
+
+        counterEl.classList.add("pop");
+
+        window.setTimeout(() => {
+            counterEl.classList.remove("pop");
+        }, 120);
+    }
+
+
+    function addCount(amount = 1) {
+
+        data.today += amount;
+        data.total += amount;
+
+        saveData();
+        updateDisplay();
+        animateCounter();
+    }
+
+
+    function undo() {
+
+        if (data.today <= 0) {
+            return;
+        }
+
+        data.today -= 1;
+
+        if (data.total > 0) {
+            data.total -= 1;
+        }
+
+        saveData();
+        updateDisplay();
+    }
+
+
+    function resetToday() {
+
+        const ok = window.confirm(
+            "Reset số niệm hôm nay về 0?\n\nTổng cộng vẫn được giữ."
+        );
+
+        if (!ok) {
+            return;
+        }
+
+        data.today = 0;
+
+        saveData();
+        updateDisplay();
+    }
+
 
     function buildCSV() {
 
@@ -896,230 +558,136 @@
             "\uFEFFNgày,Số niệm,Số vòng 21\n";
 
         const dates =
-            Object.keys(
-                data.history
-            ).sort();
+            Object.keys(data.history).sort();
 
-        dates.forEach(
-            date => {
+        dates.forEach(date => {
 
-                const count =
-                    Number(
-                        data.history[date]
-                    ) || 0;
+            const count =
+                Number(data.history[date]) || 0;
 
-                const rounds =
-                    Math.floor(
-                        count / ROUND_TARGET
-                    );
+            const rounds =
+                Math.floor(count / ROUND_TARGET);
 
-                csv +=
-                    date + "," +
-                    count + "," +
-                    rounds + "\n";
-
-            }
-        );
+            csv +=
+                `${date},${count},${rounds}\n`;
+        });
 
         csv +=
-            "\nTổng cộng," +
-            data.total + "," +
-            Math.floor(
-                data.total / ROUND_TARGET
-            ) +
-            "\n";
+            `\nTổng cộng,${data.total},${Math.floor(data.total / ROUND_TARGET)}\n`;
 
         return csv;
-
     }
 
 
-    // =========================================================
-    // XUẤT CSV
-    // Safari iPhone: ưu tiên Share Sheet
-    // =========================================================
-
     async function exportCSV() {
 
-        const csv =
-            buildCSV();
+        const csv = buildCSV();
 
         const filename =
-            "niem_phat_" +
-            getToday() +
-            ".csv";
+            `niem_phat_${getToday()}.csv`;
 
-        const file =
-            new File(
-                [csv],
-                filename,
-                {
-                    type:
-                        "text/csv;charset=utf-8"
-                }
-            );
+        const blob = new Blob(
+            [csv],
+            {
+                type: "text/csv;charset=utf-8"
+            }
+        );
 
 
-        // -----------------------------------------------------
-        // iPhone / Safari:
-        // mở Share Sheet → Save to Files
-        // -----------------------------------------------------
-
+        // iPhone / Safari: ưu tiên Share Sheet
         try {
 
             if (
+                typeof File !== "undefined" &&
                 navigator.share &&
-                navigator.canShare &&
-                navigator.canShare({
-                    files: [file]
-                })
+                navigator.canShare
             ) {
 
-                await navigator.share({
+                const file = new File(
+                    [blob],
+                    filename,
+                    {
+                        type: "text/csv;charset=utf-8"
+                    }
+                );
 
-                    files: [file],
+                if (
+                    navigator.canShare({
+                        files: [file]
+                    })
+                ) {
 
-                    title:
-                        "Dữ liệu niệm Phật",
+                    await navigator.share({
+                        files: [file],
+                        title: "Dữ liệu niệm Phật"
+                    });
 
-                    text:
-                        "Xuất dữ liệu niệm Phật"
-
-                });
-
-                return;
-
+                    return;
+                }
             }
 
         } catch (error) {
 
-            if (
-                error.name ===
-                "AbortError"
-            ) {
-
+            if (error.name === "AbortError") {
                 return;
-
             }
 
-            console.log(
-                "Share không khả dụng:",
-                error
-            );
-
+            console.log("Share không khả dụng:", error);
         }
 
 
-        // -----------------------------------------------------
-        // FALLBACK:
-        // tải file CSV theo cách thông thường
-        // -----------------------------------------------------
+        // Mac / RStudio Viewer / Browser: download thông thường
+        const url = URL.createObjectURL(blob);
 
-        const blob =
-            new Blob(
-                [csv],
-                {
-                    type:
-                        "text/csv;charset=utf-8"
-                }
-            );
+        const link = document.createElement("a");
 
-        const url =
-            URL.createObjectURL(
-                blob
-            );
+        link.href = url;
+        link.download = filename;
 
-        const link =
-            document.createElement(
-                "a"
-            );
-
-        link.href =
-            url;
-
-        link.download =
-            filename;
-
-        document.body
-            .appendChild(
-                link
-            );
+        document.body.appendChild(link);
 
         link.click();
 
-        document.body
-            .removeChild(
-                link
-            );
+        link.remove();
 
-        setTimeout(
-            () => {
-
-                URL.revokeObjectURL(
-                    url
-                );
-
-            },
-            1000
-        );
-
+        window.setTimeout(() => {
+            URL.revokeObjectURL(url);
+        }, 1000);
     }
 
-
-
-    // =========================================================
-    // EXIT / CLOSE
-    // =========================================================
-
-    function exitApp() {
-
-        const ok = confirm(
-            "Bạn muốn đóng ứng dụng Niệm Phật?"
-        );
-
-        if (!ok) {
-            return;
-        }
-
-        // Safari chỉ cho đóng tab nếu tab được mở bằng JavaScript
-        window.close();
-
-        // Nếu Safari không cho đóng tab
-        setTimeout(
-            () => {
-
-                alert(
-                    "Safari không cho trang web tự đóng tab này.\n\nHãy bấm nút Tabs của Safari và đóng tab thủ công."
-                );
-
-            },
-            300
-        );
-
-    }
-
-    // =========================================================
-    // NÚT NIỆM
-    // =========================================================
 
     mainButton.addEventListener(
         "click",
-        () => {
+        () => addCount(1)
+    );
 
-            addCount(
-                1
-            );
+    undoButton.addEventListener(
+        "click",
+        undo
+    );
 
-        }
+    plus7Button.addEventListener(
+        "click",
+        () => addCount(7)
+    );
+
+    plus21Button.addEventListener(
+        "click",
+        () => addCount(21)
+    );
+
+    exportButton.addEventListener(
+        "click",
+        exportCSV
+    );
+
+    resetButton.addEventListener(
+        "click",
+        resetToday
     );
 
 
-    // =========================================================
-    // KHỞI ĐỘNG
-    // =========================================================
-
     loadData();
-
     updateDisplay();
 
 </script>
