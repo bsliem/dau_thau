@@ -357,340 +357,934 @@
 
 </main>
 
+
 <script>
 
-    "use strict";
+"use strict";
 
-    const ROUND_TARGET = 21;
-    const STORAGE_KEY = "niem_phat_data_v3";
+// ============================================================
+// CONFIG
+// ============================================================
 
-    let data = {
-        date: "",
-        today: 0,
-        total: 0,
-        history: {}
+const ROUND_TARGET = 21;
+
+const STORAGE_KEY =
+    "niem_phat_data_v4";
+
+const OLD_STORAGE_KEYS = [
+    "niem_phat_data_v3",
+    "niem_phat_data_v2",
+    "niem_phat_data_v1"
+];
+
+
+// ============================================================
+// DATA
+// ============================================================
+
+let data = {
+
+    date: "",
+
+    today: 0,
+
+    total: 0,
+
+    history: {},
+
+    events: []
+
+};
+
+
+// ============================================================
+// ELEMENTS
+// ============================================================
+
+const counterEl =
+    document.getElementById("counter");
+
+const todayCountEl =
+    document.getElementById("todayCount");
+
+const totalCountEl =
+    document.getElementById("totalCount");
+
+const roundCountEl =
+    document.getElementById("roundCount");
+
+const progressTextEl =
+    document.getElementById("progressText");
+
+const progressBarEl =
+    document.getElementById("progressBar");
+
+const mainButton =
+    document.getElementById("mainButton");
+
+const undoButton =
+    document.getElementById("undoButton");
+
+const plus7Button =
+    document.getElementById("plus7Button");
+
+const plus21Button =
+    document.getElementById("plus21Button");
+
+const exportButton =
+    document.getElementById("exportButton");
+
+const resetButton =
+    document.getElementById("resetButton");
+
+
+// ============================================================
+// DATE / TIME
+// ============================================================
+
+function pad2(value) {
+
+    return String(value)
+        .padStart(
+            2,
+            "0"
+        );
+
+}
+
+
+function getDateParts(
+    date = new Date()
+) {
+
+    const year =
+        date.getFullYear();
+
+    const month =
+        pad2(
+            date.getMonth() + 1
+        );
+
+    const day =
+        pad2(
+            date.getDate()
+        );
+
+    const hour =
+        pad2(
+            date.getHours()
+        );
+
+    const minute =
+        pad2(
+            date.getMinutes()
+        );
+
+    const second =
+        pad2(
+            date.getSeconds()
+        );
+
+    return {
+
+        date:
+            `${year}-${month}-${day}`,
+
+        time:
+            `${hour}:${minute}:${second}`,
+
+        datetime:
+            `${year}-${month}-${day} ${hour}:${minute}:${second}`,
+
+        hour:
+            Number(hour),
+
+        minute:
+            Number(minute),
+
+        second:
+            Number(second),
+
+        weekday:
+            date.getDay(),
+
+        timestamp:
+            date.getTime()
+
     };
 
-    const counterEl = document.getElementById("counter");
-    const todayCountEl = document.getElementById("todayCount");
-    const totalCountEl = document.getElementById("totalCount");
-    const roundCountEl = document.getElementById("roundCount");
-    const progressTextEl = document.getElementById("progressText");
-    const progressBarEl = document.getElementById("progressBar");
-
-    const mainButton = document.getElementById("mainButton");
-    const undoButton = document.getElementById("undoButton");
-    const plus7Button = document.getElementById("plus7Button");
-    const plus21Button = document.getElementById("plus21Button");
-    const exportButton = document.getElementById("exportButton");
-    const resetButton = document.getElementById("resetButton");
+}
 
 
-    function getToday() {
+function getToday() {
 
-        const now = new Date();
+    return getDateParts().date;
 
-        const year = now.getFullYear();
-
-        const month = String(
-            now.getMonth() + 1
-        ).padStart(2, "0");
-
-        const day = String(
-            now.getDate()
-        ).padStart(2, "0");
-
-        return `${year}-${month}-${day}`;
-    }
+}
 
 
-    function loadData() {
+function getWeekdayEnglish(
+    day
+) {
 
-        const today = getToday();
+    const names = [
+        "Sun",
+        "Mon",
+        "Tue",
+        "Wed",
+        "Thu",
+        "Fri",
+        "Sat"
+    ];
 
-        data = {
-            date: today,
-            today: 0,
-            total: 0,
-            history: {}
-        };
+    return names[day] || "";
+
+}
+
+
+// ============================================================
+// MIGRATE OLD DATA
+// ============================================================
+
+function migrateOldData() {
+
+    for (
+        const key of
+        OLD_STORAGE_KEYS
+    ) {
 
         try {
 
-            const saved = localStorage.getItem(STORAGE_KEY);
+            const saved =
+                localStorage.getItem(
+                    key
+                );
 
-            if (saved) {
-
-                const oldData = JSON.parse(saved);
-
-                data.date = oldData.date || today;
-                data.today = Number(oldData.today) || 0;
-                data.total = Number(oldData.total) || 0;
-                data.history = oldData.history || {};
+            if (!saved) {
+                continue;
             }
+
+            const oldData =
+                JSON.parse(
+                    saved
+                );
+
+            return {
+
+                date:
+                    oldData.date ||
+                    getToday(),
+
+                today:
+                    Number(
+                        oldData.today
+                    ) || 0,
+
+                total:
+                    Number(
+                        oldData.total
+                    ) || 0,
+
+                history:
+                    oldData.history ||
+                    {},
+
+                events:
+                    []
+
+            };
 
         } catch (error) {
 
-            console.error("Không đọc được dữ liệu:", error);
-        }
-
-
-        if (data.date !== today) {
-
-            if (data.date) {
-                data.history[data.date] = data.today;
-            }
-
-            data.date = today;
-            data.today = 0;
-            saveData();
-        }
-    }
-
-
-    function saveData() {
-
-        data.date = getToday();
-        data.history[data.date] = data.today;
-
-        try {
-
-            localStorage.setItem(
-                STORAGE_KEY,
-                JSON.stringify(data)
+            console.log(
+                "migration_error",
+                key,
+                error
             );
 
-        } catch (error) {
-
-            console.error("Không lưu được dữ liệu:", error);
-        }
-    }
-
-
-    function updateDisplay() {
-
-        counterEl.textContent =
-            data.today.toLocaleString("vi-VN");
-
-        todayCountEl.textContent =
-            data.today.toLocaleString("vi-VN");
-
-        totalCountEl.textContent =
-            data.total.toLocaleString("vi-VN");
-
-        const completedRounds =
-            Math.floor(data.today / ROUND_TARGET);
-
-        roundCountEl.textContent =
-            completedRounds.toLocaleString("vi-VN");
-
-        const position =
-            data.today % ROUND_TARGET;
-
-        progressTextEl.textContent =
-            `${position} / ${ROUND_TARGET}`;
-
-        progressBarEl.style.width =
-            `${(position / ROUND_TARGET) * 100}%`;
-    }
-
-
-    function animateCounter() {
-
-        counterEl.classList.add("pop");
-
-        window.setTimeout(() => {
-            counterEl.classList.remove("pop");
-        }, 120);
-    }
-
-
-    function addCount(amount = 1) {
-
-        data.today += amount;
-        data.total += amount;
-
-        saveData();
-        updateDisplay();
-        animateCounter();
-    }
-
-
-    function undo() {
-
-        if (data.today <= 0) {
-            return;
         }
 
-        data.today -= 1;
-
-        if (data.total > 0) {
-            data.total -= 1;
-        }
-
-        saveData();
-        updateDisplay();
     }
 
+    return null;
 
-    function resetToday() {
+}
 
-        const ok = window.confirm(
-            "Reset số niệm hôm nay về 0?\n\n總計 vẫn được giữ."
+
+// ============================================================
+// LOAD DATA
+// ============================================================
+
+function loadData() {
+
+    const today =
+        getToday();
+
+    data = {
+
+        date:
+            today,
+
+        today:
+            0,
+
+        total:
+            0,
+
+        history:
+            {},
+
+        events:
+            []
+
+    };
+
+
+    try {
+
+        const saved =
+            localStorage.getItem(
+                STORAGE_KEY
+            );
+
+        if (saved) {
+
+            const oldData =
+                JSON.parse(
+                    saved
+                );
+
+            data = {
+
+                date:
+                    oldData.date ||
+                    today,
+
+                today:
+                    Number(
+                        oldData.today
+                    ) || 0,
+
+                total:
+                    Number(
+                        oldData.total
+                    ) || 0,
+
+                history:
+                    oldData.history ||
+                    {},
+
+                events:
+                    Array.isArray(
+                        oldData.events
+                    )
+                        ? oldData.events
+                        : []
+
+            };
+
+        } else {
+
+            const migrated =
+                migrateOldData();
+
+            if (migrated) {
+
+                data =
+                    migrated;
+
+                saveData();
+
+            }
+
+        }
+
+    } catch (error) {
+
+        console.error(
+            "load_error",
+            error
         );
 
-        if (!ok) {
-            return;
+    }
+
+
+    // Sang ngày mới
+    if (
+        data.date !==
+        today
+    ) {
+
+        if (
+            data.date
+        ) {
+
+            data.history[
+                data.date
+            ] =
+                data.today;
+
         }
 
-        data.today = 0;
+        data.date =
+            today;
+
+        data.today =
+            0;
 
         saveData();
-        updateDisplay();
+
     }
 
+}
 
-    function buildCSV() {
 
-        saveData();
+// ============================================================
+// SAVE DATA
+// ============================================================
 
-        let csv =
-            "\uFEFF日期,念佛數,二十一遍\n";
+function saveData() {
 
-        const dates =
-            Object.keys(data.history).sort();
+    data.date =
+        getToday();
 
-        dates.forEach(date => {
+    data.history[
+        data.date
+    ] =
+        data.today;
 
-            const count =
-                Number(data.history[date]) || 0;
+    try {
 
-            const rounds =
-                Math.floor(count / ROUND_TARGET);
+        localStorage.setItem(
+            STORAGE_KEY,
+            JSON.stringify(
+                data
+            )
+        );
+
+    } catch (error) {
+
+        console.error(
+            "save_error",
+            error
+        );
+
+    }
+
+}
+
+
+// ============================================================
+// EVENT LOG
+// ============================================================
+
+function logEvent(
+    action,
+    amount
+) {
+
+    const now =
+        getDateParts();
+
+    data.events.push({
+
+        date:
+            now.date,
+
+        time:
+            now.time,
+
+        datetime:
+            now.datetime,
+
+        timestamp:
+            now.timestamp,
+
+        action:
+            action,
+
+        amount:
+            amount,
+
+        daily_total:
+            data.today,
+
+        grand_total:
+            data.total,
+
+        rounds_21:
+            Math.floor(
+                data.today /
+                ROUND_TARGET
+            ),
+
+        position_21:
+            data.today %
+            ROUND_TARGET,
+
+        hour:
+            now.hour,
+
+        minute:
+            now.minute,
+
+        second:
+            now.second,
+
+        weekday:
+            getWeekdayEnglish(
+                now.weekday
+            )
+
+    });
+
+}
+
+
+// ============================================================
+// DISPLAY
+// ============================================================
+
+function updateDisplay() {
+
+    counterEl.textContent =
+        data.today
+            .toLocaleString(
+                "zh-Hant"
+            );
+
+    todayCountEl.textContent =
+        data.today
+            .toLocaleString(
+                "zh-Hant"
+            );
+
+    totalCountEl.textContent =
+        data.total
+            .toLocaleString(
+                "zh-Hant"
+            );
+
+    const completedRounds =
+        Math.floor(
+            data.today /
+            ROUND_TARGET
+        );
+
+    roundCountEl.textContent =
+        completedRounds
+            .toLocaleString(
+                "zh-Hant"
+            );
+
+    const position =
+        data.today %
+        ROUND_TARGET;
+
+    progressTextEl.textContent =
+        `${position} / ${ROUND_TARGET}`;
+
+    progressBarEl.style.width =
+        `${(
+            position /
+            ROUND_TARGET
+        ) * 100}%`;
+
+}
+
+
+// ============================================================
+// ANIMATION
+// ============================================================
+
+function animateCounter() {
+
+    counterEl
+        .classList
+        .add(
+            "pop"
+        );
+
+    window.setTimeout(
+        () => {
+
+            counterEl
+                .classList
+                .remove(
+                    "pop"
+                );
+
+        },
+        120
+    );
+
+}
+
+
+// ============================================================
+// ADD
+// ============================================================
+
+function addCount(
+    amount = 1
+) {
+
+    data.today +=
+        amount;
+
+    data.total +=
+        amount;
+
+    logEvent(
+        "chant",
+        amount
+    );
+
+    saveData();
+
+    updateDisplay();
+
+    animateCounter();
+
+}
+
+
+// ============================================================
+// UNDO
+// ============================================================
+
+function undo() {
+
+    if (
+        data.today <= 0
+    ) {
+
+        return;
+
+    }
+
+    data.today -=
+        1;
+
+    if (
+        data.total > 0
+    ) {
+
+        data.total -=
+            1;
+
+    }
+
+    logEvent(
+        "undo",
+        -1
+    );
+
+    saveData();
+
+    updateDisplay();
+
+}
+
+
+// ============================================================
+// RESET
+// ============================================================
+
+function resetToday() {
+
+    const ok =
+        window.confirm(
+            "將今日念佛數重設為 0？\n\n總計仍會保留。"
+        );
+
+    if (!ok) {
+
+        return;
+
+    }
+
+    const previous =
+        data.today;
+
+    data.today =
+        0;
+
+    logEvent(
+        "reset",
+        -previous
+    );
+
+    saveData();
+
+    updateDisplay();
+
+}
+
+
+// ============================================================
+// CSV
+// ============================================================
+
+function csvCell(
+    value
+) {
+
+    const text =
+        String(
+            value ?? ""
+        );
+
+    if (
+        text.includes(",") ||
+        text.includes('"') ||
+        text.includes("\n")
+    ) {
+
+        return (
+            '"' +
+            text.replace(
+                /"/g,
+                '""'
+            ) +
+            '" '
+        ).trim();
+
+    }
+
+    return text;
+
+}
+
+
+function buildCSV() {
+
+    saveData();
+
+    let csv =
+        "\uFEFFdate,time,datetime,timestamp,action,amount,daily_total,grand_total,rounds_21,position_21,hour,minute,second,weekday\n";
+
+
+    data.events.forEach(
+        event => {
+
+            const row = [
+
+                event.date,
+
+                event.time,
+
+                event.datetime,
+
+                event.timestamp,
+
+                event.action,
+
+                event.amount,
+
+                event.daily_total,
+
+                event.grand_total,
+
+                event.rounds_21,
+
+                event.position_21,
+
+                event.hour,
+
+                event.minute,
+
+                event.second,
+
+                event.weekday
+
+            ];
 
             csv +=
-                `${date},${count},${rounds}\n`;
-        });
+                row
+                    .map(
+                        csvCell
+                    )
+                    .join(",") +
+                "\n";
 
-        csv +=
-            `\n總計,${data.total},${Math.floor(data.total / ROUND_TARGET)}\n`;
-
-        return csv;
-    }
+        }
+    );
 
 
-    async function exportCSV() {
+    return csv;
 
-        const csv = buildCSV();
+}
 
-        const filename =
-            `niem_phat_${getToday()}.csv`;
 
-        const blob = new Blob(
+// ============================================================
+// EXPORT
+// ============================================================
+
+async function exportCSV() {
+
+    const csv =
+        buildCSV();
+
+    const filename =
+        `niem_phat_log_${getToday()}.csv`;
+
+    const blob =
+        new Blob(
             [csv],
             {
-                type: "text/csv;charset=utf-8"
+                type:
+                    "text/csv;charset=utf-8"
             }
         );
 
 
-        // iPhone / Safari: ưu tiên Share Sheet
-        try {
+    // Safari iPhone Share Sheet
+    try {
 
-            if (
-                typeof File !== "undefined" &&
-                navigator.share &&
-                navigator.canShare
-            ) {
+        if (
+            typeof File !==
+                "undefined" &&
+            navigator.share &&
+            navigator.canShare
+        ) {
 
-                const file = new File(
+            const file =
+                new File(
                     [blob],
                     filename,
                     {
-                        type: "text/csv;charset=utf-8"
+                        type:
+                            "text/csv;charset=utf-8"
                     }
                 );
 
-                if (
-                    navigator.canShare({
-                        files: [file]
-                    })
-                ) {
+            if (
+                navigator.canShare({
+                    files: [file]
+                })
+            ) {
 
-                    await navigator.share({
-                        files: [file],
-                        title: "念佛紀錄"
-                    });
+                await navigator.share({
 
-                    return;
-                }
-            }
+                    files:
+                        [file],
 
-        } catch (error) {
+                    title:
+                        "念佛紀錄"
 
-            if (error.name === "AbortError") {
+                });
+
                 return;
+
             }
 
-            console.log("Share không khả dụng:", error);
         }
 
+    } catch (error) {
 
-        // Mac / RStudio Viewer / Browser: download thông thường
-        const url = URL.createObjectURL(blob);
+        if (
+            error.name ===
+            "AbortError"
+        ) {
 
-        const link = document.createElement("a");
+            return;
 
-        link.href = url;
-        link.download = filename;
+        }
 
-        document.body.appendChild(link);
+        console.log(
+            "share_error",
+            error
+        );
 
-        link.click();
-
-        link.remove();
-
-        window.setTimeout(() => {
-            URL.revokeObjectURL(url);
-        }, 1000);
     }
 
 
-    mainButton.addEventListener(
-        "click",
-        () => addCount(1)
+    // Browser download fallback
+    const url =
+        URL.createObjectURL(
+            blob
+        );
+
+    const link =
+        document.createElement(
+            "a"
+        );
+
+    link.href =
+        url;
+
+    link.download =
+        filename;
+
+    document.body
+        .appendChild(
+            link
+        );
+
+    link.click();
+
+    link.remove();
+
+    window.setTimeout(
+        () => {
+
+            URL.revokeObjectURL(
+                url
+            );
+
+        },
+        1000
     );
 
-    undoButton.addEventListener(
-        "click",
-        undo
-    );
-
-    plus7Button.addEventListener(
-        "click",
-        () => addCount(7)
-    );
-
-    plus21Button.addEventListener(
-        "click",
-        () => addCount(21)
-    );
-
-    exportButton.addEventListener(
-        "click",
-        exportCSV
-    );
-
-    resetButton.addEventListener(
-        "click",
-        resetToday
-    );
+}
 
 
-    loadData();
-    updateDisplay();
+// ============================================================
+// BUTTON EVENTS
+// ============================================================
+
+mainButton.addEventListener(
+    "click",
+    () => addCount(1)
+);
+
+undoButton.addEventListener(
+    "click",
+    undo
+);
+
+plus7Button.addEventListener(
+    "click",
+    () => addCount(7)
+);
+
+plus21Button.addEventListener(
+    "click",
+    () => addCount(21)
+);
+
+exportButton.addEventListener(
+    "click",
+    exportCSV
+);
+
+resetButton.addEventListener(
+    "click",
+    resetToday
+);
+
+
+// ============================================================
+// START
+// ============================================================
+
+loadData();
+
+updateDisplay();
 
 </script>
+
 
 </body>
 </html>

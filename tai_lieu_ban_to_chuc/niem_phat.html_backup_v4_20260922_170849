@@ -1,0 +1,696 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover"
+    >
+
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="theme-color" content="#f4efe5">
+
+    <title>念佛</title>
+
+    <style>
+        :root {
+            --primary: #b96d08;
+            --primary-light: #e79a21;
+            --background: #f4efe5;
+            --card: #fffdf8;
+            --text: #32291f;
+            --secondary: #8a7967;
+            --border: #e9dfd0;
+            --danger: #c94a42;
+        }
+
+        * {
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        html, body {
+            margin: 0;
+            min-height: 100%;
+            background: var(--background);
+        }
+
+        body {
+            font-family:
+                -apple-system,
+                BlinkMacSystemFont,
+                "Segoe UI",
+                Roboto,
+                Helvetica,
+                Arial,
+                sans-serif;
+
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+
+            min-height: 100dvh;
+
+            padding:
+                max(25px, env(safe-area-inset-top))
+                18px
+                max(120px, calc(env(safe-area-inset-bottom) + 100px));
+
+            color: var(--text);
+            user-select: none;
+            -webkit-user-select: none;
+            touch-action: manipulation;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 390px;
+            background: var(--card);
+            border-radius: 28px;
+            padding: 28px 22px 40px;
+            box-shadow: 0 10px 35px rgba(80,55,30,0.08);
+            text-align: center;
+        }
+
+        .lotus {
+            font-size: 2.4rem;
+            margin-bottom: 6px;
+        }
+
+        h1 {
+            margin: 0;
+            font-size: 1.7rem;
+        }
+
+        .subtitle {
+            margin-top: 6px;
+            color: var(--secondary);
+            font-size: 0.92rem;
+        }
+
+        .chant {
+            margin: 24px 0 8px;
+            font-size: 1.55rem;
+            line-height: 1.35;
+            font-weight: 700;
+            color: var(--primary);
+        }
+
+        .counter {
+            font-size: 4.8rem;
+            line-height: 1;
+            font-weight: 750;
+            color: var(--primary);
+            margin: 22px 0 14px;
+            font-variant-numeric: tabular-nums;
+            transition: transform 0.12s ease;
+        }
+
+        .counter.pop {
+            transform: scale(1.08);
+        }
+
+        .progress-text {
+            color: var(--secondary);
+            font-size: 0.9rem;
+            margin-bottom: 9px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 8px;
+            background: #eee5d9;
+            border-radius: 999px;
+            overflow: hidden;
+            margin-bottom: 28px;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: var(--primary-light);
+            border-radius: 999px;
+            transition: width 0.2s ease;
+        }
+
+        .main-button {
+            width: 155px;
+            height: 155px;
+            border: none;
+            border-radius: 50%;
+
+            background:
+                radial-gradient(
+                    circle at 35% 30%,
+                    #efa72e,
+                    var(--primary)
+                );
+
+            color: white;
+            font-size: 1.3rem;
+            font-weight: 750;
+            box-shadow: 0 10px 28px rgba(185,109,8,0.30);
+            cursor: pointer;
+            margin-bottom: 28px;
+            touch-action: manipulation;
+        }
+
+        .main-button:active {
+            transform: scale(0.95);
+        }
+
+        .stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 8px;
+            padding-top: 20px;
+            border-top: 1px solid var(--border);
+        }
+
+        .stat {
+            padding: 7px 2px;
+        }
+
+        .stat-value {
+            font-size: 1.15rem;
+            font-weight: 700;
+        }
+
+        .stat-label {
+            color: var(--secondary);
+            font-size: 0.72rem;
+            margin-top: 4px;
+        }
+
+        .controls {
+            display: grid;
+            grid-template-columns: repeat(3,1fr);
+            gap: 8px;
+            margin-top: 18px;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+        .small-button {
+            border: none;
+            background: #f1e9dd;
+            color: var(--text);
+            padding: 12px 5px;
+            border-radius: 13px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .small-button:active {
+            transform: scale(0.96);
+        }
+
+        .export-button {
+            width: 100%;
+            margin-top: 12px;
+            border: none;
+            background: var(--primary);
+            color: white;
+            padding: 13px;
+            border-radius: 13px;
+            font-size: 0.9rem;
+            font-weight: 650;
+            cursor: pointer;
+        }
+
+        .export-button:active {
+            transform: scale(0.98);
+        }
+
+        .reset {
+            width: 100%;
+            margin-top: 10px;
+            border: none;
+            background: #f6e6e3;
+            color: var(--danger);
+            padding: 12px;
+            border-radius: 13px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .reset:active {
+            transform: scale(0.98);
+        }
+
+        .footer {
+            margin-top: 20px;
+            font-size: 0.75rem;
+            color: #a19689;
+        }
+    </style>
+</head>
+
+<body>
+
+<main class="container">
+
+    <div class="lotus">🪷</div>
+
+    <h1>念佛</h1>
+
+    <div class="subtitle">
+        一心稱念
+    </div>
+
+    <div class="chant">
+        南無阿彌陀佛
+    </div>
+
+    <div class="counter" id="counter">
+        0
+    </div>
+
+    <div class="progress-text" id="progressText">
+        0 / 21
+    </div>
+
+    <div class="progress">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+
+    <button
+        type="button"
+        class="main-button"
+        id="mainButton"
+    >
+        念
+    </button>
+
+    <div class="stats">
+
+        <div class="stat">
+            <div class="stat-value" id="todayCount">0</div>
+            <div class="stat-label">今日</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-value" id="roundCount">0</div>
+            <div class="stat-label">二十一遍</div>
+        </div>
+
+        <div class="stat">
+            <div class="stat-value" id="totalCount">0</div>
+            <div class="stat-label">總計</div>
+        </div>
+
+    </div>
+
+    <div class="controls">
+
+        <button
+            type="button"
+            class="small-button"
+            id="undoButton"
+        >
+            ↶ -1
+        </button>
+
+        <button
+            type="button"
+            class="small-button"
+            id="plus7Button"
+        >
+            +7
+        </button>
+
+        <button
+            type="button"
+            class="small-button"
+            id="plus21Button"
+        >
+            +21
+        </button>
+
+    </div>
+
+    <button
+        type="button"
+        class="export-button"
+        id="exportButton"
+    >
+        📄 匯出資料
+    </button>
+
+    <button
+        type="button"
+        class="reset"
+        id="resetButton"
+    >
+        🔄 重設今日
+    </button>
+
+    <div class="footer">
+        一句佛號・一念清明
+    </div>
+
+</main>
+
+<script>
+
+    "use strict";
+
+    const ROUND_TARGET = 21;
+    const STORAGE_KEY = "niem_phat_data_v3";
+
+    let data = {
+        date: "",
+        today: 0,
+        total: 0,
+        history: {}
+    };
+
+    const counterEl = document.getElementById("counter");
+    const todayCountEl = document.getElementById("todayCount");
+    const totalCountEl = document.getElementById("totalCount");
+    const roundCountEl = document.getElementById("roundCount");
+    const progressTextEl = document.getElementById("progressText");
+    const progressBarEl = document.getElementById("progressBar");
+
+    const mainButton = document.getElementById("mainButton");
+    const undoButton = document.getElementById("undoButton");
+    const plus7Button = document.getElementById("plus7Button");
+    const plus21Button = document.getElementById("plus21Button");
+    const exportButton = document.getElementById("exportButton");
+    const resetButton = document.getElementById("resetButton");
+
+
+    function getToday() {
+
+        const now = new Date();
+
+        const year = now.getFullYear();
+
+        const month = String(
+            now.getMonth() + 1
+        ).padStart(2, "0");
+
+        const day = String(
+            now.getDate()
+        ).padStart(2, "0");
+
+        return `${year}-${month}-${day}`;
+    }
+
+
+    function loadData() {
+
+        const today = getToday();
+
+        data = {
+            date: today,
+            today: 0,
+            total: 0,
+            history: {}
+        };
+
+        try {
+
+            const saved = localStorage.getItem(STORAGE_KEY);
+
+            if (saved) {
+
+                const oldData = JSON.parse(saved);
+
+                data.date = oldData.date || today;
+                data.today = Number(oldData.today) || 0;
+                data.total = Number(oldData.total) || 0;
+                data.history = oldData.history || {};
+            }
+
+        } catch (error) {
+
+            console.error("Không đọc được dữ liệu:", error);
+        }
+
+
+        if (data.date !== today) {
+
+            if (data.date) {
+                data.history[data.date] = data.today;
+            }
+
+            data.date = today;
+            data.today = 0;
+            saveData();
+        }
+    }
+
+
+    function saveData() {
+
+        data.date = getToday();
+        data.history[data.date] = data.today;
+
+        try {
+
+            localStorage.setItem(
+                STORAGE_KEY,
+                JSON.stringify(data)
+            );
+
+        } catch (error) {
+
+            console.error("Không lưu được dữ liệu:", error);
+        }
+    }
+
+
+    function updateDisplay() {
+
+        counterEl.textContent =
+            data.today.toLocaleString("vi-VN");
+
+        todayCountEl.textContent =
+            data.today.toLocaleString("vi-VN");
+
+        totalCountEl.textContent =
+            data.total.toLocaleString("vi-VN");
+
+        const completedRounds =
+            Math.floor(data.today / ROUND_TARGET);
+
+        roundCountEl.textContent =
+            completedRounds.toLocaleString("vi-VN");
+
+        const position =
+            data.today % ROUND_TARGET;
+
+        progressTextEl.textContent =
+            `${position} / ${ROUND_TARGET}`;
+
+        progressBarEl.style.width =
+            `${(position / ROUND_TARGET) * 100}%`;
+    }
+
+
+    function animateCounter() {
+
+        counterEl.classList.add("pop");
+
+        window.setTimeout(() => {
+            counterEl.classList.remove("pop");
+        }, 120);
+    }
+
+
+    function addCount(amount = 1) {
+
+        data.today += amount;
+        data.total += amount;
+
+        saveData();
+        updateDisplay();
+        animateCounter();
+    }
+
+
+    function undo() {
+
+        if (data.today <= 0) {
+            return;
+        }
+
+        data.today -= 1;
+
+        if (data.total > 0) {
+            data.total -= 1;
+        }
+
+        saveData();
+        updateDisplay();
+    }
+
+
+    function resetToday() {
+
+        const ok = window.confirm(
+            "Reset số niệm hôm nay về 0?\n\n總計 vẫn được giữ."
+        );
+
+        if (!ok) {
+            return;
+        }
+
+        data.today = 0;
+
+        saveData();
+        updateDisplay();
+    }
+
+
+    function buildCSV() {
+
+        saveData();
+
+        let csv =
+            "\uFEFF日期,念佛數,二十一遍\n";
+
+        const dates =
+            Object.keys(data.history).sort();
+
+        dates.forEach(date => {
+
+            const count =
+                Number(data.history[date]) || 0;
+
+            const rounds =
+                Math.floor(count / ROUND_TARGET);
+
+            csv +=
+                `${date},${count},${rounds}\n`;
+        });
+
+        csv +=
+            `\n總計,${data.total},${Math.floor(data.total / ROUND_TARGET)}\n`;
+
+        return csv;
+    }
+
+
+    async function exportCSV() {
+
+        const csv = buildCSV();
+
+        const filename =
+            `niem_phat_${getToday()}.csv`;
+
+        const blob = new Blob(
+            [csv],
+            {
+                type: "text/csv;charset=utf-8"
+            }
+        );
+
+
+        // iPhone / Safari: ưu tiên Share Sheet
+        try {
+
+            if (
+                typeof File !== "undefined" &&
+                navigator.share &&
+                navigator.canShare
+            ) {
+
+                const file = new File(
+                    [blob],
+                    filename,
+                    {
+                        type: "text/csv;charset=utf-8"
+                    }
+                );
+
+                if (
+                    navigator.canShare({
+                        files: [file]
+                    })
+                ) {
+
+                    await navigator.share({
+                        files: [file],
+                        title: "念佛紀錄"
+                    });
+
+                    return;
+                }
+            }
+
+        } catch (error) {
+
+            if (error.name === "AbortError") {
+                return;
+            }
+
+            console.log("Share không khả dụng:", error);
+        }
+
+
+        // Mac / RStudio Viewer / Browser: download thông thường
+        const url = URL.createObjectURL(blob);
+
+        const link = document.createElement("a");
+
+        link.href = url;
+        link.download = filename;
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        link.remove();
+
+        window.setTimeout(() => {
+            URL.revokeObjectURL(url);
+        }, 1000);
+    }
+
+
+    mainButton.addEventListener(
+        "click",
+        () => addCount(1)
+    );
+
+    undoButton.addEventListener(
+        "click",
+        undo
+    );
+
+    plus7Button.addEventListener(
+        "click",
+        () => addCount(7)
+    );
+
+    plus21Button.addEventListener(
+        "click",
+        () => addCount(21)
+    );
+
+    exportButton.addEventListener(
+        "click",
+        exportCSV
+    );
+
+    resetButton.addEventListener(
+        "click",
+        resetToday
+    );
+
+
+    loadData();
+    updateDisplay();
+
+</script>
+
+</body>
+</html>
