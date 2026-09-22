@@ -121,8 +121,8 @@
 
 **Theo quy định pháp luật về đấu thầu, hàng hóa gồm?**
 
-- **A.** Máy móc, thiết bị, nguyên liệu, nhiên liệu, vật liệu, vật tư, phụ tùng; sản phẩm; phương tiện; hàng tiêu dùng, phần mềm thương mại
-- **B.** Thuốc, hóa chất, vật tư xét nghiệm, thiết bị y tế
+- **A.** <u>Máy móc,</u> thiết bị, nguyên liệu, nhiên liệu, vật liệu, vật tư, phụ tùng; sản phẩm; phương tiện; hàng tiêu dùng, phần mềm thương mại
+- **B.** <u>Thuốc, hóa chất,</u> vật tư xét nghiệm, thiết bị y tế
 - **C.** Phương án A và B đều đúng
 - **D.** Logistics, bảo hiểm, quảng cáo, nghiệm thu chạy thử, chụp ảnh vệ tinh (phi tư vấn)
 
@@ -133,36 +133,46 @@
 ---
 ### Câu 010
 
-**Đối tượng nào sau đây được hưởng ưu đãi trong lựa chọn nhà thầu?**
+**Đối tượng nào sau đây được hưởng <u>ưu đãi</u> trong lựa chọn nhà thầu?**
 
 - **A.** Hàng hóa có xuất xứ Việt Nam
+
 - **B.** Nhà thầu trong nước sản xuất hàng hóa có xuất xứ Việt Nam phù hợp với hồ sơ mời thầu
+
 - **C.** Sản phẩm, dịch vụ thân thiện môi trường theo quy định của pháp luật về bảo vệ môi trường
+
 - **D.** Tất cả các phương án trên đều đúng
+
+  (mẹo: ưu đãi --> tất cả)
 
 > ✅ **Đáp án: D**
 
 ---
 ### Câu 011
 
-**Nhà thầu trong nước nào được hưởng ưu đãi trong lựa chọn nhà thầu?**
+**Nhà thầu trong nước nào được hưởng <u>ưu đãi</u> trong lựa chọn nhà thầu?**
 
 - **A.** Nhà thầu trong nước sản xuất hàng hóa có xuất xứ Việt Nam phù hợp với hồ sơ mời thầu
+
 - **B.** Nhà thầu trong nước tham dự thầu với tư cách độc lập hoặc liên danh với nhà thầu trong nước khác khi tham dự đấu thầu quốc tế
+
 - **C.** Nhà thầu trong nước có sử dụng lao động nữ, thương binh, người khuyết tật hoặc người dân tộc thiểu số
+
 - **D.** Tất cả các phương án trên đều đúng
+
+  (mẹo: ưu đãi --> tất cả)
 
 > ✅ **Đáp án: D**
 
 ---
 ### Câu 012
 
-**Trường hợp nào sau đây cơ quan, tổ chức, doanh nghiệp được tự quyết định việc lựa chọn nhà thầu trên cơ sở bảo đảm công khai, minh bạch, hiệu quả và trách nhiệm giải trình?**
+**Trường hợp nào sau đây cơ quan, tổ chức, doanh nghiệp được <u>tự quyết định việc lựa chọn nhà thầu</u> trên cơ sở bảo đảm công khai, minh bạch, hiệu quả và trách nhiệm giải trình?**
 
 - **A.** Thực hiện gói thầu thuộc dự án sử dụng vốn đầu tư công của cơ quan nhà nước
 - **B.** Thực hiện gói thầu thuộc dự án sử dụng vốn đầu tư công của đơn vị sự nghiệp công lập bảo đảm một phần chi thường xuyên
 - **C.** Thực hiện gói thầu thuộc dự án sử dụng vốn ngân sách nhà nước của doanh nghiệp nhà nước
-- **D.** Lựa chọn nhà thầu của doanh nghiệp nhà nước không sử dụng vốn ngân sách nhà nước, đơn vị sự nghiệp công lập tự bảo đảm chi thường xuyên và chi đầu tư, đơn vị sự nghiệp công lập tự bảo đảm chi thường xuyên không sử dụng ngân sách nhà nước
+- **D.** Lựa chọn nhà thầu của doanh nghiệp nhà nước <u>không sử dụng vốn ngân sách nhà nước,</u> đơn vị sự nghiệp công lập tự bảo đảm chi thường xuyên và chi đầu tư, đơn vị sự nghiệp công lập tự bảo đảm chi thường xuyên không sử dụng ngân sách nhà nước
 
 > ✅ **Đáp án: D**
 
@@ -171,11 +181,11 @@
 ---
 ### Câu 013
 
-**Ngôn ngữ sử dụng đối với đấu thầu quốc tế là gì?**
+**<u>Ngôn ngữ</u> sử dụng đối với đấu thầu quốc tế là gì?**
 
 - **A.** Tiếng Việt
 - **B.** Tiếng Đức
-- **C.** Tiếng Anh hoặc tiếng Việt và tiếng Anh
+- **C.** <u>Tiếng Anh hoặc tiếng Việt và tiếng Anh</u>
 - **D.** Tiếng Đức hoặc tiếng Anh
 
 > ✅ **Đáp án: C**
@@ -185,11 +195,11 @@
 ---
 ### Câu 014
 
-**Đối với đấu thầu quốc tế, trường hợp ngôn ngữ sử dụng trong hồ sơ mời thầu là tiếng Việt và tiếng Anh thì khi tham dự thầu, nhà thầu được sử dụng ngôn ngữ gì?**
+**Đối với <u>đấu thầu quốc tế</u>, trường hợp ngôn ngữ sử dụng trong hồ sơ mời thầu là tiếng Việt và tiếng Anh thì khi tham dự thầu, nhà thầu được sử dụng ngôn ngữ gì?**
 
 - **A.** Chỉ tiếng Việt
 - **B.** Chỉ tiếng Anh
-- **C.** Tiếng Việt hoặc tiếng Anh
+- **C.** <u>Tiếng Việt hoặc tiếng Anh</u>
 - **D.** Bắt buộc cả tiếng Việt và tiếng Anh
 
 > ✅ **Đáp án: C**
@@ -197,11 +207,11 @@
 ---
 ### Câu 015
 
-**Điều kiện để tổ chức đấu thầu quốc tế lựa chọn nhà thầu thực hiện gói thầu mua sắm hàng hóa là gì?**
+**Điều kiện để t<u>ổ chức đấu thầu quốc tế</u> lựa chọn nhà thầu thực hiện gói thầu <u>mua sắm hàng hóa</u> là gì?**
 
 - **A.** Gói thầu mua sắm hàng hóa thông dụng, đơn giản, có sẵn trên thị trường
 - **B.** Gói thầu mua sắm hàng hóa mà hàng hóa đó trong nước sản xuất được và đáp ứng các yêu cầu về kỹ thuật, chất lượng, giá nhưng chủ đầu tư yêu cầu phải mua hàng hóa nhập khẩu
-- **C.** Gói thầu mua sắm hàng hóa mà hàng hóa đó trong nước không sản xuất được hoặc sản xuất được nhưng không đáp ứng một trong các yêu cầu về kỹ thuật, chất lượng, giá
+- **C.** Gói thầu mua sắm hàng hóa mà hàng hóa đó <u>trong nước không sản xuất được hoặc sản xuất được</u> nhưng không đáp ứng một trong các yêu cầu về kỹ thuật, chất lượng, giá
 - **D.** Gói thầu mua sắm hàng hóa thông dụng đã được nhập khẩu và chào bán tại Việt Nam nhưng hàng hóa đó trong nước không sản xuất được
 
 > ✅ **Đáp án: C**
@@ -211,11 +221,11 @@
 ---
 ### Câu 016
 
-**Trong trường hợp hủy thầu, toàn bộ hồ sơ liên quan đến quá trình lựa chọn nhà thầu của gói thầu đó có cần phải lưu trữ không?**
+**Trong trường hợp <u>hủy thầu</u>, toàn bộ hồ sơ liên quan đến quá trình lựa chọn nhà thầu của gói thầu đó có cần phải lưu trữ không?**
 
 - **A.** Không cần lưu trữ, hủy hồ sơ ngay sau khi quyết định hủy thầu được ban hành nhưng phải đảm bảo thông tin không bị tiết lộ
 - **B.** Không cần lưu trữ, trả lại hồ sơ cho nhà thầu theo nguyên trạng ngay sau khi quyết định hủy thầu được ban hành
-- **C.** Có cần lưu trữ, trong thời hạn 05 năm kể từ ngày quyết định hủy thầu được ban hành
+- **C.** Có cần <u>lưu trữ, trong thời hạn 05 năm</u> kể từ ngày quyết định hủy thầu được ban hành
 - **D.** Có cần lưu trữ, trong thời hạn 03 năm kể từ ngày quyết định hủy thầu được ban hành
 
 > ✅ **Đáp án: C**
@@ -225,9 +235,9 @@
 ---
 ### Câu 017
 
-**Đối với đấu thầu rộng rãi quốc tế, trường hợp hồ sơ đề xuất về tài chính của nhà thầu không vượt qua bước đánh giá về kỹ thuật, nhà thầu từ chối nhận lại hồ sơ đề xuất của mình thì Chủ đầu tư phải xử lý như thế nào?**
+**Đối với đấu thầu rộng rãi quốc tế, trường hợp hồ sơ đề xuất về tài chính của nhà thầu <u>không vượt qua bước đánh giá về kỹ thuật,</u> nhà thầu <u>từ chối nhận lại</u> hồ sơ đề xuất của mình thì Chủ đầu tư phải xử lý như thế nào?**
 
-- **A.** Chủ đầu tư xem xét, quyết định việc hủy hồ sơ nhưng phải đảm bảo thông tin không bị tiết lộ
+- **A.** Chủ đầu tư xem xét, quyết định việc <u>hủy hồ sơ nhưng phải đảm bảo thông tin không bị tiết lộ</u>
 - **B.** Chủ đầu tư phải lưu trữ theo quy định của pháp luật về lưu trữ
 - **C.** Chủ đầu tư lưu trữ tối thiểu 05 năm
 - **D.** Tất cả các phương án trên đều sai
@@ -239,11 +249,11 @@
 ---
 ### Câu 018
 
-**Hồ sơ hoàn công và quyết toán của gói thầu được lưu trữ theo quy định nào?**
+**Hồ sơ hoàn công và quyết toán của gói thầu được <u>lưu trữ</u> theo quy định nào?**
 
 - **A.** Quy định nội bộ của nhà thầu
 - **B.** Quy định của tư vấn giám sát
-- **C.** Quy định của pháp luật về lưu trữ
+- **C.** Quy định của <u>pháp luật về lưu trữ</u>
 - **D.** Tất cả phương án trên đều sai
 
 > ✅ **Đáp án: C**
@@ -255,7 +265,7 @@
 
 - **A.** Khi gửi thư mời thương thảo
 - **B.** Khi kết thúc giai đoạn đánh giá kỹ thuật
-- **C.** Khi hoàn trả bảo đảm dự thầu của nhà thầu không được lựa chọn hoặc đăng tải kết quả lựa chọn nhà thầu
+- **C.** Khi <u>hoàn trả</u> bảo đảm dự thầu của nhà thầu không được lựa chọn hoặc đăng tải kết quả lựa chọn nhà thầu
 - **D.** Khi ký hợp đồng
 
 > ✅ **Đáp án: C**
@@ -265,9 +275,9 @@
 ---
 ### Câu 020
 
-**Đối với đấu thầu quốc tế, hồ sơ mời thầu được phát hành như thế nào?**
+**Đối với <u>đấu thầu quốc tế</u>, hồ sơ mời thầu được phát hành như thế nào?**
 
-- **A.** Hồ sơ mời thầu được phát hành trên Hệ thống mạng đấu thầu quốc gia; Nhà thầu nộp tiền mua bản điện tử hồ sơ mời thầu khi nộp hồ sơ dự thầu
+- **A.** Hồ sơ mời thầu được phát hành trên <u>Hệ thống mạng đấu thầu quốc gia;</u> Nhà thầu nộp tiền mua bản điện tử hồ sơ mời thầu khi nộp hồ sơ dự thầu
 - **B.** Hồ sơ mời thầu được bán vào giờ hành chính từ thứ 2 tới thứ 6 tại địa chỉ do Chủ đầu tư quy định
 - **C.** Phương án A và B đều đúng
 - **D.** Phương án A và B đều sai
@@ -277,23 +287,28 @@
 ---
 ### Câu 021
 
-**Đối với gói thầu sử dụng vốn ngân sách nhà nước, tiền bán bản điện tử hồ sơ mời thầu, hồ sơ yêu cầu sẽ được xử lý như thế nào?**
+**Đối với gói thầu sử dụng vốn <u>ngân sách nhà nước</u>, tiền bán bản điện tử hồ sơ mời thầu, hồ sơ yêu cầu sẽ được xử lý như thế nào?**
 
 - **A.** Sử dụng theo quy chế tài chính của chủ đầu tư
-- **B.** Nộp vào ngân sách nhà nước theo quy định của Luật Ngân sách nhà nước
+
+- **B.** <u>Nộp vào ngân sách</u> nhà nước theo quy định của Luật Ngân sách nhà nước
+
 - **C.** Sử dụng theo cơ chế khoán chi
+
 - **D.** Tất cả các phương án trên đều sai
+
+  (Mẹo: tiền nhà nước, trả cho nhà nước)
 
 > ✅ **Đáp án: B**
 
 ---
 ### Câu 022
 
-**Chi phí đăng tải quyết định phê duyệt kế hoạch lựa chọn nhà thầu và quyết định phê duyệt kết quả lựa chọn nhà thầu trên Hệ thống mạng đấu thầu quốc gia đối với gói thầu chỉ định thầu là bao nhiêu?**
+**<u>Chi phí đăng tải quyết định phê duyệt kế hoạch lựa chọn nhà thầu và quyết định phê duyệt kết quả lựa chọn nhà</u> thầu trên Hệ thống mạng đấu thầu quốc gia đối với gói thầu chỉ định thầu là bao nhiêu?**
 
 - **A.** 220.000 đồng/1 gói thầu (đã bao gồm thuế giá trị gia tăng)
 - **B.** 330.000 đồng/1 gói thầu (đã bao gồm thuế giá trị gia tăng)
-- **C.** Miễn phí
+- <u>**C.** Miễn phí</u>
 - **D.** 110.000 đồng/1 gói thầu (đã bao gồm thuế giá trị gia tăng)
 
 > ✅ **Đáp án: C**
@@ -305,7 +320,7 @@
 
 - **A.** 01 năm công tác thuộc một trong các lĩnh vực liên quan đến nội dung pháp lý, kỹ thuật, tài chính của gói thầu
 - **B.** 02 năm công tác thuộc một trong các lĩnh vực liên quan đến nội dung pháp lý, kỹ thuật, tài chính của gói thầu
-- **C.** 03 năm công tác thuộc một trong các lĩnh vực liên quan đến nội dung pháp lý, kỹ thuật, tài chính của gói thầu
+- **C.** <u>03 năm công tác thuộc một trong các lĩnh vực liên quan</u> đến nội dung pháp lý, kỹ thuật, tài chính của gói thầu
 - **D.** Không có quy định về số năm kinh nghiệm
 
 > ✅ **Đáp án: C**
@@ -317,7 +332,7 @@
 
 - **A.** Phải lựa chọn nhà thầu theo quy định của Luật Đấu thầu
 - **B.** Căn cứ vào hợp đồng quy định giữa đơn vị A và UBND tỉnh X
-- **C.** Đơn vị A được tự quyết định việc mua sắm trên cơ sở bảo đảm công khai, minh bạch, hiệu quả và trách nhiệm giải trình
+- **C.** Đơn vị A được <u>tự quyết định</u> việc mua sắm trên cơ sở bảo đảm công khai, minh bạch, hiệu quả và trách nhiệm giải trình
 - **D.** Căn cứ theo phân cấp quyết định mua sắm của UBND tỉnh X
 
 > ✅ **Đáp án: C**
@@ -329,7 +344,7 @@
 
 **Sở Y tế tỉnh A được doanh nghiệp trong nước tài trợ 5 tỷ đồng để mua sắm thuốc phục vụ khám chữa bệnh cho người nghèo, hỏi Sở Y tế có phải tổ chức đấu thầu thuốc theo quy định của Luật Đấu thầu không?**
 
-- **A.** Sở Y tế A được tự quyết định việc mua sắm trên cơ sở bảo đảm công khai, minh bạch, hiệu quả và trách nhiệm giải trình trong trường hợp nhà tài trợ yêu cầu không lựa chọn nhà thầu theo quy định của Luật Đấu thầu
+- **A.** Sở Y tế A được <u>tự quyết định việc mua sắm</u> trên cơ sở bảo đảm công khai, minh bạch, hiệu quả và trách nhiệm giải trình trong trường hợp <u>nhà tài trợ yêu cầu không lựa chọn nhà thầu theo quy định của Luật Đấu thầu</u>
 - **B.** Sở Y tế A phải tổ chức lựa chọn nhà thầu theo quy định của Luật Đấu thầu
 - **C.** Trong mọi trường hợp Sở Y tế A không phải thực hiện theo Luật Đấu thầu do đây là nguồn doanh nghiệp trong nước tài trợ
 - **D.** Phải xin ý kiến của UBND tỉnh A để có cơ sở xác định có phải tổ chức lựa chọn nhà thầu theo Luật Đấu thầu hay không
@@ -341,9 +356,9 @@
 
 ### Câu 026
 
-**Đối với gói thầu cung cấp dịch vụ tư vấn không qua mạng, trường hợp hồ sơ đề xuất về tài chính của nhà thầu không vượt qua bước đánh giá về kỹ thuật sẽ được xử lý như thế nào theo quy định của pháp luật về đấu thầu?**
+**Đối với gói thầu cung cấp dịch vụ <u>tư vấn không qua mạng,</u> trường hợp hồ sơ đề xuất về tài chính của nhà thầu không vượt qua bước đánh giá về kỹ thuật sẽ được xử lý như thế nào theo quy định của pháp luật về đấu thầu?**
 
-- **A.** Trả lại nguyên trạng cho nhà thầu trong thời hạn 10 ngày kể từ ngày ký hợp đồng với nhà thầu được lựa chọn
+- **A.** <u>Trả lại nguyên trạng cho nhà thầu trong thời hạn 10 ngày</u> kể từ ngày ký hợp đồng với nhà thầu được lựa chọn
 - **B.** Trả lại nguyên trạng cho nhà thầu trong thời hạn 05 ngày kể từ ngày ký hợp đồng với nhà thầu được lựa chọn
 - **C.** Trả lại nguyên trạng cho nhà thầu trong thời hạn 15 ngày kể từ ngày ký hợp đồng với nhà thầu được lựa chọn
 - **D.** Hồ sơ được lưu trữ theo quy định của Pháp luật về lưu trữ
@@ -353,11 +368,11 @@
 ---
 ### Câu 027
 
-**Việc giữ lại hồ sơ tài chính của nhà thầu không đạt kỹ thuật sau thời hạn quy định sẽ…?**
+**Việc <u>giữ lại hồ sơ tài chính</u> của nhà thầu không đạt kỹ thuật sau thời hạn quy định sẽ…?**
 
 - **A.** Là cơ sở để tiếp tục đánh giá trong trường hợp phải đánh giá lại
 - **B.** Bảo đảm trách nhiệm của chủ đầu tư theo quy định của pháp luật về đấu thầu
-- **C.** Có thể dẫn tới khiếu nại từ nhà thầu
+- **C.** Có thể dẫn tới <u>khiếu nại từ nhà thầu</u>
 - **D.** Phương án A và B đều đúng
 
 > ✅ **Đáp án: C**
@@ -370,9 +385,14 @@
 **Trường hợp nào sau đây Công ty B khi tham dự gói thầu xây lắp X thuộc Dự án Y được kết luận là đáp ứng về bảo đảm cạnh tranh trong đấu thầu?**
 
 - **A.** Công ty B sử dụng nhà thầu phụ là công ty A, công ty A là nhà thầu tư vấn lập Chương V yêu cầu kỹ thuật cho E-HSMT của gói thầu xây lắp X
+
 - **B.** Công ty B tham dự gói thầu xây lắp X đồng thời là nhà thầu tư vấn lập Chương V yêu cầu kỹ thuật của E-HSMT của gói thầu xây lắp X.
-- **C.** Công ty B sử dụng nhà thầu phụ là công ty tư vấn C, công ty tư vấn C sở hữu 30% cổ phần của công ty A và công ty A là nhà thầu tư vấn thiết kế kỹ thuật cho dự án Y
+
+- **C.** <u>Công ty B</u> sử dụng nhà thầu phụ là <u>công ty tư vấn C</u>, công ty tư vấn C sở hữu 30% cổ phần của công ty A và <u>công ty A</u> là nhà thầu tư vấn thiết kế kỹ thuật cho dự án Y
+
 - **D.** Công ty A là nhà thầu tư vấn lập hồ sơ mời thầu gói thầu xây lắp X có sở hữu 30% vốn góp của Công ty B
+
+  (mẹo: chọn câu có cả ABC)
 
 > ✅ **Đáp án: C**
 
@@ -381,9 +401,9 @@
 ---
 ### Câu 029
 
-**Chọn phương án đúng đối với nhà thầu phụ đặc biệt?**
+**Chọn phương án đúng đối với nhà <u>thầu phụ đặc biệt</u>?**
 
-- **A.** Đối với đấu thầu trong nước, khi tham gia gói thầu của dự án thuộc lĩnh vực khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số thì nhà thầu trong nước được sử dụng nhà thầu phụ đặc biệt là nhà thầu nước ngoài đối với phần công việc đặc thù mà nhà thầu trong nước chưa thực hiện được hoặc cần chuyển giao công nghệ
+- **A.** Đối với đấu thầu trong nước, khi tham gia gói thầu của dự án thuộc lĩnh vực <u>khoa học, công nghệ, đổi mới sáng tạo và chuyển đổi số</u> thì nhà thầu trong nước được sử dụng nhà thầu phụ đặc biệt là <u>nhà thầu nước ngoài</u> đối với phần công việc đặc thù mà nhà thầu <u>trong nước chưa thực hiện được hoặc cần chuyển giao công nghệ</u>
 - **B.** Trong mọi trường hợp, đối với đấu thầu trong nước, nhà thầu không được phép sử dụng nhà thầu phụ đặc biệt là nhà thầu nước ngoài
 - **C.** Giá trị công việc tối đa dành cho nhà thầu phụ trong hợp đồng phải bao gồm khối lượng công việc dành cho nhà thầu phụ đặc biệt
 - **D.** Phương án A và C đều đúng
@@ -395,9 +415,9 @@
 ---
 ### Câu 030
 
-**Đối với đấu thầu không qua mạng, việc phê duyệt và phát hành hồ sơ mời thầu được thực hiện theo phương án nào sau đây?**
+**Đối với đấu thầu <u>không qua mạng</u>, việc phê duyệt và phát hành hồ sơ mời thầu được thực hiện theo phương án nào sau đây?**
 
-- **A.** Phê duyệt và phát hành hồ sơ mời thầu trên Hệ thống mạng đấu thầu quốc gia
+- **A.** P<u>hê duyệt và phát hành hồ sơ mời thầu trên Hệ thống mạng đấu thầu quốc gia</u>
 - **B.** Phê duyệt trên Hệ thống mạng đấu thầu quốc gia và phát hành hồ sơ mời thầu bản giấy
 - **C.** Phê duyệt và phát hành hồ sơ mời thầu bản giấy
 - **D.** Các phương án trên đều đúng
