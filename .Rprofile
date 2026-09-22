@@ -750,7 +750,7 @@ gp <- function(msg = "update") {
     try(rstudioapi::executeCommand("saveAllSourceDocs"), silent = TRUE)
   }
   
-  full_msg <- paste0("[", get_git_branch(), "] ", trimws(msg))
+  full_msg <- paste0("[", get_git_branch(), "][mac] ", trimws(msg))
   
   system("git add -A")
   

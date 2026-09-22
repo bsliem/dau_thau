@@ -871,10 +871,10 @@
 ---
 ### Câu 060
 
-**Đối với gói thầu cung cấp dịch vụ tư vấn, phương pháp đánh giá nào không được áp dụng?**
+**Đối với gói thầu <u>cung cấp dịch vụ tư vấn</u>, phương pháp đánh giá nào <u>không</u> được áp dụng?**
 
 - **A.** Giá thấp nhất
-- **B.** Giá đánh giá
+- <u>**B.** Giá đánh giá</u>
 - **C.** Kết hợp giữa kỹ thuật và giá
 - **D.** Giá cố định
 
