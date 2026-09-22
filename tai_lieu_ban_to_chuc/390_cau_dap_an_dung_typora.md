@@ -486,22 +486,25 @@
 ---
 ### Câu 035
 
-**Phương án nào không phải là một trong các hình thức lựa chọn nhà thầu được phê duyệt trong kế hoạch lựa chọn nhà thầu?**
+**Phương án nào <u>không</u> phải là một trong các hình thức lựa chọn nhà thầu được phê duyệt trong kế hoạch lựa chọn nhà thầu?**
 
 - **A.** Đấu thầu rộng rãi
 - **B.** Đấu thầu hạn chế
 - **C.** Mua sắm trực tiếp
-- **D.** Đấu thầu qua mạng
+- **D.** <u>Đấu thầu qua mạng</u>
 
 > ✅ **Đáp án: D**
+>
+> 💡 **Ghi nhớ:** **“Qua mạng” không phải là một hình thức lựa chọn nhà thầu**, mà là **cách thức tổ chức lựa chọn nhà thầu trên Hệ thống mạng đấu thầu quốc gia**.
+>  Các hình thức gồm như **đấu thầu rộng rãi, đấu thầu hạn chế, mua sắm trực tiếp...** → nên **D**.
 
 ---
 ### Câu 036
 
-**Gói thầu lựa chọn tư vấn là tổ chức có giá gói thầu là 500 triệu đồng áp dụng hình thức lựa chọn nhà thầu nào?**
+**Gói thầu lựa <u>chọn tư vấn</u> là tổ chức có giá gói thầu là <u>500 triệu</u> đồng áp dụng hình thức lựa chọn nhà thầu nào?**
 
 - **A.** Bắt buộc áp dụng hình thức chỉ định thầu
-- **B.** Được áp dụng hình thức chỉ định thầu hoặc đấu thầu rộng rãi
+- **B.** Được áp dụng hình thức <u>chỉ định thầu hoặc đấu thầu rộng rãi</u>
 - **C.** Được áp dụng hình thức chào hàng cạnh tranh hoặc đấu thầu rộng rãi
 - **D.** Được áp dụng hình thức chỉ định thầu hoặc đấu thầu rộng rãi hoặc chào hàng cạnh tranh
 
@@ -512,9 +515,9 @@
 ---
 ### Câu 037
 
-**Chọn phương án đúng về hạn mức đối với đấu thầu rộng rãi?**
+**Chọn phương án đúng về <u>hạn mức đối với đấu thầu rộng rãi</u>?**
 
-- **A.** Không quy định hạn mức áp dụng
+- **A.** <u>Không quy định hạn mức áp dụng</u>
 - **B.** Giá gói thầu trên 20 tỷ đồng
 - **C.** Giá gói thầu trên 10 tỷ đồng
 - **D.** Giá gói thầu trên 20 tỷ đồng đối với xây lắp, hàng hoá; trên 10 tỷ đồng đối với gói thầu dịch vụ tư vấn, phi tư vấn
@@ -526,9 +529,9 @@
 ---
 ### Câu 038
 
-**Chọn phương án đúng về loại gói thầu đối với hình thức mua sắm trực tiếp?**
+**Chọn phương án đúng về <u>loại gói thầu</u> đối với hình thức <u>mua sắm trực tiếp</u>?**
 
-- **A.** Chỉ gói thầu mua sắm hàng hoá
+- **A.** Chỉ gói thầu <u>mua sắm hàng hoá</u>
 - **B.** Chỉ gói thầu xây lắp
 - **C.** Chỉ gói thầu dịch vụ phi tư vấn
 - **D.** Gói thầu mua sắm hàng hóa và dịch vụ phi tư vấn
@@ -538,12 +541,12 @@
 ---
 ### Câu 039
 
-**Phương án nào không phải là điều kiện để được áp dụng hình thức mua sắm trực tiếp?**
+**Phương án nào <u>không phải là điều kiện</u> để được áp dụng hình thức <u>mua sắm trực tiếp</u>?**
 
 - **A.** Nhà thầu đã trúng thầu thông qua đấu thầu rộng rãi, đấu thầu hạn chế và đã ký hợp đồng gói thầu thực hiện gói thầu trước đó
 - **B.** Thời gian từ khi ký hợp đồng gói thầu trước đến ngày phê duyệt kết quả mua sắm trực tiếp không quá 12 tháng
 - **C.** Đơn giá các phần việc thuộc gói thầu mua sắm trực tiếp không vượt đơn giá phần việc tương ứng của gói thầu đã ký trước đó thuộc gói thầu tương tự đã ký hợp đồng trước đó, đồng thời, phù hợp với giá thị trường tại thời điểm hoàn thiện hợp đồng
-- **D.** Chủ đầu tư được áp dụng mua sắm trực tiếp nhiều lần đối với các loại hàng hóa thuộc gói thầu
+- **D.** <u>Chủ đầu tư được áp dụng mua sắm trực tiếp nhiều lần đối với các loại hàng hóa thuộc gói thầu</u>
 
 > ✅ **Đáp án: D**
 
@@ -554,7 +557,7 @@
 
 **Hãy chọn phương án đúng về hình thức đặt hàng?**
 
-- **A.** Là một trong các hình thức lựa chọn nhà thầu
+- **A.** Là một trong các <u>hình thức lựa chọn nhà thầu</u>
 - **B.** Pháp luật quản lý ngành, lĩnh vực quy định về quy trình, thủ tục đặt hàng khác với quy trình, thủ tục của pháp luật về đấu thầu thì áp dụng quy định của pháp luật về đấu thầu.
 - **C.** Đặt hàng chỉ được áp dụng cho sản phẩm, dịch vụ công
 - **D.** Đặt hàng chỉ áp dụng đối với nguồn chi thường xuyên ngân sách nhà nước, không được áp dụng đối với nguồn vốn khác
@@ -566,9 +569,9 @@
 ---
 ### Câu 041
 
-**Kế hoạch lựa chọn nhà thầu của dự án thuộc đối tượng áp dụng của Luật Đấu thầu bắt buộc phải đăng tải ở đâu?**
+**Kế hoạch lựa chọn nhà thầu của dự án thuộc đối tượng áp dụng của Luật <u>Đấu thầu bắt buộc phải đăng tải ở đâu</u>?**
 
-- **A.** Hệ thống mạng đấu thầu quốc gia
+- **A.** <u>Hệ thống mạng đấu thầu quốc gia</u>
 - **B.** Báo Tài chính-Đầu tư
 - **C.** Cổng Thông tin điện tử của Bộ, ngành
 - **D.** Phương án A và B đều đúng
@@ -578,9 +581,9 @@
 ---
 ### Câu 042
 
-**Chậm nhất là bao nhiêu ngày thì kế hoạch lựa chọn nhà thầu phải được đăng tải trên Hệ thống mạng đấu thầu quốc gia?**
+**<u>Chậm nhất là bao nhiêu ngày</u> thì kế hoạch lựa chọn nhà thầu phải được đăng tải trên Hệ thống mạng đấu thầu quốc gia?**
 
-- **A.** 05 ngày làm việc kể từ ngày kế hoạch lựa chọn nhà thầu được ban hành
+- **A.** <u>05 ngày làm việc</u> kể từ ngày kế hoạch lựa chọn nhà thầu được ban hành
 - **B.** 07 ngày kể từ ngày kế hoạch lựa chọn nhà thầu được ban hành
 - **C.** 07 ngày làm việc kể từ ngày kế hoạch lựa chọn nhà thầu được ban hành
 - **D.** 10 ngày kể từ ngày kế hoạch lựa chọn nhà thầu được ban hành
@@ -594,33 +597,39 @@
 
 **Kế hoạch lựa chọn nhà thầu bao gồm nội dung nào sau đây?**
 
-- **A.** Giá gói thầu
+- **A.** <u>Giá gói thầu</u>
 - **B.** Thời gian thực hiện hợp đồng
 - **C.** Giám sát hoạt động đấu thầu
 - **D.** Cả 3 phương án trên đều đúng
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** không liên quan tới hợp đồng
+> 💡 **Ghi nhớ:** không liên quan tới hợp đồng, hợp đồng phải sau khi trúng thầu
 
 ---
 ### Câu 044
 
-**Đối với nội dung mua sắm hàng hóa có giá không quá 50 triệu đồng thì được thực hiện như thế nào?**
+**Đối với nội dung mua sắm hàng hóa có giá <u>không quá 50 triệu đồng</u> thì được thực hiện như thế nào?**
 
 - **A.** Không phải lập kế hoạch lựa chọn nhà thầu nhưng phải thực hiện mua sắm trên cơ sở tiết kiệm, hiệu quả, bảo đảm đầy đủ hoá đơn, chứng từ
 - **B.** Không phải lập kế hoạch lựa chọn nhà thầu nhưng phải thực hiện mua sắm theo giá công khai, giá niêm yết và không cần hoá đơn, chứng từ
-- **C.** Được hình thành gói thầu để thực hiện lựa chọn nhà thầu theo một trong hình thức lựa chọn nhà thầu (đấu thầu rộng rãi, chào hàng cạnh tranh, chỉ định thầu) nhưng phải lập kế hoạch lựa chọn nhà thầu
+- **C.** Được hình thành gói thầu để thực hiện lựa chọn nhà thầu theo một trong hình thức lựa chọn nhà thầu (đấu thầu rộng rãi, chào hàng cạnh tranh, chỉ định thầu) nhưng phải <u>lập kế hoạch</u> lựa chọn nhà thầu
 - **D.** Phương án A và C đều đúng
 
 > ✅ **Đáp án: D**
 
 > 💡 **Ghi nhớ:** thủ trưởng quyết định trên hóa đơn hợp lệ, phải có kế hoạch
+>
+> 💡 **Ghi nhớ:** Mua hàng **≤ 50 triệu** có 2 cách:
+>  **(1)** Mua trực tiếp, bảo đảm **tiết kiệm + đủ hóa đơn chứng từ**; hoặc **(2)** gom thành gói thầu và **lập KHLCNT** để lựa chọn nhà thầu.
+>  🏥 *Ví dụ BV 30-4:* mua vật tư nhỏ **40 triệu** có thể mua trực tiếp có hóa đơn hợp lệ; nếu đưa thành gói thầu thì phải lập kế hoạch.
+>
+> 
 
 ---
 ### Câu 045
 
-**Lựa chọn phương án phù hợp nhất đối với nội dung đền bù giải phóng mặt bằng khi lập kế hoạch lựa chọn nhà thầu?**
+**Lựa chọn phương án phù hợp nhất đối với nội dung <u>đền bù giải phóng mặt bằng khi lập kế hoạch lựa chọn nhà thầu</u>?**
 
 - **A.** Tất cả nội dung công việc có liên quan đến giải phóng mặt bằng thuộc phần công việc không áp dụng một trong các hình thức lựa chọn nhà thầu
 - **B.** Đối với các công việc mà Hội đồng đền bù giải phóng mặt bằng tự làm (ví dụ: tổ chức họp với người sử dụng đất, chủ sở hữu tài sản; trình duyệt, công khai phương án bồi thường, bàn giao chi phí bồi thường..,) thì thuộc phần không áp dụng một trong các hình thức lựa chọn nhà thầu
@@ -634,10 +643,10 @@
 ---
 ### Câu 046
 
-**Đối với các gói thầu đã thanh lý hợp đồng, khi lập tờ trình Kế hoạch lựa chọn nhà thầu, giá trị phần công việc đã thực hiện của các gói thầu này được tính như thế nào?**
+**Đối với các gói thầu đã <u>thanh lý</u> hợp đồng, khi lập tờ trình Kế hoạch lựa chọn nhà thầu, giá trị phần công việc đã thực hiện của các gói thầu này được tính như thế nào?**
 
 - **A.** Giá gói thầu
-- **B.** Giá trị thanh lý hợp đồng
+- **B.** Giá trị <u>thanh lý</u> hợp đồng
 - **C.** Giá hợp đồng
 - **D.** Tất cả phương án đều đúng
 
@@ -658,6 +667,32 @@
 > ✅ **Đáp án: A**
 
 > 💡 **Ghi nhớ:** 9 trường hợp về tư cách hợp lệ, trong đó có đảm bảo cạnh tranh
+>
+> ### Câu 047
+>
+> **Bảo đảm cạnh tranh trong đấu thầu thuộc nội dung đánh giá về?**
+>
+> - **A.** Tư cách hợp lệ
+> - **B.** Năng lực, kinh nghiệm
+> - **C.** Kỹ thuật
+> - **D.** Tài chính
+>
+> > ✅ **Đáp án: A**
+>
+> > 💡 **Ghi nhớ:** 9 trường hợp về tư cách hợp lệ, trong đó có đảm bảo cạnh tranh
+> >
+> > ### Câu 047
+> >
+> > **Bảo đảm cạnh tranh trong đấu thầu thuộc nội dung đánh giá về?**
+> >
+> > - **A.** Tư cách hợp lệ
+> > - **B.** Năng lực, kinh nghiệm
+> > - **C.** Kỹ thuật
+> > - **D.** Tài chính
+> >
+> > > ✅ **Đáp án: A**
+> >
+> > > 💡 **Ghi nhớ:** 9 trường hợp về tư cách hợp lệ, trong đó có đảm bảo cạnh tranh
 
 ---
 ### Câu 048
@@ -672,20 +707,25 @@
 > ✅ **Đáp án: A**
 
 > 💡 **Ghi nhớ:** ông đi dự thầu (đi thi) phải độc lập với ông lập hồ sơ (ra đề
+>
+> Mẹo nhớ: **“Có được đứng vào cuộc chơi hay không” = tư cách hợp lệ** → trong đó có yêu cầu **bảo đảm cạnh tranh**.
 
 ---
 ### Câu 049
 
-**Nhận định nào sau đây không phù hợp với quy định về bảo đảm cạnh tranh trong đấu thầu?**
+**Nhận định nào sau đây <u>không phù hợp</u> với quy định về <u>bảo đảm cạnh tranh</u> trong đấu thầu?**
 
 - **A.** Nhà thầu tham dự thầu phải độc lập với chủ đầu tư, trừ trường hợp: nhà thầu là đơn vị sự nghiệp công lập thuộc cơ quan quản lý nhà nước có chức năng, nhiệm vụ được giao phù hợp với tính chất gói thầu của cơ quan quản lý nhà nước đó; đơn vị sự nghiệp công lập và doanh nghiệp có cùng một cơ quan trực tiếp quản lý, góp vốn; các đơn vị sự nghiệp công lập có cùng một cơ quan trực tiếp quản lý
 - **B.** Nhà thầu tham dự thầu phải độc lập với nhà thầu tư vấn quản lý dự án, tư vấn giám sát
 - **C.** Nhà thầu tham dự thầu phải độc lập với nhà thầu tư vấn lập, thẩm tra, thẩm định hồ sơ thiết kế, dự toán
-- **D.** Nhà thầu thực hiện hợp đồng phải độc lập với nhà thầu tư vấn lập kế hoạch lựa chọn nhà thầu.
+- **D.** <u>Nhà thầu thực hiện hợp đồng phải độc lập với nhà thầu tư vấn lập kế hoạch lựa chọn nhà thầu.</u>
 
 > ✅ **Đáp án: D**
 
-> 💡 **Ghi nhớ:** (tìm nội dung sai vì Nhà thầu thực hiện hợp đồng phải độc lập chỉ độc lập với nhà giám sát thực hiện hợp đồng) (bẫy -> tìm sai) nội dung sai nhưng đáp ứng đúng
+> 💡 **Ghi nhớ:** (tìm <u>nội dung sai</u> vì Nhà thầu thực hiện hợp đồng phải độc lập chỉ độc lập với nhà giám sát thực hiện hợp đồng) (bẫy -> tìm sai) nội dung sai nhưng đáp ứng đúng
+>
+> 🏥 **Ví dụ BV 30-4:** Bệnh viện thuê **Công ty A** thực hiện gói sửa chữa. Công ty A **không bắt buộc phải độc lập với đơn vị đã lập KHLCNT**, nhưng phải **độc lập với đơn vị tư vấn giám sát việc thực hiện hợp đồng**.
+>  → **D là nội dung sai**, nên câu hỏi hỏi **“không phù hợp”** thì chọn **D**.
 
 ---
 ### Câu 050
