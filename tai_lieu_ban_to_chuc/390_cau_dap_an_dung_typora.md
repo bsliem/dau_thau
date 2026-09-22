@@ -1163,9 +1163,9 @@
 ---
 ### Câu 077
 
-**Đối với gói thầu áp dụng chào hàng cạnh tranh, việc đánh giá về kỹ thuật thực hiện theo phương án nào sau đây?**
+**Đối với gói thầu áp dụng <u>chào hàng cạnh tranh</u>, việc đ<u>ánh giá về kỹ thuật</u> thực hiện theo phương án nào sau đây?**
 
-- **A.** Phải sử dụng phương pháp đánh giá “đạt”, “không đạt”
+- **A.** Phải sử dụng <u>phương pháp đánh giá “đạt”, “không đạt”</u>
 - **B.** Phải sử dụng phương pháp chấm điểm
 - **C.** Được sử dụng một trong hai phương pháp “đạt”, “không đạt” hoặc chấm điểm
 - **D.** Chỉ cần yêu cầu nhà thầu cam kết đáp ứng yêu cầu về kỹ thuật
@@ -1175,54 +1175,74 @@
 ---
 ### Câu 078
 
-**Chủ đầu tư dự kiến mua sắm hàng hóa (không phải mua sắm tập trung hoặc mua sắm hàng hóa có số lượng, khối lượng mời thầu lớn) như sau: Hàng hóa A có mã HS là 9035, giá trị dự toán là 4.000.000.000 đồng Hàng hóa B có mã HS là 9035, giá trị dự toán là 6.000.000.000 E-HSMT yêu cầu về kinh nghiệm thực hiện hợp đồng cung cấp hàng hóa tương tự trong trường hợp nào sau đây là phù hợp?**
+**Chủ đầu tư dự kiến mua sắm hàng hóa (không phải mua sắm tập trung hoặc mua sắm hàng hóa có số lượng, khối lượng mời thầu lớn) như sau: Hàng hóa A có mã HS là 9035, giá trị dự toán là <u>4.000.000.000 đồng</u> Hàng hóa B có mã HS là 9035, giá trị dự toán là <u>6.000.000.000</u> E-HSMT y<u>êu cầu về kinh nghiệm thực hiện hợp đồng cung cấp hàng hóa tương tự</u> trong trường hợp nào sau đây là phù hợp?**
 
 - **A.** Cung cấp 01 hợp đồng có mã hàng hóa 9035 với giá trị tối thiểu 02 tỷ đồng
-- **B.** Cung cấp 01 hợp đồng có mã hàng hóa 9035 với giá trị tối thiểu 03 tỷ đồng
+- <u>**B.** Cung cấp 01 hợp đồng có mã hàng hóa 9035 với giá trị tối thiểu 03 tỷ đồng</u>
 - **C.** Cung cấp 01 hợp đồng có mã hàng hóa 9035 với giá trị tối thiểu 05 tỷ đồng
 - **D.** Cung cấp 01 hợp đồng có mã hàng hóa 9035 với giá trị tối thiểu 07 tỷ đồng
 
 > ✅ **Đáp án: B**
 
 > 💡 **Ghi nhớ:** A và B cùnng mã HS, chỉ cần hợp đồng 50% giá 6 tỉ
+>
+> - Hàng A: **4 tỷ**
+> - Hàng B: **6 tỷ**
+> - Cả hai **cùng mã HS 9035** → xem như cùng nhóm hàng hóa tương tự.
+> - Lấy **mặt hàng có giá trị lớn hơn là 6 tỷ** làm mốc.
+> - Hợp đồng tương tự tối thiểu = **50% × 6 tỷ = 3 tỷ**.
+>
+> → **Đáp án B.**
+>
+> 💡 **Mẹo nhớ:** **Cùng mã HS → lấy hàng lớn nhất × 50%.**
 
 ---
 ### Câu 079
 
-**Gói thầu mua sắm hàng hóa có khối lượng, số lượng công việc căn cứ nhu cầu theo các năm và thời gian thực hiện gói thầu là 02 năm thì E-HSMT quy định về giá trị của hợp đồng tương tự như thế nào?**
+**Gói thầu <u>mua sắm hàng hóa</u> có khối lượng, số lượng công việc căn cứ nhu cầu theo các năm và thời gian <u>thực hiện gói thầu là 02 năm</u> thì E-HSMT quy định về giá trị của hợp đồng tương tự như thế nào?**
 
 - **A.** Có giá trị bằng 50% giá gói thầu
 - **B.** Có giá trị bằng 70% giá gói thầu
-- **C.** Có giá trị bằng 50% giá trị theo chu kỳ 01 năm của gói thầu
+- <u>**C.** Có giá trị bằng 50% giá trị theo chu kỳ 01 năm của gói thầu</u>
 - **D.** Có giá trị tối thiểu bằng 50% giá gói thầu
 
-> ✅ **Đáp án: C**
+> ✅ **Đáp án: C*
 
-> 💡 **Ghi nhớ:** =50% giá trị chu kỳ 1 năm
+> Gói thầu kéo dài **2 năm** và nhu cầu mua hàng **lặp lại theo từng năm**, nên khi xét hợp đồng tương tự không lấy cả giá trị 2 năm để so.
+>
+> Chỉ lấy **giá trị của 1 năm**, rồi tính **50%**.
+>
+> Ví dụ: gói thầu 2 năm trị giá **10 tỷ** → mỗi năm khoảng **5 tỷ** → hợp đồng tương tự tối thiểu = **50% × 5 tỷ = 2,5 tỷ**.
+>
+> → **Đáp án C.**
+>
+> 💡 **Mẹo nhớ:** **Gói nhiều năm, mua lặp lại → quy về 1 năm → lấy 50%.**
 
 ---
 ### Câu 080
 
-**Nội dung nào không phù hợp với quy định về nhà thầu phụ đối với gói thầu mua sắm hàng hóa?**
+**Nội dung nào <u>không phù hợp</u> với quy định về nhà thầu phụ đối với gói thầu mua sắm hàng hóa?**
 
-- **A.** Chủ đầu tư phải ghi tỷ lệ % giá trị dành cho nhà thầu phụ trong E-BDL làm cơ sở để nhà thầu lập E-HSDT
+- <u>**A.** Chủ đầu tư phải ghi tỷ lệ % giá trị dành cho nhà thầu phụ trong E-BDL làm cơ sở để nhà thầu lập E-HSDT</u>
 - **B.** Năng lực và kinh nghiệm của nhà thầu phụ sẽ không được xem xét khi đánh giá E-HSDT của nhà thầu
 - **C.** Nhà thầu được ký kết hợp đồng với các nhà thầu phụ trong danh sách các nhà thầu phụ nêu trong E-HSDT
 - **D.** Nhà thầu được ký kết hợp đồng với các nhà thầu phụ được chủ đầu tư chấp thuận để tham gia thực hiện cung cấp dịch vụ liên quan
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** (dv liên quan như đóng gói, lắp đặt, không tỷ lệ % giá trị) Chọn câu không đúng
+> Ví dụ BV 30-4 mua máy xét nghiệm: nhà thầu chính có thể thuê đơn vị khác **vận chuyển hoặc lắp đặt**, nhưng bệnh viện không cần ghi trước kiểu “nhà thầu phụ được làm tối đa 20% giá trị gói thầu”
+>
+> 💡 **Mẹo nhớ:** **Hàng hóa → nhà thầu phụ chủ yếu làm dịch vụ liên quan → không ấn định % giá trị trong E-BDL.**
 
 ---
 ### Câu 081
 
-**Trong quá trình đánh giá hồ sơ dự thầu gói thầu áp dụng đấu thầu rộng rãi, chủ đầu tư phát hiện người đại diện theo pháp luật của 02 nhà thầu tham dự thầu là anh em ruột thì xem xét, đánh giá như thế nào?**
+**Trong quá trình đánh giá hồ sơ dự thầu <u>gói thầu áp dụng đấu thầu rộng rãi</u>, chủ đầu tư phát hiện người đại diện theo pháp luật của <u>02 nhà thầu tham dự thầu là anh em ruột</u> thì xem xét, đánh giá như thế nào?**
 
 - **A.** Thuộc hành vi bị cấm trong đấu thầu
 - **B.** Không đáp ứng yêu cầu về bảo đảm cạnh tranh trong đấu thầu
 - **C.** Hồ sơ dự thầu của một trong hai nhà thầu không được xem xét
-- **D.** Không thuộc hành vi bị cấm, không vi phạm quy định về bảo đảm cạnh tranh trong đấu thầu
+- **D.** <u>Không thuộc hành vi bị cấm, không vi phạm quy định về bảo đảm cạnh tranh trong đấu thầu</u>
 
 > ✅ **Đáp án: D**
 
@@ -1231,11 +1251,11 @@
 ---
 ### Câu 082
 
-**Việc đánh giá nhà thầu đang trong thời gian bị cấm tham dự thầu thuộc nội dung đánh giá về?**
+**Việc đánh giá <u>nhà thầu đang trong thời gian bị cấm</u> tham dự thầu thuộc nội dung đánh giá về?**
 
 - **A.** Kỹ thuật
 - **B.** Tài chính
-- **C.** Tư cách hợp lệ
+- <u>**C.** Tư cách hợp lệ</u>
 - **D.** Năng lực, kinh nghiệm
 
 > ✅ **Đáp án: C**
@@ -1243,7 +1263,7 @@
 ---
 ### Câu 083
 
-**Khi đánh giá về năng lực kinh nghiệm đối với gói thầu mua sắm hàng hóa áp dụng đấu thầu rộng rãi, nhà thầu được đánh giá là đạt khi nào?**
+**Khi đánh giá về năng lực kinh nghiệm đối với gói thầu mua sắm hàng hóa áp dụng đấu thầu rộng rãi, nhà thầu được đánh giá là <u>đạt</u> khi nào?**
 
 - **A.** Nhà thầu được đánh giá đạt tất cả tiêu chuẩn đánh giá về năng lực và kinh nghiệm trong hồ sơ mời thầu
 - **B.** Nhà thầu đáp ứng một trong các tiêu chuẩn đánh giá về năng lực và kinh nghiệm trong hồ sơ mời thầu
@@ -1255,7 +1275,7 @@
 ---
 ### Câu 084
 
-**Việc đánh giá về nhân sự chủ chốt và thiết bị chủ yếu đối với gói thầu xây lắp tổ chức đấu thầu rộng rãi được thực hiện như thế nào?**
+**Việc đánh giá về <u>nhân sự chủ chốt và thiết bị chủ yếu đối</u> với gói thầu xây lắp tổ chức đấu thầu rộng rãi được thực hiện như thế nào?**
 
 - **A.** Đánh giá đối với tất cả các nhà thầu tham dự thầu
 - **B.** Đánh giá đối với nhà thầu xếp thứ nhất
@@ -1269,68 +1289,104 @@
 ---
 ### Câu 085
 
-**Đối với gói thầu mua sắm hàng hóa áp dụng hình thức chào hàng cạnh tranh, trường hợp hồ sơ mời thầu không yêu cầu về năng lực, kinh nghiệm thì việc đánh giá được thực hiện như thế nào?**
+**Đối với gói thầu <u>mua sắm hàng hóa áp</u> dụng hình thức <u>chào hàng cạnh tranh</u>, trường hợp <u>hồ sơ mời thầu không yêu cầu về năng lực, kinh nghiệm</u> thì việc đánh giá được thực hiện như thế nào?**
 
-- **A.** Không phải đánh giá về năng lực, kinh nghiệm nhưng nhà thầu phải cam kết đáp ứng năng lực, kinh nghiệm trong đơn dự thầu
+- **A.** <u>Không phải đánh giá về năng lực, kinh nghiệm nhưng nhà thầu phải cam kết đáp ứng năng lực, kinh nghiệm trong đơn dự thầu</u>
 - **B.** Trường hợp nhà thầu đính kèm tài liệu về năng lực, kinh nghiệm thì chủ đầu tư bắt buộc phải đánh giá về năng lực, kinh nghiệm của nhà thầu
 - **C.** Bắt buộc phải đánh giá năng lực, kinh nghiệm của nhà thầu
 - **D.** Phương án A và B đều đúng
 
 > ✅ **Đáp án: A**
-
-> 💡 **Ghi nhớ:** Xây dựng với cần đánh giá năng lực kinh nghiệm
+>
+> Ví dụ BV 30-4 chào hàng cạnh tranh mua một lô **máy in**. Hồ sơ mời thầu không yêu cầu nhà thầu phải chứng minh đã từng bán bao nhiêu máy in trước đây → bệnh viện **không cần đi kiểm tra hợp đồng tương tự hay doanh thu**.
+>
+> → **Đáp án A.**
+>
+> 💡 **Mẹo nhớ:** **Không yêu cầu thì không chấm — chỉ cần cam kết.**
+>  Còn **xây lắp** thì thường chú ý hơn đến **năng lực và kinh nghiệm**.
 
 ---
 ### Câu 086
 
-**Đối với gói thầu xây lắp tổ chức đấu thầu rộng rãi, có bắt buộc quy định việc đánh giá đối với yêu cầu về nguồn lực tài chính trong hồ sơ mời thầu phải bằng cam kết tín dụng không?**
+**Đối với gói thầu <u>xây lắp tổ chức đấu thầu rộng rãi,</u> có bắt buộc quy định việc đánh giá đối với yêu cầu về nguồn lực tài chính trong hồ sơ mời thầu phải bằng cam kết tín dụng không?**
 
 - **A.** Bắt buộc quy định trong hồ sơ mời thầu do đây là tiêu chí chứng minh nguồn lực tài chính
-- **B.** Không bắt buộc quy định, hồ sơ mời thầu có thể đưa ra yêu cầu về cam kết cung cấp tín dụng hoặc không yêu cầu về cam kết cung cấp tín dụng
+- <u>**B.** Không bắt buộc quy định, hồ sơ mời thầu có thể đưa ra yêu cầu về cam kết cung cấp tín dụng hoặc không yêu cầu về cam kết cung cấp tín dụng</u>
 - **C.** Bắt buộc quy định trong hồ sơ mời thầu đối với gói thầu xây lắp áp dụng phương thức một giai đoạn hai túi hồ sơ
 - **D.** Bắt buộc quy định trong hồ sơ mời thầu đối với gói thầu có giá trên 20 tỷ đồng
 
 > ✅ **Đáp án: B**
+>
+> í dụ BV 30-4 xây một khối nhà mới: nhà thầu có thể chứng minh mình có đủ nguồn lực tài chính; **không nhất thiết lúc nào cũng phải có giấy ngân hàng cam kết cho vay*
+>
+> 💡 **Mẹo nhớ:** **Có tiền là chính, không bắt buộc phải “mượn giấy ngân hàng” → B.**
 
 ---
 ### Câu 087
 
-**Đối với gói thầu chia thành 2 phần (phần 1: mua sắm máy tính; phần 2: mua sắm bàn ghế cho cán bộ công chức), áp dụng phương pháp giá thấp nhất (máy tính và bàn ghế là hàng hóa thuộc danh mục do Chính phủ, Thủ tướng Chính phủ quy định tiêu chuẩn, định mức), việc xét duyệt trúng thầu trong trường hợp này được thực hiện như thế nào?**
+**Đối với gói thầu chia thành 2 phần (phần 1: mua sắm máy tính; phần 2: mua sắm bàn ghế cho cán bộ công chức), áp dụng phương pháp <u>giá thấp nhấ</u>t (máy tính và bàn ghế là hàng hóa thuộc danh mục do Chính phủ, Thủ tướng Chính phủ quy định tiêu chuẩn, định mức), việc xét duyệt trúng thầu trong trường hợp này được thực hiện như thế nào?**
 
-- **A.** Giá đề nghị trúng thầu của từng hàng hóa đảm bảo không vượt mức giá của từng hàng hóa đó theo tiêu chuẩn, định mức do cấp có thẩm quyền ban hành và tổng giá đề nghị trúng thầu của gói thầu là thấp nhất, không vượt giá gói thầu được duyệt
+- <u>**A.** Giá đề nghị trúng thầu của từng hàng hóa đảm bảo không vượt mức giá của từng hàng hóa đó theo tiêu chuẩn, định mức do cấp có thẩm quyền ban hành và tổng giá đề nghị trúng thầu của gói thầu là thấp nhất, không vượt giá gói thầu được duyệt</u>
 - **B.** Tổng giá đề nghị trúng thầu của gói thầu là thấp nhất và không vượt giá gói thầu được duyệt mà không so sánh với ước tính chi phí của từng phần, không cần so sánh với tiêu chuẩn, định mức từng mặt hàng
 - **C.** Giá từng phần thấp nhất, tổng giá đề nghị trúng thầu không vượt giá gói thầu được duyệt, không cần so sánh với tiêu chuẩn, định mức từng mặt hàng
 - **D.** Tất cả phương án trên đều sai
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** (đã có định mức như bàn bao nhiêu tiềnm to cỡ nào) – luật quy định
+> Máy tính và bàn ghế là hàng hóa **đã có tiêu chuẩn, định mức do Nhà nước quy định**, nên dù nhà thầu chào giá tổng cộng rất rẻ, **từng mặt hàng cũng không được vượt “trần” định mức**.
+>
+> Ví dụ: quy định một bộ máy tính tối đa **20 triệu** thì nhà thầu không thể chào **25 triệu/máy**, rồi lấy giá bàn ghế rẻ hơn để bù vào tổng giá.
+>
+> Vì vậy phải đồng thời:
+>  **từng hàng hóa ≤ định mức** + **tổng giá thấp nhất** + **tổng giá ≤ giá gói thầu**.
+>
+> → **Đáp án A.**
+>
+> 💡 **Mẹo nhớ:** **Có định mức Nhà nước → kiểm tra từng món, không chỉ nhìn tổng tiền.**
 
 ---
 ### Câu 088
 
-**Đối với gói thầu xây lắp áp dụng đấu thầu rộng rãi qua mạng, trường hợp E-HSMT quy định nhà thầu phải cung cấp đầy đủ các tài liệu: giấy đăng ký thiết bị, hợp đồng, hóa đơn mua hàng, giấy đăng kiểm, kiểm định theo quy định của pháp luật để chứng minh khả năng huy động thiết bị thi công chủ yếu thì nhà thầu phải cung cấp những tài liệu nào?**
+**Đối với gói <u>thầu xây lắp áp dụng đấu thầu rộng rãi qua mạng</u>, trường hợp E-HSMT quy định nhà thầu phải cung cấp đầy đủ các tài liệu: giấy đăng ký thiết bị, hợp đồng, hóa đơn mua hàng, giấy đăng kiểm, kiểm định theo quy định của pháp luật để chứng minh khả năng huy động thiết bị thi công chủ yếu thì nhà thầu phải cung cấp những tài liệu nào?**
 
 - **A.** Phải cung cấp đầy đủ theo yêu cầu của E-HSMT gồm: giấy đăng ký thiết bị, hợp đồng, hóa đơn mua hàng, giấy đăng kiểm, kiểm định theo quy định của pháp luật
-- **B.** Chỉ cần cung cấp một trong các tài liệu: giấy đăng ký thiết bị, hợp đồng, hóa đơn mua hàng, giấy đăng kiểm, kiểm định theo quy định của pháp luật
+- <u>**B.** Chỉ cần cung cấp một trong các tài liệu: giấy đăng ký thiết bị, hợp đồng, hóa đơn mua hàng, giấy đăng kiểm, kiểm định theo quy định của pháp luật</u>
 - **C.** Phải bắt buộc cung cấp giấy đăng ký thiết bị kèm theo giấy đăng kiểm, kiểm định theo quy định của pháp luật
 - **D.** Phải bắt buộc cung cấp hợp đồng, hóa đơn mua hàng
 
 > ✅ **Đáp án: B**
+>
+> Mục đích là chứng minh **nhà thầu thực sự có hoặc huy động được thiết bị để thi công**, chứ không phải bắt nhà thầu nộp đủ mọi loại giấy tờ.
+>
+> Ví dụ BV 30-4 xây nhà mới, nhà thầu khai có **máy xúc**. Chỉ cần có **một tài liệu phù hợp** chứng minh quyền sở hữu hoặc khả năng huy động máy đó, như hợp đồng thuê, hóa đơn mua, giấy đăng ký thiết bị… là được xem xét.
+>
+> → **Đáp án B.**
+>
+> 💡 **Mẹo nhớ:** **Chứng minh thiết bị = chỉ cần 1 giấy tờ hợp lệ, không phải gom đủ cả bộ.**
 
 ---
 ### Câu 089
 
-**Danh sách xếp hạng nhà thầu có phải thẩm định trước khi phê duyệt hay không?**
+**<u>Danh sách xếp hạng nhà thầu có phải thẩm định</u> trước khi phê duyệt hay không?**
 
 - **A.** Phải thẩm định trong trường hợp có hơn 01 nhà thầu trong danh sách xếp hạng
-- **B.** Không phải thẩm định
+- <u>**B.** Không phải thẩm định</u>
 - **C.** Do người có thẩm quyền quyết định
 - **D.** Phương án A và C đều đúng
 
 > ✅ **Đáp án: B**
 
 > 💡 **Ghi nhớ:** Không có chuyện thẩm định danh sách
+>
+> **Danh sách xếp hạng nhà thầu** chỉ là bảng sắp thứ tự các nhà thầu sau khi đánh giá hồ sơ, ví dụ **A hạng 1, B hạng 2, C hạng 3**.
+>
+> Danh sách này **không phải qua bước thẩm định riêng trước khi phê duyệt**.
+>
+> Ví dụ BV 30-4 chấm xong gói mua thiết bị, Công ty A đứng nhất, B đứng nhì → lập danh sách xếp hạng và phê duyệt, **không có thêm bước “thẩm định danh sách xếp hạng”**.
+>
+> → **Đáp án B.**
+>
+> 💡 **Mẹo nhớ:** **Xếp hạng = không thẩm định.**
 
 ---
 ### Câu 090
@@ -1340,9 +1396,20 @@
 - **A.** Mở thầu ngay để tiến hành đánh giá
 - **B.** Gia hạn thời điểm đóng thầu tối thiểu 10 ngày
 - **C.** Báo cáo người có thẩm quyền xem xét, quyết định
-- **D.** Phương án A và B đều đúng
+- <u>**D.** Phương án A và B đều đúng</u>
 
 > ✅ **Đáp án: D**
+>
+> Nếu đến giờ đóng thầu mà chỉ có **1 nhà thầu nộp hồ sơ**, bên mời thầu có **2 cách xử lý hợp lệ**:
+>
+> - **Mở thầu luôn** để đánh giá nhà thầu đó; hoặc
+> - **Gia hạn thời điểm đóng thầu tối thiểu 10 ngày** để tạo thêm cơ hội cho nhà thầu khác tham dự.
+>
+> Lý do là pháp luật vừa cho phép **không làm chậm tiến độ nếu đã có hồ sơ hợp lệ**, vừa cho phép **kéo dài để tăng cạnh tranh** khi thấy cần thiết.
+>
+> → **Đáp án D = A + B.**
+>
+> 💡 **Mẹo nhớ:** **Chỉ 1 nhà thầu → hoặc mở luôn, hoặc gia hạn 10 ngày.**
 
 ---
 ### Câu 091
@@ -1350,27 +1417,44 @@
 **Đối với gói thầu xây lắp, trường hợp công ty mẹ tham dự thầu và huy động công ty con tham gia thực hiện gói thầu thì việc đánh giá kinh nghiệm thực hiện hợp đồng tương tự được thực hiện như thế nào?**
 
 - **A.** Đánh giá kinh nghiệm thực hiện hợp đồng tương tự của công ty mẹ, không đánh giá kinh nghiệm của công ty con
-- **B.** Đánh giá kinh nghiệm thực hiện hợp đồng tương tự căn cứ vào giá trị, khối lượng công việc do công ty mẹ, công ty con đảm nhiệm trong gói thầu
+- **<u>B.** Đánh giá kinh nghiệm thực hiện hợp đồng tương tự căn cứ vào giá trị, khối lượng công việc do công ty mẹ, công ty con đảm nhiệm trong gói thầu</u>
 - **C.** Đánh giá kinh nghiệm thực hiện hợp đồng tương tự của công ty con, không đánh giá kinh nghiệm của công ty mẹ, không phân biệt khối lượng công việc do công ty mẹ, công ty con đảm nhiệm trong gói thầu
 - **D.** Đánh giá theo tổng kinh nghiệm thực hiện hợp đồng tương tự của công ty mẹ và công ty con, không phân biệt khối lượng công việc do công ty mẹ, công ty con đảm nhiệm trong gói thầu
 
 > ✅ **Đáp án: B**
 
-> 💡 **Ghi nhớ:** Xây lắp mẹ đi dự thầu có thể lấy năng lực của con nhưng phải chứng nhận năng lực ví dụ mẹ 10% con 90%
+> Công ty mẹ và công ty con cùng tham gia thì **ai làm phần nào → xét kinh nghiệm tương ứng với phần đó**.
+>
+> Ví dụ gói xây dựng BV 30-4:
+>
+> - Công ty mẹ làm **70% phần xây dựng chính** → phải chứng minh kinh nghiệm phù hợp với phần 70% đó.
+> - Công ty con làm **30% phần còn lại** → xét kinh nghiệm của công ty con đối với phần 30% mình đảm nhận.
+>
+> Không được **cộng hết kinh nghiệm hai bên rồi coi như dùng chung cho toàn bộ gói thầu**.
+>
+> → **Đáp án B.**
+>
+> 💡 **Mẹo nhớ:** **Mẹ làm phần mẹ → xét mẹ; con làm phần con → xét con.**
 
 ---
 ### Câu 092
 
 **Kinh nghiệm thực hiện hợp đồng xây lắp tương tự gói thầu chỉ bao gồm 01 công trình độc lập được xét trên cơ sở nào sau đây?**
 
-- **A.** Xét theo công trình nhà thầu đã hoàn thành toàn bộ hoặc hoàn thành phần lớn có cùng loại kết cấu, cấp công trình và đáp ứng quy mô theo yêu cầu của hồ sơ mời thầu
+- <u>**A.** Xét theo công trình nhà thầu đã hoàn thành toàn bộ hoặc hoàn thành phần lớn có cùng loại kết cấu, cấp công trình và đáp ứng quy mô theo yêu cầu của hồ sơ mời thầu</u>
 - **B.** Chỉ xét theo công trình nhà thầu đã hoàn thành toàn bộ, đã được nghiệm thu, cùng loại công trình và đáp ứng quy mô theo yêu cầu của hồ sơ mời thầu
 - **C.** Xét theo các hạng mục công việc có tính chất tương tự nhà thầu đã hoàn thành phần lớn và đáp ứng quy mô theo yêu cầu của hồ sơ mời thầu
 - **D.** Tất cả phương án trên đều đúng
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** đáp ứng đủ 2 thành phần toàn bộ hoặc phần lớn
+> Với gói xây lắp chỉ có **1 công trình độc lập**, người ta xem nhà thầu đã từng làm một công trình **tương tự về loại kết cấu, cấp công trình và quy mô** hay chưa.
+>
+> Không bắt buộc công trình cũ phải hoàn thành 100%; **đã hoàn thành toàn bộ hoặc hoàn thành phần lớn** đều có thể được xem xét nếu đáp ứng yêu cầu.
+>
+> → **Đáp án A.**
+>
+> 💡 **Mẹo nhớ:** **1 công trình độc lập → xét cả “đã xong toàn bộ” hoặc “đã xong phần lớn”, miễn cùng loại + cùng cấp + đủ quy mô.**
 
 ---
 ### Câu 093
@@ -1380,16 +1464,25 @@
 - **A.** Hàng hóa phải cùng chủng loại với gói thầu đang xét
 - **B.** Hàng hóa thuộc cùng lĩnh vực tổng quát với hàng hóa của gói thầu
 - **C.** Hàng hóa có 4 số đầu tiên mã HS cùng với mã HS của hàng hóa thuộc gói thầu
-- **D.** Cả 2 phương án B và C đều đúng
+- **<u>D.** Cả 2 phương án B và C đều đúng</u>
 
 > ✅ **Đáp án: D**
 
-> 💡 **Ghi nhớ:** cùng lĩnh vực tổng quát và 4 mã số đầu tiên HS được tính là kinh nghiêm thực hiện hợp đồng tương tự
+> BV 30-4 đang mua **máy điều hòa**, giả sử mã HS là **8415.10.10**.
+>
+> Một nhà thầu trước đây từng cung cấp hàng hóa có mã HS **8415.82.91**.
+>
+> Hai mã này khác nhau ở phía sau, nhưng đều có **4 số đầu là 8415**.
+>
+> → Có thể được xem là **cùng nhóm HS** để xét kinh nghiệm hợp đồng tương tự.
+>
+> 💡 Mẹo nhớ: **chỉ cần soi 4 số đầu**.
+>  **8415xxxx và 8415xxxx → cùng nhóm.**
 
 ---
 ### Câu 094
 
-**Gói thầu dịch vụ phi tư vấn chia thành nhiều phần thì việc đánh giá về doanh thu đối với nhà thầu tham dự nhiều phần được thực hiện như thế nào?**
+**Gói thầu <u>dịch vụ phi tư vấn</u> chia thành nhiều phần thì việc đánh giá về doanh thu đối với nhà thầu tham dự nhiều phần được thực hiện như thế nào?**
 
 - **A.** Việc đánh giá về doanh thu căn cứ trên tổng giá trị doanh thu bình quân yêu cầu đối với các phần mà nhà thầu tham dự
 - **B.** Việc đánh giá về doanh thu căn cứ trên từng phần mà nhà thầu tham dự, nhà thầu không phải đáp ứng tổng doanh thu đối với các phần mà nhà thầu tham dự
@@ -1398,21 +1491,38 @@
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** (vd 1 gói thầu 10 mặt hàng, mỗi phần được nhà thầu trúng, nhà thầu trúng 5 mặt hàng (phần) phải đáp ứng doanh thu các phần nhà thù tha dự
+> Gói thầu chia nhiều **phần**, nhà thầu đăng ký làm **bao nhiêu phần** thì phải chứng minh doanh thu đủ cho **tổng các phần đó**.
+>
+> Ví dụ BV 30-4 có gói dịch vụ phi tư vấn chia **10 phần**. Nhà thầu A tham dự **5 phần**; doanh thu bình quân tối thiểu yêu cầu lần lượt là 1, 2, 1, 3 và 1 tỷ đồng.
+>
+> → Nhà thầu phải đáp ứng tổng doanh thu yêu cầu: **1 + 2 + 1 + 3 + 1 = 8 tỷ đồng**.
+>
+> → **Đáp án A.**
+>
+> 💡 **Mẹo nhớ:** **Dự nhiều phần → cộng doanh thu yêu cầu của tất cả phần mình dự.**
 
 ---
 ### Câu 095
 
-**Gói thầu mua sắm hàng hóa chia thành nhiều phần thì việc đánh giá về quy mô hợp đồng tương tự đối với nhà thầu tham dự nhiều phần được thực hiện như thế nào?**
+**Gói thầu <u>mua sắm hàng hóa</u> chia thành nhiều phần thì việc đánh giá về quy mô hợp đồng tương tự đối với nhà thầu tham dự nhiều phần được thực hiện như thế nào?**
 
 - **A.** Việc đánh giá về quy mô hợp đồng tương tự căn cứ trên tổng quy mô hợp đồng tương tự đối với các phần mà nhà thầu tham dự
-- **B.** Việc đánh giá về quy mô hợp đồng tương tự tương ứng với từng phần mà nhà thầu tham dự, nhà thầu không phải đáp ứng tổng quy mô hợp đồng tương tự đối với các phần mà nhà thầu tham dự
+- <u>**B.** Việc đánh giá về quy mô hợp đồng tương tự tương ứng với từng phần mà nhà thầu tham dự, nhà thầu không phải đáp ứng tổng quy mô hợp đồng tương tự đối với các phần mà nhà thầu tham dự</u>
 - **C.** Việc đánh giá về quy mô hợp đồng tương tự căn cứ trên phần có giá trị nhỏ nhất trong tổng số các phần mà nhà thầu tham dự
 - **D.** Các phương án trên đều sai
 
 > ✅ **Đáp án: B**
 
-> 💡 **Ghi nhớ:** chỉ cần có hợp đồng tương tự có 1 hợp đồng có giá trị lớn nhất, ví dụ so với phần 1 cũng đáp ứng phần 2… cũng đáp ứng, không cần đáp ứng quy mô tổng
+> **Gói thầu <u>mua sắm hàng hóa</u> chia thành nhiều phần thì việc đánh giá về quy mô hợp đồng tương tự đối với nhà thầu tham dự nhiều phần được thực hiện như thế nào?**
+>
+> - **A.** Việc đánh giá về quy mô hợp đồng tương tự căn cứ trên tổng quy mô hợp đồng tương tự đối với các phần mà nhà thầu tham dự
+> - <u>**B.** Việc đánh giá về quy mô hợp đồng tương tự tương ứng với từng phần mà nhà thầu tham dự, nhà thầu không phải đáp ứng tổng quy mô hợp đồng tương tự đối với các phần mà nhà thầu tham dự</u>
+> - **C.** Việc đánh giá về quy mô hợp đồng tương tự căn cứ trên phần có giá trị nhỏ nhất trong tổng số các phần mà nhà thầu tham dự
+> - **D.** Các phương án trên đều sai
+>
+> > ✅ **Đáp án: B**
+>
+> > 💡 **Ghi nhớ:** chỉ cần có hợp đồng tương tự có 1 hợp đồng có giá trị lớn nhất, ví dụ so với phần 1 cũng đáp ứng phần 2… cũng đáp ứng, không cần đáp ứng quy mô tổng
 
 ---
 ### Câu 096
@@ -1425,6 +1535,8 @@
 - **D.** Tiếp tục đánh giá E-HSDT, trường hơp nhà thầu trúng thầu thì yêu cầu nhà thầu bổ sung, làm rõ tài liệu
 
 > ✅ **Đáp án: B**
+>
+> mẹo: có chữ chủ đầu tư
 
 ---
 ### Câu 097
@@ -1433,10 +1545,20 @@
 
 - **A.** Chủ đầu tư yêu cầu nhà thầu làm rõ các thông tin này để làm cơ sở đánh giá trên cơ sở không được thay đổi giá dự thầu
 - **B.** Tổ chuyên gia căn cứ theo cataloge, đề xuất kỹ thuật kèm theo để làm cơ sở đánh giá
-- **C.** Hồ sơ dự thầu của nhà thầu không được xem xét, đánh giá
+- <u>**C.** Hồ sơ dự thầu của nhà thầu không được xem xét, đánh giá</u>
 - **D.** Tiếp tục đánh giá hồ sơ dự thầu, trường hơp nhà thầu trúng thầu thì yêu cầu nhà thầu bổ sung, làm rõ các thông tin này
 
 > ✅ **Đáp án: C**
+>
+> Khi mua hàng hóa, bên mời thầu phải biết **nhà thầu đang chào chính xác sản phẩm nào** để kiểm tra có đáp ứng kỹ thuật hay không.
+>
+> Nếu hồ sơ dự thầu **không ghi ký mã hiệu, nhãn hiệu, xuất xứ, hãng sản xuất** thì không xác định được hàng hóa cụ thể để chấm. Sau đóng thầu cũng không thể cho nhà thầu chọn lại sản phẩm vì có thể làm thay đổi nội dung hồ sơ dự thầu.
+>
+> Ví dụ BV 30-4 mua máy xét nghiệm mà nhà thầu chỉ ghi “máy xét nghiệm đạt yêu cầu”, không ghi **model, hãng, xuất xứ** → không biết đang chào máy nào để đối chiếu cấu hình.
+>
+> → **Đáp án C.**
+>
+> 💡 **Mẹo nhớ:** **Hàng hóa mà không rõ “con gì, hãng nào, model nào” → không có cơ sở chấm → loại.**
 
 > 💡 **Ghi nhớ:** ký hiệu mã hiệu quan trọng lắm nếu nhà thầu không đề xuất trong hồ sơ dự thầu thì sẽ không xem xét đánh giá
 
@@ -1446,7 +1568,7 @@
 **Hồ sơ mời thầu của gói thầu xây lắp có quy định cho phép sử dụng nhà thầu phụ, trường hợp nhà thầu đề xuất sử dụng thầu phụ thì việc đánh giá năng lực, kinh nghiệm của nhà thầu phụ được thực hiện như thế nào?**
 
 - **A.** Đánh giá năng lực, kinh nghiệm của nhà thầu phụ căn cứ theo phần công việc nhà thầu phụ đảm nhận, nhà thầu tham dự thầu không phải đáp ứng về năng lực, kinh nghiệm đối với phần công việc mà nhà thầu phụ đảm nhận
-- **B.** Không đánh giá năng lực, kinh nghiệm của nhà thầu phụ, nhà thầu tham dự thầu vẫn phải đáp ứng về năng lực, kinh nghiệm đối với phần công việc mà nhà thầu phụ đảm nhận
+- <u>**B.** Không đánh giá năng lực, kinh nghiệm của nhà thầu phụ, nhà thầu tham dự thầu vẫn phải đáp ứng về năng lực, kinh nghiệm đối với phần công việc mà nhà thầu phụ đảm nhận</u>
 - **C.** Do chủ đầu tư quyết định đánh giá hoặc không đánh giá năng lực, kinh nghiệm nhà thầu phụ
 - **D.** Đánh giá năng lực, kinh nghiệm của nhà thầu phụ căn cứ theo phần công việc nhà thầu phụ đảm nhận, nhà thầu tham dự thầu cũng phải đáp ứng về năng lực, kinh nghiệm đối với phần công việc mà nhà thầu phụ đảm nhận
 
@@ -1459,7 +1581,7 @@
 
 **Phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó để sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới Không phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó, chỉ cần sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới Sửa đổi cho phù hợp E-HSDT đã nộp mà không phải nộp lại E- HSDT mới Nhà thầu không được sửa đổi E-HSDT đã nộp**
 
-- **A.** Phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó để sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới
+- <u>**A.** Phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó để sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới</u>
 - **B.** Không phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó, chỉ cần sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới
 - **C.** Sửa đổi cho phù hợp E-HSDT đã nộp mà không phải nộp lại E- HSDT mới
 - **D.** Nhà thầu không được sửa đổi E-HSDT đã nộp
@@ -1467,13 +1589,25 @@
 > ✅ **Đáp án: A**
 
 > 💡 **Ghi nhớ:** (Có 1 ông nhà thầu nộp bài thi, nhà thầu này nộp hồ sơ dự thầu rồi, thời điểm của ông trước thời điểm đóng thầu, vì lý do nào đó ông muốn sửa đổi hồ sơ dự thầu, thì phải rút lại sửa lại toàn bộ) – không sửa hẳn trên hệ thống
+>
+> Nhà thầu đã nộp E-HSDT rồi nhưng **trước giờ đóng thầu** phát hiện sai và muốn sửa thì **không được mở hồ sơ cũ ra sửa trực tiếp trên hệ thống**.
+>
+> Phải làm theo kiểu:
+>
+> **Rút hồ sơ cũ → sửa lại → nộp lại toàn bộ hồ sơ mới.**
+>
+> Ví dụ BV 30-4 mời thầu mua thiết bị, nhà thầu A đã nộp E-HSDT nhưng phát hiện ghi sai model máy. Nếu vẫn còn trước thời điểm đóng thầu, nhà thầu phải **rút E-HSDT đã nộp, chỉnh sửa rồi nộp lại hồ sơ mới**.
+>
+> → **Đáp án A.**
+>
+> 💡 **Mẹo nhớ:** **Muốn sửa E-HSDT đã nộp → rút cả bộ, sửa, nộp lại.**
 
 ---
 ### Câu 100
 
 **Đối với đấu thầu qua mạng, nhà thầu đã nộp E-HSDT nhưng sau đó E-HSMT của gói thầu này sửa đổi thì nhà thầu cần thực hiện theo phương án nào sau đây?**
 
-- **A.** Phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó để sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới
+- <u>**A.** Phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó để sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới</u>
 - **B.** Không phải tiến hành rút toàn bộ E-HSDT đã nộp trước đó, chỉ cần sửa đổi cho phù hợp và tiến hành nộp lại E-HSDT mới
 - **C.** Sửa đổi cho phù hợp E-HSDT đã nộp mà không phải nộp lại E- HSDT mới
 - **D.** Các phương án trên đều sai
