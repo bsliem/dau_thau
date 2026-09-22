@@ -746,10 +746,10 @@
 
 ### Câu 051
 
-**Nội dung nào là nội dung đánh giá tính hợp lệ của hồ sơ dự thầu?**
+**Nội dung nào là nội dung đánh giá <u>tính hợp lệ</u> của hồ sơ dự thầu?**
 
 - **A.** Nhân sự chủ chốt
-- **B.** Hiệu lực của hồ sơ dự thầu
+- **B.** <u>Hiệu lực của hồ sơ dự thầu</u>
 - **C.** Năng lực tài chính
 - **D.** Việc thực hiện nghĩa vụ kê khai thuế, nộp thuế
 
@@ -760,23 +760,24 @@
 ---
 ### Câu 052
 
-**Đối với đấu thầu không qua mạng, nội dung nào không phải là tiêu chuẩn đánh giá về tính hợp lệ của hồ sơ dự thầu gói thầu tư vấn?**
+**Đối với đấu thầu <u>không qua mạng</u>, nội dung nào không phải là tiêu chuẩn đánh giá về <u>tính hợp lệ</u> của hồ sơ dự thầu gói <u>thầu tư vấn</u>?**
 
 - **A.** Hiệu lực của hồ sơ đề xuất về kỹ thuật đáp ứng yêu cầu theo quy định trong hồ sơ mời thầu
 - **B.** Có bản gốc hồ sơ đề xuất về kỹ thuật
-- **C.** Bảo đảm dự thầu hợp lệ
+- **C.** <u>Bảo đảm dự thầu hợp lệ</u>
 - **D.** Đã thực hiện nghĩa vụ kê khai thuế và nộp thuế
 
 > ✅ **Đáp án: C**
 
-> 💡 **Ghi nhớ:** (gói thầu tư vấn không yêu cầu bảo đảm dự thầu, không đảm bảo tiền hợp đồng) – học thuộc
+> 💡 **Ghi nhớ:** Gói **tư vấn** không yêu cầu **bảo đảm dự thầu**, nên “bảo đảm dự thầu hợp lệ” **không phải** tiêu chuẩn đánh giá tính hợp lệ → chọn **C**.
+>  🏥 **Ví dụ BV 30-4:** Nếu đấu thầu **mua hóa chất/xây lắp**, HSMT có thể yêu cầu bảo đảm dự thầu; khi đó phải đúng **giá trị, thời hạn, tên bên thụ hưởng, hình thức** theo HSMT thì mới được coi là hợp lệ. Với **gói tư vấn**, không đặt yêu cầu này.
 
 ---
 ### Câu 053
 
-**Đối với gói thầu mua sắm hàng hóa, xây lắp, phi tư vấn, phương pháp để đánh giá về năng lực và kinh nghiệm là?**
+**Đối với gói thầu <u>mua sắm hàng hóa, xây lắp, phi tư vấn</u>, phương pháp để đánh giá về năng lực và kinh nghiệm là?**
 
-- **A.** Sử dụng tiêu chí đạt, không đạt
+- **A.** Sử dụng <u>tiêu chí đạt, không đạt</u>
 - **B.** Sử dụng phương pháp chấm điểm
 - **C.** Kết hợp cả hai phương pháp: tiêu chí đạt, không đạt và phương pháp chấm điểm
 - **D.** Phương pháp dựa trên kỹ thuật
@@ -786,9 +787,9 @@
 ---
 ### Câu 054
 
-**Tiêu chuẩn đánh giá năng lực kinh nghiệm đối với gói thầu mua sắm hàng hóa bao gồm?**
+**Tiêu chuẩn đánh giá <u>năng lực kinh nghiệm</u> đối với gói thầu <u>mua sắm hàng hóa</u> bao gồm?**
 
-- **A.** Doanh thu bình quân 3 năm gần nhất
+- **A.** <u>Doanh thu bình quân 3 năm gần nhất</u>
 - **B.** Giấy phép bán hàng của nhà sản xuất
 - **C.** Số năm thành lập của doanh nghiệp
 - **D.** Năng lực quản lý của doanh nghiệp
@@ -798,25 +799,26 @@
 ---
 ### Câu 055
 
-**Nội dung nào là tiêu chuẩn đánh giá về năng lực và kinh nghiệm không bắt buộc đối với gói thầu mua sắm hàng hóa áp dụng đấu thầu rộng rãi?**
+**Nội dung nào là tiêu chuẩn đánh giá về năng lực và kinh nghiệm <u>không bắt buộc</u> đối với gói thầu <u>mua sắm hàng hóa áp dụng đấu thầu rộng rãi</u>?**
 
-- **A.** Kinh nghiệm thực hiện hợp đồng cung cấp hàng hóa tương tự
+- **A.** <u>Kinh nghiệm thực hiện hợp đồng cung cấp hàng hóa tương tự</u>
 - **B.** Giá trị tài sản ròng của nhà thầu
 - **C.** Doanh thu của nhà thầu
 - **D.** Việc thực hiện nghĩa vụ kê khai thuế, nộp thuế
 
 > ✅ **Đáp án: A**
 
-> 💡 **Ghi nhớ:** chủ đầu tư không cần
+> 💡 **Ghi nhớ:** **Kinh nghiệm hợp đồng tương tự** là tiêu chí **không bắt buộc** đối với gói mua sắm hàng hóa; **chủ đầu tư có thể không yêu cầu** nếu thấy không cần thiết.
+>  🏥 **Ví dụ BV 30-4:** Gói mua một số **vật tư y tế thông dụng**, bệnh viện có thể không bắt buộc nhà thầu phải có hợp đồng tương tự trước đó; nhưng vẫn xem các tiêu chí về **doanh thu, tài sản ròng, nghĩa vụ thuế** theo yêu cầu hồ sơ.
 
 ---
 ### Câu 056
 
-**Nội dung nào là tiêu chuẩn đánh giá đánh giá về năng lực và kinh nghiệm bắt buộc đối với gói thầu xây lắp tổ chức đấu thầu rộng rãi không qua mạng?**
+**Nội dung nào là <u>tiêu chuẩn đánh giá đánh giá về năng lực và kinh nghiệm</u> bắt buộc đối với gói thầu xây lắp tổ chức đấu thầu rộng rãi không qua mạng?**
 
 - **A.** Có bản gốc hồ sơ dự thầu
 - **B.** Có tên trong danh sách ngắn
-- **C.** Năng lực tài chính
+- **C.** <u>Năng lực tài chính</u>
 - **D.** Có bảo đảm dự thầu hợp lệ
 
 > ✅ **Đáp án: C**
@@ -826,9 +828,9 @@
 ---
 ### Câu 057
 
-**Tiêu chuẩn đánh giá về kỹ thuật được yêu cầu về nhãn hiệu theo nhóm nhãn hiệu cho nguyên nhiên vật liệu, vật tư và các yếu tố đầu vào đối với trường hợp nào?**
+**Tiêu chuẩn đánh giá về <u>kỹ thuật được yêu cầu về nhãn hiệu theo nhóm nhãn hiệu cho nguyên nhiên vật liệu,</u> vật tư và các yếu tố đầu vào đối với trường hợp nào?**
 
-- **A.** Nội dung công việc xây lắp thuộc gói thầu xây lắp, gói thầu EC
+- **A.** Nội dung công việc xây lắp thuộc gói thầ<u>u xây lắp, gói thầu EC</u>
 - **B.** Nội dung công việc xây lắp thuộc gói thầu EPC
 - **C.** Nội dung công việc xây lắp thuộc gói thầu EPC và gói thầu PC
 - **D.** Nội dung công việc xây lắp thuộc gói thầu xây lắp và gói thầu PC
@@ -840,11 +842,11 @@
 ---
 ### Câu 058
 
-**Nội dung nào không phải là tiêu chuẩn đánh giá về kỹ thuật của gói thầu tư vấn?**
+**Nội dung nào <u>không</u> phải là tiêu chuẩn đánh giá về <u>kỹ thuật của gói thầu tư vấn</u>?**
 
 - **A.** Giải pháp phương pháp luận
 - **B.** Uy tín của nhà thầu thông qua việc tham dự thầu, kết quả thực hiện hợp đồng của nhà thầu
-- **C.** Đã thực hiện nghĩa vụ kê khai thuế và nộp thuế
+- <u>**C.** Đã thực hiện nghĩa vụ kê khai thuế và nộp thuế</u>
 - **D.** Kinh nghiệm và năng lực nhà thầu
 
 > ✅ **Đáp án: C**
@@ -854,14 +856,17 @@
 ---
 ### Câu 059
 
-**Một trong các căn cứ lập hồ sơ mời thầu là?**
+**Một trong các <u>căn cứ lập hồ sơ mời thầu là</u>?**
 
 - **A.** Báo giá của nhà thầu
 - **B.** Quyết định mua sắm được phê duyệt
-- **C.** Kế hoạch lựa chọn nhà thầu được duyệt
+- **C.** <u>Kế hoạch lựa chọn nhà thầu được duyệt</u>
 - **D.** Phương án B và C đều đúng
 
 > ✅ **Đáp án: C**
+>
+> 💡 **Ghi nhớ:** Lập **HSMT** phải bám vào **KHLCNT đã được phê duyệt** → chọn **C**.
+>  🏥 **Ví dụ BV 30-4:** Trước khi lập HSMT gói **mua hóa chất xét nghiệm**, bệnh viện phải căn cứ vào **kế hoạch lựa chọn nhà thầu đã duyệt** để xác định hình thức, phương thức, thời gian và nội dung gói thầu.
 
 ---
 ### Câu 060
