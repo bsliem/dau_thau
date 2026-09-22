@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="zh-Hant">
+<html lang="vi">
 <head>
     <meta charset="UTF-8">
 
@@ -12,7 +12,7 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="default">
     <meta name="theme-color" content="#f4efe5">
 
-    <title>念佛</title>
+    <title>Niệm Phật</title>
 
     <style>
         :root {
@@ -258,14 +258,14 @@
 
     <div class="lotus">🪷</div>
 
-    <h1>念佛</h1>
+    <h1>Niệm Phật</h1>
 
     <div class="subtitle">
-        一心稱念
+        Nhất tâm xưng niệm
     </div>
 
     <div class="chant">
-        南無阿彌陀佛
+        Nam Mô A Di Đà Phật
     </div>
 
     <div class="counter" id="counter">
@@ -285,24 +285,24 @@
         class="main-button"
         id="mainButton"
     >
-        念
+        NIỆM
     </button>
 
     <div class="stats">
 
         <div class="stat">
             <div class="stat-value" id="todayCount">0</div>
-            <div class="stat-label">今日</div>
+            <div class="stat-label">Hôm nay</div>
         </div>
 
         <div class="stat">
             <div class="stat-value" id="roundCount">0</div>
-            <div class="stat-label">二十一遍</div>
+            <div class="stat-label">Vòng 21</div>
         </div>
 
         <div class="stat">
             <div class="stat-value" id="totalCount">0</div>
-            <div class="stat-label">總計</div>
+            <div class="stat-label">Tổng cộng</div>
         </div>
 
     </div>
@@ -340,7 +340,7 @@
         class="export-button"
         id="exportButton"
     >
-        📄 匯出資料
+        📄 Xuất dữ liệu CSV
     </button>
 
     <button
@@ -348,11 +348,11 @@
         class="reset"
         id="resetButton"
     >
-        🔄 重設今日
+        🔄 Reset hôm nay
     </button>
 
     <div class="footer">
-        一句佛號・一念清明
+        Một câu Phật hiệu • Một niệm tỉnh thức
     </div>
 
 </main>
@@ -536,7 +536,7 @@
     function resetToday() {
 
         const ok = window.confirm(
-            "Reset số niệm hôm nay về 0?\n\n總計 vẫn được giữ."
+            "Reset số niệm hôm nay về 0?\n\nTổng cộng vẫn được giữ."
         );
 
         if (!ok) {
@@ -555,7 +555,7 @@
         saveData();
 
         let csv =
-            "\uFEFF日期,念佛數,二十一遍\n";
+            "\uFEFFNgày,Số niệm,Số vòng 21\n";
 
         const dates =
             Object.keys(data.history).sort();
@@ -573,7 +573,7 @@
         });
 
         csv +=
-            `\n總計,${data.total},${Math.floor(data.total / ROUND_TARGET)}\n`;
+            `\nTổng cộng,${data.total},${Math.floor(data.total / ROUND_TARGET)}\n`;
 
         return csv;
     }
@@ -619,7 +619,7 @@
 
                     await navigator.share({
                         files: [file],
-                        title: "念佛紀錄"
+                        title: "Dữ liệu niệm Phật"
                     });
 
                     return;
