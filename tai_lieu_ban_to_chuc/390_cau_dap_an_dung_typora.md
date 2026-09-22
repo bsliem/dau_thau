@@ -101,13 +101,18 @@
 ---
 ### Câu 008
 
-**Giá đề nghị trúng thầu là gì?**
+**<u>Giá đề nghị trúng thầu</u> là gì?**
 
 - **A.** Là giá dự thầu của nhà thầu ghi trong quyết định phê duyệt kết quả lựa chọn nhà thầu.
-- **B.** Là giá dự thầu của nhà thầu được đề nghị trúng thầu sau khi đã được sửa lỗi, hiệu chỉnh sai lệch theo yêu cầu của hồ sơ mời thầu, hồ sơ yêu cầu, trừ đi giá trị giảm giá (nếu có)
+
+- **B.** Là giá dự thầu của nhà thầu được đề nghị trúng thầu sau khi đã được sửa lỗi, <u>hiệu chỉnh sai lệch theo yêu cầu của hồ sơ mời thầu, hồ sơ yêu cầu, trừ đi giá trị giảm giá (nếu có)</u>
+
 - **C.** Là giá dự thầu của nhà thầu chưa tính sửa lỗi, hiệu chỉnh sai lệch và giá trị giảm giá (nếu có)
+
 - **D.** Là giá trị ghi trong hợp đồng giữa chủ đầu tư và nhà thầu
-(tìm chữ đề nghị)
+  (tìm chữ đề nghị)
+
+  \> 💡 **Mẹo nhớ:** Có chữ **“đề nghị”** → nghĩ đến **nhà thầu được đề nghị trúng thầu**, sau khi đã **sửa lỗi + hiệu chỉnh sai lệch + trừ giảm giá**. > 🏥 **Ví dụ BV 30-4:** Nhà thầu A dự thầu gói **hóa chất xét nghiệm** với giá **10 tỷ đồng**. Sau khi sửa lỗi, hiệu chỉnh sai lệch còn **9,8 tỷ đồng**; nhà thầu có thư giảm giá **0,3 tỷ đồng**.   > → **Giá đề nghị trúng thầu = 9,5 tỷ đồng**.
 
 > ✅ **Đáp án: B**
 
