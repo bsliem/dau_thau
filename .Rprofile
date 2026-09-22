@@ -976,16 +976,287 @@ g <- function(x = NULL) {
 }
 
 
+
+# ==== GIT RECENT + TYPORA ====
+
+# gf(n): file thay đổi gần nhất từ LOCAL + GIT HISTORY
+# local -> dùng mtime
+# commit/pull từ GitHub -> dùng commit time
+
+gf <- function(n = 5) {
+
+  root <- proj_root()
+  old <- getwd()
+  on.exit(setwd(old), add = TRUE)
+  setwd(root)
+
+  n <- suppressWarnings(as.integer(n[1]))
+  if (is.na(n) || n < 1) n <- 5L
+
+  # ---------------- LOCAL CHANGES ----------------
+  unstaged <- tryCatch(
+    system2('git', c('diff', '--name-only'), stdout = TRUE, stderr = FALSE),
+    error = function(e) character(0)
+  )
+
+  staged <- tryCatch(
+    system2('git', c('diff', '--cached', '--name-only'), stdout = TRUE, stderr = FALSE),
+    error = function(e) character(0)
+  )
+
+  untracked <- tryCatch(
+    system2('git', c('ls-files', '--others', '--exclude-standard'), stdout = TRUE, stderr = FALSE),
+    error = function(e) character(0)
+  )
+
+  local_files <- unique(c(unstaged, staged, untracked))
+  local_files <- local_files[nzchar(local_files)]
+
+  local_files <- local_files[
+    !grepl('^\\.Rprofile_backup_', basename(local_files))
+  ]
+
+  local_full <- file.path(root, local_files)
+  keep <- file.exists(local_full)
+  local_files <- local_files[keep]
+  local_full <- local_full[keep]
+
+  local_time <- if (length(local_full)) {
+    as.numeric(file.info(local_full)$mtime)
+  } else {
+    numeric(0)
+  }
+
+  # ---------------- GIT HISTORY ----------------
+  # @@TIME đánh dấu thời gian từng commit
+  hist <- tryCatch(
+    system2(
+      'git',
+      c(
+        'log',
+        '--all',
+        '--name-only',
+        '--format=@@%ct'
+      ),
+      stdout = TRUE,
+      stderr = FALSE
+    ),
+    error = function(e) character(0)
+  )
+
+  git_files <- character(0)
+  git_time  <- numeric(0)
+  current_time <- NA_real_
+
+  if (length(hist)) {
+    for (z in hist) {
+
+      z <- trimws(z)
+      if (!nzchar(z)) next
+
+      if (grepl('^@@[0-9]+$', z)) {
+        current_time <- suppressWarnings(
+          as.numeric(sub('^@@', '', z))
+        )
+        next
+      }
+
+      if (!is.na(current_time)) {
+        git_files <- c(git_files, z)
+        git_time  <- c(git_time, current_time)
+      }
+    }
+  }
+
+  # git log mới -> cũ, nên giữ lần xuất hiện đầu tiên của mỗi file
+  if (length(git_files)) {
+    k <- !duplicated(git_files)
+    git_files <- git_files[k]
+    git_time  <- git_time[k]
+  }
+
+  git_files <- git_files[
+    !grepl('^\\.Rprofile_backup_', basename(git_files))
+  ]
+
+  # đồng bộ lại time sau lọc backup
+  if (length(git_time) > length(git_files)) {
+    # rebuild an toàn từ history nếu có lệch do filter
+    gf0 <- character(0)
+    gt0 <- numeric(0)
+    current_time <- NA_real_
+
+    for (z in hist) {
+      z <- trimws(z)
+      if (!nzchar(z)) next
+
+      if (grepl('^@@[0-9]+$', z)) {
+        current_time <- suppressWarnings(
+          as.numeric(sub('^@@', '', z))
+        )
+        next
+      }
+
+      if (!is.na(current_time) &&
+          !grepl('^\\.Rprofile_backup_', basename(z)) &&
+          !z %in% gf0) {
+        gf0 <- c(gf0, z)
+        gt0 <- c(gt0, current_time)
+      }
+    }
+
+    git_files <- gf0
+    git_time  <- gt0
+  }
+
+  git_full <- file.path(root, git_files)
+  keep <- file.exists(git_full)
+  git_files <- git_files[keep]
+  git_full  <- git_full[keep]
+  git_time  <- git_time[keep]
+
+  # ---------------- GỘP LOCAL + GIT ----------------
+  all_files <- unique(c(local_files, git_files))
+
+  if (!length(all_files)) {
+    cat('📭 Không tìm thấy file thay đổi gần đây\n')
+    .last_files <<- character(0)
+    return(invisible(character(0)))
+  }
+
+  latest_time <- numeric(length(all_files))
+  source_type <- character(length(all_files))
+
+  for (i in seq_along(all_files)) {
+
+    f <- all_files[i]
+    times <- numeric(0)
+    src   <- character(0)
+
+    j <- match(f, local_files)
+    if (!is.na(j)) {
+      times <- c(times, local_time[j])
+      src   <- c(src, 'LOCAL')
+    }
+
+    j <- match(f, git_files)
+    if (!is.na(j)) {
+      times <- c(times, git_time[j])
+      src   <- c(src, 'GIT')
+    }
+
+    k <- which.max(times)
+    latest_time[i] <- times[k]
+    source_type[i] <- src[k]
+  }
+
+  ord <- order(latest_time, decreasing = TRUE)
+  all_files   <- all_files[ord]
+  latest_time <- latest_time[ord]
+  source_type <- source_type[ord]
+
+  all_files   <- head(all_files, n)
+  latest_time <- head(latest_time, n)
+  source_type <- head(source_type, n)
+
+  full <- file.path(root, all_files)
+
+  .last_files <<- normalizePath(
+    full,
+    winslash = '/',
+    mustWork = TRUE
+  )
+
+  cat(sprintf(
+    '🔀 %d file thay đổi gần nhất — LOCAL + GIT/GITHUB:\n',
+    length(all_files)
+  ))
+
+  for (i in seq_along(all_files)) {
+
+    ext <- toupper(tools::file_ext(all_files[i]))
+    if (!nzchar(ext)) ext <- '-'
+
+    tm <- format(
+      as.POSIXct(latest_time[i], origin = '1970-01-01'),
+      '%m-%d %H:%M'
+    )
+
+    cat(sprintf(
+      '%3d. %-6s %-5s %s  %s\n',
+      i, ext, source_type[i], tm, all_files[i]
+    ))
+  }
+
+  cat('→ o(1) mặc định | ot(1) Typora nếu MD | vf(1) Finder | vc(1) Commander One\n')
+
+  invisible(.last_files)
+}
+
+
+# Mở Markdown bằng Typora
+ot <- function(x) {
+
+  if (missing(x)) {
+    cat("Dùng: ot(1) hoặc ot('file.md')\n")
+    return(invisible(NULL))
+  }
+
+  if (is.numeric(x)) {
+    f <- get_num_file(x)
+    if (is.null(f)) return(invisible(NULL))
+  } else {
+    f <- path.expand(as.character(x[1]))
+
+    if (!file.exists(f)) {
+      f2 <- file.path(proj_root(), f)
+      if (file.exists(f2)) f <- f2
+    }
+
+    if (!file.exists(f)) {
+      cat('❌ Không thấy file:', f, '\n')
+      return(invisible(NULL))
+    }
+
+    f <- normalizePath(f, winslash = '/', mustWork = TRUE)
+  }
+
+  ext <- tolower(tools::file_ext(f))
+
+  if (ext != 'md') {
+    cat('⚠️ ot() chỉ mở Markdown bằng Typora\n')
+    cat('→ File này dùng o() để mở bằng app mặc định\n')
+    return(invisible(NULL))
+  }
+
+  if (!dir.exists('/Applications/Typora.app')) {
+    cat('❌ Không tìm thấy Typora\n')
+    return(invisible(NULL))
+  }
+
+  system2(
+    '/usr/bin/open',
+    c('-a', 'Typora', f),
+    stdout = FALSE,
+    stderr = FALSE
+  )
+
+  cat('📝 Typora:', proj_rel(f), '\n')
+  invisible(f)
+}
+
+# ==== END GIT RECENT + TYPORA ====
+
 # ==== HELP ====
 
 hhelp <- function() {
   cat("
 FILES   tree()  recent()  lsd()  lsf()  ff('tên file')
 FIND    f('cụm từ')          tìm trong DOCX/PPTX/PDF/XLSX/MD/R/QMD...
-OPEN    o(1)  vf(1)  vc(1)  v(1)
+OPEN    o(1)  ot(1)  vf(1)  vc(1)  v(1)
 READ    readf('x.md')  headf('x.R')  tailf('x.R')
 DIR     wd()  pj()  cd('folder')  up()
-GIT     gs()  gl()  gpull()  gp('nội dung')
+GIT     gs()  gf()  gf(10)  gl()  gpull()  gp('nội dung')
 TIME    n()  dl('750819')  g()
 TÂM     hh()  np()
 QMD     rn()  ro()
