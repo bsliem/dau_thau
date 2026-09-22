@@ -427,10 +427,10 @@
 ---
 ### Câu 031
 
-**Gói thầu nào sau đây thuộc trường hợp được áp dụng chào hàng cạnh tranh?**
+**Gói thầu nào sau đây thuộc trường hợp được áp dụng <u>chào hàng cạnh tranh</u>?**
 
 - **A.** Tất cả gói thầu mua sắm hàng hoá có giá không quá 10 tỷ đồng
-- **B.** Gói thầu dịch vụ phi tư vấn thông dụng, đơn giản có giá không quá 10 tỷ đồng
+- **B.** Gói thầu dịch vụ phi tư vấn thông dụng, đơn giản có giá <u>không quá 10 tỷ đồng</u>
 - **C.** Gói thầu dịch vụ tư vấn thông dụng, đơn giản có giá không quá 10 tỷ đồng
 - **D.** Gói thầu xây lắp công trình đơn giản đã có dự toán được phê duyệt có giá không quá 15 tỷ đồng
 
@@ -441,10 +441,10 @@
 ---
 ### Câu 032
 
-**Đối với gói thầu mua sắm hàng hóa thông dụng, sẵn có trên thị trường có giá gói thầu 05 tỷ đồng thì kế hoạch lựa chọn nhà thầu phê duyệt áp dụng hình thức lựa chọn nhà thầu nào sau đây?**
+**Đối với gói thầu <u>mua sắm hàng hóa thông dụng, sẵn có trên thị trường có giá gói thầu 05 tỷ đồng</u> thì kế hoạch lựa chọn nhà thầu phê duyệt áp dụng hình thức lựa chọn nhà thầu nào sau đây?**
 
 - **A.** Chỉ được áp dụng hình thức chào hàng cạnh tranh
-- **B.** Được áp dụng hình thức chào hàng cạnh tranh hoặc đấu thầu rộng rãi
+- **B.** Được áp dụng hình thức <u>chào hàng cạnh tranh hoặc đấu thầu rộng rãi</u>
 - **C.** Bắt buộc áp dụng hình thức chỉ định thầu
 - **D.** Được áp dụng hình thức chỉ định thầu hoặc chào hàng cạnh tranh hoặc đấu thầu rộng rãi
 
@@ -455,9 +455,9 @@
 ---
 ### Câu 033
 
-**Hạn mức chỉ định thầu đối với gói thầu không hình thành dự án thuộc dự toán mua sắm thường xuyên là?**
+**Hạn mức chỉ định thầu đối với gói thầu <u>không hình thành dự án thuộc dự toán mua sắm thường xuyên</u> là?**
 
-- **A.** 500 triệu đồng
+- **A.** <u>500 triệu</u> đồng
 - **B.** 800 triệu đồng
 - **C.** 01 tỷ đồng
 - **D.** 300 triệu đồng
@@ -469,12 +469,17 @@
 ---
 ### Câu 034
 
-**Hạn mức chỉ định thầu đối với gói thầu mua sắm hàng hóa thuộc dự án đầu tư là?**
+**<u>Hạn mức chỉ định thầu</u> đối với gói thầu <u>mua sắm hàng hóa thuộc dự án</u> đầu tư là?**
 
 - **A.** 800 triệu đồng
+
 - **B.** 500 triệu đồng
+
 - **C.** 01 tỷ đồng
-- **D.** 02 tỷ đồng
+
+- **D.** <u>02 tỷ</u> đồng
+
+  (mẹo dự án thì lớn lắm nên chọn cao nhất)
 
 > ✅ **Đáp án: D**
 

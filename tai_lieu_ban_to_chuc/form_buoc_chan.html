@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Đếm Số Bước Chân</title>
+    <style>
+        /* Tối ưu hóa giao diện cho Safari trên điện thoại */
+        :root {
+            --primary-color: #34c759; /* Màu xanh lá chuẩn iOS */
+            --bg-color: #f2f2f7;
+            --card-color: #ffffff;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 90vh;
+            -webkit-user-select: none; /* Tránh việc người dùng bấm nhầm bôi đen chữ trên Safari */
+        }
+
+        .container {
+            background-color: var(--card-color);
+            border-radius: 20px;
+            padding: 30px;
+            width: 100%;
+            max-width: 350px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            text-align: center;
+            box-sizing: border-box;
+        }
+
+        h1 {
+            font-size: 1.5rem;
+            color: #1c1c1e;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #8e8e93;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+        }
+
+        .counter-display {
+            font-size: 4rem;
+            font-weight: bold;
+            color: var(--primary-color);
+            margin: 20px 0;
+            transition: transform 0.1s ease;
+        }
+
+        /* Nút bấm to, dễ chạm bằng ngón cái trên màn hình cảm ứng */
+        .btn-main {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            box-shadow: 0 8px 20px rgba(52, 199, 89, 0.3);
+            cursor: pointer;
+            outline: none;
+            -webkit-tap-highlight-color: transparent; /* Tắt khung highlight mặc định của Safari */
+            margin-bottom: 25px;
+        }
+
+        .btn-main:active {
+            transform: scale(0.95);
+            filter: brightness(0.9);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            border-top: 1px solid #e5e5ea;
+            padding-top: 20px;
+            margin-bottom: 20px;
+        }
+
+        .stat-box {
+            text-align: center;
+        }
+
+        .stat-value {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #1c1c1e;
+        }
+
+        .stat-label {
+            font-size: 0.8rem;
+            color: #8e8e93;
+            margin-top: 2px;
+        }
+
+        .btn-reset {
+            background: none;
+            border: none;
+            color: #ff3b30; /* Màu đỏ iOS */
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Theo Dõi Đi Bộ</h1>
+        <div class="subtitle">Ứng dụng đếm bước chân đơn giản</div>
+
+        <!-- Hiển thị số bước -->
+        <div class="counter-display" id="stepCount">0</div>
+
+        <!-- Nút bấm tăng bước -->
+        <button class="btn-main" onclick="addStep()">BƯỚC!</button>
+
+        <!-- Thống kê mở rộng -->
+        <div class="stats-grid">
+            <div class="stat-box">
+                <div class="stat-value" id="calories">0</div>
+                <div class="stat-label">Calo (kcal)</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-value" id="distance">0</div>
+                <div class="stat-label">Quãng đường (m)</div>
+            </div>
+        </div>
+
+        <!-- Nút Reset -->
+        <button class="btn-reset" onclick="resetCounter()">Xóa dữ liệu ngày</button>
+    </div>
+
+    <script>
+        let steps = 0;
+        
+        // Giả định trung bình: 1 bước = 0.04 kcal và dài 0.7 mét
+        const CALORIES_PER_STEP = 0.04;
+        const METERS_PER_STEP = 0.7;
+
+        const stepCountEl = document.getElementById('stepCount');
+        const caloriesEl = document.getElementById('calories');
+        const distanceEl = document.getElementById('distance');
+
+        // Hàm xử lý khi người dùng bấm nút bước
+        function addStep() {
+            steps++;
+            updateDisplay();
+            
+            // Hiệu ứng nảy số nhẹ khi bấm
+            stepCountEl.style.transform = "scale(1.1)";
+            setTimeout(() => {
+                stepCountEl.style.transform = "scale(1.0)";
+            }, 100);
+        }
+
+        // Hàm cập nhật giao diện
+        function updateDisplay() {
+            stepCountEl.innerText = steps.toLocaleString('vi-VN');
+            caloriesEl.innerText = (steps * CALORIES_PER_STEP).toFixed(1);
+            distanceEl.innerText = (steps * METERS_PER_STEP).toFixed(1);
+        }
+
+        // Hàm reset về 0
+        function resetCounter() {
+            if (confirm("Bạn có chắc chắn muốn đặt lại số bước về 0 không?")) {
+                steps = 0;
+                updateDisplay();
+            }
+        }
+    </script>
+</body>
+</html>
