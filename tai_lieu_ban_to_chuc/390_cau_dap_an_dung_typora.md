@@ -2881,16 +2881,18 @@
 
 ### Câu 201
 
-**Đối với trường hợp hủy thầu thì phải thực hiện giải pháp nào sau đây?**
+**Đối với trường hợp <u>hủy thầu thì phải thực hiện</u> giải pháp nào sau đây?**
 
 - **A.** Phải điều chỉnh thời gian bắt đầu tổ chức lựa chọn nhà thầu trong kế hoạch lựa chọn nhà thầu
 - **B.** Phải điều chỉnh thời gian thực hiện gói thầu trong kế hoạch lựa chọn nhà thầu
-- **C.** Không phải điều chỉnh thời gian bắt đầu tổ chức lựa chọn nhà thầu trong kế hoạch lựa chọn nhà thầu
+- **C.** <u>Không phải điều chỉnh thời gian</u> bắt đầu tổ chức lựa chọn nhà thầu trong kế hoạch lựa chọn nhà thầu
 - **D.** Tất cả các đáp án trên đều không đúng
 
 > ✅ **Đáp án: C**
 
 > 💡 **Ghi nhớ:** Ví dụ BV 30-4: gói hóa chất xét nghiệm bị hủy thầu. Khi tổ chức lại, không bắt buộc sửa mốc bắt đầu lựa chọn nhà thầu trong kế hoạch.
+>
+> Mẹo: chọn cụm: không
 
 ---
 ### Câu 202
@@ -2898,22 +2900,22 @@
 **Hủy thầu được thực hiện trong thời gian nào?**
 
 - **A.** Từ ngày có thời điểm đóng thầu đến khi có kết quả lựa chọn nhà thầu
-- **B.** Từ ngày phát hành hồ sơ mời sơ tuyển, hồ sơ mời quan tâm, hồ sơ mời thầu, hồ sơ yêu cầu đến trước khi ký kết hợp đồng, thỏa thuận khung đối với mua sắm tập trung
+- **B.** Từ ngày phát hành hồ sơ mời sơ tuyển, hồ sơ mời quan tâm, hồ sơ mời thầu, hồ sơ yêu cầu đến <u>trước khi ký kết hợp đồng</u>, thỏa thuận khung đối với mua sắm tập trung
 - **C.** Từ ngày có thời điểm đóng thầu đến khi ký kết hợp đồng, thỏa thuận khung đối với mua sắm tập trung
 - **D.** Từ ngày phát hành hồ sơ mời sơ tuyển, hồ sơ mời quan tâm, hồ sơ mời thầu, hồ sơ yêu cầu kể cả sau khi đã ký hợp đồng
 
 > ✅ **Đáp án: B**
 
-> 💡 **Ghi nhớ:** thuộc lòng: hủy thầu trước khi ký hợp đồng, và đình chỉ trước khi phê duyệt kết quả chọn nhà thầu
+> 💡 **Ghi nhớ:** thuộc lòng: hủy thầu <u>trước khi ký hợp đồng</u>, và đình chỉ trước khi phê duyệt kết quả chọn nhà thầu
 
 ---
 ### Câu 203
 
-**Đối với gói thầu tổ chức lựa chọn nhà thầu qua mạng, trường hợp trong quá trình đánh giá E- HSDT mà chưa có kết quả lựa chọn nhà thầu, nhà thầu có tên trong biên bản mở thầu bị khóa tài khoản theo quy định của pháp luật về đấu thầu thì chủ đầu tư xử lý như thế nào?**
+**Đối với gói thầu tổ chức lựa <u>chọn nhà thầu qua mạng,</u> trường hợp trong quá trình đánh giá E- HSDT mà <u>chưa có kết quả lựa chọn nhà thầu</u>, <u>nhà thầu có tên trong biên bản mở thầu</u> bị khóa tài khoản theo quy định của pháp luật về đấu thầu thì chủ đầu tư xử lý như thế nào?**
 
 - **A.** Yêu cầu nhà thầu thực hiện các thủ tục để mở khóa tài khoản làm cơ sở xem xét, đánh giá E-HSDT của nhà thầu
 - **B.** Tiếp tục xem xét, đánh giá E-HSDT của nhà thầu
-- **C.** Không tiếp tục xem xét, đánh giá E-HSDT của nhà thầu
+- **C.** <u>Không tiếp tục xem xét</u>, đánh giá E-HSDT của nhà thầu
 - **D.** Tiếp tục xem xét, đánh giá E-HSDT của nhà thầu và yêu cầu nhà thầu thực hiện các thủ tục để mở khóa tài khoản trước khi phê duyệt kết quả lựa chọn nhà thầu
 
 > ✅ **Đáp án: C**
@@ -2923,12 +2925,12 @@
 ---
 ### Câu 204
 
-**Đối với gói thầu xây lắp, dịch vụ phi tư vấn, dịch vụ tư vấn áp dụng đấu thầu trước quy định tại Điều 42 của Luật Đấu thầu, trường hợp dự án được phê duyệt có các nội dung dẫn đến tăng giá gói thầu (hoặc tăng dự toán nếu dự toán được phê duyệt sau khi phê duyệt kế hoạch lựa chọn nhà thầu) từ 30% trở lên hoặc thay đổi tiêu chuẩn đánh giá quan trọng về kỹ thuật hoặc thay đổi cấp công trình quy định trong hồ sơ mời thầu đã phát hành thì chủ đầu tư xử lý như thế nào?**
+**Đối với gói thầu <u>xây lắp, dịch vụ phi tư vấn</u>, dịch vụ tư vấn áp dụng đấu thầu trước quy định tại Điều 42 của Luật Đấu thầu, trường hợp dự án được phê duyệt có các nội dung dẫn đến tăng giá gói thầu (hoặc tăng dự toán nếu dự toán được phê duyệt sau khi phê duyệt kế hoạch lựa chọn nhà thầu) <u>từ 30% trở lên</u> hoặc thay đổi tiêu chuẩn đánh giá quan trọng về kỹ thuật hoặc thay đổi cấp công trình quy định trong hồ sơ mời thầu đã phát hành thì chủ đầu tư xử lý như thế nào?**
 
 - **A.** Tiếp tục đánh giá hồ sơ dự thầu trong trường hợp đã mở thầu
 - **B.** Được sửa đổi và phát hành bổ sung hồ sơ mời thầu trong trường hợp chưa mở thầu
 - **C.** Được sửa đổi, bổ sung khối lượng công việc, hoàn thiện để ký kết hợp đồng với nhà thầu
-- **D.** Hủy thầu
+- **<u>D.** Hủy thầu</u>
 
 > ✅ **Đáp án: D**
 

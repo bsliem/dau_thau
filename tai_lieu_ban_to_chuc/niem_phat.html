@@ -366,166 +366,276 @@
 // CONFIG
 // ============================================================
 
+const APP_VERSION = "v6_breath_chant_research";
 const ROUND_TARGET = 21;
-
-const STORAGE_KEY =
-    "niem_phat_data_v4";
+const SESSION_GAP_S = 120;
+const STORAGE_KEY = "niem_phat_data_v6";
 
 const OLD_STORAGE_KEYS = [
+    "niem_phat_data_v5_research",
+    "niem_phat_data_v4",
     "niem_phat_data_v3",
     "niem_phat_data_v2",
     "niem_phat_data_v1"
 ];
 
+// ============================================================
+// RESEARCH PROTOCOL
+// ============================================================
+
+const PROTOCOL_ID = "nam_mo_a_mi_tuo_fo_phase_marker_v1";
+const CHANT_PHRASE = "南無阿彌陀佛";
+const INSPIRATION_PHRASE = "南無";
+const TRANSITION_PHRASE = "阿";
+const EXPIRATION_PHRASE = "彌陀佛";
+const TAP_PHASE = "inspiration_to_expiration_transition";
+const CYCLE_DEFINITION = "interval_between_two_consecutive_same_phase_taps";
+const MEASUREMENT_TYPE = "self_timed_phase_locked_respiration_chant";
 
 // ============================================================
 // DATA
 // ============================================================
 
 let data = {
-
     date: "",
-
     today: 0,
-
     total: 0,
-
     history: {},
-
     events: []
-
 };
-
 
 // ============================================================
 // ELEMENTS
 // ============================================================
 
-const counterEl =
-    document.getElementById("counter");
+const counterEl = document.getElementById("counter");
+const todayCountEl = document.getElementById("todayCount");
+const totalCountEl = document.getElementById("totalCount");
+const roundCountEl = document.getElementById("roundCount");
+const progressTextEl = document.getElementById("progressText");
+const progressBarEl = document.getElementById("progressBar");
+const mainButton = document.getElementById("mainButton");
+const undoButton = document.getElementById("undoButton");
+const plus7Button = document.getElementById("plus7Button");
+const plus21Button = document.getElementById("plus21Button");
+const exportButton = document.getElementById("exportButton");
+const resetButton = document.getElementById("resetButton");
 
-const todayCountEl =
-    document.getElementById("todayCount");
+// ============================================================
+// HELPERS
+// ============================================================
 
-const totalCountEl =
-    document.getElementById("totalCount");
+function pad2(value) {
+    return String(value).padStart(2, "0");
+}
 
-const roundCountEl =
-    document.getElementById("roundCount");
+function roundN(value, digits = 6) {
 
-const progressTextEl =
-    document.getElementById("progressText");
+    if (
+        value === null ||
+        value === undefined ||
+        !Number.isFinite(Number(value))
+    ) {
+        return "";
+    }
 
-const progressBarEl =
-    document.getElementById("progressBar");
+    const factor = 10 ** digits;
 
-const mainButton =
-    document.getElementById("mainButton");
+    return Math.round(Number(value) * factor) / factor;
+}
 
-const undoButton =
-    document.getElementById("undoButton");
+function mean(values) {
 
-const plus7Button =
-    document.getElementById("plus7Button");
+    const x = values.filter(Number.isFinite);
 
-const plus21Button =
-    document.getElementById("plus21Button");
+    if (!x.length) {
+        return null;
+    }
 
-const exportButton =
-    document.getElementById("exportButton");
+    return x.reduce((a, b) => a + b, 0) / x.length;
+}
 
-const resetButton =
-    document.getElementById("resetButton");
+function median(values) {
 
+    const x = values
+        .filter(Number.isFinite)
+        .slice()
+        .sort((a, b) => a - b);
+
+    if (!x.length) {
+        return null;
+    }
+
+    const mid = Math.floor(x.length / 2);
+
+    if (x.length % 2 === 1) {
+        return x[mid];
+    }
+
+    return (x[mid - 1] + x[mid]) / 2;
+}
+
+function sampleSD(values) {
+
+    const x = values.filter(Number.isFinite);
+
+    if (x.length < 2) {
+        return null;
+    }
+
+    const m = mean(x);
+
+    const variance =
+        x.reduce(
+            (sum, value) => sum + (value - m) ** 2,
+            0
+        ) /
+        (x.length - 1);
+
+    return Math.sqrt(variance);
+}
+
+function coefficientVariationPct(values) {
+
+    const m = mean(values);
+    const sd = sampleSD(values);
+
+    if (
+        m === null ||
+        sd === null ||
+        m === 0
+    ) {
+        return null;
+    }
+
+    return sd / m * 100;
+}
+
+function rmssd(values) {
+
+    const x = values.filter(Number.isFinite);
+
+    if (x.length < 2) {
+        return null;
+    }
+
+    const diffs = [];
+
+    for (let i = 1; i < x.length; i++) {
+        const d = x[i] - x[i - 1];
+        diffs.push(d * d);
+    }
+
+    return Math.sqrt(mean(diffs));
+}
+
+function meanAbsoluteSuccessiveDifference(values) {
+
+    const x = values.filter(Number.isFinite);
+
+    if (x.length < 2) {
+        return null;
+    }
+
+    const diffs = [];
+
+    for (let i = 1; i < x.length; i++) {
+        diffs.push(Math.abs(x[i] - x[i - 1]));
+    }
+
+    return mean(diffs);
+}
+
+function quantile(values, q) {
+
+    const x = values
+        .filter(Number.isFinite)
+        .slice()
+        .sort((a, b) => a - b);
+
+    if (!x.length) {
+        return null;
+    }
+
+    if (x.length === 1) {
+        return x[0];
+    }
+
+    const position = (x.length - 1) * q;
+    const lower = Math.floor(position);
+    const fraction = position - lower;
+
+    if (x[lower + 1] !== undefined) {
+        return x[lower] + fraction * (x[lower + 1] - x[lower]);
+    }
+
+    return x[lower];
+}
+
+function linearSlope(yValues, xValues) {
+
+    if (
+        yValues.length !== xValues.length ||
+        yValues.length < 2
+    ) {
+        return null;
+    }
+
+    const xMean = mean(xValues);
+    const yMean = mean(yValues);
+
+    let numerator = 0;
+    let denominator = 0;
+
+    for (let i = 0; i < yValues.length; i++) {
+
+        numerator +=
+            (xValues[i] - xMean) *
+            (yValues[i] - yMean);
+
+        denominator +=
+            (xValues[i] - xMean) ** 2;
+
+    }
+
+    if (denominator === 0) {
+        return null;
+    }
+
+    return numerator / denominator;
+}
 
 // ============================================================
 // DATE / TIME
 // ============================================================
 
-function pad2(value) {
+function getDateParts(date = new Date()) {
 
-    return String(value)
-        .padStart(
-            2,
-            "0"
-        );
-
-}
-
-
-function getDateParts(
-    date = new Date()
-) {
-
-    const year =
-        date.getFullYear();
-
-    const month =
-        pad2(
-            date.getMonth() + 1
-        );
-
-    const day =
-        pad2(
-            date.getDate()
-        );
-
-    const hour =
-        pad2(
-            date.getHours()
-        );
-
-    const minute =
-        pad2(
-            date.getMinutes()
-        );
-
-    const second =
-        pad2(
-            date.getSeconds()
-        );
+    const year = date.getFullYear();
+    const month = pad2(date.getMonth() + 1);
+    const day = pad2(date.getDate());
+    const hour = pad2(date.getHours());
+    const minute = pad2(date.getMinutes());
+    const second = pad2(date.getSeconds());
 
     return {
-
-        date:
-            `${year}-${month}-${day}`,
-
-        time:
-            `${hour}:${minute}:${second}`,
-
-        datetime:
-            `${year}-${month}-${day} ${hour}:${minute}:${second}`,
-
-        hour:
-            Number(hour),
-
-        minute:
-            Number(minute),
-
-        second:
-            Number(second),
-
-        weekday:
-            date.getDay(),
-
-        timestamp:
-            date.getTime()
-
+        date: `${year}-${month}-${day}`,
+        time: `${hour}:${minute}:${second}`,
+        datetime: `${year}-${month}-${day} ${hour}:${minute}:${second}`,
+        timestamp_ms: date.getTime(),
+        timezone_offset_min: -date.getTimezoneOffset(),
+        hour: Number(hour),
+        minute: Number(minute),
+        second: Number(second),
+        weekday_num: date.getDay()
     };
-
 }
-
 
 function getToday() {
-
     return getDateParts().date;
-
 }
 
-
-function getWeekdayEnglish(
-    day
-) {
+function getWeekdayEnglish(day) {
 
     const names = [
         "Sun",
@@ -538,279 +648,196 @@ function getWeekdayEnglish(
     ];
 
     return names[day] || "";
-
 }
 
+function getTimeOfDay(hour) {
+
+    if (hour < 6) return "night";
+    if (hour < 12) return "morning";
+    if (hour < 18) return "afternoon";
+    return "evening";
+}
 
 // ============================================================
-// MIGRATE OLD DATA
+// MIGRATION
 // ============================================================
 
 function migrateOldData() {
 
-    for (
-        const key of
-        OLD_STORAGE_KEYS
-    ) {
+    for (const key of OLD_STORAGE_KEYS) {
 
         try {
 
-            const saved =
-                localStorage.getItem(
-                    key
-                );
+            const saved = localStorage.getItem(key);
 
             if (!saved) {
                 continue;
             }
 
-            const oldData =
-                JSON.parse(
-                    saved
-                );
+            const oldData = JSON.parse(saved);
 
             return {
-
-                date:
-                    oldData.date ||
-                    getToday(),
-
-                today:
-                    Number(
-                        oldData.today
-                    ) || 0,
-
-                total:
-                    Number(
-                        oldData.total
-                    ) || 0,
-
-                history:
-                    oldData.history ||
-                    {},
-
-                events:
-                    []
-
+                date: oldData.date || getToday(),
+                today: Number(oldData.today) || 0,
+                total: Number(oldData.total) || 0,
+                history: oldData.history || {},
+                events: Array.isArray(oldData.events)
+                    ? oldData.events
+                    : []
             };
 
         } catch (error) {
 
-            console.log(
-                "migration_error",
-                key,
-                error
-            );
+            console.log("migration_error", key, error);
 
         }
-
     }
 
     return null;
-
 }
 
-
 // ============================================================
-// LOAD DATA
+// LOAD
 // ============================================================
 
 function loadData() {
 
-    const today =
-        getToday();
+    const today = getToday();
 
     data = {
-
-        date:
-            today,
-
-        today:
-            0,
-
-        total:
-            0,
-
-        history:
-            {},
-
-        events:
-            []
-
+        date: today,
+        today: 0,
+        total: 0,
+        history: {},
+        events: []
     };
-
 
     try {
 
-        const saved =
-            localStorage.getItem(
-                STORAGE_KEY
-            );
+        const saved = localStorage.getItem(STORAGE_KEY);
 
         if (saved) {
 
-            const oldData =
-                JSON.parse(
-                    saved
-                );
+            const loaded = JSON.parse(saved);
 
             data = {
-
-                date:
-                    oldData.date ||
-                    today,
-
-                today:
-                    Number(
-                        oldData.today
-                    ) || 0,
-
-                total:
-                    Number(
-                        oldData.total
-                    ) || 0,
-
-                history:
-                    oldData.history ||
-                    {},
-
-                events:
-                    Array.isArray(
-                        oldData.events
-                    )
-                        ? oldData.events
-                        : []
-
+                date: loaded.date || today,
+                today: Number(loaded.today) || 0,
+                total: Number(loaded.total) || 0,
+                history: loaded.history || {},
+                events: Array.isArray(loaded.events)
+                    ? loaded.events
+                    : []
             };
 
         } else {
 
-            const migrated =
-                migrateOldData();
+            const migrated = migrateOldData();
 
             if (migrated) {
-
-                data =
-                    migrated;
-
+                data = migrated;
                 saveData();
-
             }
-
         }
 
     } catch (error) {
 
-        console.error(
-            "load_error",
-            error
-        );
+        console.error("load_error", error);
 
     }
 
+    if (data.date !== today) {
 
-    // Sang ngày mới
-    if (
-        data.date !==
-        today
-    ) {
-
-        if (
-            data.date
-        ) {
-
-            data.history[
-                data.date
-            ] =
-                data.today;
-
+        if (data.date) {
+            data.history[data.date] = data.today;
         }
 
-        data.date =
-            today;
-
-        data.today =
-            0;
+        data.date = today;
+        data.today = 0;
 
         saveData();
-
     }
-
 }
 
-
 // ============================================================
-// SAVE DATA
+// SAVE
 // ============================================================
 
 function saveData() {
 
-    data.date =
-        getToday();
-
-    data.history[
-        data.date
-    ] =
-        data.today;
+    data.date = getToday();
+    data.history[data.date] = data.today;
 
     try {
 
         localStorage.setItem(
             STORAGE_KEY,
-            JSON.stringify(
-                data
-            )
+            JSON.stringify(data)
         );
 
     } catch (error) {
 
-        console.error(
-            "save_error",
-            error
-        );
+        console.error("save_error", error);
 
     }
-
 }
 
-
 // ============================================================
-// EVENT LOG
+// RAW EVENT
 // ============================================================
 
 function logEvent(
     action,
-    amount
+    amount,
+    isRespiratoryCycle
 ) {
 
-    const now =
-        getDateParts();
+    const now = getDateParts();
 
     data.events.push({
 
-        date:
-            now.date,
+        event_id: `${now.timestamp_ms}_${data.events.length + 1}`,
 
-        time:
-            now.time,
+        app_version: APP_VERSION,
+        protocol_id: PROTOCOL_ID,
+        measurement_type: MEASUREMENT_TYPE,
 
-        datetime:
-            now.datetime,
+        chant_phrase: CHANT_PHRASE,
+        inspiration_phrase: INSPIRATION_PHRASE,
+        transition_phrase: TRANSITION_PHRASE,
+        expiration_phrase: EXPIRATION_PHRASE,
 
-        timestamp:
-            now.timestamp,
+        tap_phase: TAP_PHASE,
+        cycle_definition: CYCLE_DEFINITION,
 
-        action:
-            action,
+        date: now.date,
+        time: now.time,
+        datetime: now.datetime,
+        timestamp_ms: now.timestamp_ms,
+        timezone_offset_min: now.timezone_offset_min,
 
-        amount:
-            amount,
+        weekday: getWeekdayEnglish(now.weekday_num),
+        weekday_num: now.weekday_num,
 
-        daily_total:
-            data.today,
+        hour: now.hour,
+        minute: now.minute,
+        second: now.second,
 
-        grand_total:
-            data.total,
+        time_of_day: getTimeOfDay(now.hour),
+
+        action: action,
+        amount: amount,
+
+        is_respiratory_cycle:
+            isRespiratoryCycle ? 1 : 0,
+
+        protocol_valid:
+            isRespiratoryCycle ? 1 : 0,
+
+        voided: false,
+
+        daily_chant_total: data.today,
+        grand_chant_total: data.total,
 
         rounds_21:
             Math.floor(
@@ -822,24 +849,11 @@ function logEvent(
             data.today %
             ROUND_TARGET,
 
-        hour:
-            now.hour,
-
-        minute:
-            now.minute,
-
-        second:
-            now.second,
-
-        weekday:
-            getWeekdayEnglish(
-                now.weekday
-            )
+        page_visibility:
+            document.visibilityState || ""
 
     });
-
 }
-
 
 // ============================================================
 // DISPLAY
@@ -848,22 +862,13 @@ function logEvent(
 function updateDisplay() {
 
     counterEl.textContent =
-        data.today
-            .toLocaleString(
-                "zh-Hant"
-            );
+        data.today.toLocaleString("zh-Hant");
 
     todayCountEl.textContent =
-        data.today
-            .toLocaleString(
-                "zh-Hant"
-            );
+        data.today.toLocaleString("zh-Hant");
 
     totalCountEl.textContent =
-        data.total
-            .toLocaleString(
-                "zh-Hant"
-            );
+        data.total.toLocaleString("zh-Hant");
 
     const completedRounds =
         Math.floor(
@@ -872,10 +877,7 @@ function updateDisplay() {
         );
 
     roundCountEl.textContent =
-        completedRounds
-            .toLocaleString(
-                "zh-Hant"
-            );
+        completedRounds.toLocaleString("zh-Hant");
 
     const position =
         data.today %
@@ -885,13 +887,8 @@ function updateDisplay() {
         `${position} / ${ROUND_TARGET}`;
 
     progressBarEl.style.width =
-        `${(
-            position /
-            ROUND_TARGET
-        ) * 100}%`;
-
+        `${(position / ROUND_TARGET) * 100}%`;
 }
-
 
 // ============================================================
 // ANIMATION
@@ -899,55 +896,89 @@ function updateDisplay() {
 
 function animateCounter() {
 
-    counterEl
-        .classList
-        .add(
-            "pop"
-        );
+    counterEl.classList.add("pop");
 
     window.setTimeout(
         () => {
-
-            counterEl
-                .classList
-                .remove(
-                    "pop"
-                );
-
+            counterEl.classList.remove("pop");
         },
         120
     );
-
 }
 
-
 // ============================================================
-// ADD
+// MAIN BREATH + CHANT EVENT
 // ============================================================
 
-function addCount(
-    amount = 1
-) {
+function addRespiratoryChantCycle() {
 
-    data.today +=
-        amount;
-
-    data.total +=
-        amount;
+    data.today += 1;
+    data.total += 1;
 
     logEvent(
-        "chant",
-        amount
+        "breath_chant_cycle",
+        1,
+        true
     );
 
     saveData();
-
     updateDisplay();
-
     animateCounter();
-
 }
 
+// ============================================================
+// BULK ADD
+// ============================================================
+
+function addBulk(amount) {
+
+    data.today += amount;
+    data.total += amount;
+
+    logEvent(
+        "bulk_chant_add",
+        amount,
+        false
+    );
+
+    saveData();
+    updateDisplay();
+    animateCounter();
+}
+
+// ============================================================
+// VALID RESPIRATORY EVENT
+// ============================================================
+
+function isRespiratoryEvent(event) {
+
+    if (event.voided === true) {
+        return false;
+    }
+
+    if (
+        event.action === "breath_chant_cycle" &&
+        Number(event.amount) === 1
+    ) {
+        return true;
+    }
+
+    if (
+        event.action === "breath" &&
+        Number(event.amount) === 1
+    ) {
+        return true;
+    }
+
+    if (
+        event.action === "chant" &&
+        Number(event.amount) === 1
+    ) {
+        return true;
+    }
+
+    return false;
+}
 
 // ============================================================
 // UNDO
@@ -955,37 +986,52 @@ function addCount(
 
 function undo() {
 
-    if (
-        data.today <= 0
-    ) {
-
+    if (data.today <= 0) {
         return;
-
     }
 
-    data.today -=
-        1;
+    data.today -= 1;
 
-    if (
-        data.total > 0
+    if (data.total > 0) {
+        data.total -= 1;
+    }
+
+    for (
+        let i = data.events.length - 1;
+        i >= 0;
+        i--
     ) {
 
-        data.total -=
-            1;
+        const event =
+            data.events[i];
 
+        if (
+            event.voided === true
+        ) {
+            continue;
+        }
+
+        if (
+            isRespiratoryEvent(event)
+        ) {
+
+            event.voided = true;
+            event.void_reason = "manual_undo";
+            event.voided_timestamp_ms = Date.now();
+
+            break;
+        }
     }
 
     logEvent(
         "undo",
-        -1
+        -1,
+        false
     );
 
     saveData();
-
     updateDisplay();
-
 }
-
 
 // ============================================================
 // RESET
@@ -995,45 +1041,1039 @@ function resetToday() {
 
     const ok =
         window.confirm(
-            "將今日念佛數重設為 0？\n\n總計仍會保留。"
+            "將今日念佛數重設為 0？\n\n研究呼吸紀錄仍會保留。"
         );
 
     if (!ok) {
-
         return;
-
     }
 
     const previous =
         data.today;
 
-    data.today =
-        0;
+    data.today = 0;
 
     logEvent(
         "reset",
-        -previous
+        -previous,
+        false
     );
 
     saveData();
-
     updateDisplay();
-
 }
 
+// ============================================================
+// NORMALIZE
+// ============================================================
+
+function normalizeEvents() {
+
+    return data.events
+        .map(
+            (event, index) => {
+
+                const timestampMs =
+                    Number(
+                        event.timestamp_ms ??
+                        event.timestamp
+                    );
+
+                const dt =
+                    Number.isFinite(timestampMs)
+                        ? new Date(timestampMs)
+                        : null;
+
+                const parts =
+                    dt
+                        ? getDateParts(dt)
+                        : null;
+
+                return {
+
+                    ...event,
+
+                    source_index:
+                        index,
+
+                    event_id:
+                        event.event_id ||
+                        `legacy_${index + 1}`,
+
+                    app_version:
+                        event.app_version ||
+                        "legacy",
+
+                    protocol_id:
+                        event.protocol_id ||
+                        PROTOCOL_ID,
+
+                    measurement_type:
+                        event.measurement_type ||
+                        MEASUREMENT_TYPE,
+
+                    chant_phrase:
+                        event.chant_phrase ||
+                        CHANT_PHRASE,
+
+                    inspiration_phrase:
+                        event.inspiration_phrase ||
+                        INSPIRATION_PHRASE,
+
+                    transition_phrase:
+                        event.transition_phrase ||
+                        TRANSITION_PHRASE,
+
+                    expiration_phrase:
+                        event.expiration_phrase ||
+                        EXPIRATION_PHRASE,
+
+                    tap_phase:
+                        event.tap_phase ||
+                        TAP_PHASE,
+
+                    cycle_definition:
+                        event.cycle_definition ||
+                        CYCLE_DEFINITION,
+
+                    timestamp_ms:
+                        timestampMs,
+
+                    date:
+                        event.date ||
+                        (parts ? parts.date : ""),
+
+                    time:
+                        event.time ||
+                        (parts ? parts.time : ""),
+
+                    datetime:
+                        event.datetime ||
+                        (parts ? parts.datetime : ""),
+
+                    timezone_offset_min:
+                        event.timezone_offset_min ??
+                        (
+                            dt
+                                ? -dt.getTimezoneOffset()
+                                : ""
+                        ),
+
+                    hour:
+                        event.hour ??
+                        (parts ? parts.hour : ""),
+
+                    minute:
+                        event.minute ??
+                        (parts ? parts.minute : ""),
+
+                    second:
+                        event.second ??
+                        (parts ? parts.second : ""),
+
+                    weekday:
+                        event.weekday ||
+                        (
+                            parts
+                                ? getWeekdayEnglish(
+                                    parts.weekday_num
+                                )
+                                : ""
+                        ),
+
+                    weekday_num:
+                        event.weekday_num ??
+                        (
+                            parts
+                                ? parts.weekday_num
+                                : ""
+                        ),
+
+                    voided:
+                        event.voided === true
+
+                };
+
+            }
+        )
+        .sort(
+            (a, b) =>
+                a.timestamp_ms -
+                b.timestamp_ms
+        );
+}
+
+// ============================================================
+// INTERVAL STATS
+// ============================================================
+
+function intervalStats(intervals) {
+
+    const x =
+        intervals.filter(
+            Number.isFinite
+        );
+
+    const m =
+        mean(x);
+
+    const q25 =
+        quantile(x, 0.25);
+
+    const q75 =
+        quantile(x, 0.75);
+
+    return {
+
+        n:
+            x.length,
+
+        mean:
+            m,
+
+        median:
+            median(x),
+
+        sd:
+            sampleSD(x),
+
+        cv_pct:
+            coefficientVariationPct(x),
+
+        rmssd:
+            rmssd(x),
+
+        mean_abs_successive_diff:
+            meanAbsoluteSuccessiveDifference(x),
+
+        min:
+            x.length
+                ? Math.min(...x)
+                : null,
+
+        max:
+            x.length
+                ? Math.max(...x)
+                : null,
+
+        q10:
+            quantile(x, 0.10),
+
+        q25:
+            q25,
+
+        q75:
+            q75,
+
+        q90:
+            quantile(x, 0.90),
+
+        iqr:
+            (
+                q25 !== null &&
+                q75 !== null
+            )
+                ? q75 - q25
+                : null,
+
+        rr_from_mean_cycle_bpm:
+            (m && m > 0)
+                ? 60 / m
+                : null
+
+    };
+}
+
+// ============================================================
+// BUILD RESEARCH ROWS
+// ============================================================
+
+function buildResearchRows() {
+
+    const allEvents =
+        normalizeEvents();
+
+    const breaths =
+        allEvents.filter(
+            isRespiratoryEvent
+        );
+
+    let previousBreath = null;
+    let previousCycleS = null;
+    let previousRR = null;
+
+    let globalCycleIndex = 0;
+    let dayCycleIndex = 0;
+    let currentDate = "";
+
+    let sessionNumberToday = 0;
+    let sessionCycleIndex = 0;
+    let sessionId = "";
+
+    const sessionIntervals = {};
+    const sessionRR = {};
+
+    breaths.forEach(
+        row => {
+
+            globalCycleIndex++;
+
+            if (
+                row.date !==
+                currentDate
+            ) {
+
+                currentDate = row.date;
+                dayCycleIndex = 0;
+                sessionNumberToday = 0;
+            }
+
+            dayCycleIndex++;
+
+            let gapS = null;
+
+            if (
+                previousBreath &&
+                Number.isFinite(
+                    row.timestamp_ms
+                ) &&
+                Number.isFinite(
+                    previousBreath.timestamp_ms
+                )
+            ) {
+
+                gapS =
+                    (
+                        row.timestamp_ms -
+                        previousBreath.timestamp_ms
+                    ) / 1000;
+
+            }
+
+            const newSession =
+                (
+                    !previousBreath ||
+                    previousBreath.date !== row.date ||
+                    gapS === null ||
+                    gapS > SESSION_GAP_S
+                );
+
+            if (newSession) {
+
+                sessionNumberToday++;
+
+                sessionId =
+                    `${row.date}_S${pad2(sessionNumberToday)}`;
+
+                sessionCycleIndex = 1;
+                previousCycleS = null;
+                previousRR = null;
+
+                sessionIntervals[sessionId] = [];
+                sessionRR[sessionId] = [];
+
+            } else {
+
+                sessionCycleIndex++;
+            }
+
+            row.global_cycle_index =
+                globalCycleIndex;
+
+            row.day_cycle_index =
+                dayCycleIndex;
+
+            row.session_id =
+                sessionId;
+
+            row.session_number_today =
+                sessionNumberToday;
+
+            row.session_cycle_index =
+                sessionCycleIndex;
+
+            row.session_start =
+                newSession ? 1 : 0;
+
+            row.gap_prev_marker_s =
+                gapS;
+
+            const cycleS =
+                newSession
+                    ? null
+                    : gapS;
+
+            row.respiratory_cycle_s =
+                cycleS;
+
+            row.respiratory_rate_bpm =
+                (
+                    cycleS &&
+                    cycleS > 0
+                )
+                    ? 60 / cycleS
+                    : null;
+
+            row.cycle_change_s =
+                (
+                    cycleS !== null &&
+                    previousCycleS !== null
+                )
+                    ? cycleS - previousCycleS
+                    : null;
+
+            row.abs_cycle_change_s =
+                row.cycle_change_s !== null
+                    ? Math.abs(
+                        row.cycle_change_s
+                    )
+                    : null;
+
+            row.cycle_change_pct =
+                (
+                    cycleS !== null &&
+                    previousCycleS !== null &&
+                    previousCycleS !== 0
+                )
+                    ? (
+                        (
+                            cycleS - previousCycleS
+                        ) /
+                        previousCycleS *
+                        100
+                    )
+                    : null;
+
+            row.rr_change_bpm =
+                (
+                    row.respiratory_rate_bpm !== null &&
+                    previousRR !== null
+                )
+                    ? row.respiratory_rate_bpm - previousRR
+                    : null;
+
+            row.protocol_cycle_valid =
+                (
+                    cycleS !== null &&
+                    cycleS > 0
+                )
+                    ? 1
+                    : 0;
+
+            row.cycle_qc =
+                newSession
+                    ? "session_start"
+                    : "protocol_valid";
+
+            if (
+                cycleS !== null &&
+                cycleS > 0
+            ) {
+
+                sessionIntervals[sessionId]
+                    .push(cycleS);
+
+                sessionRR[sessionId]
+                    .push(
+                        row.respiratory_rate_bpm
+                    );
+
+                previousCycleS =
+                    cycleS;
+
+                previousRR =
+                    row.respiratory_rate_bpm;
+
+            }
+
+            const intervals =
+                sessionIntervals[sessionId];
+
+            const rr =
+                sessionRR[sessionId];
+
+            [3, 5, 10, 21].forEach(
+                windowSize => {
+
+                    const x =
+                        intervals.slice(
+                            -windowSize
+                        );
+
+                    const r =
+                        rr.slice(
+                            -windowSize
+                        );
+
+                    const s =
+                        intervalStats(x);
+
+                    row[
+                        `roll${windowSize}_n`
+                    ] =
+                        s.n;
+
+                    row[
+                        `roll${windowSize}_mean_cycle_s`
+                    ] =
+                        s.mean;
+
+                    row[
+                        `roll${windowSize}_sd_cycle_s`
+                    ] =
+                        s.sd;
+
+                    row[
+                        `roll${windowSize}_cv_cycle_pct`
+                    ] =
+                        s.cv_pct;
+
+                    row[
+                        `roll${windowSize}_rmssd_cycle_s`
+                    ] =
+                        s.rmssd;
+
+                    row[
+                        `roll${windowSize}_mean_rr_bpm`
+                    ] =
+                        mean(r);
+
+                }
+            );
+
+            row.minute_bucket =
+                row.datetime
+                    ? row.datetime.slice(0, 16)
+                    : "";
+
+            row.hour_bucket =
+                row.datetime
+                    ? row.datetime.slice(0, 13)
+                    : "";
+
+            previousBreath =
+                row;
+
+        }
+    );
+
+    const minuteCounts = {};
+    const hourCounts = {};
+
+    breaths.forEach(
+        row => {
+
+            minuteCounts[row.minute_bucket] =
+                (
+                    minuteCounts[row.minute_bucket] ||
+                    0
+                ) + 1;
+
+            hourCounts[row.hour_bucket] =
+                (
+                    hourCounts[row.hour_bucket] ||
+                    0
+                ) + 1;
+
+        }
+    );
+
+    breaths.forEach(
+        row => {
+
+            row.chant_cycles_in_clock_minute =
+                minuteCounts[row.minute_bucket] ||
+                0;
+
+            row.chant_cycles_in_clock_hour =
+                hourCounts[row.hour_bucket] ||
+                0;
+
+        }
+    );
+
+    const sessionGroups = {};
+
+    breaths.forEach(
+        row => {
+
+            if (!sessionGroups[row.session_id]) {
+                sessionGroups[row.session_id] = [];
+            }
+
+            sessionGroups[row.session_id]
+                .push(row);
+
+        }
+    );
+
+    Object.keys(sessionGroups)
+        .forEach(
+            id => {
+
+                const rows =
+                    sessionGroups[id];
+
+                const first = rows[0];
+                const last =
+                    rows[rows.length - 1];
+
+                const durationS =
+                    (
+                        last.timestamp_ms -
+                        first.timestamp_ms
+                    ) / 1000;
+
+                const intervals =
+                    rows
+                        .map(
+                            row =>
+                                row.respiratory_cycle_s
+                        )
+                        .filter(Number.isFinite);
+
+                const rr =
+                    rows
+                        .map(
+                            row =>
+                                row.respiratory_rate_bpm
+                        )
+                        .filter(Number.isFinite);
+
+                const stats =
+                    intervalStats(intervals);
+
+                const half =
+                    Math.floor(rr.length / 2);
+
+                const firstHalf =
+                    rr.slice(0, half);
+
+                const secondHalf =
+                    rr.slice(half);
+
+                const rrRows =
+                    rows.filter(
+                        row =>
+                            Number.isFinite(
+                                row.respiratory_rate_bpm
+                            )
+                    );
+
+                const rrForSlope =
+                    rrRows.map(
+                        row =>
+                            row.respiratory_rate_bpm
+                    );
+
+                const elapsedMin =
+                    rrRows.map(
+                        row =>
+                            (
+                                row.timestamp_ms -
+                                first.timestamp_ms
+                            ) /
+                            60000
+                    );
+
+                const rrSlope =
+                    linearSlope(
+                        rrForSlope,
+                        elapsedMin
+                    );
+
+                rows.forEach(
+                    row => {
+
+                        row.session_start_datetime =
+                            first.datetime;
+
+                        row.session_end_datetime =
+                            last.datetime;
+
+                        row.session_duration_s =
+                            durationS;
+
+                        row.session_duration_min =
+                            durationS / 60;
+
+                        row.session_elapsed_s =
+                            (
+                                row.timestamp_ms -
+                                first.timestamp_ms
+                            ) / 1000;
+
+                        row.session_total_cycles =
+                            rows.length;
+
+                        row.session_mean_cycle_s =
+                            stats.mean;
+
+                        row.session_median_cycle_s =
+                            stats.median;
+
+                        row.session_sd_cycle_s =
+                            stats.sd;
+
+                        row.session_cv_cycle_pct =
+                            stats.cv_pct;
+
+                        row.session_rmssd_cycle_s =
+                            stats.rmssd;
+
+                        row.session_mean_abs_successive_diff_s =
+                            stats.mean_abs_successive_diff;
+
+                        row.session_min_cycle_s =
+                            stats.min;
+
+                        row.session_max_cycle_s =
+                            stats.max;
+
+                        row.session_iqr_cycle_s =
+                            stats.iqr;
+
+                        row.session_mean_rr_bpm =
+                            mean(rr);
+
+                        row.session_median_rr_bpm =
+                            median(rr);
+
+                        row.session_sd_rr_bpm =
+                            sampleSD(rr);
+
+                        row.session_cv_rr_pct =
+                            coefficientVariationPct(rr);
+
+                        row.session_first_half_mean_rr_bpm =
+                            mean(firstHalf);
+
+                        row.session_second_half_mean_rr_bpm =
+                            mean(secondHalf);
+
+                        row.session_rr_change_first_to_second_bpm =
+                            (
+                                mean(firstHalf) !== null &&
+                                mean(secondHalf) !== null
+                            )
+                                ? mean(secondHalf) -
+                                  mean(firstHalf)
+                                : null;
+
+                        row.session_rr_slope_bpm_per_min =
+                            rrSlope;
+
+                        row.session_chants_per_min =
+                            (
+                                durationS > 0 &&
+                                rows.length > 1
+                            )
+                                ? (
+                                    (
+                                        rows.length - 1
+                                    ) *
+                                    60 /
+                                    durationS
+                                )
+                                : null;
+
+                    }
+                );
+
+            }
+        );
+
+    const dayGroups = {};
+
+    breaths.forEach(
+        row => {
+
+            if (!dayGroups[row.date]) {
+                dayGroups[row.date] = [];
+            }
+
+            dayGroups[row.date]
+                .push(row);
+
+        }
+    );
+
+    const dailySummary = {};
+
+    const observedDates =
+        Object.keys(dayGroups)
+            .sort();
+
+    observedDates.forEach(
+        date => {
+
+            const rows =
+                dayGroups[date];
+
+            const intervals =
+                rows
+                    .map(
+                        row =>
+                            row.respiratory_cycle_s
+                    )
+                    .filter(Number.isFinite);
+
+            const rr =
+                rows
+                    .map(
+                        row =>
+                            row.respiratory_rate_bpm
+                    )
+                    .filter(Number.isFinite);
+
+            const stats =
+                intervalStats(intervals);
+
+            const sessionIds =
+                [
+                    ...new Set(
+                        rows.map(
+                            row =>
+                                row.session_id
+                        )
+                    )
+                ];
+
+            let activeDurationS =
+                0;
+
+            sessionIds.forEach(
+                id => {
+
+                    const sRows =
+                        sessionGroups[id];
+
+                    if (
+                        sRows &&
+                        sRows.length > 1
+                    ) {
+
+                        activeDurationS +=
+                            (
+                                sRows[
+                                    sRows.length - 1
+                                ].timestamp_ms -
+                                sRows[0].timestamp_ms
+                            ) /
+                            1000;
+
+                    }
+
+                }
+            );
+
+            dailySummary[date] = {
+
+                day_chant_cycles:
+                    rows.length,
+
+                day_respiratory_cycles:
+                    rows.length,
+
+                day_sessions:
+                    sessionIds.length,
+
+                day_active_duration_min:
+                    activeDurationS / 60,
+
+                day_first_cycle_datetime:
+                    rows[0].datetime,
+
+                day_last_cycle_datetime:
+                    rows[
+                        rows.length - 1
+                    ].datetime,
+
+                day_mean_cycle_s:
+                    stats.mean,
+
+                day_median_cycle_s:
+                    stats.median,
+
+                day_sd_cycle_s:
+                    stats.sd,
+
+                day_cv_cycle_pct:
+                    stats.cv_pct,
+
+                day_rmssd_cycle_s:
+                    stats.rmssd,
+
+                day_mean_abs_successive_diff_s:
+                    stats.mean_abs_successive_diff,
+
+                day_min_cycle_s:
+                    stats.min,
+
+                day_max_cycle_s:
+                    stats.max,
+
+                day_iqr_cycle_s:
+                    stats.iqr,
+
+                day_mean_rr_bpm:
+                    mean(rr),
+
+                day_median_rr_bpm:
+                    median(rr),
+
+                day_sd_rr_bpm:
+                    sampleSD(rr),
+
+                day_cv_rr_pct:
+                    coefficientVariationPct(rr)
+
+            };
+
+        }
+    );
+
+    observedDates.forEach(
+        (date, index) => {
+
+            const current =
+                dailySummary[date];
+
+            current.study_day =
+                index + 1;
+
+            const previous =
+                index > 0
+                    ? dailySummary[
+                        observedDates[index - 1]
+                    ]
+                    : null;
+
+            current.day_change_chant_cycles =
+                previous
+                    ? current.day_chant_cycles -
+                      previous.day_chant_cycles
+                    : null;
+
+            current.day_change_mean_rr_bpm =
+                (
+                    previous &&
+                    Number.isFinite(
+                        current.day_mean_rr_bpm
+                    ) &&
+                    Number.isFinite(
+                        previous.day_mean_rr_bpm
+                    )
+                )
+                    ? current.day_mean_rr_bpm -
+                      previous.day_mean_rr_bpm
+                    : null;
+
+            [3, 7, 14].forEach(
+                windowSize => {
+
+                    const dates =
+                        observedDates.slice(
+                            Math.max(
+                                0,
+                                index - windowSize + 1
+                            ),
+                            index + 1
+                        );
+
+                    const chantValues =
+                        dates.map(
+                            d =>
+                                dailySummary[d]
+                                    .day_chant_cycles
+                        );
+
+                    const rrValues =
+                        dates
+                            .map(
+                                d =>
+                                    dailySummary[d]
+                                        .day_mean_rr_bpm
+                            )
+                            .filter(Number.isFinite);
+
+                    const cycleValues =
+                        dates
+                            .map(
+                                d =>
+                                    dailySummary[d]
+                                        .day_mean_cycle_s
+                            )
+                            .filter(Number.isFinite);
+
+                    current[
+                        `rolling_${windowSize}d_chant_mean`
+                    ] =
+                        mean(chantValues);
+
+                    current[
+                        `rolling_${windowSize}d_rr_mean_bpm`
+                    ] =
+                        mean(rrValues);
+
+                    current[
+                        `rolling_${windowSize}d_cycle_mean_s`
+                    ] =
+                        mean(cycleValues);
+
+                }
+            );
+
+        }
+    );
+
+    breaths.forEach(
+        row => {
+
+            const d =
+                dailySummary[row.date];
+
+            if (d) {
+                Object.assign(row, d);
+            }
+
+        }
+    );
+
+    allEvents.forEach(
+        row => {
+
+            row.is_breath_chant_cycle =
+                isRespiratoryEvent(row)
+                    ? 1
+                    : 0;
+
+            row.action_normalized =
+                row.is_breath_chant_cycle
+                    ? "breath_chant_cycle"
+                    : (row.action || "");
+
+        }
+    );
+
+    return allEvents;
+}
 
 // ============================================================
 // CSV
 // ============================================================
 
-function csvCell(
-    value
-) {
+function csvCell(value) {
 
-    const text =
-        String(
-            value ?? ""
-        );
+    if (
+        value === null ||
+        value === undefined
+    ) {
+        return "";
+    }
+
+    let text =
+        String(value);
 
     if (
         text.includes(",") ||
@@ -1041,81 +2081,229 @@ function csvCell(
         text.includes("\n")
     ) {
 
-        return (
+        text =
             '"' +
             text.replace(
                 /"/g,
                 '""'
             ) +
-            '" '
-        ).trim();
+            '"';
 
     }
 
     return text;
-
 }
 
+const CSV_COLUMNS = [
+
+    "event_id",
+    "app_version",
+    "protocol_id",
+    "measurement_type",
+
+    "chant_phrase",
+    "inspiration_phrase",
+    "transition_phrase",
+    "expiration_phrase",
+
+    "tap_phase",
+    "cycle_definition",
+
+    "date",
+    "time",
+    "datetime",
+    "timestamp_ms",
+    "timezone_offset_min",
+
+    "weekday",
+    "weekday_num",
+    "hour",
+    "minute",
+    "second",
+    "time_of_day",
+
+    "action",
+    "action_normalized",
+    "amount",
+    "is_respiratory_cycle",
+    "is_breath_chant_cycle",
+    "protocol_valid",
+    "voided",
+    "void_reason",
+
+    "daily_chant_total",
+    "grand_chant_total",
+    "rounds_21",
+    "position_21",
+
+    "global_cycle_index",
+    "day_cycle_index",
+    "session_id",
+    "session_number_today",
+    "session_cycle_index",
+    "session_start",
+
+    "gap_prev_marker_s",
+    "respiratory_cycle_s",
+    "respiratory_rate_bpm",
+    "cycle_change_s",
+    "abs_cycle_change_s",
+    "cycle_change_pct",
+    "rr_change_bpm",
+    "protocol_cycle_valid",
+    "cycle_qc",
+
+    "roll3_n",
+    "roll3_mean_cycle_s",
+    "roll3_sd_cycle_s",
+    "roll3_cv_cycle_pct",
+    "roll3_rmssd_cycle_s",
+    "roll3_mean_rr_bpm",
+
+    "roll5_n",
+    "roll5_mean_cycle_s",
+    "roll5_sd_cycle_s",
+    "roll5_cv_cycle_pct",
+    "roll5_rmssd_cycle_s",
+    "roll5_mean_rr_bpm",
+
+    "roll10_n",
+    "roll10_mean_cycle_s",
+    "roll10_sd_cycle_s",
+    "roll10_cv_cycle_pct",
+    "roll10_rmssd_cycle_s",
+    "roll10_mean_rr_bpm",
+
+    "roll21_n",
+    "roll21_mean_cycle_s",
+    "roll21_sd_cycle_s",
+    "roll21_cv_cycle_pct",
+    "roll21_rmssd_cycle_s",
+    "roll21_mean_rr_bpm",
+
+    "minute_bucket",
+    "hour_bucket",
+    "chant_cycles_in_clock_minute",
+    "chant_cycles_in_clock_hour",
+
+    "session_start_datetime",
+    "session_end_datetime",
+    "session_duration_s",
+    "session_duration_min",
+    "session_elapsed_s",
+    "session_total_cycles",
+
+    "session_mean_cycle_s",
+    "session_median_cycle_s",
+    "session_sd_cycle_s",
+    "session_cv_cycle_pct",
+    "session_rmssd_cycle_s",
+    "session_mean_abs_successive_diff_s",
+    "session_min_cycle_s",
+    "session_max_cycle_s",
+    "session_iqr_cycle_s",
+
+    "session_mean_rr_bpm",
+    "session_median_rr_bpm",
+    "session_sd_rr_bpm",
+    "session_cv_rr_pct",
+
+    "session_first_half_mean_rr_bpm",
+    "session_second_half_mean_rr_bpm",
+    "session_rr_change_first_to_second_bpm",
+    "session_rr_slope_bpm_per_min",
+    "session_chants_per_min",
+
+    "study_day",
+    "day_chant_cycles",
+    "day_respiratory_cycles",
+    "day_sessions",
+    "day_active_duration_min",
+    "day_first_cycle_datetime",
+    "day_last_cycle_datetime",
+
+    "day_mean_cycle_s",
+    "day_median_cycle_s",
+    "day_sd_cycle_s",
+    "day_cv_cycle_pct",
+    "day_rmssd_cycle_s",
+    "day_mean_abs_successive_diff_s",
+    "day_min_cycle_s",
+    "day_max_cycle_s",
+    "day_iqr_cycle_s",
+
+    "day_mean_rr_bpm",
+    "day_median_rr_bpm",
+    "day_sd_rr_bpm",
+    "day_cv_rr_pct",
+
+    "day_change_chant_cycles",
+    "day_change_mean_rr_bpm",
+
+    "rolling_3d_chant_mean",
+    "rolling_3d_rr_mean_bpm",
+    "rolling_3d_cycle_mean_s",
+
+    "rolling_7d_chant_mean",
+    "rolling_7d_rr_mean_bpm",
+    "rolling_7d_cycle_mean_s",
+
+    "rolling_14d_chant_mean",
+    "rolling_14d_rr_mean_bpm",
+    "rolling_14d_cycle_mean_s"
+
+];
 
 function buildCSV() {
 
-    saveData();
+    const rows =
+        buildResearchRows();
 
     let csv =
-        "\uFEFFdate,time,datetime,timestamp,action,amount,daily_total,grand_total,rounds_21,position_21,hour,minute,second,weekday\n";
+        "\uFEFF" +
+        CSV_COLUMNS.join(",") +
+        "\n";
 
+    rows.forEach(
+        row => {
 
-    data.events.forEach(
-        event => {
+            const values =
+                CSV_COLUMNS.map(
+                    column => {
 
-            const row = [
+                        const value =
+                            row[column];
 
-                event.date,
+                        if (
+                            typeof value ===
+                                "number" &&
+                            column !==
+                                "timestamp_ms"
+                        ) {
 
-                event.time,
+                            return roundN(
+                                value,
+                                6
+                            );
 
-                event.datetime,
+                        }
 
-                event.timestamp,
+                        return value ?? "";
 
-                event.action,
-
-                event.amount,
-
-                event.daily_total,
-
-                event.grand_total,
-
-                event.rounds_21,
-
-                event.position_21,
-
-                event.hour,
-
-                event.minute,
-
-                event.second,
-
-                event.weekday
-
-            ];
+                    }
+                );
 
             csv +=
-                row
-                    .map(
-                        csvCell
-                    )
+                values
+                    .map(csvCell)
                     .join(",") +
                 "\n";
 
         }
     );
 
-
     return csv;
-
 }
-
 
 // ============================================================
 // EXPORT
@@ -1123,23 +2311,22 @@ function buildCSV() {
 
 async function exportCSV() {
 
+    saveData();
+
     const csv =
         buildCSV();
 
     const filename =
-        `niem_phat_log_${getToday()}.csv`;
+        `breath_chant_research_${getToday()}.csv`;
 
     const blob =
         new Blob(
             [csv],
             {
-                type:
-                    "text/csv;charset=utf-8"
+                type: "text/csv;charset=utf-8"
             }
         );
 
-
-    // Safari iPhone Share Sheet
     try {
 
         if (
@@ -1154,8 +2341,7 @@ async function exportCSV() {
                     [blob],
                     filename,
                     {
-                        type:
-                            "text/csv;charset=utf-8"
+                        type: "text/csv;charset=utf-8"
                     }
                 );
 
@@ -1166,19 +2352,12 @@ async function exportCSV() {
             ) {
 
                 await navigator.share({
-
-                    files:
-                        [file],
-
-                    title:
-                        "念佛紀錄"
-
+                    files: [file],
+                    title: "念佛呼吸研究資料"
                 });
 
                 return;
-
             }
-
         }
 
     } catch (error) {
@@ -1187,58 +2366,34 @@ async function exportCSV() {
             error.name ===
             "AbortError"
         ) {
-
             return;
-
         }
 
-        console.log(
-            "share_error",
-            error
-        );
-
+        console.log("share_error", error);
     }
 
-
-    // Browser download fallback
     const url =
-        URL.createObjectURL(
-            blob
-        );
+        URL.createObjectURL(blob);
 
     const link =
-        document.createElement(
-            "a"
-        );
+        document.createElement("a");
 
-    link.href =
-        url;
-
-    link.download =
-        filename;
+    link.href = url;
+    link.download = filename;
 
     document.body
-        .appendChild(
-            link
-        );
+        .appendChild(link);
 
     link.click();
-
     link.remove();
 
     window.setTimeout(
         () => {
-
-            URL.revokeObjectURL(
-                url
-            );
-
+            URL.revokeObjectURL(url);
         },
         1000
     );
-
 }
-
 
 // ============================================================
 // BUTTON EVENTS
@@ -1246,7 +2401,7 @@ async function exportCSV() {
 
 mainButton.addEventListener(
     "click",
-    () => addCount(1)
+    addRespiratoryChantCycle
 );
 
 undoButton.addEventListener(
@@ -1256,12 +2411,12 @@ undoButton.addEventListener(
 
 plus7Button.addEventListener(
     "click",
-    () => addCount(7)
+    () => addBulk(7)
 );
 
 plus21Button.addEventListener(
     "click",
-    () => addCount(21)
+    () => addBulk(21)
 );
 
 exportButton.addEventListener(
@@ -1274,13 +2429,11 @@ resetButton.addEventListener(
     resetToday
 );
 
-
 // ============================================================
 // START
 // ============================================================
 
 loadData();
-
 updateDisplay();
 
 </script>
