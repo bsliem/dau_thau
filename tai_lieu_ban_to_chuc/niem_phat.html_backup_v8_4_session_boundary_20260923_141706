@@ -435,11 +435,9 @@
 // CONFIG
 // ============================================================
 
-const APP_VERSION = "v8_4_session_boundary_fix";
+const APP_VERSION = "v8_3_live_session_fix";
 const ROUND_TARGET = 21;
 const SESSION_BREAK_CYCLES = 10;
-const SESSION_MIN_THRESHOLD_S = 12;
-const SESSION_MAX_THRESHOLD_S = 60;
 const SESSION_FALLBACK_GAP_S = 25;
 const SESSION_LOCAL_WINDOW = 7;
 const STORAGE_KEY = "niem_phat_data_v6";
@@ -942,19 +940,14 @@ function logEvent(
 
 function getDynamicSessionThreshold(intervals = []) {
 
-    // Chỉ dùng các interval có giá trị hữu hạn và dương
     const recent = intervals
-        .map(Number)
         .filter(
             value =>
-                Number.isFinite(value) &&
-                value > 0 &&
-                value < SESSION_MAX_THRESHOLD_S
+                Number.isFinite(Number(value)) &&
+                Number(value) > 0
         )
+        .map(Number)
         .slice(-SESSION_LOCAL_WINDOW);
-
-    let threshold =
-        SESSION_FALLBACK_GAP_S;
 
     if (recent.length >= 3) {
 
@@ -966,25 +959,18 @@ function getDynamicSessionThreshold(intervals = []) {
             localMedian > 0
         ) {
 
-            threshold =
+            return
                 localMedian *
                 SESSION_BREAK_CYCLES;
         }
     }
 
-    // Không cho threshold nhỏ/quá lớn bất thường
-    threshold = Math.max(
-        SESSION_MIN_THRESHOLD_S,
-        threshold
-    );
-
-    threshold = Math.min(
-        SESSION_MAX_THRESHOLD_S,
-        threshold
-    );
-
-    return threshold;
+    return SESSION_FALLBACK_GAP_S;
 }
+
+// ============================================================
+// CLOCK HELPERS
+// ============================================================
 
 function formatClockTime(date = new Date()) {
 
@@ -1064,7 +1050,9 @@ function getCurrentLiveSession() {
         )
         .filter(
             event =>
-                Number.isFinite(event.timestamp_ms)
+                Number.isFinite(
+                    event.timestamp_ms
+                )
         )
         .sort(
             (a, b) =>
@@ -1084,14 +1072,20 @@ function getCurrentLiveSession() {
         };
     }
 
-    let current = [events[0]];
+    let current = [];
     let intervals = [];
 
-    for (let i = 1; i < events.length; i++) {
+    for (const event of events) {
 
-        const event = events[i];
+        if (!current.length) {
 
-        const previous = events[i - 1];
+            current = [event];
+            intervals = [];
+            continue;
+        }
+
+        const previous =
+            current[current.length - 1];
 
         const gap =
             (
@@ -1100,28 +1094,23 @@ function getCurrentLiveSession() {
             ) / 1000;
 
         const threshold =
-            getDynamicSessionThreshold(intervals);
-
-        // ---------------------------------------------
-        // Gap lớn = phiên hoàn toàn mới
-        // ---------------------------------------------
+            getDynamicSessionThreshold(
+                intervals
+            );
 
         if (gap >= threshold) {
 
+            // New session
             current = [event];
             intervals = [];
 
-            continue;
-        }
+        } else {
 
-        current.push(event);
+            current.push(event);
 
-        if (
-            Number.isFinite(gap) &&
-            gap > 0
-        ) {
-
-            intervals.push(gap);
+            if (gap > 0) {
+                intervals.push(gap);
+            }
         }
     }
 
@@ -1131,7 +1120,9 @@ function getCurrentLiveSession() {
         current[current.length - 1];
 
     const threshold =
-        getDynamicSessionThreshold(intervals);
+        getDynamicSessionThreshold(
+            intervals
+        );
 
     const nowMs = Date.now();
 
@@ -1141,9 +1132,9 @@ function getCurrentLiveSession() {
             last.timestamp_ms
         ) / 1000;
 
-    // ---------------------------------------------
-    // Nếu đã nghỉ quá ngưỡng thì KHÔNG còn phiên
-    // ---------------------------------------------
+    // --------------------------------------------------------
+    // SESSION EXPIRED
+    // --------------------------------------------------------
 
     if (idleS >= threshold) {
 
@@ -1157,9 +1148,9 @@ function getCurrentLiveSession() {
         };
     }
 
-    // ---------------------------------------------
-    // Phiên đang hoạt động
-    // ---------------------------------------------
+    // --------------------------------------------------------
+    // ACTIVE SESSION
+    // --------------------------------------------------------
 
     const elapsedS =
         (
@@ -1194,6 +1185,10 @@ function getCurrentLiveSession() {
         threshold_s: threshold
     };
 }
+
+// ============================================================
+// UPDATE LIVE UI
+// ============================================================
 
 function updateLiveSessionStats() {
 

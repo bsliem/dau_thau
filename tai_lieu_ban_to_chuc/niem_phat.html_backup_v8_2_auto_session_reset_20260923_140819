@@ -435,11 +435,9 @@
 // CONFIG
 // ============================================================
 
-const APP_VERSION = "v8_4_session_boundary_fix";
+const APP_VERSION = "v8_large_button_live_session";
 const ROUND_TARGET = 21;
 const SESSION_BREAK_CYCLES = 10;
-const SESSION_MIN_THRESHOLD_S = 12;
-const SESSION_MAX_THRESHOLD_S = 60;
 const SESSION_FALLBACK_GAP_S = 25;
 const SESSION_LOCAL_WINDOW = 7;
 const STORAGE_KEY = "niem_phat_data_v6";
@@ -942,19 +940,14 @@ function logEvent(
 
 function getDynamicSessionThreshold(intervals = []) {
 
-    // Chỉ dùng các interval có giá trị hữu hạn và dương
     const recent = intervals
-        .map(Number)
         .filter(
             value =>
-                Number.isFinite(value) &&
-                value > 0 &&
-                value < SESSION_MAX_THRESHOLD_S
+                Number.isFinite(Number(value)) &&
+                Number(value) > 0
         )
+        .map(Number)
         .slice(-SESSION_LOCAL_WINDOW);
-
-    let threshold =
-        SESSION_FALLBACK_GAP_S;
 
     if (recent.length >= 3) {
 
@@ -966,25 +959,155 @@ function getDynamicSessionThreshold(intervals = []) {
             localMedian > 0
         ) {
 
-            threshold =
+            return
                 localMedian *
                 SESSION_BREAK_CYCLES;
         }
     }
 
-    // Không cho threshold nhỏ/quá lớn bất thường
-    threshold = Math.max(
-        SESSION_MIN_THRESHOLD_S,
-        threshold
-    );
-
-    threshold = Math.min(
-        SESSION_MAX_THRESHOLD_S,
-        threshold
-    );
-
-    return threshold;
+    return SESSION_FALLBACK_GAP_S;
 }
+
+function getCurrentLiveSession() {
+
+    const today = getToday();
+
+    const events = data.events
+        .filter(
+            event =>
+                event.voided !== true &&
+                event.date === today &&
+                (
+                    event.action === "breath_chant_cycle" ||
+                    event.action === "breath"
+                ) &&
+                Number(event.amount) === 1
+        )
+        .map(
+            event => ({
+                ...event,
+                timestamp_ms:
+                    Number(
+                        event.timestamp_ms ??
+                        event.timestamp
+                    )
+            })
+        )
+        .filter(
+            event =>
+                Number.isFinite(
+                    event.timestamp_ms
+                )
+        )
+        .sort(
+            (a, b) =>
+                a.timestamp_ms -
+                b.timestamp_ms
+        );
+
+    if (!events.length) {
+
+        return {
+            count: 0,
+            rate: null,
+            duration_s: 0,
+            start_timestamp_ms: null,
+            last_timestamp_ms: null,
+            threshold_s:
+                SESSION_FALLBACK_GAP_S
+        };
+    }
+
+    let current = [];
+    let intervals = [];
+
+    events.forEach(
+        event => {
+
+            if (!current.length) {
+
+                current = [event];
+                intervals = [];
+                return;
+            }
+
+            const previous =
+                current[current.length - 1];
+
+            const gap =
+                (
+                    event.timestamp_ms -
+                    previous.timestamp_ms
+                ) /
+                1000;
+
+            const threshold =
+                getDynamicSessionThreshold(
+                    intervals
+                );
+
+            if (gap >= threshold) {
+
+                current = [event];
+                intervals = [];
+
+            } else {
+
+                current.push(event);
+
+                if (gap > 0) {
+                    intervals.push(gap);
+                }
+            }
+        }
+    );
+
+    const first = current[0];
+    const last =
+        current[current.length - 1];
+
+    const durationS =
+        current.length > 1
+            ? (
+                last.timestamp_ms -
+                first.timestamp_ms
+              ) / 1000
+            : 0;
+
+    const rate =
+        current.length > 1 &&
+        durationS > 0
+            ? (
+                current.length - 1
+              ) *
+              60 /
+              durationS
+            : null;
+
+    return {
+        count:
+            current.length,
+        rate:
+            rate,
+        duration_s:
+            durationS,
+        threshold_s:
+            getDynamicSessionThreshold(
+                intervals
+            ),
+
+        start_timestamp_ms:
+            first.timestamp_ms,
+
+        last_timestamp_ms:
+            last.timestamp_ms
+    };
+}
+
+
+// ============================================================
+// LIVE CLOCK + SESSION DURATION
+// ============================================================
 
 function formatClockTime(date = new Date()) {
 
@@ -1015,7 +1138,7 @@ function formatSessionDuration(seconds) {
             (total % 3600) / 60
         );
 
-    const secondsPart =
+    const secs =
         total % 60;
 
     if (hours > 0) {
@@ -1023,183 +1146,22 @@ function formatSessionDuration(seconds) {
         return [
             pad2(hours),
             pad2(minutes),
-            pad2(secondsPart)
+            pad2(secs)
         ].join(":");
     }
 
     return [
         pad2(minutes),
-        pad2(secondsPart)
+        pad2(secs)
     ].join(":");
-}
-
-// ============================================================
-// GET CURRENT LIVE SESSION
-// ============================================================
-
-function getCurrentLiveSession() {
-
-    const today = getToday();
-
-    const events = data.events
-        .filter(
-            event =>
-                event.voided !== true &&
-                event.date === today &&
-                (
-                    event.action === "breath_chant_cycle" ||
-                    event.action === "breath"
-                ) &&
-                Number(event.amount) === 1
-        )
-        .map(
-            event => ({
-                ...event,
-                timestamp_ms:
-                    Number(
-                        event.timestamp_ms ??
-                        event.timestamp
-                    )
-            })
-        )
-        .filter(
-            event =>
-                Number.isFinite(event.timestamp_ms)
-        )
-        .sort(
-            (a, b) =>
-                a.timestamp_ms -
-                b.timestamp_ms
-        );
-
-    if (!events.length) {
-
-        return {
-            active: false,
-            count: 0,
-            rate: null,
-            elapsed_s: 0,
-            threshold_s:
-                SESSION_FALLBACK_GAP_S
-        };
-    }
-
-    let current = [events[0]];
-    let intervals = [];
-
-    for (let i = 1; i < events.length; i++) {
-
-        const event = events[i];
-
-        const previous = events[i - 1];
-
-        const gap =
-            (
-                event.timestamp_ms -
-                previous.timestamp_ms
-            ) / 1000;
-
-        const threshold =
-            getDynamicSessionThreshold(intervals);
-
-        // ---------------------------------------------
-        // Gap lớn = phiên hoàn toàn mới
-        // ---------------------------------------------
-
-        if (gap >= threshold) {
-
-            current = [event];
-            intervals = [];
-
-            continue;
-        }
-
-        current.push(event);
-
-        if (
-            Number.isFinite(gap) &&
-            gap > 0
-        ) {
-
-            intervals.push(gap);
-        }
-    }
-
-    const first = current[0];
-
-    const last =
-        current[current.length - 1];
-
-    const threshold =
-        getDynamicSessionThreshold(intervals);
-
-    const nowMs = Date.now();
-
-    const idleS =
-        (
-            nowMs -
-            last.timestamp_ms
-        ) / 1000;
-
-    // ---------------------------------------------
-    // Nếu đã nghỉ quá ngưỡng thì KHÔNG còn phiên
-    // ---------------------------------------------
-
-    if (idleS >= threshold) {
-
-        return {
-            active: false,
-            count: 0,
-            rate: null,
-            elapsed_s: 0,
-            idle_s: idleS,
-            threshold_s: threshold
-        };
-    }
-
-    // ---------------------------------------------
-    // Phiên đang hoạt động
-    // ---------------------------------------------
-
-    const elapsedS =
-        (
-            nowMs -
-            first.timestamp_ms
-        ) / 1000;
-
-    const observedDurationS =
-        current.length > 1
-            ? (
-                last.timestamp_ms -
-                first.timestamp_ms
-              ) / 1000
-            : 0;
-
-    const rate =
-        current.length > 1 &&
-        observedDurationS > 0
-            ? (
-                current.length - 1
-              ) *
-              60 /
-              observedDurationS
-            : null;
-
-    return {
-        active: true,
-        count: current.length,
-        rate: rate,
-        elapsed_s: elapsedS,
-        idle_s: idleS,
-        threshold_s: threshold
-    };
 }
 
 function updateLiveSessionStats() {
 
-    const now = new Date();
+    const now =
+        new Date();
 
-    // Current time ALWAYS runs
+    // Current clock
     if (currentClockEl) {
 
         currentClockEl.textContent =
@@ -1209,25 +1171,7 @@ function updateLiveSessionStats() {
     const session =
         getCurrentLiveSession();
 
-    // Session finished / inactive
-    if (!session.active) {
-
-        if (currentSessionCountEl) {
-            currentSessionCountEl.textContent = "0";
-        }
-
-        if (currentSessionRateEl) {
-            currentSessionRateEl.textContent = "—";
-        }
-
-        if (currentSessionDurationEl) {
-            currentSessionDurationEl.textContent = "00:00";
-        }
-
-        return;
-    }
-
-    // Active session
+    // Current-session chant count
     if (currentSessionCountEl) {
 
         currentSessionCountEl.textContent =
@@ -1235,6 +1179,7 @@ function updateLiveSessionStats() {
                 .toLocaleString("zh-Hant");
     }
 
+    // Average chants/minute
     if (currentSessionRateEl) {
 
         currentSessionRateEl.textContent =
@@ -1243,15 +1188,34 @@ function updateLiveSessionStats() {
                 : "—";
     }
 
+    // Session elapsed time
     if (currentSessionDurationEl) {
+
+        let elapsed =
+            0;
+
+        if (
+            Number.isFinite(
+                session.start_timestamp_ms
+            )
+        ) {
+
+            elapsed =
+                (
+                    now.getTime() -
+                    session.start_timestamp_ms
+                ) /
+                1000;
+        }
 
         currentSessionDurationEl.textContent =
             formatSessionDuration(
-                session.elapsed_s
+                elapsed
             );
     }
 }
 
+// ============================================================
 // DISPLAY
 // ============================================================
 
@@ -4059,7 +4023,7 @@ body {
     <div class="meta">
         ${today}<br>
         Tạo lúc ${generated}<br>
-        Protocol V8.3.3
+        Protocol V8
     </div>
 </div>
 
@@ -4429,14 +4393,6 @@ loadData();
 updateDisplay();
 
 // Refresh live clock and session duration every second
-
-
-// ============================================================
-// LIVE TIMER - ONE INSTANCE ONLY
-// ============================================================
-
-updateLiveSessionStats();
-
 window.setInterval(
     updateLiveSessionStats,
     1000

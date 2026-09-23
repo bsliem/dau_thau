@@ -69,13 +69,13 @@
             max-width: 390px;
             background: var(--card);
             border-radius: 28px;
-            padding: 18px 18px 34px;
+            padding: 28px 22px 40px;
             box-shadow: 0 10px 35px rgba(80,55,30,0.08);
             text-align: center;
         }
 
         .lotus {
-            font-size: 2rem;
+            font-size: 2.4rem;
             margin-bottom: 6px;
         }
 
@@ -91,7 +91,7 @@
         }
 
         .chant {
-            margin: 10px 0 6px;
+            margin: 24px 0 8px;
             font-size: 1.55rem;
             line-height: 1.35;
             font-weight: 700;
@@ -103,7 +103,7 @@
             line-height: 1;
             font-weight: 750;
             color: var(--primary);
-            margin: 14px 0 10px;
+            margin: 22px 0 14px;
             font-variant-numeric: tabular-nums;
             transition: transform 0.12s ease;
         }
@@ -124,7 +124,7 @@
             background: #eee5d9;
             border-radius: 999px;
             overflow: hidden;
-            margin-bottom: 18px;
+            margin-bottom: 28px;
         }
 
         .progress-bar {
@@ -136,8 +136,8 @@
         }
 
         .main-button {
-            width: min(78vw, 300px);
-            height: min(78vw, 300px);
+            width: 155px;
+            height: 155px;
             border: none;
             border-radius: 50%;
 
@@ -149,11 +149,11 @@
                 );
 
             color: white;
-            font-size: 2.35rem;
+            font-size: 1.3rem;
             font-weight: 750;
             box-shadow: 0 10px 28px rgba(185,109,8,0.30);
             cursor: pointer;
-            margin-bottom: 18px;
+            margin-bottom: 28px;
             touch-action: manipulation;
         }
 
@@ -249,46 +249,6 @@
             font-size: 0.75rem;
             color: #a19689;
         }
-
-        /* ================================================ */
-        /* LIVE SESSION */
-        /* ================================================ */
-
-        .live-session {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 10px;
-            margin: 10px 0 18px;
-        }
-
-        .live-session-card {
-            background: #f7f0e6;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-            padding: 9px 8px;
-        }
-
-        .live-session-value {
-            font-size: 1.35rem;
-            line-height: 1.1;
-            font-weight: 750;
-            color: var(--primary);
-            font-variant-numeric: tabular-nums;
-        }
-
-        .live-session-label {
-            margin-top: 4px;
-            color: var(--secondary);
-            font-size: 0.72rem;
-        }
-
-
-        .live-time {
-            font-size: 1.15rem;
-            letter-spacing: 0.02em;
-            font-variant-numeric: tabular-nums;
-        }
-
     </style>
 </head>
 
@@ -298,7 +258,11 @@
 
     <div class="lotus">🪷</div>
 
+    <h1>念佛</h1>
 
+    <div class="subtitle">
+        一心稱念
+    </div>
 
     <div class="chant">
         南無阿彌陀佛
@@ -314,31 +278,6 @@
 
     <div class="progress">
         <div class="progress-bar" id="progressBar"></div>
-    </div>
-
-
-    <div class="live-session">
-
-        <div class="live-session-card">
-            <div class="live-session-value" id="currentSessionCount">0</div>
-            <div class="live-session-label">本次</div>
-        </div>
-
-        <div class="live-session-card">
-            <div class="live-session-value" id="currentSessionRate">—</div>
-            <div class="live-session-label">平均 / 分</div>
-        </div>
-
-        <div class="live-session-card">
-            <div class="live-session-value live-time" id="currentClock">--:--:--</div>
-            <div class="live-session-label">現在</div>
-        </div>
-
-        <div class="live-session-card">
-            <div class="live-session-value live-time" id="currentSessionDuration">00:00</div>
-            <div class="live-session-label">時間</div>
-        </div>
-
     </div>
 
     <button
@@ -435,13 +374,9 @@
 // CONFIG
 // ============================================================
 
-const APP_VERSION = "v8_4_session_boundary_fix";
+const APP_VERSION = "v7_breath_chant_qc";
 const ROUND_TARGET = 21;
-const SESSION_BREAK_CYCLES = 10;
-const SESSION_MIN_THRESHOLD_S = 12;
-const SESSION_MAX_THRESHOLD_S = 60;
-const SESSION_FALLBACK_GAP_S = 25;
-const SESSION_LOCAL_WINDOW = 7;
+const SESSION_GAP_S = 15;
 const STORAGE_KEY = "niem_phat_data_v6";
 
 const OLD_STORAGE_KEYS = [
@@ -482,11 +417,6 @@ let data = {
 // ============================================================
 
 const counterEl = document.getElementById("counter");
-
-const currentSessionCountEl = document.getElementById("currentSessionCount");
-const currentSessionRateEl = document.getElementById("currentSessionRate");
-const currentClockEl = document.getElementById("currentClock");
-const currentSessionDurationEl = document.getElementById("currentSessionDuration");
 const todayCountEl = document.getElementById("todayCount");
 const totalCountEl = document.getElementById("totalCount");
 const roundCountEl = document.getElementById("roundCount");
@@ -934,324 +864,7 @@ function logEvent(
     });
 }
 
-
 // ============================================================
-// DYNAMIC SESSION
-// New session after missing about 10 expected chant cycles
-// ============================================================
-
-function getDynamicSessionThreshold(intervals = []) {
-
-    // Chỉ dùng các interval có giá trị hữu hạn và dương
-    const recent = intervals
-        .map(Number)
-        .filter(
-            value =>
-                Number.isFinite(value) &&
-                value > 0 &&
-                value < SESSION_MAX_THRESHOLD_S
-        )
-        .slice(-SESSION_LOCAL_WINDOW);
-
-    let threshold =
-        SESSION_FALLBACK_GAP_S;
-
-    if (recent.length >= 3) {
-
-        const localMedian =
-            median(recent);
-
-        if (
-            Number.isFinite(localMedian) &&
-            localMedian > 0
-        ) {
-
-            threshold =
-                localMedian *
-                SESSION_BREAK_CYCLES;
-        }
-    }
-
-    // Không cho threshold nhỏ/quá lớn bất thường
-    threshold = Math.max(
-        SESSION_MIN_THRESHOLD_S,
-        threshold
-    );
-
-    threshold = Math.min(
-        SESSION_MAX_THRESHOLD_S,
-        threshold
-    );
-
-    return threshold;
-}
-
-function formatClockTime(date = new Date()) {
-
-    return [
-        pad2(date.getHours()),
-        pad2(date.getMinutes()),
-        pad2(date.getSeconds())
-    ].join(":");
-}
-
-function formatSessionDuration(seconds) {
-
-    if (
-        !Number.isFinite(seconds) ||
-        seconds < 0
-    ) {
-        return "00:00";
-    }
-
-    const total =
-        Math.floor(seconds);
-
-    const hours =
-        Math.floor(total / 3600);
-
-    const minutes =
-        Math.floor(
-            (total % 3600) / 60
-        );
-
-    const secondsPart =
-        total % 60;
-
-    if (hours > 0) {
-
-        return [
-            pad2(hours),
-            pad2(minutes),
-            pad2(secondsPart)
-        ].join(":");
-    }
-
-    return [
-        pad2(minutes),
-        pad2(secondsPart)
-    ].join(":");
-}
-
-// ============================================================
-// GET CURRENT LIVE SESSION
-// ============================================================
-
-function getCurrentLiveSession() {
-
-    const today = getToday();
-
-    const events = data.events
-        .filter(
-            event =>
-                event.voided !== true &&
-                event.date === today &&
-                (
-                    event.action === "breath_chant_cycle" ||
-                    event.action === "breath"
-                ) &&
-                Number(event.amount) === 1
-        )
-        .map(
-            event => ({
-                ...event,
-                timestamp_ms:
-                    Number(
-                        event.timestamp_ms ??
-                        event.timestamp
-                    )
-            })
-        )
-        .filter(
-            event =>
-                Number.isFinite(event.timestamp_ms)
-        )
-        .sort(
-            (a, b) =>
-                a.timestamp_ms -
-                b.timestamp_ms
-        );
-
-    if (!events.length) {
-
-        return {
-            active: false,
-            count: 0,
-            rate: null,
-            elapsed_s: 0,
-            threshold_s:
-                SESSION_FALLBACK_GAP_S
-        };
-    }
-
-    let current = [events[0]];
-    let intervals = [];
-
-    for (let i = 1; i < events.length; i++) {
-
-        const event = events[i];
-
-        const previous = events[i - 1];
-
-        const gap =
-            (
-                event.timestamp_ms -
-                previous.timestamp_ms
-            ) / 1000;
-
-        const threshold =
-            getDynamicSessionThreshold(intervals);
-
-        // ---------------------------------------------
-        // Gap lớn = phiên hoàn toàn mới
-        // ---------------------------------------------
-
-        if (gap >= threshold) {
-
-            current = [event];
-            intervals = [];
-
-            continue;
-        }
-
-        current.push(event);
-
-        if (
-            Number.isFinite(gap) &&
-            gap > 0
-        ) {
-
-            intervals.push(gap);
-        }
-    }
-
-    const first = current[0];
-
-    const last =
-        current[current.length - 1];
-
-    const threshold =
-        getDynamicSessionThreshold(intervals);
-
-    const nowMs = Date.now();
-
-    const idleS =
-        (
-            nowMs -
-            last.timestamp_ms
-        ) / 1000;
-
-    // ---------------------------------------------
-    // Nếu đã nghỉ quá ngưỡng thì KHÔNG còn phiên
-    // ---------------------------------------------
-
-    if (idleS >= threshold) {
-
-        return {
-            active: false,
-            count: 0,
-            rate: null,
-            elapsed_s: 0,
-            idle_s: idleS,
-            threshold_s: threshold
-        };
-    }
-
-    // ---------------------------------------------
-    // Phiên đang hoạt động
-    // ---------------------------------------------
-
-    const elapsedS =
-        (
-            nowMs -
-            first.timestamp_ms
-        ) / 1000;
-
-    const observedDurationS =
-        current.length > 1
-            ? (
-                last.timestamp_ms -
-                first.timestamp_ms
-              ) / 1000
-            : 0;
-
-    const rate =
-        current.length > 1 &&
-        observedDurationS > 0
-            ? (
-                current.length - 1
-              ) *
-              60 /
-              observedDurationS
-            : null;
-
-    return {
-        active: true,
-        count: current.length,
-        rate: rate,
-        elapsed_s: elapsedS,
-        idle_s: idleS,
-        threshold_s: threshold
-    };
-}
-
-function updateLiveSessionStats() {
-
-    const now = new Date();
-
-    // Current time ALWAYS runs
-    if (currentClockEl) {
-
-        currentClockEl.textContent =
-            formatClockTime(now);
-    }
-
-    const session =
-        getCurrentLiveSession();
-
-    // Session finished / inactive
-    if (!session.active) {
-
-        if (currentSessionCountEl) {
-            currentSessionCountEl.textContent = "0";
-        }
-
-        if (currentSessionRateEl) {
-            currentSessionRateEl.textContent = "—";
-        }
-
-        if (currentSessionDurationEl) {
-            currentSessionDurationEl.textContent = "00:00";
-        }
-
-        return;
-    }
-
-    // Active session
-    if (currentSessionCountEl) {
-
-        currentSessionCountEl.textContent =
-            session.count
-                .toLocaleString("zh-Hant");
-    }
-
-    if (currentSessionRateEl) {
-
-        currentSessionRateEl.textContent =
-            Number.isFinite(session.rate)
-                ? session.rate.toFixed(1)
-                : "—";
-    }
-
-    if (currentSessionDurationEl) {
-
-        currentSessionDurationEl.textContent =
-            formatSessionDuration(
-                session.elapsed_s
-            );
-    }
-}
-
 // DISPLAY
 // ============================================================
 
@@ -1284,8 +897,6 @@ function updateDisplay() {
 
     progressBarEl.style.width =
         `${(position / ROUND_TARGET) * 100}%`;
-
-    updateLiveSessionStats();
 }
 
 // ============================================================
@@ -1753,7 +1364,7 @@ function buildResearchRows() {
                     !previousBreath ||
                     previousBreath.date !== row.date ||
                     gapS === null ||
-                    gapS >= getDynamicSessionThreshold((sessionIntervals[sessionId] || []))
+                    gapS > SESSION_GAP_S
                 );
 
             if (newSession) {
@@ -2659,7 +2270,7 @@ const CSV_COLUMNS = [
 
 const STUDY_START_DATE = "2026-09-23";
 
-const QC_SESSION_GAP_S = SESSION_FALLBACK_GAP_S;
+const QC_SESSION_GAP_S = 15;
 
 // Relative QC based on recent clean respiratory cycles
 const QC_LOCAL_WINDOW = 7;
@@ -2770,7 +2381,7 @@ function applyResearchQC(rows) {
             if (
                 previousEligible === null ||
                 gap === null ||
-                gap >= getDynamicSessionThreshold(cleanIntervals)
+                gap > QC_SESSION_GAP_S
             ) {
 
                 sessionNumber++;
@@ -4059,7 +3670,7 @@ body {
     <div class="meta">
         ${today}<br>
         Tạo lúc ${generated}<br>
-        Protocol V8.3.3
+        Protocol V7
     </div>
 </div>
 
@@ -4427,20 +4038,6 @@ resetButton.addEventListener(
 
 loadData();
 updateDisplay();
-
-// Refresh live clock and session duration every second
-
-
-// ============================================================
-// LIVE TIMER - ONE INSTANCE ONLY
-// ============================================================
-
-updateLiveSessionStats();
-
-window.setInterval(
-    updateLiveSessionStats,
-    1000
-);
 
 </script>
 
