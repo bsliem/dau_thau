@@ -289,111 +289,6 @@
             font-variant-numeric: tabular-nums;
         }
 
-
-        /* ================================================ */
-        /* SESSION HISTORY - HH:MM:SS */
-        /* ================================================ */
-
-        .session-history-mini {
-            margin: 0 0 8px;
-            padding: 7px 8px 6px;
-            background: #faf5ec;
-            border: 1px solid var(--border);
-            border-radius: 14px;
-        }
-
-        .session-history-chart {
-            height: 70px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: space-around;
-            gap: 5px;
-        }
-
-        .session-history-column {
-            flex: 1;
-            height: 100%;
-            min-width: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            align-items: center;
-        }
-
-        .session-history-number {
-            font-size: 0.68rem;
-            line-height: 1;
-            font-weight: 750;
-            color: var(--primary);
-            margin-bottom: 2px;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .session-history-bar-wrap {
-            width: 100%;
-            height: 37px;
-            display: flex;
-            align-items: flex-end;
-            justify-content: center;
-        }
-
-        .session-history-bar {
-            width: 58%;
-            min-height: 3px;
-            background: #dab276;
-            border-radius: 4px 4px 1px 1px;
-        }
-
-        .session-history-bar.current {
-            background: var(--primary);
-        }
-
-        .session-history-time {
-            margin-top: 3px;
-            color: var(--secondary);
-            font-size: 0.53rem;
-            line-height: 1;
-            white-space: nowrap;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .session-history-summary {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            margin-top: 5px;
-            padding-top: 5px;
-            border-top: 1px solid var(--border);
-        }
-
-        .session-history-summary-item {
-            display: flex;
-            justify-content: center;
-            align-items: baseline;
-            gap: 4px;
-        }
-
-        .session-history-label {
-            color: var(--secondary);
-            font-size: 0.58rem;
-        }
-
-        .session-history-value {
-            color: var(--primary);
-            font-size: 0.78rem;
-            font-weight: 750;
-            font-variant-numeric: tabular-nums;
-        }
-
-        .session-history-empty {
-            width: 100%;
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            color: var(--secondary);
-            font-size: 0.7rem;
-        }
-
     </style>
 </head>
 
@@ -401,35 +296,9 @@
 
 <main class="container">
 
+    <div class="lotus">🪷</div>
 
 
-
-
-    <div class="session-history-mini">
-
-        <div class="session-history-chart" id="sessionHistoryChart">
-        </div>
-
-        <div class="session-history-summary">
-
-            <div class="session-history-summary-item">
-                <span class="session-history-label">前回</span>
-                <span class="session-history-value" id="previousSessionCount">—</span>
-            </div>
-
-            <div class="session-history-summary-item">
-                <span class="session-history-label">最高</span>
-                <span class="session-history-value" id="bestSessionCount">—</span>
-            </div>
-
-            <div class="session-history-summary-item">
-                <span class="session-history-label">目標</span>
-                <span class="session-history-value" id="sessionGoalCount">—</span>
-            </div>
-
-        </div>
-
-    </div>
 
     <div class="chant">
         南無阿彌陀佛
@@ -566,7 +435,7 @@
 // CONFIG
 // ============================================================
 
-const APP_VERSION = "v8_7_session_history_chart";
+const APP_VERSION = "v8_6_reverse_session";
 const ROUND_TARGET = 21;
 const SESSION_BREAK_CYCLES = 3;
 const SESSION_FALLBACK_GAP_S = 9;
@@ -611,11 +480,6 @@ let data = {
 // ============================================================
 
 const counterEl = document.getElementById("counter");
-const sessionHistoryChartEl = document.getElementById("sessionHistoryChart");
-const previousSessionCountEl = document.getElementById("previousSessionCount");
-const bestSessionCountEl = document.getElementById("bestSessionCount");
-const sessionGoalCountEl = document.getElementById("sessionGoalCount");
-
 
 const currentSessionCountEl = document.getElementById("currentSessionCount");
 const currentSessionRateEl = document.getElementById("currentSessionRate");
@@ -1475,300 +1339,6 @@ function updateLiveSessionStats() {
     }
 }
 
-// ============================================================
-// SESSION HISTORY CHART
-// each bar = one chanting session today
-// label = HH:MM:SS session start
-// ============================================================
-
-function timestampToHMS(timestampMs) {
-
-    const d = new Date(timestampMs);
-
-    return [
-        pad2(d.getHours()),
-        pad2(d.getMinutes()),
-        pad2(d.getSeconds())
-    ].join(":");
-}
-
-function getTodaySessionHistory() {
-
-    const today = getToday();
-
-    const events = data.events
-        .filter(
-            event =>
-                event.voided !== true &&
-                event.date === today &&
-                (
-                    event.action === "breath_chant_cycle" ||
-                    event.action === "breath"
-                ) &&
-                Number(event.amount) === 1
-        )
-        .map(
-            event => ({
-                ...event,
-                timestamp_ms:
-                    Number(
-                        event.timestamp_ms ??
-                        event.timestamp
-                    )
-            })
-        )
-        .filter(
-            event =>
-                Number.isFinite(
-                    event.timestamp_ms
-                )
-        )
-        .sort(
-            (a, b) =>
-                a.timestamp_ms -
-                b.timestamp_ms
-        );
-
-    if (!events.length) {
-        return [];
-    }
-
-    const sessions = [];
-
-    let current = {
-        start_timestamp_ms:
-            events[0].timestamp_ms,
-        end_timestamp_ms:
-            events[0].timestamp_ms,
-        count: 1,
-        intervals: []
-    };
-
-    for (
-        let i = 1;
-        i < events.length;
-        i++
-    ) {
-
-        const previous =
-            events[i - 1];
-
-        const event =
-            events[i];
-
-        const gap =
-            (
-                event.timestamp_ms -
-                previous.timestamp_ms
-            ) /
-            1000;
-
-        const threshold =
-            getDynamicSessionThreshold(
-                current.intervals
-            );
-
-        if (gap >= threshold) {
-
-            sessions.push(current);
-
-            current = {
-                start_timestamp_ms:
-                    event.timestamp_ms,
-                end_timestamp_ms:
-                    event.timestamp_ms,
-                count: 1,
-                intervals: []
-            };
-
-        } else {
-
-            current.count += 1;
-
-            current.end_timestamp_ms =
-                event.timestamp_ms;
-
-            if (
-                Number.isFinite(gap) &&
-                gap > 0
-            ) {
-
-                current.intervals.push(gap);
-            }
-        }
-    }
-
-    sessions.push(current);
-
-    const live =
-        getCurrentLiveSession();
-
-    sessions.forEach(
-        session => {
-
-            session.start_time =
-                timestampToHMS(
-                    session.start_timestamp_ms
-                );
-
-            session.current = false;
-        }
-    );
-
-    if (
-        live.active &&
-        sessions.length
-    ) {
-
-        sessions[
-            sessions.length - 1
-        ].current = true;
-    }
-
-    return sessions;
-}
-
-function updateSessionHistoryChart() {
-
-    if (!sessionHistoryChartEl) {
-        return;
-    }
-
-    const sessions =
-        getTodaySessionHistory();
-
-    if (!sessions.length) {
-
-        sessionHistoryChartEl.innerHTML =
-            '<div class="session-history-empty">尚無紀錄</div>';
-
-        if (previousSessionCountEl) {
-            previousSessionCountEl.textContent = "—";
-        }
-
-        if (bestSessionCountEl) {
-            bestSessionCountEl.textContent = "—";
-        }
-
-        if (sessionGoalCountEl) {
-            sessionGoalCountEl.textContent = "—";
-        }
-
-        return;
-    }
-
-    const live =
-        getCurrentLiveSession();
-
-    const completed =
-        live.active
-            ? sessions.slice(0, -1)
-            : sessions;
-
-    const previous =
-        completed.length
-            ? completed[
-                completed.length - 1
-              ].count
-            : null;
-
-    const best =
-        completed.length
-            ? Math.max(
-                ...completed.map(
-                    s => s.count
-                )
-              )
-            : null;
-
-    // Mục tiêu hiện tại:
-    // ít nhất bằng phiên cao nhất trước đó.
-    const goal =
-        best !== null
-            ? best
-            : null;
-
-    if (previousSessionCountEl) {
-
-        previousSessionCountEl.textContent =
-            previous !== null
-                ? previous.toLocaleString(
-                    "zh-Hant"
-                  )
-                : "—";
-    }
-
-    if (bestSessionCountEl) {
-
-        bestSessionCountEl.textContent =
-            best !== null
-                ? best.toLocaleString(
-                    "zh-Hant"
-                  )
-                : "—";
-    }
-
-    if (sessionGoalCountEl) {
-
-        sessionGoalCountEl.textContent =
-            goal !== null
-                ? goal.toLocaleString(
-                    "zh-Hant"
-                  )
-                : "—";
-    }
-
-    const recent =
-        sessions.slice(-5);
-
-    const maxCount =
-        Math.max(
-            ...recent.map(
-                s => s.count
-            ),
-            1
-        );
-
-    sessionHistoryChartEl.innerHTML =
-        recent.map(
-            session => {
-
-                const height =
-                    Math.max(
-                        6,
-                        session.count /
-                        maxCount *
-                        100
-                    );
-
-                return `
-                    <div class="session-history-column">
-
-                        <div class="session-history-number">
-                            ${session.count.toLocaleString('zh-Hant')}
-                        </div>
-
-                        <div class="session-history-bar-wrap">
-
-                            <div
-                                class="session-history-bar ${session.current ? "current" : ""}"
-                                style="height:${height}%"
-                            ></div>
-
-                        </div>
-
-                        <div class="session-history-time">
-                            ${session.start_time}
-                        </div>
-
-                    </div>
-                `;
-            }
-        )
-        .join("");
-}
-
-
 // DISPLAY
 // ============================================================
 
@@ -1803,8 +1373,6 @@ function updateDisplay() {
         `${(position / ROUND_TARGET) * 100}%`;
 
     updateLiveSessionStats();
-
-    updateSessionHistoryChart();
 }
 
 // ============================================================
@@ -4957,10 +4525,7 @@ updateDisplay();
 updateLiveSessionStats();
 
 window.setInterval(
-    () => {
-        updateLiveSessionStats();
-        updateSessionHistoryChart();
-    },
+    updateLiveSessionStats,
     1000
 );
 
