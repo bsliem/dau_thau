@@ -435,10 +435,12 @@
 // CONFIG
 // ============================================================
 
-const APP_VERSION = "v8_5_three_breath_session";
+const APP_VERSION = "v8_4_session_boundary_fix";
 const ROUND_TARGET = 21;
-const SESSION_BREAK_CYCLES = 3;
-const SESSION_FALLBACK_GAP_S = 9;
+const SESSION_BREAK_CYCLES = 10;
+const SESSION_MIN_THRESHOLD_S = 12;
+const SESSION_MAX_THRESHOLD_S = 60;
+const SESSION_FALLBACK_GAP_S = 25;
 const SESSION_LOCAL_WINDOW = 7;
 const STORAGE_KEY = "niem_phat_data_v6";
 
@@ -940,35 +942,48 @@ function logEvent(
 
 function getDynamicSessionThreshold(intervals = []) {
 
+    // Chỉ dùng các interval có giá trị hữu hạn và dương
     const recent = intervals
         .map(Number)
         .filter(
             value =>
                 Number.isFinite(value) &&
-                value > 0
+                value > 0 &&
+                value < SESSION_MAX_THRESHOLD_S
         )
         .slice(-SESSION_LOCAL_WINDOW);
 
-    // Chưa đủ nhịp để tính median
-    if (recent.length < 3) {
+    let threshold =
+        SESSION_FALLBACK_GAP_S;
 
-        return SESSION_FALLBACK_GAP_S;
+    if (recent.length >= 3) {
+
+        const localMedian =
+            median(recent);
+
+        if (
+            Number.isFinite(localMedian) &&
+            localMedian > 0
+        ) {
+
+            threshold =
+                localMedian *
+                SESSION_BREAK_CYCLES;
+        }
     }
 
-    const localMedian =
-        median(recent);
+    // Không cho threshold nhỏ/quá lớn bất thường
+    threshold = Math.max(
+        SESSION_MIN_THRESHOLD_S,
+        threshold
+    );
 
-    if (
-        !Number.isFinite(localMedian) ||
-        localMedian <= 0
-    ) {
+    threshold = Math.min(
+        SESSION_MAX_THRESHOLD_S,
+        threshold
+    );
 
-        return SESSION_FALLBACK_GAP_S;
-    }
-
-    return
-        localMedian *
-        SESSION_BREAK_CYCLES;
+    return threshold;
 }
 
 function formatClockTime(date = new Date()) {
@@ -4044,7 +4059,7 @@ body {
     <div class="meta">
         ${today}<br>
         Tạo lúc ${generated}<br>
-        Protocol V8.5.5.3
+        Protocol V8.3.3
     </div>
 </div>
 
