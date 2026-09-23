@@ -2953,35 +2953,66 @@
 ---
 ### Câu 206
 
-**Trường hợp nào sau đây, chủ đầu tư và nhà thầu liên danh được thỏa thuận điều chỉnh phạm vi công việc giữa các thành viên liên danh?**
+**Trường hợp nào sau đây, <u>chủ đầu tư và nhà thầu liên danh</u> được thỏa thuận <u>điều chỉnh phạm vi công việc giữa các thành viên liên danh</u>?**
 
 - **A.** Khi một thành viên liên danh không muốn tiếp tục thực hiện phần việc đã cam kết
 - **B.** Khi chủ đầu tư thấy một thành viên trong liên danh thực hiện tốt nên muốn điều chuyển toàn bộ phần việc cho thành viên liên danh đó
-- **C.** Khi cần đẩy nhanh tiến độ thực hiện hợp đồng hoặc do điều kiện khách quan không phải lỗi của nhà thầu làm ảnh hưởng tiến độ
+- **C.** K<u>hi cần đẩy nhanh tiến độ thực hiện</u> hợp đồng hoặc do điều kiện khách quan không phải lỗi của nhà thầu làm ảnh hưởng tiến độ
 - **D.** Khi một thành viên liên danh đề nghị chuyển nhượng phần việc để tiết kiệm chi phí
 
 > ✅ **Đáp án: C**
 
 > 💡 **Ghi nhớ:** Ví dụ BV 30-4: liên danh A–B trúng gói cung cấp hóa chất xét nghiệm, nhưng tiến độ bị chậm do điều kiện khách quan. Hai bên có thể điều chỉnh lại phần việc giữa A và B để đẩy nhanh tiến độ.
+>
+> **🔑 Từ khóa:** **“điều chỉnh phạm vi công việc liên danh”**
+>  **⚡ Bật ngay:** **“đẩy nhanh tiến độ / điều kiện khách quan”**
+>  **✅ Chọn: C**
+>
+> Mẹo nhớ ngắn nhất:
+>
+> > **Liên danh được đổi việc khi cần CHẠY NHANH hoặc do KHÁCH QUAN → C**
+>
+> Loại nhanh:
+>
+> - **A** “không muốn làm” → lý do chủ quan → sai
+> - **B** “thấy làm tốt nên chuyển hết” → tùy tiện → sai
+> - **D** “tiết kiệm chi phí” → không phải căn cứ → sai
+>
+> **206 = Liên danh + tiến độ/khách quan = C.**
 
 ---
 ### Câu 207
 
-**Gói thầu EC có giá dự thầu sau sửa lỗi, hiệu chỉnh sai lệch, trừ đi giá trị giảm giá bằng 85% giá gói thầu thì chủ đầu tư có thể quy định giá trị bảo đảm thực hiện hợp đồng ở mức 15% hay không?**
+**Gói thầu <u>EC</u> có giá dự thầu sau sửa lỗi, hiệu chỉnh sai lệch, trừ đi giá trị <u>giảm giá bằng 85%</u> giá gói thầu thì chủ đầu tư có thể quy định giá trị bảo đảm thực hiện hợp đồng ở mức 15% hay không?**
 
-- **A.** Không được quy định
+- **<u>A.** Không được quy định</u>
 - **B.** Có thể quy định nhưng phải được sự đồng ý của nhà thầu
 - **C.** Chủ đầu tư quyết định để ngừa rủi ro cho quá trình thực hiện
 - **D.** Có thể quy định nhưng phải được người có thẩm quyền chấp thuận
 
 > ✅ **Đáp án: A**
+>
+> **🔑 Từ khóa:** **EC + giá còn 85% + bảo đảm HĐ 15%**
+>  **⚡ Phản xạ:** **85% chưa xuống dưới 80% → không được nâng lên 15%**
+>  **✅ Chọn: A**
+>
+> Mẹo cực ngắn:
+>
+> > **85 chưa thấp → 15 không được → A**
+>
+> Loại nhanh:
+>
+> - B, C, D đều đang tìm cách **cho phép 15%**
+> - Đề hỏi **có được 15% không?** → **Không** → **A**
+>
+> **207 = 85% → không 15% → A.**
 
 > 💡 **Ghi nhớ:** Ý cô note là: gói EC là gói hỗn hợp có phần thiết kế + xây lắp. Giá dự thầu sau hiệu chỉnh còn 85% giá gói thầu, tức mới giảm 15%, chưa rơi vào mức giá thấp bất thường theo ngưỡng cô đang học là dưới 80%. Vì vậy không có căn cứ để nâng bảo đảm thực hiện hợp đồng lên 15% chỉ để phòng rủi ro.Ví dụ BV 30-4: gói thiết kế và thi công cải tạo khu xét nghiệm có giá 10 tỷ, nhà thầu chào sau hiệu chỉnh còn 8,5 tỷ. Vì 8,5 tỷ = 85%, chưa xuống dưới ngưỡng 80%, nên không được tự nâng bảo đảm thực hiện hợp đồng lên 15%.Mẹo nhớ: 85% chưa “bất thường” → không nâng 15% → A.
 
 ---
 ### Câu 208
 
-**Đối với gói thầu hỗn hợp có yêu cầu đặc thù về kỹ thuật chỉ có một số nhà thầu đáp ứng yêu cầu của gói thầu áp dụng bước thương thảo hợp đồng, trường hợp nhà thầu xếp hạng thứ nhất (danh sách xếp hạng có 03 nhà thầu) không tiến hành thương thảo, không ký biên bản thương thảo, thương thảo không thành công thì chủ đầu tư thực hiện bước tiếp theo như thế nào?**
+**Đối với gói thầu hỗn hợp có yêu cầu đặc thù về kỹ thuật chỉ có một số nhà thầu đáp ứng yêu cầu của gói thầu áp dụng bước <u>thương thảo hợp đồng</u>, trường hợp nhà thầu <u>xếp hạng thứ nhất</u> (danh sách xếp hạng có 03 nhà thầu) <u>không tiến hành thương thảo</u>, không ký biên bản thương thảo, thương thảo không thành công thì chủ đầu tư thực hiện bước tiếp theo như thế nào?**
 
 - **A.** Mời nhà thầu xếp hạng tiếp theo vào thương thảo hợp đồng
 - **B.** Hủy thầu
@@ -2989,18 +3020,30 @@
 - **D.** Mời nhà thầu xếp hạng tiếp theo vào hoàn thiện hợp đồng
 
 > ✅ **Đáp án: A**
+>
+> **🔑 Từ khóa:** **thương thảo hợp đồng + nhà thầu hạng 1 không thương thảo / thương thảo không thành công**
+>  **⚡ Phản xạ:** **mời hạng tiếp theo vào thương thảo**
+>  **✅ Chọn: A**
 
 ---
 ### Câu 209
 
-**Đối với gói thầu xây lắp áp dụng đấu thầu quốc tế, trường hợp nhà thầu xếp thứ nhất có hồ sơ dự thầu không cân bằng (có đơn giá chào cao hơn đáng kể so với đơn giá tương ứng trong dự toán gói thầu ở các hạng mục công việc có các yêu cầu kỹ thuật đơn giản, dễ thực hiện, hạng mục công việc có khả năng phát sinh khối lượng ngoài khối lượng trong bảng giá dự thầu và có đơn giá chào thấp hơn đáng kể so với đơn giá tương ứng trong dự toán gói thầu ở các hạng mục công việc phức tạp, khó thực hiện) thì chủ đầu tư có thể xử lý thế nào?**
+**Đối với gói thầu xây lắp áp dụng đấu thầu quốc tế, trường hợp nhà thầu xếp thứ nhất có <u>hồ sơ dự thầu không cân bằn</u>g (có đơn giá chào cao hơn đáng kể so với đơn giá tương ứng trong dự toán gói thầu ở các hạng mục công việc có các yêu cầu kỹ thuật đơn giản, dễ thực hiện, hạng mục công việc có khả năng phát sinh khối lượng ngoài khối lượng trong bảng giá dự thầu và có đơn giá chào thấp hơn đáng kể so với đơn giá tương ứng trong dự toán gói thầu ở các hạng mục công việc phức tạp, khó thực hiện) thì chủ đầu tư có thể xử lý thế nào?**
 
-- **A.** Yêu cầu nhà thầu làm rõ bằng văn bản về các chi phí cấu thành giá dự thầu
-- **B.** Có thể quy định giá trị bảo đảm thực hiện hợp đồng lớn hơn 10% nhưng không quá 30% giá hợp đồng để đề phòng rủi ro
+- **A.** Yêu cầu nhà thầu <u>làm rõ</u> bằng văn bản về các chi phí cấu thành giá dự thầu
+- **B.** Có thể <u>quy định giá trị bảo đảm thực hiện hợp đồng lớn hơn 10% nhưng không quá 30% giá hợp đồng để đề phòng rủi ro</u>
 - **C.** Mời nhà thầu chào lại giá
 - **D.** Phương án A và B đều đúng
 
 > ✅ **Đáp án: D**
+>
+>  **Từ khóa:** **HSDT không cân bằng + đơn giá chỗ cao bất thường, chỗ thấp bất thường**
+>  **⚡ Phản xạ:** **vừa làm rõ giá + vừa tăng bảo đảm thực hiện HĐ**
+>  **✅ Chọn: D = A + B**
+>
+> Mẹo cực ngắn:
+>
+> > **Giá lệch bất thường → hỏi cho rõ + giữ bảo đảm cao → D**
 
 > 💡 **Ghi nhớ:** tại sao chào rất cao hay rất thấp, do âm mưu chào cao để cho trượt thầu
 
@@ -3017,20 +3060,50 @@
 > ✅ **Đáp án: B**
 
 > 💡 **Ghi nhớ:** 1 ông đơn vị cũ có 10 nămkinh nghiệm thì về đv mình làm vẫn phải tính 10 năm đó
+>
+> **🔑 Từ khóa:** **“tách ra khỏi pháp nhân” + “tiếp nhận xí nghiệp”**
+>  **⚡ Phản xạ:** **được kế thừa cả năng lực + kinh nghiệm**
+>  **✅ Chọn: B**
+>
+> Mẹo cực ngắn:
+>
+> > **Tách đơn vị nhưng kinh nghiệm không mất → nhận đơn vị thì nhận luôn năng lực, kinh nghiệm → B**
+>
+> Nhớ kiểu ví dụ:
+>
+> > **Xí nghiệp có 10 năm kinh nghiệm → được tiếp nhận thì 10 năm đó vẫn được tính.**
+>
+> **210 = Tiếp nhận xí nghiệp → kế thừa cả 2 → B.**
 
 ---
 ### Câu 211
 
-**Trong quá trình thực hiện hợp đồng của nhà thầu liên danh A-B, nhà thầu B không còn năng lực để tiếp tục thực hiện hợp đồng, làm ảnh hưởng nghiêm trọng đến tiến độ, chất lượng, hiệu quả của gói thầu. Trong trường hợp này, bảo đảm thực hiện hợp đồng của nhà thầu xử lý như thế nào?**
+**Trong quá trình thực hiện hợp đồng của nhà thầu <u>liên danh A-B</u>, nhà thầu <u>B không còn năng lực</u> để tiếp tục thực hiện hợp đồng, làm ảnh hưởng nghiêm trọng đến tiến độ, chất lượng, hiệu quả của gói thầu. Trong trường hợp này, bảo đảm thực hiện hợp đồng của nhà thầu xử lý như thế nào?**
 
 - **A.** Không tịch thu giá trị bảo đảm thực hiện hợp đồng của nhà thầu A-B
-- **B.** Tịch thu giá trị bảo đảm thực hiện hợp đồng của tất cả thành viên liên danh trong trường hợp phần công việc còn lại của các thành viên liên danh vi phạm hợp đồng được tách thành gói thầu riêng để lựa chọn nhà thầu
+- **B.** <u>Tịch thu giá trị bảo đảm thực hiện hợp đồng của tất cả thành viên liên danh</u> trong trường hợp phần công việc còn lại của các thành viên liên danh vi phạm hợp đồng được tách thành gói thầu riêng để lựa chọn nhà thầu
 - **C.** Chỉ tịch thu giá trị bảo đảm thực hiện hợp đồng của nhà thầu B nếu nhà thầu A có đủ năng lực, kinh nghiệm đảm nhận phần công việc còn lại của nhà thầu B
-- **D.** Phương án B và C đều đúng
+- **D.** <u>Phương án B và C đều đúng</u>
 
 > ✅ **Đáp án: D**
 
-> 💡 **Ghi nhớ:** 1 thành viên liên doanh vi phạm 2: th: th1 ông 1 bỏ cuộc, các thành viên khác vẫn làm được, thìkhông bị ảh chỉ tịch thu ông ấy, th2 các thành viên khác chịu không làm được thì sẽ tịch thu tất
+> 💡 **Ghi nhớ:** 1 thành viên liên doanh vi phạm 2: th: th1 ông 1 bỏ cuộc, các thành viên khác vẫn làm được, thìkhông bị ảnh hưởng chỉ tịch thu ông ấy, th2 các thành viên khác chịu không làm được thì sẽ tịch thu tất
+>
+> **🔑 Từ khóa:** **liên danh A–B + B mất năng lực / vi phạm hợp đồng**
+>  **⚡ Phản xạ:** xem **A có gánh được phần B không**
+>
+> > **A gánh được → chỉ tịch thu B**
+> >  **A không gánh được, phải tách gói chọn lại → tịch thu tất cả**
+>
+> ✅ **Chọn: D = B + C**
+>
+> Mẹo cực ngắn:
+>
+> > **Một ông ngã → ông còn lại gánh được thì phạt ông ngã; không gánh được thì phạt cả liên danh → D**
+>
+> Nhớ công thức:
+>
+> **211 = Liên danh có 1 ông vi phạm → “gánh được = phạt 1; không gánh = phạt tất” → D.**
 
 ---
 ### Câu 212
@@ -3043,31 +3116,38 @@
 - **D.** Xin ý kiến người có thẩm quyền để xử lý tình huống trong đấu thầu
 
 > ✅ **Đáp án: C**
+>
+> **🔑 Từ khóa:** **thiết bị y tế + thiếu ký mã hiệu / nhãn hiệu / xuất xứ / hãng sản xuất**
+>  **⚡ Phản xạ:** **thiếu thông tin kỹ thuật cốt lõi → loại ngay**
+>
+> Mẹo cực ngắn:
+>
+> > **Thiết bị mà không rõ “mã – hiệu – hãng – xuất xứ” → coi như không xác định được hàng → LOẠI → C**
 
 > 💡 **Ghi nhớ:** ký hiệu, mã hiệu, xuất xứ cực kỳ quan trọng thiếu thì loại) (Năng lực không đáp ứng thì thay thế, kỹ thuật thiếu thì loại
 
 ---
 ### Câu 213
 
-**Nhận định nào sau đây đúng về văn bản điện tử trên Hệ thống mạng đấu thầu quốc gia?**
+**Nhận định nào sau đây đúng về văn bản <u>điện tử</u> trên Hệ thống mạng đấu thầu quốc gia?**
 
-- **A.** Văn bản điện tử trên Hệ thống có giá trị theo quy định của pháp luật về giao dịch điện tử, làm cơ sở đối chiếu, so sánh, xác thực thông tin phục vụ công tác đánh giá, thẩm định, thanh tra, kiểm tra, kiểm toán và giải ngân
-- **B.** Thời điểm gửi, nhận văn bản điện tử được xác định căn cứ theo thời gian thực ghi lại trên Hệ thống
+- **A.** Văn bản <u>điện tử</u> trên Hệ thống có giá trị theo quy định của pháp luật về giao dịch điện tử, làm cơ sở đối chiếu, so sánh, xác thực thông tin phục vụ công tác đánh giá, thẩm định, thanh tra, kiểm tra, kiểm toán và giải ngân
+- **B.** Thời điểm gửi, nhận văn bản <u>điện tử</u> được xác định căn cứ theo thời gian thực ghi lại trên Hệ thống
 - **C.** Khi gửi hồ sơ thanh quyết toán đến Kho bạc Nhà nước, nhà thầu không phải cung cấp thông tin, tài liệu cho Kho bạc Nhà nước đối với các thông tin, tài liệu là văn bản điện tử trên Hệ thống
 - **D.** Cả 3 phương án trên đều đúng
 
 > ✅ **Đáp án: D**
 
-> 💡 **Ghi nhớ:** mẹo tự, điện tử đúng hết
+> 💡 **Ghi nhớ:** mẹo tự, <u>điện tử</u> đúng hết
 
 ---
 ### Câu 214
 
-**Tài khoản nghiệp vụ trên Hệ thống mạng đấu thầu quốc gia là gì?**
+**<u>Tài khoản nghiệp</u> vụ trên <u>Hệ thống mạng đấu thầu quốc gia</u> là gì?**
 
 - **A.** Tài khoản do người sử dụng đăng ký và được phê duyệt trên Hệ thống mạng đấu thầu quốc gia
 - **B.** Tài khoản do Trung tâm Đấu thầu qua mạng quốc gia cấp phép theo quy định
-- **C.** Tài khoản do Tài khoản tham gia hệ thống tạo ra
+- **C.** Tài khoản do <u>Tài khoản tham gia hệ thống tạo ra</u>
 - **D.** Phương án A và B đều đúng
 
 > ✅ **Đáp án: C**
@@ -3077,11 +3157,11 @@
 ---
 ### Câu 215
 
-**Nhà thầu có trách nhiệm kê khai thông tin nào trên Hệ thống mạng đấu thầu quốc gia?**
+**Nhà thầu có trách nhiệm <u>kê khai thông tin</u> nào trên <u>Hệ thống mạng đấu thầu quốc gia</u>?**
 
 - **A.** Thông tin về uy tín của nhà thầu trong việc tham dự thầu
 - **B.** Thông tin về vi phạm của nhà thầu
-- **C.** Thông tin về năng lực, kinh nghiệm của nhà thầu
+- **C.** Thông tin về <u>năng lực, kinh nghiệm</u> của nhà thầu
 - **D.** Cả 3 phương án trên đều đúng
 
 > ✅ **Đáp án: C**
@@ -3091,12 +3171,12 @@
 ---
 ### Câu 216
 
-**Ai chịu trách nhiệm đăng tải thông tin chủ yếu của hợp đồng trên Hệ thống mạng đấu thầu quốc gia?**
+**<u>Ai chịu trách nhiệm đăng tải thông tin</u> chủ yếu của hợp đồng trên <u>Hệ thống mạng đấu thầu quốc gia</u>?**
 
 - **A.** Bên mời thầu
 - **B.** Tổ chuyên gia
 - **C.** Tư vấn đấu thầu
-- **D.** Chủ đầu tư
+- **D.** <u>Chủ đầu tư</u>
 
 > ✅ **Đáp án: D**
 
@@ -3105,7 +3185,7 @@
 ---
 ### Câu 217
 
-**Trong đấu thầu qua mạng, nhà thầu tư vấn đấu thầu bị khoá tài khoản trong vòng 06 tháng khi thực hiện hành vi nào sau đây?**
+**Trong đấu thầu qua mạng, <u>nhà thầu tư vấn đấu thầu bị khoá tài khoản</u> trong vòng 06 tháng khi thực hiện hành vi nào sau đây?**
 
 - **A.** Tham gia vào quá trình lập và đánh giá E-HSMT
 - **B.** Tham gia vào quá trình thẩm định hồ sơ mời thầu và kết quả lựa chọn nhà thầu
@@ -3119,10 +3199,10 @@
 ---
 ### Câu 218
 
-**Chủ đầu tư có trách nhiệm đăng tải thông tin chủ yếu của hợp đồng trên Hệ thống đấu thầu qua mạng quốc gia chậm nhất là?**
+**Chủ đầu tư có trách nhiệm đăng tải thông tin chủ yếu của <u>hợp đồng</u> trên Hệ thống đấu thầu qua mạng quốc gia <u>chậm nhất là</u>?**
 
 - **A.** 05 ngày làm việc kể từ ngày ký kết hợp đồng
-- **B.** 05 ngày làm việc kể từ ngày hợp đồng có hiệu lực
+- **B.** <u>05 ngày làm việc kể từ ngày hợp đồng có hiệu lực</u>
 - **C.** 05 ngày kể từ ngày hợp đồng có hiệu lực
 - **D.** 05 ngày làm việc kể từ ngày nhà thầu nộp bảo đảm thực hiện hợp đồng
 
@@ -3133,11 +3213,11 @@
 ---
 ### Câu 219
 
-**Danh sách nhà thầu có hành vi vi phạm và bị đánh giá về uy tín được đăng tải trên Hệ thống mạng đấu thầu quốc gia như thế nào?**
+**Danh sách nhà thầu <u>có hành vi vi phạm và bị đánh giá về uy tín</u> được đăng tải trên Hệ thống mạng đấu thầu quốc gia như thế nào?**
 
 - **A.** Tổ chuyên gia đăng tải trong thời hạn 03 ngày làm việc kể từ ngày nhà thầu có hành vi vi phạm
 - **B.** Bên mời thầu đăng tải trong thời hạn 05 ngày làm việc kể từ ngày nhà thầu có hành vi vi phạm
-- **C.** Chủ đầu tư đăng tải trong thời hạn 07 ngày làm việc kể từ ngày nhà thầu có hành vi vi phạm
+- **C.** <u>Chủ đầu tư đăng tải trong thời hạn 07 ngày làm việc</u> kể từ ngày nhà thầu có hành vi vi phạm
 - **D.** Người có thẩm quyền đăng tải trong thời hạn 05 ngày làm việc kể từ ngày nhà thầu có hành vi vi phạm
 
 > ✅ **Đáp án: C**
@@ -3147,10 +3227,10 @@
 ---
 ### Câu 220
 
-**Chủ thể nào sau đây được gia hạn thời điểm đóng thầu trên Hệ thống mạng đấu thầu quốc gia?**
+**Chủ thể nào sau đây được <u>gia hạn thời điểm đóng thầu</u> trên Hệ thống mạng đấu thầu quốc gia?**
 
 - **A.** Người có thẩm quyền
-- **B.** Chủ đầu tư
+- **B.** <u>Chủ đầu tư</u>
 - **C.** Tổ chuyên gia
 - **D.** Tư vấn đấu thầu
 
@@ -3166,7 +3246,7 @@
 - **A.** Thời gian áp dụng là thời gian thực hiện hợp đồng trong trường hợp không ký thỏa thuận khung nhưng không quá 24 tháng kể từ ngày hợp đồng có hiệu lực hoặc thời gian có hiệu lực của thỏa thuận khung
 - **B.** Thời gian áp dụng là 24 tháng kể từ ngày kết quả lựa chọn nhà thầu được đăng tải trên Hệ thống mạng đấu thầu quốc gia trong trường hợp hợp đồng, thỏa thuận khung chưa được công khai
 - **C.** Thời gian áp dụng là 24 tháng kể từ ngày kết quả lựa chọn nhà thầu được đăng tải trên Hệ thống mạng đấu thầu quốc gia
-- **D.** Phương án A và B đều đúng
+- **D.** <u>Phương án A và B đều đúng</u>
 
 > ✅ **Đáp án: D**
 
