@@ -1,0 +1,1996 @@
+---
+title: "Báo cáo Niệm Phật và Hô hấp"
+subtitle: "Phân tích dữ liệu breath-by-breath theo thời gian"
+author: "Đỗ Thanh Liêm"
+date: today
+lang: vi
+format:
+  html:
+    toc: true
+    toc-depth: 3
+    number-sections: true
+    code-fold: true
+    code-summary: "Xem code R"
+  docx:
+    toc: true
+    number-sections: true
+execute:
+  echo: false
+  warning: false
+  message: false
+  error: false
+---
+
+```{r}
+#| label: setup
+
+library(tidyverse)
+library(ggplot2)
+library(flextable)
+library(here)
+library(lubridate)
+library(scales)
+
+theme_set(
+  theme_minimal(
+    base_size = 12
+  )
+)
+
+options(
+  dplyr.summarise.inform = FALSE,
+  scipen = 999
+)
+```
+
+# 1. Mục tiêu
+
+Báo cáo này phân tích dữ liệu thu thập từ ứng dụng **念佛**, trong đó mỗi lần bấm nút `念` được sử dụng như một marker của một chu kỳ niệm Phật kết hợp hô hấp.
+
+Quy ước thực hành:
+
+``` text
+南無       = hít vào
+阿         = thời điểm chuyển từ hít vào sang thở ra
+念         = bấm nút tại điểm chuyển
+彌陀佛     = thở ra
+```
+
+Khoảng thời gian giữa hai lần bấm liên tiếp trong cùng một phiên được xem là thời gian của một chu kỳ hô hấp-niệm Phật.
+
+Các phân tích chính bao gồm:
+
+-   số lần niệm;
+-   số phiên thực hành;
+-   thời gian thực hành;
+-   chu kỳ hô hấp;
+-   respiratory rate;
+-   respiratory-cycle variability;
+-   xu hướng trong phiên;
+-   xu hướng theo ngày;
+-   các khoảng bất thường hoặc gián đoạn;
+-   chất lượng dữ liệu sau QC.
+
+------------------------------------------------------------------------
+
+# 2. Tìm file dữ liệu mới nhất
+
+```{r}
+#| label: find-data
+
+data_dir <- here(
+  "tai_lieu_ban_to_chuc",
+  "data"
+)
+
+if (!dir.exists(data_dir)) {
+  stop(
+    "Không tìm thấy thư mục data: ",
+    data_dir
+  )
+}
+
+csv_files <- list.files(
+  data_dir,
+  pattern = "^breath_chant_research.*\\.csv$",
+  full.names = TRUE
+)
+
+if (length(csv_files) == 0) {
+  stop(
+    "Không tìm thấy file breath_chant_research*.csv"
+  )
+}
+
+file_info <- file.info(
+  csv_files
+)
+
+latest_file <- rownames(
+  file_info
+)[
+  which.max(
+    file_info$mtime
+  )
+]
+
+latest_file_name <- basename(
+  latest_file
+)
+
+latest_file_time <- file.info(
+  latest_file
+)$mtime
+```
+
+File được chọn tự động:
+
+```{r}
+#| results: asis
+
+cat(
+  "**File:** `",
+  latest_file_name,
+  "`  \n",
+  "**Cập nhật:** ",
+  format(
+    latest_file_time,
+    "%Y-%m-%d %H:%M:%S"
+  ),
+  sep = ""
+)
+```
+
+------------------------------------------------------------------------
+
+# 3. Đọc dữ liệu
+
+```{r}
+#| label: read-data
+
+raw <- readr::read_csv(
+  latest_file,
+  show_col_types = FALSE,
+  progress = FALSE
+) |>
+  janitor::clean_names()
+```
+
+Nếu chưa cài `janitor`, chạy một lần trong Console:
+
+``` r
+install.packages("janitor")
+```
+
+```{r}
+#| label: inspect-data
+
+n_rows <- nrow(raw)
+n_cols <- ncol(raw)
+
+date_min <- raw |>
+  summarise(
+    x = min(
+      as.Date(date),
+      na.rm = TRUE
+    )
+  ) |>
+  pull(x)
+
+date_max <- raw |>
+  summarise(
+    x = max(
+      as.Date(date),
+      na.rm = TRUE
+    )
+  ) |>
+  pull(x)
+```
+
+Tổng dữ liệu:
+
+```{r}
+#| results: asis
+
+cat(
+  "- Số dòng: **",
+  comma(n_rows),
+  "**  \n",
+  "- Số biến: **",
+  comma(n_cols),
+  "**  \n",
+  "- Từ ngày: **",
+  date_min,
+  "**  \n",
+  "- Đến ngày: **",
+  date_max,
+  "**",
+  sep = ""
+)
+```
+
+------------------------------------------------------------------------
+
+# 4. Chuẩn hóa biến
+
+```{r}
+#| label: prepare-data
+
+d <- raw |>
+  mutate(
+
+    date =
+      as.Date(date),
+
+    datetime =
+      ymd_hms(
+        datetime,
+        quiet = TRUE
+      ),
+
+    timestamp_ms =
+      as.numeric(
+        timestamp_ms
+      ),
+
+    study_eligible =
+      as.numeric(
+        study_eligible
+      ),
+
+    analysis_valid =
+      as.numeric(
+        analysis_valid
+      ),
+
+    exclude_from_resp_analysis =
+      as.numeric(
+        exclude_from_resp_analysis
+      ),
+
+    is_breath_chant_cycle =
+      as.numeric(
+        is_breath_chant_cycle
+      ),
+
+    respiratory_cycle_s =
+      as.numeric(
+        respiratory_cycle_s
+      ),
+
+    respiratory_rate_bpm =
+      as.numeric(
+        respiratory_rate_bpm
+      ),
+
+    clean_respiratory_cycle_s =
+      as.numeric(
+        clean_respiratory_cycle_s
+      ),
+
+    clean_respiratory_rate_bpm =
+      as.numeric(
+        clean_respiratory_rate_bpm
+      ),
+
+    local_median_cycle_s =
+      as.numeric(
+        local_median_cycle_s
+      ),
+
+    suspected_missed_cycles =
+      as.numeric(
+        suspected_missed_cycles
+      ),
+
+    hour =
+      as.numeric(
+        hour
+      )
+  )
+```
+
+------------------------------------------------------------------------
+
+# 5. Tạo bộ dữ liệu nghiên cứu sạch
+
+## 5.1. Toàn bộ marker nghiên cứu
+
+```{r}
+study <- d |>
+  filter(
+    study_eligible == 1,
+    is_breath_chant_cycle == 1
+  )
+```
+
+## 5.2. Chu kỳ hô hấp hợp lệ sau QC
+
+```{r}
+clean <- study |>
+  filter(
+    analysis_valid == 1,
+    !is.na(
+      clean_respiratory_cycle_s
+    ),
+    !is.na(
+      clean_respiratory_rate_bpm
+    )
+  )
+```
+
+## 5.3. Khoảng bị loại
+
+```{r}
+excluded <- study |>
+  filter(
+    analysis_valid == 0
+  )
+```
+
+------------------------------------------------------------------------
+
+# 6. Chất lượng dữ liệu
+
+```{r}
+qc_summary <- tibble(
+
+  chi_so = c(
+    "Tổng marker nghiên cứu",
+    "Chu kỳ hợp lệ",
+    "Khoảng bị loại",
+    "Tỷ lệ hợp lệ",
+    "Số phiên QC",
+    "Số ngày có dữ liệu"
+  ),
+
+  gia_tri = c(
+
+    nrow(study),
+
+    nrow(clean),
+
+    nrow(excluded),
+
+    ifelse(
+      nrow(study) > 0,
+      paste0(
+        round(
+          100 *
+            nrow(clean) /
+            nrow(study),
+          1
+        ),
+        "%"
+      ),
+      NA
+    ),
+
+    n_distinct(
+      study$qc_session_id,
+      na.rm = TRUE
+    ),
+
+    n_distinct(
+      study$date,
+      na.rm = TRUE
+    )
+  )
+)
+```
+
+```{r}
+#| label: qc-table
+
+qc_summary |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 7. Lý do loại dữ liệu
+
+```{r}
+exclude_table <- study |>
+  filter(
+    analysis_valid == 0
+  ) |>
+  count(
+    exclusion_reason,
+    sort = TRUE
+  ) |>
+  mutate(
+    percent =
+      n /
+      sum(n) *
+      100
+  )
+```
+
+```{r}
+exclude_table |>
+  mutate(
+    percent =
+      sprintf(
+        "%.1f%%",
+        percent
+      )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+```{r}
+#| fig-width: 8
+#| fig-height: 4.5
+
+exclude_table |>
+  ggplot(
+    aes(
+      x = reorder(
+        exclusion_reason,
+        n
+      ),
+      y = n
+    )
+  ) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title = "Các nguyên nhân loại khỏi phân tích hô hấp",
+    x = NULL,
+    y = "Số khoảng"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 8. Thống kê chung hô hấp
+
+```{r}
+resp_summary <- clean |>
+  summarise(
+
+    n =
+      n(),
+
+    mean_cycle_s =
+      mean(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    median_cycle_s =
+      median(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    sd_cycle_s =
+      sd(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    cv_cycle_pct =
+      sd_cycle_s /
+      mean_cycle_s *
+      100,
+
+    mean_rr_bpm =
+      mean(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    median_rr_bpm =
+      median(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    sd_rr_bpm =
+      sd(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    min_rr_bpm =
+      min(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    max_rr_bpm =
+      max(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      )
+  )
+```
+
+```{r}
+resp_summary |>
+  pivot_longer(
+    everything(),
+    names_to = "Chi_so",
+    values_to = "Gia_tri"
+  ) |>
+  mutate(
+    Gia_tri =
+      round(
+        Gia_tri,
+        3
+      )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 9. Phân bố thời gian chu kỳ hô hấp
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+
+clean |>
+  ggplot(
+    aes(
+      x =
+        clean_respiratory_cycle_s
+    )
+  ) +
+  geom_histogram(
+    bins = 30
+  ) +
+  geom_vline(
+    xintercept =
+      median(
+        clean$
+          clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+    linetype = 2
+  ) +
+  labs(
+    title =
+      "Phân bố thời gian một chu kỳ hô hấp-niệm Phật",
+    x =
+      "Thời gian chu kỳ (giây)",
+    y =
+      "Tần số"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 10. Phân bố respiratory rate
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+
+clean |>
+  ggplot(
+    aes(
+      x =
+        clean_respiratory_rate_bpm
+    )
+  ) +
+  geom_histogram(
+    bins = 30
+  ) +
+  geom_vline(
+    xintercept =
+      median(
+        clean$
+          clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+    linetype = 2
+  ) +
+  labs(
+    title =
+      "Phân bố nhịp chu kỳ hô hấp-niệm Phật",
+    x =
+      "Chu kỳ/phút",
+    y =
+      "Tần số"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 11. Respiratory rate theo thời gian
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5
+
+clean |>
+  ggplot(
+    aes(
+      x = datetime,
+      y =
+        clean_respiratory_rate_bpm
+    )
+  ) +
+  geom_line(
+    alpha = 0.55
+  ) +
+  geom_point(
+    size = 1,
+    alpha = 0.6
+  ) +
+  geom_smooth(
+    method = "loess",
+    se = FALSE
+  ) +
+  labs(
+    title =
+      "Biến thiên nhịp hô hấp-niệm Phật theo thời gian",
+    x = NULL,
+    y =
+      "Chu kỳ/phút"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 12. Thời gian chu kỳ theo thời gian
+
+```{r}
+#| fig-width: 10
+#| fig-height: 5
+
+clean |>
+  ggplot(
+    aes(
+      x = datetime,
+      y =
+        clean_respiratory_cycle_s
+    )
+  ) +
+  geom_line(
+    alpha = 0.55
+  ) +
+  geom_point(
+    size = 1,
+    alpha = 0.6
+  ) +
+  geom_smooth(
+    method = "loess",
+    se = FALSE
+  ) +
+  labs(
+    title =
+      "Thời gian chu kỳ hô hấp-niệm Phật theo thời gian",
+    x = NULL,
+    y =
+      "Chu kỳ (giây)"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 13. Phân tích theo phiên
+
+```{r}
+session_summary <- study |>
+  filter(
+    !is.na(
+      qc_session_id
+    )
+  ) |>
+  group_by(
+    date,
+    qc_session_id
+  ) |>
+  summarise(
+
+    start_time =
+      min(
+        datetime,
+        na.rm = TRUE
+      ),
+
+    end_time =
+      max(
+        datetime,
+        na.rm = TRUE
+      ),
+
+    total_markers =
+      n(),
+
+    valid_intervals =
+      sum(
+        analysis_valid == 1,
+        na.rm = TRUE
+      ),
+
+    excluded_intervals =
+      sum(
+        analysis_valid == 0,
+        na.rm = TRUE
+      ),
+
+    mean_cycle_s =
+      mean(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    median_cycle_s =
+      median(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    sd_cycle_s =
+      sd(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    cv_cycle_pct =
+      sd_cycle_s /
+      mean_cycle_s *
+      100,
+
+    mean_rr_bpm =
+      mean(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    median_rr_bpm =
+      median(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    duration_min =
+      as.numeric(
+        difftime(
+          end_time,
+          start_time,
+          units = "mins"
+        )
+      ),
+
+    .groups = "drop"
+  ) |>
+  mutate(
+    across(
+      where(is.numeric),
+      ~ round(.x, 3)
+    )
+  )
+```
+
+```{r}
+session_summary |>
+  select(
+    date,
+    qc_session_id,
+    total_markers,
+    valid_intervals,
+    excluded_intervals,
+    duration_min,
+    mean_cycle_s,
+    cv_cycle_pct,
+    mean_rr_bpm
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 14. Respiratory rate trong từng phiên
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6
+
+clean |>
+  filter(
+    !is.na(
+      qc_session_id
+    )
+  ) |>
+  group_by(
+    qc_session_id
+  ) |>
+  mutate(
+    breath_index =
+      row_number()
+  ) |>
+  ungroup() |>
+  ggplot(
+    aes(
+      x = breath_index,
+      y =
+        clean_respiratory_rate_bpm,
+      group =
+        qc_session_id
+    )
+  ) +
+  geom_line(
+    alpha = 0.6
+  ) +
+  facet_wrap(
+    ~ qc_session_id,
+    scales = "free_x"
+  ) +
+  labs(
+    title =
+      "Diễn tiến nhịp hô hấp trong từng phiên",
+    x =
+      "Thứ tự chu kỳ",
+    y =
+      "Chu kỳ/phút"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 15. Xu hướng nhịp thở trong phiên
+
+```{r}
+session_trend <- clean |>
+  filter(
+    !is.na(
+      qc_session_id
+    )
+  ) |>
+  group_by(
+    qc_session_id
+  ) |>
+  arrange(
+    timestamp_ms,
+    .by_group = TRUE
+  ) |>
+  mutate(
+
+    elapsed_min =
+      (
+        timestamp_ms -
+        first(
+          timestamp_ms
+        )
+      ) /
+      60000
+
+  ) |>
+  summarise(
+
+    n =
+      n(),
+
+    rr_start =
+      first(
+        clean_respiratory_rate_bpm
+      ),
+
+    rr_end =
+      last(
+        clean_respiratory_rate_bpm
+      ),
+
+    rr_change =
+      rr_end -
+      rr_start,
+
+    rr_slope_bpm_min =
+      if (
+        n() >= 3 &&
+        sd(
+          elapsed_min,
+          na.rm = TRUE
+        ) > 0
+      ) {
+
+        coef(
+          lm(
+            clean_respiratory_rate_bpm ~
+              elapsed_min
+          )
+        )[2]
+
+      } else {
+
+        NA_real_
+
+      },
+
+    .groups = "drop"
+  )
+```
+
+```{r}
+session_trend |>
+  mutate(
+    across(
+      where(is.numeric),
+      ~ round(.x, 3)
+    )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+Giải thích:
+
+``` text
+rr_slope_bpm_min < 0
+→ nhịp hô hấp có xu hướng chậm dần trong phiên
+
+rr_slope_bpm_min > 0
+→ nhịp hô hấp có xu hướng nhanh dần
+
+rr_slope_bpm_min gần 0
+→ tương đối ổn định
+```
+
+------------------------------------------------------------------------
+
+# 16. Respiratory-cycle variability theo phiên
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+session_summary |>
+  filter(
+    is.finite(
+      cv_cycle_pct
+    )
+  ) |>
+  ggplot(
+    aes(
+      x = reorder(
+        qc_session_id,
+        cv_cycle_pct
+      ),
+      y = cv_cycle_pct
+    )
+  ) +
+  geom_col() +
+  coord_flip() +
+  labs(
+    title =
+      "Biến thiên chu kỳ hô hấp theo phiên",
+    x =
+      "Phiên",
+    y =
+      "Coefficient of variation (%)"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 17. RMSSD của respiratory interval
+
+RMSSD ở đây là **RMSSD của khoảng chu kỳ hô hấp**, không phải HRV.
+
+```{r}
+session_rmssd <- clean |>
+  group_by(
+    date,
+    qc_session_id
+  ) |>
+  arrange(
+    timestamp_ms,
+    .by_group = TRUE
+  ) |>
+  summarise(
+
+    n =
+      n(),
+
+    rmssd_cycle_s =
+      if (
+        n() >= 3
+      ) {
+
+        sqrt(
+          mean(
+            diff(
+              clean_respiratory_cycle_s
+            ) ^ 2,
+            na.rm = TRUE
+          )
+        )
+
+      } else {
+
+        NA_real_
+
+      },
+
+    .groups = "drop"
+  )
+```
+
+```{r}
+session_rmssd |>
+  mutate(
+    rmssd_cycle_s =
+      round(
+        rmssd_cycle_s,
+        4
+      )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 18. Phân tích theo ngày
+
+```{r}
+daily <- clean |>
+  group_by(
+    date
+  ) |>
+  summarise(
+
+    valid_cycles =
+      n(),
+
+    sessions =
+      n_distinct(
+        qc_session_id
+      ),
+
+    mean_cycle_s =
+      mean(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    median_cycle_s =
+      median(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    sd_cycle_s =
+      sd(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    cv_cycle_pct =
+      sd_cycle_s /
+      mean_cycle_s *
+      100,
+
+    mean_rr_bpm =
+      mean(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    median_rr_bpm =
+      median(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    sd_rr_bpm =
+      sd(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    rmssd_cycle_s =
+      if (
+        n() >= 3
+      ) {
+
+        sqrt(
+          mean(
+            diff(
+              clean_respiratory_cycle_s
+            ) ^ 2,
+            na.rm = TRUE
+          )
+        )
+
+      } else {
+
+        NA_real_
+
+      },
+
+    .groups = "drop"
+  ) |>
+  arrange(
+    date
+  ) |>
+  mutate(
+
+    study_day =
+      row_number(),
+
+    rr_change_from_previous =
+      mean_rr_bpm -
+      lag(
+        mean_rr_bpm
+      ),
+
+    cycle_change_from_previous =
+      mean_cycle_s -
+      lag(
+        mean_cycle_s
+      ),
+
+    rolling_3d_rr =
+      slider::slide_dbl(
+        mean_rr_bpm,
+        mean,
+        .before = 2,
+        .complete = FALSE,
+        na.rm = TRUE
+      ),
+
+    rolling_7d_rr =
+      slider::slide_dbl(
+        mean_rr_bpm,
+        mean,
+        .before = 6,
+        .complete = FALSE,
+        na.rm = TRUE
+      ),
+
+    rolling_7d_cycle =
+      slider::slide_dbl(
+        mean_cycle_s,
+        mean,
+        .before = 6,
+        .complete = FALSE,
+        na.rm = TRUE
+      )
+
+  )
+```
+
+Nếu chưa cài `slider`:
+
+``` r
+install.packages("slider")
+```
+
+------------------------------------------------------------------------
+
+# 19. Bảng tổng hợp theo ngày
+
+```{r}
+daily |>
+  mutate(
+    across(
+      where(is.numeric),
+      ~ round(.x, 3)
+    )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 20. Số lần niệm theo ngày
+
+Dữ liệu niệm lấy từ toàn bộ marker nghiên cứu, không chỉ các khoảng được dùng phân tích hô hấp.
+
+```{r}
+chant_daily <- study |>
+  count(
+    date,
+    name =
+      "chant_cycles"
+  )
+```
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+chant_daily |>
+  ggplot(
+    aes(
+      x = date,
+      y = chant_cycles
+    )
+  ) +
+  geom_col() +
+  geom_line(
+    aes(
+      group = 1
+    )
+  ) +
+  geom_point() +
+  labs(
+    title =
+      "Số chu kỳ niệm Phật theo ngày",
+    x = NULL,
+    y =
+      "Số lần niệm"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 21. Nhịp hô hấp trung bình theo ngày
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+daily |>
+  ggplot(
+    aes(
+      x = date,
+      y = mean_rr_bpm
+    )
+  ) +
+  geom_line() +
+  geom_point() +
+  geom_smooth(
+    method = "loess",
+    se = FALSE
+  ) +
+  labs(
+    title =
+      "Xu hướng nhịp hô hấp-niệm Phật trung bình",
+    x = NULL,
+    y =
+      "Chu kỳ/phút"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 22. Chu kỳ hô hấp trung bình theo ngày
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+daily |>
+  ggplot(
+    aes(
+      x = date,
+      y = mean_cycle_s
+    )
+  ) +
+  geom_line() +
+  geom_point() +
+  geom_smooth(
+    method = "loess",
+    se = FALSE
+  ) +
+  labs(
+    title =
+      "Xu hướng thời gian chu kỳ hô hấp-niệm Phật",
+    x = NULL,
+    y =
+      "Giây/chu kỳ"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 23. Biến thiên hô hấp theo ngày
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+daily |>
+  ggplot(
+    aes(
+      x = date,
+      y = cv_cycle_pct
+    )
+  ) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title =
+      "Respiratory-cycle variability theo ngày",
+    subtitle =
+      "Coefficient of variation của thời gian chu kỳ",
+    x = NULL,
+    y = "CV (%)"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 24. RMSSD respiratory interval theo ngày
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+daily |>
+  ggplot(
+    aes(
+      x = date,
+      y = rmssd_cycle_s
+    )
+  ) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title =
+      "RMSSD của respiratory-cycle interval theo ngày",
+    subtitle =
+      "Đây là respiratory variability, không phải HRV",
+    x = NULL,
+    y = "RMSSD (giây)"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 25. Phân tích theo giờ trong ngày
+
+```{r}
+hourly <- clean |>
+  group_by(
+    hour
+  ) |>
+  summarise(
+
+    n =
+      n(),
+
+    mean_cycle_s =
+      mean(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    mean_rr_bpm =
+      mean(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    sd_rr_bpm =
+      sd(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    .groups = "drop"
+  )
+```
+
+```{r}
+hourly |>
+  mutate(
+    across(
+      where(is.numeric),
+      ~ round(.x, 3)
+    )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 26. Respiratory rate theo giờ
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+hourly |>
+  ggplot(
+    aes(
+      x = hour,
+      y = mean_rr_bpm
+    )
+  ) +
+  geom_line() +
+  geom_point() +
+  scale_x_continuous(
+    breaks = 0:23
+  ) +
+  labs(
+    title =
+      "Nhịp hô hấp-niệm Phật theo giờ trong ngày",
+    x = "Giờ",
+    y =
+      "Chu kỳ/phút"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 27. Heatmap ngày × giờ
+
+```{r}
+heatmap_data <- clean |>
+  group_by(
+    date,
+    hour
+  ) |>
+  summarise(
+
+    n_cycles =
+      n(),
+
+    mean_rr_bpm =
+      mean(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    .groups = "drop"
+  )
+```
+
+```{r}
+#| fig-width: 10
+#| fig-height: 6
+
+heatmap_data |>
+  ggplot(
+    aes(
+      x = hour,
+      y = factor(date),
+      fill = mean_rr_bpm
+    )
+  ) +
+  geom_tile() +
+  scale_x_continuous(
+    breaks = 0:23
+  ) +
+  labs(
+    title =
+      "Heatmap nhịp hô hấp-niệm Phật",
+    x = "Giờ",
+    y = "Ngày",
+    fill =
+      "Chu kỳ/phút"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 28. Khoảng gián đoạn nghi ngờ bỏ lỡ niệm
+
+```{r}
+missed <- study |>
+  filter(
+    exclusion_reason ==
+      "possible_missed_cycles"
+  ) |>
+  select(
+    date,
+    datetime,
+    qc_session_id,
+    qc_gap_prev_marker_s,
+    local_median_cycle_s,
+    cycle_ratio_local,
+    suspected_missed_cycles
+  )
+```
+
+```{r}
+if (
+  nrow(missed) > 0
+) {
+
+  missed |>
+    mutate(
+      across(
+        where(is.numeric),
+        ~ round(.x, 3)
+      )
+    ) |>
+    flextable() |>
+    autofit()
+
+} else {
+
+  cat(
+    "Không ghi nhận khoảng nào được phân loại là possible_missed_cycles."
+  )
+
+}
+```
+
+------------------------------------------------------------------------
+
+# 29. Số lần gián đoạn theo ngày
+
+```{r}
+interruptions_daily <- study |>
+  mutate(
+    interruption =
+      exclusion_reason %in%
+      c(
+        "possible_missed_cycles",
+        "long_interruption_new_session"
+      )
+  ) |>
+  group_by(
+    date
+  ) |>
+  summarise(
+
+    total_markers =
+      n(),
+
+    interruptions =
+      sum(
+        interruption,
+        na.rm = TRUE
+      ),
+
+    interruption_pct =
+      interruptions /
+      total_markers *
+      100,
+
+    .groups = "drop"
+  )
+```
+
+```{r}
+interruptions_daily |>
+  mutate(
+    interruption_pct =
+      round(
+        interruption_pct,
+        2
+      )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 30. Xu hướng gián đoạn
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+interruptions_daily |>
+  ggplot(
+    aes(
+      x = date,
+      y = interruption_pct
+    )
+  ) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title =
+      "Tỷ lệ gián đoạn trong thực hành theo ngày",
+    x = NULL,
+    y =
+      "Khoảng gián đoạn (%)"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 31. Quan hệ giữa độ dài phiên và nhịp thở
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+
+session_summary |>
+  filter(
+    is.finite(
+      duration_min
+    ),
+    is.finite(
+      mean_rr_bpm
+    )
+  ) |>
+  ggplot(
+    aes(
+      x = duration_min,
+      y = mean_rr_bpm
+    )
+  ) +
+  geom_point(
+    size = 2
+  ) +
+  geom_smooth(
+    method = "lm",
+    se = TRUE
+  ) +
+  labs(
+    title =
+      "Liên quan giữa thời lượng phiên và nhịp hô hấp",
+    x =
+      "Thời lượng phiên (phút)",
+    y =
+      "Nhịp hô hấp trung bình"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 32. Quan hệ giữa số chu kỳ và variability
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+
+session_summary |>
+  filter(
+    is.finite(
+      cv_cycle_pct
+    )
+  ) |>
+  ggplot(
+    aes(
+      x = valid_intervals,
+      y = cv_cycle_pct
+    )
+  ) +
+  geom_point(
+    size = 2
+  ) +
+  geom_smooth(
+    method = "lm",
+    se = TRUE
+  ) +
+  labs(
+    title =
+      "Số chu kỳ và respiratory-cycle variability",
+    x =
+      "Số chu kỳ hợp lệ",
+    y =
+      "CV chu kỳ (%)"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 33. Thống kê theo buổi trong ngày
+
+```{r}
+tod <- clean |>
+  mutate(
+
+    period =
+      case_when(
+
+        hour >= 5 &
+          hour < 12 ~
+          "Morning",
+
+        hour >= 12 &
+          hour < 18 ~
+          "Afternoon",
+
+        hour >= 18 &
+          hour < 23 ~
+          "Evening",
+
+        TRUE ~
+          "Night"
+
+      ),
+
+    period =
+      factor(
+        period,
+        levels =
+          c(
+            "Morning",
+            "Afternoon",
+            "Evening",
+            "Night"
+          )
+      )
+  ) |>
+  group_by(
+    period
+  ) |>
+  summarise(
+
+    n =
+      n(),
+
+    mean_cycle_s =
+      mean(
+        clean_respiratory_cycle_s,
+        na.rm = TRUE
+      ),
+
+    mean_rr_bpm =
+      mean(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    sd_rr_bpm =
+      sd(
+        clean_respiratory_rate_bpm,
+        na.rm = TRUE
+      ),
+
+    .groups = "drop"
+  )
+```
+
+```{r}
+tod |>
+  mutate(
+    across(
+      where(is.numeric),
+      ~ round(.x, 3)
+    )
+  ) |>
+  flextable() |>
+  autofit()
+```
+
+------------------------------------------------------------------------
+
+# 34. Boxplot respiratory rate theo buổi
+
+```{r}
+#| fig-width: 8
+#| fig-height: 5
+
+clean |>
+  mutate(
+
+    period =
+      case_when(
+
+        hour >= 5 &
+          hour < 12 ~
+          "Morning",
+
+        hour >= 12 &
+          hour < 18 ~
+          "Afternoon",
+
+        hour >= 18 &
+          hour < 23 ~
+          "Evening",
+
+        TRUE ~
+          "Night"
+
+      ),
+
+    period =
+      factor(
+        period,
+        levels =
+          c(
+            "Morning",
+            "Afternoon",
+            "Evening",
+            "Night"
+          )
+      )
+
+  ) |>
+  ggplot(
+    aes(
+      x = period,
+      y =
+        clean_respiratory_rate_bpm
+    )
+  ) +
+  geom_boxplot() +
+  labs(
+    title =
+      "Respiratory rate theo thời điểm trong ngày",
+    x = NULL,
+    y =
+      "Chu kỳ/phút"
+  )
+```
+
+------------------------------------------------------------------------
+
+# 35. Rolling trend 3 ngày và 7 ngày
+
+```{r}
+#| fig-width: 9
+#| fig-height: 5
+
+daily |>
+  select(
+    date,
+    mean_rr_bpm,
+    rolling_3d_rr,
+    rolling_7d_rr
+  ) |>
+  pivot_longer(
+    -date,
+    names_to =
+      "series",
+    values_to =
+      "rr"
+  ) |>
+  ggplot(
+    aes(
+      x = date,
+      y = rr,
+      linetype = series
+    )
+  ) +
+  geom_line() +
+  geom_point() +
+  labs(
+    title =
+      "Xu hướng respiratory rate",
+    subtitle =
+      "Quan sát hàng ngày và trung bình trượt",
+    x = NULL,
+    y =
+      "Chu kỳ/phút",
+    linetype = NULL
+  )
+```
+
+------------------------------------------------------------------------
+
+# 36. Tóm tắt tự động
+
+```{r}
+#| label: automatic-summary
+#| results: asis
+
+if (
+  nrow(clean) > 0
+) {
+
+  overall_mean_rr <-
+    mean(
+      clean$
+        clean_respiratory_rate_bpm,
+      na.rm = TRUE
+    )
+
+  overall_median_rr <-
+    median(
+      clean$
+        clean_respiratory_rate_bpm,
+      na.rm = TRUE
+    )
+
+  overall_mean_cycle <-
+    mean(
+      clean$
+        clean_respiratory_cycle_s,
+      na.rm = TRUE
+    )
+
+  overall_cv <-
+    sd(
+      clean$
+        clean_respiratory_cycle_s,
+      na.rm = TRUE
+    ) /
+    overall_mean_cycle *
+    100
+
+  cat(
+    "Trong bộ dữ liệu nghiên cứu hiện tại có **",
+    comma(nrow(clean)),
+    " khoảng hô hấp hợp lệ** sau kiểm soát chất lượng. ",
+    "Thời gian chu kỳ trung bình là **",
+    round(
+      overall_mean_cycle,
+      2
+    ),
+    " giây**, tương ứng nhịp chu kỳ trung bình **",
+    round(
+      overall_mean_rr,
+      2
+    ),
+    " lần/phút**; trung vị là **",
+    round(
+      overall_median_rr,
+      2
+    ),
+    " lần/phút**. ",
+    "Coefficient of variation của khoảng chu kỳ toàn bộ dữ liệu là **",
+    round(
+      overall_cv,
+      2
+    ),
+    "%**.",
+    sep = ""
+  )
+
+}
+```
+
+------------------------------------------------------------------------
+
+# 37. Ghi chú phương pháp
+
+Các biến hô hấp trong báo cáo được suy ra từ **khoảng thời gian giữa hai marker cùng pha của chu kỳ hô hấp**.
+
+Do đó:
+
+``` text
+respiratory_cycle_s
+=
+thời điểm marker n
+-
+thời điểm marker n-1
+```
+
+và:
+
+``` text
+respiratory_rate_bpm
+=
+60 / respiratory_cycle_s
+```
+
+Dữ liệu dùng cho phân tích chính:
+
+``` r
+study_eligible == 1
+analysis_valid == 1
+```
+
+và biến ưu tiên là:
+
+``` text
+clean_respiratory_cycle_s
+clean_respiratory_rate_bpm
+```
+
+thay vì các biến raw.
+
+------------------------------------------------------------------------
+
+# 38. Lưu ý diễn giải
+
+`session_rmssd_cycle_s`, `day_rmssd_cycle_s` hoặc RMSSD được tính trong báo cáo này là **variability của respiratory-cycle interval**.
+
+Không diễn giải các chỉ số này là HRV.
+
+Dữ liệu cũng phản ánh **hô hấp trong quá trình thực hành niệm Phật theo protocol**, không phải phép đo hô hấp tự nhiên lúc nghỉ.
+
+Các kết quả hiện tại phù hợp cho:
+
+-   theo dõi longitudinal;
+-   mô tả intra-individual variation;
+-   nghiên cứu N-of-1;
+-   phân tích thay đổi trong phiên;
+-   phân tích thay đổi theo ngày;
+-   xây dựng giả thuyết nghiên cứu.
+
+Không nên sử dụng riêng các biến này để chẩn đoán hoặc tiên lượng bệnh lý.
+
+------------------------------------------------------------------------
+
+# 39. Session info
+
+```{r}
+sessionInfo()
+```
