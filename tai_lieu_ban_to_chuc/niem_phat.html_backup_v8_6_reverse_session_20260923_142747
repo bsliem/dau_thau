@@ -435,7 +435,7 @@
 // CONFIG
 // ============================================================
 
-const APP_VERSION = "v8_6_reverse_session";
+const APP_VERSION = "v8_5_three_breath_session";
 const ROUND_TARGET = 21;
 const SESSION_BREAK_CYCLES = 3;
 const SESSION_FALLBACK_GAP_S = 9;
@@ -945,42 +945,30 @@ function getDynamicSessionThreshold(intervals = []) {
         .filter(
             value =>
                 Number.isFinite(value) &&
-                value >= 0.5 &&
-                value <= 10
+                value > 0
         )
         .slice(-SESSION_LOCAL_WINDOW);
 
-    // Chưa đủ 3 interval sạch:
-    // dùng fallback 9 giây
+    // Chưa đủ nhịp để tính median
     if (recent.length < 3) {
 
         return SESSION_FALLBACK_GAP_S;
     }
 
-    const m =
+    const localMedian =
         median(recent);
 
     if (
-        !Number.isFinite(m) ||
-        m <= 0
+        !Number.isFinite(localMedian) ||
+        localMedian <= 0
     ) {
 
         return SESSION_FALLBACK_GAP_S;
     }
 
-    // 3 hơi thở
-    const threshold =
-        m *
+    return
+        localMedian *
         SESSION_BREAK_CYCLES;
-
-    // giới hạn kỹ thuật để tránh threshold bất thường
-    return Math.max(
-        3,
-        Math.min(
-            threshold,
-            30
-        )
-    );
 }
 
 function formatClockTime(date = new Date()) {
@@ -1036,12 +1024,7 @@ function formatSessionDuration(seconds) {
 
 function getCurrentLiveSession() {
 
-    const today =
-        getToday();
-
-    // --------------------------------------------------------
-    // Chỉ lấy các lần bấm 念 thật
-    // --------------------------------------------------------
+    const today = getToday();
 
     const events = data.events
         .filter(
@@ -1066,19 +1049,13 @@ function getCurrentLiveSession() {
         )
         .filter(
             event =>
-                Number.isFinite(
-                    event.timestamp_ms
-                )
+                Number.isFinite(event.timestamp_ms)
         )
         .sort(
             (a, b) =>
                 a.timestamp_ms -
                 b.timestamp_ms
         );
-
-    // --------------------------------------------------------
-    // Không có lần niệm nào hôm nay
-    // --------------------------------------------------------
 
     if (!events.length) {
 
@@ -1087,72 +1064,71 @@ function getCurrentLiveSession() {
             count: 0,
             rate: null,
             elapsed_s: 0,
-            idle_s: null,
             threshold_s:
                 SESSION_FALLBACK_GAP_S
         };
     }
 
-    // --------------------------------------------------------
-    // LẦN BẤM MỚI NHẤT
-    // --------------------------------------------------------
+    let current = [events[0]];
+    let intervals = [];
 
-    const last =
-        events[events.length - 1];
+    for (let i = 1; i < events.length; i++) {
 
-    const nowMs =
-        Date.now();
+        const event = events[i];
 
-    // --------------------------------------------------------
-    // Trước tiên ước tính nhịp từ các interval gần cuối
-    // --------------------------------------------------------
-
-    const recentIntervals = [];
-
-    for (
-        let i = events.length - 1;
-        i > 0 &&
-        recentIntervals.length < SESSION_LOCAL_WINDOW;
-        i--
-    ) {
+        const previous = events[i - 1];
 
         const gap =
             (
-                events[i].timestamp_ms -
-                events[i - 1].timestamp_ms
+                event.timestamp_ms -
+                previous.timestamp_ms
             ) / 1000;
 
-        // chỉ thu interval giống hơi thở thật
+        const threshold =
+            getDynamicSessionThreshold(intervals);
+
+        // ---------------------------------------------
+        // Gap lớn = phiên hoàn toàn mới
+        // ---------------------------------------------
+
+        if (gap >= threshold) {
+
+            current = [event];
+            intervals = [];
+
+            continue;
+        }
+
+        current.push(event);
+
         if (
             Number.isFinite(gap) &&
-            gap >= 0.5 &&
-            gap <= 10
+            gap > 0
         ) {
 
-            recentIntervals.unshift(gap);
-
-        } else {
-
-            // gặp khoảng nghỉ lớn:
-            // không lấy dữ liệu phiên cũ hơn
-            break;
+            intervals.push(gap);
         }
     }
 
-    const threshold =
-        getDynamicSessionThreshold(
-            recentIntervals
-        );
+    const first = current[0];
 
-    // --------------------------------------------------------
-    // Kiểm tra phiên đã hết chưa
-    // --------------------------------------------------------
+    const last =
+        current[current.length - 1];
+
+    const threshold =
+        getDynamicSessionThreshold(intervals);
+
+    const nowMs = Date.now();
 
     const idleS =
         (
             nowMs -
             last.timestamp_ms
         ) / 1000;
+
+    // ---------------------------------------------
+    // Nếu đã nghỉ quá ngưỡng thì KHÔNG còn phiên
+    // ---------------------------------------------
 
     if (idleS >= threshold) {
 
@@ -1161,124 +1137,46 @@ function getCurrentLiveSession() {
             count: 0,
             rate: null,
             elapsed_s: 0,
-            idle_s:
-                idleS,
-            threshold_s:
-                threshold
+            idle_s: idleS,
+            threshold_s: threshold
         };
     }
 
-    // --------------------------------------------------------
-    // XÂY PHIÊN TỪ CUỐI ĐI NGƯỢC
-    // --------------------------------------------------------
-
-    const current = [last];
-
-    const currentIntervals = [];
-
-    for (
-        let i = events.length - 1;
-        i > 0;
-        i--
-    ) {
-
-        const newer =
-            events[i];
-
-        const older =
-            events[i - 1];
-
-        const gap =
-            (
-                newer.timestamp_ms -
-                older.timestamp_ms
-            ) / 1000;
-
-        const localThreshold =
-            getDynamicSessionThreshold(
-                currentIntervals
-            );
-
-        // ---------------------------------------------
-        // Đây là ranh giới phiên
-        // ---------------------------------------------
-
-        if (gap >= localThreshold) {
-
-            break;
-        }
-
-        // ---------------------------------------------
-        // bảo vệ interval bất thường
-        // ---------------------------------------------
-
-        if (
-            !Number.isFinite(gap) ||
-            gap <= 0
-        ) {
-
-            break;
-        }
-
-        current.unshift(older);
-
-        currentIntervals.unshift(gap);
-    }
-
-    const first =
-        current[0];
-
-    // --------------------------------------------------------
-    // Thời gian phiên LIVE
-    // --------------------------------------------------------
+    // ---------------------------------------------
+    // Phiên đang hoạt động
+    // ---------------------------------------------
 
     const elapsedS =
-        Math.max(
-            0,
-            (
-                nowMs -
-                first.timestamp_ms
-            ) /
-            1000
-        );
+        (
+            nowMs -
+            first.timestamp_ms
+        ) / 1000;
 
-    // --------------------------------------------------------
-    // Tốc độ trung bình
-    // chỉ dùng thời gian từ marker đầu -> marker cuối
-    // không tính idle sau lần bấm cuối
-    // --------------------------------------------------------
-
-    const observedS =
+    const observedDurationS =
         current.length > 1
             ? (
                 last.timestamp_ms -
                 first.timestamp_ms
-              ) /
-              1000
+              ) / 1000
             : 0;
 
     const rate =
         current.length > 1 &&
-        observedS > 0
+        observedDurationS > 0
             ? (
                 current.length - 1
               ) *
               60 /
-              observedS
+              observedDurationS
             : null;
 
     return {
         active: true,
-        count:
-            current.length,
-        rate:
-            rate,
-        elapsed_s:
-            elapsedS,
-        idle_s:
-            idleS,
-        threshold_s:
-            threshold
+        count: current.length,
+        rate: rate,
+        elapsed_s: elapsedS,
+        idle_s: idleS,
+        threshold_s: threshold
     };
 }
 
@@ -4146,7 +4044,7 @@ body {
     <div class="meta">
         ${today}<br>
         Tạo lúc ${generated}<br>
-        Protocol V8.6.6.5.3
+        Protocol V8.5.5.3
     </div>
 </div>
 
